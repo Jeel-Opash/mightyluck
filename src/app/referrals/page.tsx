@@ -83,13 +83,13 @@ export default function ReferralsPage() {
   }
 
   return (
-    <div className="w-full max-w-[1440px] min-h-screen mx-auto bg-[#091741] text-white relative flex flex-col select-none overflow-x-hidden">
+    <div className="w-full min-h-screen bg-[#091741] text-white relative flex flex-col select-none overflow-x-hidden">
       
       {/* 1. Header (Navbar) */}
       <Navbar />
 
       {/* 2. Page Content Layout (Sidebar + Content Panel) */}
-      <div className="flex flex-row items-start w-full px-3 sm:px-4 lg:px-6 pt-4 lg:pt-6 pb-16 gap-3 lg:gap-6 relative">
+      <div className="flex flex-row items-start w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 pt-4 lg:pt-6 pb-16 gap-3 lg:gap-6 relative">
 
         {/* Left Sidebar */}
         <div className="hidden lg:block shrink-0"><Sidebar /></div>

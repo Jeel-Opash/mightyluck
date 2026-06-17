@@ -76,7 +76,7 @@ export default function GuestHome() {
   // Scroll function for carousels
   const scrollCarousel = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right') => {
     if (ref.current) {
-      const cardWidth = 152;
+      const cardWidth = 148;
       const gap = 12;
       const scrollAmount = (cardWidth + gap) * 3; // Scroll 3 cards at a time
       ref.current.scrollBy({
@@ -288,13 +288,13 @@ export default function GuestHome() {
   const filteredWinners = recentWinners.filter((w) => w.gameTitle.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
-    <div className="w-full max-w-[1440px] min-h-screen mx-auto bg-[#091741] text-white relative flex flex-col select-none overflow-x-hidden">
+    <div className="w-full min-h-screen bg-[#091741] text-white relative flex flex-col select-none overflow-x-hidden">
 
       {/* 1. Header (Navbar) */}
       <Navbar />
 
       {/* 2. Page Content Layout (Sidebar + Content Panel) */}
-      <div className="flex flex-row items-start w-full px-3 sm:px-4 lg:px-6 pt-4 lg:pt-6 pb-16 gap-3 lg:gap-6 relative">
+      <div className="flex flex-row items-start w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 pt-4 lg:pt-6 pb-16 gap-3 lg:gap-6 relative">
 
         {/* Left Sidebar — hidden space on mobile (fixed overlay), takes space on lg+ */}
         <div className="hidden lg:block shrink-0">
@@ -380,26 +380,25 @@ export default function GuestHome() {
 
 
             {/* SLOTS SECTION */}
-            <section className="flex flex-col gap-[12px] sm:gap-[16px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/slot.svg" alt="Slots" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/slot.svg" alt="Slots" />
                   </div>
-                  <h2 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: 'clamp(15px,2vw,20px)', lineHeight: '29px', letterSpacing: '0.01em' }} className="text-white uppercase select-none">SLOTS (1,487)</h2>
+                  <h2 className="game-section-title">SLOTS (1,487)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[20px] w-[133px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(slotsRef, 'left')}
                       disabled={!canScrollSlotsLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -408,8 +407,7 @@ export default function GuestHome() {
                     <button
                       onClick={() => scrollCarousel(slotsRef, 'right')}
                       disabled={!canScrollSlotsRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -422,13 +420,13 @@ export default function GuestHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={slotsRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[200px] select-none"
+                  className="game-cards-slider scrollbar-none"
                 >
                   {filteredSlots.map((game) => (
                     <div
                       key={game.id}
                       onClick={() => dispatch(openAuthModal('join'))}
-                      className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer"
+                      className="game-card group"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -469,26 +467,25 @@ export default function GuestHome() {
             </section>
 
             {/* ORIGINALS SECTION */}
-            <section className="flex flex-col gap-[16px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/originals.svg" alt="Originals" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/originals.svg" alt="Originals" />
                   </div>
-                  <h2 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: 'clamp(15px,2vw,20px)', lineHeight: '29px', letterSpacing: '0.01em' }} className="text-white uppercase select-none">ORIGINALS (14)</h2>
+                  <h2 className="game-section-title">ORIGINALS (14)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[20px] w-[133px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(originalsRef, 'left')}
                       disabled={!canScrollOriginalsLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -497,8 +494,7 @@ export default function GuestHome() {
                     <button
                       onClick={() => scrollCarousel(originalsRef, 'right')}
                       disabled={!canScrollOriginalsRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -511,13 +507,13 @@ export default function GuestHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={originalsRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[200px] select-none"
+                  className="game-cards-slider scrollbar-none"
                 >
                   {filteredOriginals.map((game) => (
                     <div
                       key={game.id}
                       onClick={() => dispatch(openAuthModal('join'))}
-                      className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer"
+                      className="game-card group"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -590,26 +586,25 @@ export default function GuestHome() {
             </section>
 
             {/* CRASH GAMES SECTION */}
-            <section className="flex flex-col gap-[16px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/crash.svg" alt="Crash Games" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/crash.svg" alt="Crash Games" />
                   </div>
-                  <h2 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: 'clamp(15px,2vw,20px)', lineHeight: '29px', letterSpacing: '0.01em' }} className="text-white uppercase select-none">CRASH GAMES (723)</h2>
+                  <h2 className="game-section-title">CRASH GAMES (723)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[125px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(crashRef, 'left')}
                       disabled={!canScrollCrashLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -618,8 +613,7 @@ export default function GuestHome() {
                     <button
                       onClick={() => scrollCarousel(crashRef, 'right')}
                       disabled={!canScrollCrashRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -632,13 +626,13 @@ export default function GuestHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={crashRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[200px] select-none"
+                  className="game-cards-slider scrollbar-none"
                 >
                   {filteredCrash.map((game) => (
                     <div
                       key={game.id}
                       onClick={() => dispatch(openAuthModal('join'))}
-                      className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer"
+                      className="game-card group"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -679,26 +673,25 @@ export default function GuestHome() {
             </section>
 
             {/* GAME PROVIDERS SECTION */}
-            <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/game.svg" alt="Game Providers" />
                   </div>
-                  <h2 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: 'clamp(15px,2vw,20px)', lineHeight: '29px', letterSpacing: '0.01em' }} className="text-white uppercase select-none">GAME PROVIDERS (34)</h2>
+                  <h2 className="game-section-title">GAME PROVIDERS (34)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[125px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(providersRef, 'left')}
                       disabled={!canScrollProvidersLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -707,8 +700,7 @@ export default function GuestHome() {
                     <button
                       onClick={() => scrollCarousel(providersRef, 'right')}
                       disabled={!canScrollProvidersRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -721,12 +713,12 @@ export default function GuestHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={providersRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[100px] select-none"
+                  className="game-cards-slider scrollbar-none !h-[100px]"
                 >
                   {providerList.map((provider) => (
                     <div
                       key={provider.id}
-                      className="w-[152px] h-[100px] flex-none rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-col justify-center items-center p-[12px] gap-[8px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
+                      className="w-[148px] h-[100px] flex-none rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-col justify-center items-center p-[12px] gap-[8px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
                     >
                       <div className="w-[80px] h-[40px] flex items-center justify-center">
                         <img
@@ -747,26 +739,25 @@ export default function GuestHome() {
             </section>
 
             {/* TABLE GAMES SECTION */}
-            <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/table.svg" alt="Table Games" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/table.svg" alt="Table Games" />
                   </div>
-                  <h2 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: 'clamp(15px,2vw,20px)', lineHeight: '29px', letterSpacing: '0.01em' }} className="text-white uppercase select-none">TABLE GAMES (51)</h2>
+                  <h2 className="game-section-title">TABLE GAMES (51)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[124px] h-[30px]">
-                  <span className="font-sans font-medium text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(tableRef, 'left')}
                       disabled={!canScrollTableLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -775,8 +766,7 @@ export default function GuestHome() {
                     <button
                       onClick={() => scrollCarousel(tableRef, 'right')}
                       disabled={!canScrollTableRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -789,13 +779,13 @@ export default function GuestHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={tableRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[200px] select-none"
+                  className="game-cards-slider scrollbar-none"
                 >
                   {filteredTable.map((game) => (
                     <div
                       key={game.id}
                       onClick={() => dispatch(openAuthModal('join'))}
-                      className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer"
+                      className="game-card group"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -836,26 +826,25 @@ export default function GuestHome() {
             </section>
 
             {/* BONUS BUYS SECTION */}
-            <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" />
                   </div>
-                  <h2 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: 'clamp(15px,2vw,20px)', lineHeight: '29px', letterSpacing: '0.01em' }} className="text-white uppercase select-none">BONUS BUYS (145)</h2>
+                  <h2 className="game-section-title">BONUS BUYS (145)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[125px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(bonusRef, 'left')}
                       disabled={!canScrollBonusLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -864,8 +853,7 @@ export default function GuestHome() {
                     <button
                       onClick={() => scrollCarousel(bonusRef, 'right')}
                       disabled={!canScrollBonusRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -878,13 +866,13 @@ export default function GuestHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={bonusRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[200px] select-none"
+                  className="game-cards-slider scrollbar-none"
                 >
                   {filteredBonus.map((game) => (
                     <div
                       key={game.id}
                       onClick={() => dispatch(openAuthModal('join'))}
-                      className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer"
+                      className="game-card group"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -925,26 +913,25 @@ export default function GuestHome() {
             </section>
 
             {/* COLLECTIONS SECTION */}
-            <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/collections.svg" alt="Collections" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/collections.svg" alt="Collections" />
                   </div>
-                  <h2 style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: 'clamp(15px,2vw,20px)', lineHeight: '29px', letterSpacing: '0.01em' }} className="text-white uppercase select-none">COLLECTIONS (17)</h2>
+                  <h2 className="game-section-title">COLLECTIONS (17)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[125px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(collectionsRef, 'left')}
                       disabled={!canScrollCollectionsLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -953,8 +940,7 @@ export default function GuestHome() {
                     <button
                       onClick={() => scrollCarousel(collectionsRef, 'right')}
                       disabled={!canScrollCollectionsRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -967,12 +953,12 @@ export default function GuestHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={collectionsRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[100px] select-none"
+                  className="game-cards-slider scrollbar-none !h-[100px]"
                 >
                   {filteredCollections.map((col) => (
                     <div
                       key={col.id}
-                      className="w-[316px] h-[100px] flex-none rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-row items-center p-[12px] pr-[24px] pl-[12px] gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
+                      className="w-[308px] h-[100px] flex-none rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-row items-center p-[12px] pr-[24px] pl-[12px] gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
                     >
                       <div className="w-[76px] h-[76px] flex-none bg-[#0E1B3D] rounded-[8px] relative overflow-hidden">
                         <div className="absolute w-[70px] h-[70px] left-[calc(50%-35px)] top-[calc(50%-35px)] bg-[#1463FF]/60 rounded-full filter blur-[15px] group-hover:scale-125 transition-transform duration-300 pointer-events-none" />
@@ -992,114 +978,130 @@ export default function GuestHome() {
             </section>
 
             {/* RECENT WINNERS SECTION */}
-            <section className="flex flex-col gap-[12px] w-full mt-[8px]">
-              <div className="flex flex-row justify-between items-center w-full h-[30px] mb-[12px]">
-                <div className="flex flex-row items-center gap-[12px] w-[231px] h-[30px]">
-                  <div className="flex items-center justify-center w-[30px] h-[30px]">
+            <section className="winners-section-container">
+              <div className="winners-header-wrapper">
+                <div className="winners-header-title-wrapper">
+                  <div className="winners-header-icon">
                     <img src="/games/game-icons/recent.svg" alt="Recent Winners" className="w-[30px] h-[30px]" />
                   </div>
-                  <h2 className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] text-white uppercase select-none">
+                  <h2 className="winners-header-title">
                     RECENT WINNERS
                   </h2>
                 </div>
               </div>
 
-              <div className="flex flex-row justify-between items-center w-full px-4 md:px-[24px] h-[20px] text-white font-jost font-bold text-[14px] leading-[20px] tracking-[0.02em] uppercase select-none opacity-80">
-                <span className="flex-1 min-w-[150px] text-left">GAME</span>
-                <span className="w-[120px] sm:w-[200px] text-left">USERNAME</span>
-                <span className="hidden md:block w-[100px] text-left">TIME</span>
-                <span className="w-[100px] text-right">PAYOUT</span>
-              </div>
-
-              <div className="flex flex-col gap-[8px] w-full">
-                {filteredWinners.map((winner) => (
-                  <div
-                    key={winner.id}
-                    className="flex flex-row justify-between items-center w-full h-[60px] px-4 md:px-[24px] bg-[#0C1F56] rounded-[8px] hover:bg-[#112B75] transition-colors duration-200 border border-white/5"
-                  >
-                    <div className="flex flex-row items-center gap-[12px] flex-1 min-w-[150px] pr-2">
-                      <div
-                        className="w-[22px] h-[30px] rounded-[1.8px] bg-cover bg-center bg-[#CDCDCD] flex-none border border-white/10"
-                        style={{ backgroundImage: `url(${winner.gameImage})` }}
-                      />
-                      <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white truncate max-w-[120px] sm:max-w-[220px]">
-                        {winner.gameTitle}
-                      </span>
+              <div className="winners-table-container scrollbar-none">
+                <div className="winners-table-inner">
+                  <div className="winners-table-header-row">
+                    <span className="winners-table-header-game">GAME</span>
+                    <div className="winners-table-header-right-frame">
+                      <span className="winners-table-header-username">USERNAME</span>
+                      <span className="winners-table-header-time">TIME</span>
+                      <span className="winners-table-header-payout">PAYOUT</span>
                     </div>
-
-                    <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white w-[120px] sm:w-[200px] text-left truncate">
-                      {winner.username}
-                    </span>
-
-                    <span className="hidden md:block font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white w-[100px] text-left">
-                      {winner.time}
-                    </span>
-
-                    <span
-                      className={`font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] w-[100px] text-right ${winner.payoutAmount > 0 ? 'text-[#00DD29]' : 'text-[#7795E8]'}`}
-                    >
-                      {winner.payout}
-                    </span>
                   </div>
-                ))}
+
+                  {filteredWinners.map((winner) => (
+                    <div
+                      key={winner.id}
+                      className="winner-row-container"
+                    >
+                      <div className="winner-row-game-frame">
+                        <div
+                          className="winner-row-game-image-rect"
+                          style={{ backgroundImage: `url(${winner.gameImage})` }}
+                        />
+                        <span className="winner-row-game-title">
+                          {winner.gameTitle}
+                        </span>
+                      </div>
+
+                      <div className="winner-row-right-frame">
+                        <span className="winner-row-username">
+                          {winner.username}
+                        </span>
+                        <span className="winner-row-time">
+                          {winner.time}
+                        </span>
+                        <span
+                          className={`winner-row-payout ${winner.payoutAmount > 0 ? 'win' : 'zero'}`}
+                        >
+                          {winner.payout}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
           </div>
 
           {/* Child 2: SEO Text Area */}
-          <div className="flex flex-col gap-[40px] w-full">
-            <div className="w-full max-w-[800px] flex flex-col items-center gap-[32px] relative mx-auto">
-              <div className={`w-full max-w-[800px] flex flex-col gap-[24px] overflow-hidden transition-all duration-500 ease-in-out ${isSeoExpanded ? 'max-h-[1500px]' : 'max-h-[300px]'}`}>
-                <div className="flex flex-col gap-[12px]">
-                  <h1 className="font-jost font-bold text-[32px] leading-[1.2] tracking-[-0.02em] text-white">
+          <div className="flex flex-col items-start p-0 gap-[40px] w-full max-w-[1136px] mx-auto select-none">
+            <div className="flex flex-col items-center p-0 gap-[32px] w-full max-w-[1136px] isolate relative">
+              <div className={`w-full max-w-[800px] flex flex-col gap-[32px] overflow-hidden transition-all duration-500 ease-in-out ${isSeoExpanded ? 'max-h-[1500px]' : 'max-h-[580px]'}`}>
+
+                {/* Frame 3 */}
+                <div className="flex flex-col items-start p-0 gap-[24px] w-full max-w-[800px]">
+                  <h1 className="w-full font-jost font-bold text-[32px] leading-[120%] tracking-[-0.02em] text-white">
                     Play the Best Crypto Casino Games Online at Mighty Luck — Fast, Fair and Secure
                   </h1>
-                  <p className="font-sans font-medium text-[16px] leading-[1.6] text-[#D2DCF7]">
-                    Step into a next-generation gaming experience where every spin, bet, and hand is powered by blockchain technology. At Mighty Luck Casino, you can explore more than 9,000 crypto casino games across slots, table games, live dealer games, and crash-style favorites. As one of the top crypto casinos online, Mighty Luck gives players instant withdrawals, enhanced privacy, and a secure gambling environment without the friction of traditional payment methods. Whether you're here to play table games, explore Bitcoin casino games, or try the latest provably fair slots, Mighty Luck delivers one of the most complete online casino experiences available today. Ready to play games and win real crypto? Start playing crypto casino games at Mighty Luck Casino.
-                  </p>
+                  <div className="flex flex-col gap-[16px] w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
+                    <p>
+                      Step into a next-generation gaming experience where every spin, bet, and hand is powered by blockchain technology. At Mighty Luck Casino, you can explore more than 9,000 crypto casino games across slots, table games, live dealer games, and crash-style favorites. As one of the top crypto casinos online, Mighty Luck gives players instant withdrawals, enhanced privacy, and a secure gambling environment without the friction of traditional payment methods.
+                    </p>
+                    <p>
+                      Whether you're here to play table games, explore Bitcoin casino games, or try the latest provably fair slots, Mighty Luck delivers one of the most complete online casino experiences available today.
+                    </p>
+                    <p>
+                      Ready to play games and win real crypto?
+                    </p>
+                    <p>
+                      Start playing crypto casino games at Mighty Luck Casino.
+                    </p>
+                  </div>
                 </div>
 
-                <div className="flex flex-col gap-[12px]">
-                  <h2 className="font-jost font-bold text-[24px] leading-[35px] text-white">
+                {/* Frame 4 */}
+                <div className="flex flex-col items-start p-0 gap-[16px] w-full max-w-[800px]">
+                  <h2 className="w-full font-jost font-bold text-[24px] leading-[35px] text-white">
                     Why Mighty Luck Is the Ultimate Place to Play Crypto Casino Games
                   </h2>
-                  <p className="font-sans font-medium text-[16px] leading-[1.6] text-[#D2DCF7]">
+                  <p className="w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
                     Mighty Luck Casino offers the perfect blend of crypto gambling convenience, online casino entertainment, and world-class security. Compared to traditional online casinos, Mighty Luck delivers significantly faster payouts, more generous bonuses, and an unmatched selection of various games.
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-[12px]">
-                  <h2 className="font-jost font-bold text-[24px] leading-[35px] text-white">
+                {/* Frame 5 */}
+                <div className="flex flex-col items-start p-0 gap-[16px] w-full max-w-[800px]">
+                  <h2 className="w-full font-jost font-bold text-[24px] leading-[35px] text-white">
                     Massive Game Variety
                   </h2>
-                  <p className="font-sans font-medium text-[16px] leading-[1.6] text-[#D2DCF7]">
+                  <p className="w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
                     With more than 9,000 casino games, Mighty Luck outshines many crypto casinos and traditional casinos alike. You’ll find:
                   </p>
                 </div>
+
               </div>
 
               {!isSeoExpanded && (
-                <div className="absolute bottom-0 left-0 right-0 h-[200px] flex items-end justify-center pb-[16px] bg-gradient-to-t from-[#091741] via-[#091741]/80 to-transparent z-10 pointer-events-none">
+                <div
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[200px] flex flex-col justify-end items-center p-[24px_10px] gap-[10px] z-10 pointer-events-none"
+                  style={{ background: 'linear-gradient(0deg, #091741 0%, rgba(9, 23, 65, 0) 100%)' }}
+                >
                   <button
                     onClick={() => setIsSeoExpanded(true)}
-                    className="flex flex-row items-center gap-[6px] px-[16px] py-[8px] bg-transparent border-none outline-none cursor-pointer group pointer-events-auto select-none"
+                    className="flex flex-row items-center p-0 gap-[4px] w-[93px] h-[19px] bg-transparent border-none outline-none cursor-pointer group pointer-events-auto select-none"
                   >
-                    <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFBF1F] group-hover:text-white transition-colors">
+                    <span className="w-[73px] h-[19px] font-sans font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFBF1F] group-hover:text-white transition-colors">
                       Read more
                     </span>
-                    <svg
-                      width="10"
-                      height="6"
-                      viewBox="0 0 10 6"
-                      fill="none"
-                      stroke="#FFBF1F"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="transition-transform duration-300 group-hover:stroke-white mt-[1px]"
-                    >
-                      <path d="M1 1L5 5L9 1" />
-                    </svg>
+                    <div className="w-[16px] h-[16px] flex items-center justify-center relative">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 transition-transform duration-300 group-hover:scale-110">
+                        <line x1="8" y1="3" x2="8" y2="13" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M4 9L8 13L12 9" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                   </button>
                 </div>
               )}
@@ -1108,24 +1110,17 @@ export default function GuestHome() {
                 <div className="flex justify-center w-full z-10 mt-[8px]">
                   <button
                     onClick={() => setIsSeoExpanded(false)}
-                    className="flex flex-row items-center gap-[6px] px-[16px] py-[8px] bg-transparent border-none outline-none cursor-pointer group select-none"
+                    className="flex flex-row items-center p-0 gap-[4px] w-[93px] h-[19px] bg-transparent border-none outline-none cursor-pointer group select-none"
                   >
-                    <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFBF1F] group-hover:text-white transition-colors">
+                    <span className="w-[73px] h-[19px] font-sans font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFBF1F] group-hover:text-white transition-colors">
                       Read less
                     </span>
-                    <svg
-                      width="10"
-                      height="6"
-                      viewBox="0 0 10 6"
-                      fill="none"
-                      stroke="#FFBF1F"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="transition-transform duration-300 group-hover:stroke-white rotate-180 mt-[1px]"
-                    >
-                      <path d="M1 1L5 5L9 1" />
-                    </svg>
+                    <div className="w-[16px] h-[16px] flex items-center justify-center relative">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 rotate-180 transition-transform duration-300 group-hover:scale-110">
+                        <line x1="8" y1="3" x2="8" y2="13" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M4 9L8 13L12 9" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                   </button>
                 </div>
               )}
@@ -1141,7 +1136,7 @@ export default function GuestHome() {
                   key={i}
                   src={`/games/deposite-icon/d${i + 1}.svg`}
                   alt={`Crypto Method ${i + 1}`}
-                  className="h-[19.05px] w-auto object-contain filter brightness-0 invert opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer"
+                  className="h-[19.05px] w-auto object-contain filter brightness-0 invert hover:scale-110 transition-all duration-300 cursor-pointer" style={{ color: '#FFFFFF' }}
                 />
               ))}
             </div>
@@ -1149,23 +1144,51 @@ export default function GuestHome() {
 
           {/* Child 4: MAIN WEBSITE FOOTER */}
           <footer className="w-full flex flex-col gap-[48px] select-none text-white pb-[40px]">
+
+            {/* Top Row: logo + menus */}
             <div className="w-full flex flex-col md:flex-row justify-between items-start gap-[49px]">
-              <div className="flex flex-col items-start gap-[16px] w-auto">
-                <img src="/images/logo.svg" className="w-[130.49px] h-[50px] object-contain" alt="Mighty Luck" />
-                <span className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7]">
+
+              {/* Logo + copyright */}
+              <div className="flex flex-col items-start gap-[16px] w-[213px] shrink-0">
+                {/* Inline Logo: crown icon (logo.svg path) + MIGHTY + LUCK text */}
+                <div className="w-[132px] h-[50px] relative">
+                  <svg width="132" height="50" viewBox="0 0 132 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="gLogo" x1="0" y1="0" x2="132" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="12%" stopColor="#FFD85A" />
+                        <stop offset="86.68%" stopColor="#FFB800" />
+                      </linearGradient>
+                      <linearGradient id="gCrown" x1="4.07" y1="12.38" x2="29.42" y2="12.38" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FFD85A" />
+                        <stop offset="1" stopColor="#FFB800" />
+                      </linearGradient>
+                    </defs>
+                    {/* Crown icon — exact path from logo.svg, scaled to fit top 26px */}
+                    <g transform="translate(49, 0) scale(1.09)">
+                      <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="url(#gCrown)" />
+                    </g>
+                    {/* MIGHTY — white, Jost 800 */}
+                    <text x="18" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="#FFFFFF">MIGHTY</text>
+                    {/* LUCK — gold gradient, Jost 800 */}
+                    <text x="78" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="url(#gLogo)">LUCK</text>
+                  </svg>
+                </div>
+                <span className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px]">
                   @ 2026 Mighty Luck. All rights reserved.
                 </span>
               </div>
 
-              <div className="flex flex-row flex-wrap md:flex-nowrap items-start gap-[32px] w-full md:w-[728px] justify-between">
+              {/* Menu columns wrapper — 728px, 5 cols × 120px, gap 32px */}
+              <div className="flex flex-row flex-wrap md:flex-nowrap items-start gap-[32px] w-full md:w-[728px]">
+
                 {/* Column 1: Slot Games */}
-                <div className="flex flex-col gap-[12px] w-[120px]">
-                  <h3 className="font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
                     Slot Games
                   </h3>
                   <div className="flex flex-col gap-[8px]">
                     {['Slots', 'Skill Games', 'Jackpot', 'Bonus Buy', 'Crash Games'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
                         {item}
                       </span>
                     ))}
@@ -1173,13 +1196,13 @@ export default function GuestHome() {
                 </div>
 
                 {/* Column 2: Live Casino */}
-                <div className="flex flex-col gap-[12px] w-[120px]">
-                  <h3 className="font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
                     Live Casino
                   </h3>
                   <div className="flex flex-col gap-[8px]">
                     {['Roulette', 'Blackjack', 'Live Casino', 'Table Games', 'Video Poker'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
                         {item}
                       </span>
                     ))}
@@ -1187,13 +1210,13 @@ export default function GuestHome() {
                 </div>
 
                 {/* Column 3: Casino */}
-                <div className="flex flex-col gap-[12px] w-[120px]">
-                  <h3 className="font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
                     Casino
                   </h3>
                   <div className="flex flex-col gap-[8px]">
                     {['About Us', 'Promotions', 'Tournaments', 'Affiliate Program', 'VIP Club', 'Refer a Friend', 'Blog', 'Bonus Shop'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
                         {item}
                       </span>
                     ))}
@@ -1201,13 +1224,13 @@ export default function GuestHome() {
                 </div>
 
                 {/* Column 4: Legal */}
-                <div className="flex flex-col gap-[12px] w-[120px]">
-                  <h3 className="font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
                     Legal
                   </h3>
                   <div className="flex flex-col gap-[8px]">
                     {['Privacy Policy', 'Terms & Conditions', 'Bonus Terms', 'Responsible Gambling', 'Payment Methods', 'Sportsbook Rules'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
                         {item}
                       </span>
                     ))}
@@ -1215,27 +1238,26 @@ export default function GuestHome() {
                 </div>
 
                 {/* Column 5: Support */}
-                <div className="flex flex-col gap-[12px] w-[120px]">
-                  <h3 className="font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
                     Support
                   </h3>
                   <div className="flex flex-col gap-[8px]">
-                    {['Live Support'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
-                        {item}
-                      </span>
-                    ))}
+                    <span className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                      Live Support
+                    </span>
                   </div>
                 </div>
+
               </div>
             </div>
 
-            <div className="w-full border-t border-[#112F82] pt-[48px] flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+            {/* Bottom strip — border-top, legal + badges */}
+            <div className="w-full border-t border-[#112F82] pt-[48px] flex flex-col md:flex-row justify-between items-start gap-6">
               <p className="font-sans font-semibold text-[10px] leading-[14px] text-justify tracking-[0.01em] text-[#D2DCF7] w-full md:w-[445px]">
                 MightyLuck.com is owned and operated by Company Name B.V. a company that is incorporated under the laws of Curacao with company registration number XXXXXX, having its registered address at Street 3XX9, City, Curaçao. MightyLuck.com is licensed and holds a valid Certificate of Operation (ABC/XXXX/XXX/XXXX).
               </p>
-
-              <div className="flex flex-row items-center justify-center md:justify-end gap-[32px] w-full md:w-[288.5px] h-[38px] shrink-0">
+              <div className="flex flex-row items-center justify-end gap-[32px] w-full md:w-[288.5px] h-[38px] shrink-0">
                 <img src="/games/footer/18.svg" className="w-[38px] h-[38px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="18+" />
                 <img src="/games/footer/gamble-aware.svg" className="w-[120px] h-[24px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="Gamble Aware" />
                 <img src="/games/footer/gaming-license.svg" className="w-[66.5px] h-[38px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="GCB License Curacao" />

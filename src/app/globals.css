@@ -83,3 +83,408 @@ input::placeholder {
   color: #A5B8EF;
   opacity: 0.6;
 }
+
+/* Mighty Luck Game Section Custom Classes */
+.game-section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  width: 100%;
+}
+
+.game-section-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  height: 30px;
+}
+
+.game-section-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  height: 30px;
+}
+
+.game-section-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+}
+
+.game-section-icon img {
+  height: 30px;
+  object-fit: contain;
+}
+
+.game-section-title {
+  height: 29px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.game-section-actions-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 20px;
+  height: 30px;
+}
+
+.game-section-view-all {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  color: #D2DCF7;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.game-section-view-all:hover {
+  color: #FFFFFF;
+}
+
+.game-section-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  width: 68px;
+  height: 30px;
+}
+
+.game-section-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+  background: #112F82;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  color: #FFFFFF;
+  transition: all 0.2s ease;
+}
+
+.game-section-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.game-section-btn:not(:disabled):hover {
+  background: #1463FF;
+  transform: scale(1.05);
+}
+
+.game-section-btn:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.game-cards-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  width: 100%;
+  height: 200px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+/* Game Card Style */
+.game-card {
+  width: 148px;
+  height: 200px;
+  flex: none;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  background: #CDCDCD;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.game-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Recent Winners Section */
+.winners-section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+  width: 100%;
+  max-width: 1136px;
+  margin-top: 8px;
+}
+
+.winners-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  height: 30px;
+}
+
+.winners-header-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  height: 30px;
+}
+
+.winners-header-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.winners-header-title {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.winners-table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 12px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.winners-table-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+  width: 1136px;
+}
+
+.winners-table-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 24px;
+  width: 1136px;
+  height: 20px;
+}
+
+.winners-table-header-game {
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.winners-table-header-right-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  width: 624px;
+  height: 20px;
+}
+
+.winners-table-header-username {
+  width: 300px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.winners-table-header-time {
+  width: 150px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.winners-table-header-payout {
+  width: 150px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: right;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.winner-row-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  width: 1136px;
+  height: 60px;
+  background: #0C1F56;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.winner-row-container:hover {
+  background: #112B75;
+}
+
+.winner-row-game-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  height: 30px;
+}
+
+.winner-row-game-image-rect {
+  width: 22px;
+  height: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #CDCDCD;
+  border-radius: 1.8px;
+  flex-shrink: 0;
+}
+
+.winner-row-game-title {
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+}
+
+.winner-row-right-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 12px;
+  width: 624px;
+  height: 19px;
+}
+
+.winner-row-username {
+  width: 300px;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.winner-row-time {
+  width: 150px;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+}
+
+.winner-row-payout {
+  width: 150px;
+  font-family: 'Manrope', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+
+.winner-row-payout.win {
+  color: #00DD29;
+}
+
+.winner-row-payout.zero {
+  color: #7795E8;
+}
+
+/* ─── Category Navigation Tabs ─────────────────────────────────────────────── */
+/* Hover: text and icon turn yellow (#FFC83D) for inactive tabs */
+.hover-nav-tab:hover .nav-tab-label {
+  color: #FFC83D !important;
+}
+
+.hover-nav-tab:hover img {
+  /* Yellow (#FFC83D) tint via CSS filter */
+  filter: brightness(0) saturate(100%) invert(80%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%) !important;
+}
+
