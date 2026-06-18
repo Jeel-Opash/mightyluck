@@ -26,7 +26,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[60] w-full h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate">
+    <header className="relative z-[60] w-full h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate shrink-0">
       <div className="w-full max-w-[1440px] mx-auto h-full flex flex-row justify-between items-center px-3 sm:px-[24px] gap-2 sm:gap-[50px]">
 
         {/* Left Section: Menu, Logo, Search */}
@@ -352,7 +352,9 @@ export default function Navbar() {
               </div>
             </div>
           ) : (
+            /* Logged-out Buttons */
             <>
+              {/* Figma Frame: Login Button (Accent bg #1463FF, width 99px, height 40px) */}
               <button
                 onClick={handleLoginClick}
                 className="w-[99px] h-[40px] bg-[#1463FF] rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all duration-200 shrink-0"

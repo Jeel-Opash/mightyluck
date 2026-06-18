@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Manrope, Jost } from 'next/font/google';
 import '@/app/globals.css';
 import { ReduxProvider } from '@/redux/provider';
+import Navbar from '@/components/Navbar';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -29,7 +30,10 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${manrope.variable} ${jost.variable} h-full antialiased bg-[#03081e]`}>
         <ReduxProvider>
-          {children}
+          <Navbar />
+          <div className="pt-[60px] bg-[#091741] min-h-screen">
+            {children}
+          </div>
         </ReduxProvider>
       </body>
     </html>
