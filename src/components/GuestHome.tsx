@@ -288,7 +288,7 @@ export default function GuestHome() {
   const filteredWinners = recentWinners.filter((w) => w.gameTitle.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
-    <div className="w-full min-h-screen bg-[#091741] text-white relative flex flex-col select-none overflow-x-hidden">
+    <div className="w-full min-h-screen bg-[#091741] text-white relative flex flex-col select-none overflow-x-hidden pt-[60px]">
 
       {/* 1. Header (Navbar) */}
       <Navbar />
