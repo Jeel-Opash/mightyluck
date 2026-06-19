@@ -353,20 +353,41 @@ export default function UserHome() {
 
 
 
-            {/* CATEGORY NAVIGATION — pixel-perfect Figma spec */}
-            <nav
-              style={{ gap: '8px' }}
-              className="w-full flex flex-row items-center overflow-x-auto scrollbar-none select-none shrink-0"
-            >
+            {/* CATEGORY NAVIGATION — Figma: h=40, radius=6, padding=8px 12.8px, gap=6.4px, fill width */}
+            <nav className="w-full flex flex-row items-center overflow-x-auto scrollbar-none select-none shrink-0" style={{ gap: '8px' }}>
               {[
-                { id: 'lobby',       name: 'Lobby',       icon: '/games/side-icon/casino.svg',       ref: null },
-                { id: 'slots',       name: 'Slots',       icon: '/games/game-icons/slot.svg',        ref: slotsRef },
-                { id: 'originals',   name: 'Originals',   icon: '/games/game-icons/originals.svg',   ref: originalsRef },
-                { id: 'crash',       name: 'Crash Games', icon: '/games/game-icons/crash.svg',       ref: crashRef },
-                { id: 'providers',   name: 'Providers',   icon: '/games/game-icons/game.svg',        ref: providersRef },
-                { id: 'table',       name: 'Table Games', icon: '/games/game-icons/table.svg',       ref: tableRef },
-                { id: 'bonus',       name: 'Bonus Buys',  icon: '/games/game-icons/bonus.svg',       ref: bonusRef },
-                { id: 'collections', name: 'Collection',  icon: '/games/game-icons/collections.svg', ref: collectionsRef },
+                {
+                  id: 'lobby', name: 'Lobby', ref: null,
+                  icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>),
+                },
+                {
+                  id: 'slots', name: 'Slots', ref: slotsRef,
+                  icon: (<svg width="16" height="16" viewBox="0 0 36 36" fill="currentColor"><circle cx="12" cy="14" r="7"/><circle cx="24" cy="14" r="7"/><path d="M12 21c-4 0-7 2-8 5h16c-1-3-4-5-8-5zm12 0c-4 0-7 2-8 5h16c-1-3-4-5-8-5z"/></svg>),
+                },
+                {
+                  id: 'originals', name: 'Originals', ref: originalsRef,
+                  icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>),
+                },
+                {
+                  id: 'crash', name: 'Crash', ref: crashRef,
+                  icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c-1.5 0-2.8.6-3.8 1.5C7 5.1 6.5 6.5 6.5 8c0 2.5 1.5 4.6 3.5 5.6V20h4v-6.4c2-1 3.5-3.1 3.5-5.6 0-1.5-.5-2.9-1.7-4C14.8 3.1 13.5 2.5 12 2.5zm0 2c.9 0 1.6.3 2.2.8.7.6 1.1 1.4 1.1 2.2 0 1.8-1.5 3.3-3.3 3.3S8.7 9.3 8.7 7.5c0-.8.4-1.6 1.1-2.2.6-.5 1.3-.8 2.2-.8z"/></svg>),
+                },
+                {
+                  id: 'providers', name: 'Providers', ref: providersRef,
+                  icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm2 5h12v2H6zm3 5h6v2H9z"/></svg>),
+                },
+                {
+                  id: 'table', name: 'Table', ref: tableRef,
+                  icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4v2h16V3zm1 4H3v2h18V7zm-2 4H5v8h14v-8zm-2 6H7v-4h10v4z"/></svg>),
+                },
+                {
+                  id: 'bonus', name: 'Bonus', ref: bonusRef,
+                  icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm-7 9a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7a1 1 0 0 0-1-1H5zm1 2h12v5H6v-5z"/></svg>),
+                },
+                {
+                  id: 'collections', name: 'Collection', ref: collectionsRef,
+                  icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg>),
+                },
               ].map((cat) => {
                 const isActive = activeCategory === cat.id;
                 return (
@@ -385,41 +406,26 @@ export default function UserHome() {
                       flexDirection: 'row',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      padding: '10px 16px',
-                      gap: '8px',
-                      width: '135px',
-                      height: '50px',
+                      padding: '8px 12.8px',
+                      gap: '6.4px',
+                      height: '40px',
+                      minWidth: '106.6px',
+                      flex: '1 0 auto',
                       background: isActive ? '#1463FF' : '#0C1F56',
                       borderRadius: '6px',
                       border: 'none',
                       cursor: 'pointer',
-                      flexShrink: 0,
-                      flexGrow: 1,
-                      transition: 'background 0.15s, color 0.15s',
+                      transition: 'background 0.15s',
+                      color: isActive ? '#FFC83D' : '#D2DCF7',
                     }}
                     className={`group active:scale-95 ${isActive ? '' : 'hover-nav-tab'}`}
                   >
-                    {/* Icon — yellow (#FFB800) when active, muted (#D2DCF7) when inactive, yellow on hover */}
-                    <div style={{ width: '20px', height: '20px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <img
-                        src={cat.icon}
-                        alt={cat.name}
-                        style={{
-                          width: '20px',
-                          height: '20px',
-                          objectFit: 'contain',
-                          filter: isActive
-                            ? 'brightness(0) saturate(100%) invert(75%) sepia(80%) saturate(500%) hue-rotate(5deg) brightness(105%)'
-                            : 'brightness(0) saturate(100%) invert(85%) sepia(10%) saturate(400%) hue-rotate(190deg) brightness(100%)',
-                          transition: 'filter 0.15s',
-                        }}
-                      />
-                    </div>
-                    {/* Label */}
+                    <span style={{ width: '16px', height: '16px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {cat.icon}
+                    </span>
                     <span
                       style={{
                         fontFamily: "'Manrope', sans-serif",
-                        fontStyle: 'normal',
                         fontWeight: isActive ? 700 : 600,
                         fontSize: '14px',
                         lineHeight: '19px',
