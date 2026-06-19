@@ -29,8 +29,6 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[60] w-full h-[50px] md:h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate shrink-0">
-      {/* Ellipse 6: Glow behind the crown logo */}
-      <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[10px] bg-[#1463FF]/70 rounded-full filter blur-[12.5px] pointer-events-none z-0" />
       <div className="w-full max-w-[1440px] mx-auto h-full flex flex-row justify-between items-center px-[20px] md:px-[24px] gap-2 md:gap-[50px]">
 
         {/* Left Section: Menu, Logo, Search */}
@@ -47,8 +45,11 @@ export default function Navbar() {
 
           {/* Horizontal logo */}
           <div className="flex flex-row items-center gap-[10px] cursor-pointer w-auto h-[30px] md:h-[34.66px] shrink-0 relative">
+            {/* Ellipse 6: Glow behind the crown logo & text */}
+            <div className="absolute w-[60px] sm:w-[140px] h-[25px] sm:h-[35px] left-[50%] -translate-x-[50%] top-[65%] -translate-y-[50%] bg-[#1463FF]/75 rounded-full filter blur-[10px] sm:filter blur-[15px] pointer-events-none z-0" />
+
             {/* Custom SVG Crown with Lightning Cutout (34px x 25px) */}
-            <svg width="34" height="25" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+            <svg width="34" height="25" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 z-10 relative">
               <defs>
                 <linearGradient id="crown-gradient" x1="4.07382" y1="12.3753" x2="29.4186" y2="12.3753" gradientUnits="userSpaceOnUse">
                   <stop stopColor="#FFD85A" />
@@ -61,7 +62,7 @@ export default function Navbar() {
               />
             </svg>
             {/* Logo Text - Hidden on mobile per user request */}
-            <span className="hidden sm:inline font-sans font-black text-white tracking-[0.02em] text-[20px] leading-[26px]">
+            <span className="hidden sm:inline font-jost font-black text-white tracking-[0.02em] text-[20px] leading-[26px] z-10 relative">
               MIGHTY <span className="text-[#FFC83D]">LUCK</span>
             </span>
           </div>
