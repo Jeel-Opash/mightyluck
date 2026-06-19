@@ -666,7 +666,6 @@ export default function GuestHome() {
               </div>
             </section>
 
-            {/* GAME PROVIDERS SECTION */}
             <section className="game-section-container">
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
@@ -732,7 +731,6 @@ export default function GuestHome() {
               </div>
             </section>
 
-            {/* TABLE GAMES SECTION */}
             <section className="game-section-container">
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
