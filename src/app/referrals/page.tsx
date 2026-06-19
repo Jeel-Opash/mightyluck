@@ -30,6 +30,7 @@ export default function ReferralsPage() {
   const [pendingIncomeClaimed, setPendingIncomeClaimed] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0); // First FAQ open by default
   const [copiedLink, setCopiedLink] = useState(false);
+  const [isSeoExpanded, setIsSeoExpanded] = useState(false);
 
   // Constants / Calculations
   const earningsPerFriend = 50; // average earnings per friend
@@ -61,15 +62,15 @@ export default function ReferralsPage() {
   const faqs = [
     {
       question: 'How do I invite a friend?',
-      answer: 'In order to participate in the Refer A Friend campaign, as a referrer you need to have an active account at Mighty Luck and have at least $50 (or currency equivalent) deposited. Multiple deposits can be summed up in order to meet the minimum deposit requirement.'
+      answer: 'In order to participate in the Refer A Friend campaign, as a referrer you need to have an active account at Wild.io and have at least $50 (or currency equivalent) deposited. Multiple deposits can be summed up in order to meet the minimum deposit requirement.'
     },
     {
-      question: 'Who counts as a referred friend?',
-      answer: 'Any friend who registers using your unique referral link, verifies their email address, and makes their first deposit. They will also receive 50 Free Spins as a welcome bonus!'
+      question: 'How do I invite a friend?',
+      answer: 'In order to participate in the Refer A Friend campaign, as a referrer you need to have an active account at Wild.io and have at least $50 (or currency equivalent) deposited. Multiple deposits can be summed up in order to meet the minimum deposit requirement.'
     },
     {
-      question: 'How do I claim my referral earnings?',
-      answer: 'Referral earnings are updated in real-time and can be claimed directly to your balance from the Referrals dashboard. Simply click the "Claim" button next to your pending income.'
+      question: 'How do I invite a friend?',
+      answer: 'In order to participate in the Refer A Friend campaign, as a referrer you need to have an active account at Wild.io and have at least $50 (or currency equivalent) deposited. Multiple deposits can be summed up in order to meet the minimum deposit requirement.'
     }
   ];
 
@@ -362,28 +363,28 @@ export default function ReferralsPage() {
           </div>
 
           {/* THREE HIGHLIGHT INFO CARDS ROW */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-6 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full">
             
             {/* Card 1 */}
-            <div className="bg-[#0C1F56] border border-white/5 rounded-2xl p-6 flex flex-col items-center justify-center gap-2 min-h-[136px] hover:bg-[#112a75] transition-all">
-              <span className="font-jost font-black text-[36px] sm:text-[40px] leading-tight text-white">$2.5 K</span>
-              <span className="font-manrope font-semibold text-sm sm:text-[16px] text-[#A5B8EF] text-center">
+            <div className="bg-[#091741] border border-white/10 rounded-[16px] p-6 flex flex-col items-center justify-center gap-3 min-h-[148px] hover:bg-[#112F82]/50 transition-all duration-300 shadow-xl">
+              <span className="font-jost font-black text-[48px] sm:text-[54px] leading-none text-white tracking-tight">$2.5 K</span>
+              <span className="font-manrope font-semibold text-[14px] sm:text-[16px] text-[#A5B8EF] text-center leading-snug">
                 Claim By the Most Active Referrer
               </span>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-[#0C1F56] border border-white/5 rounded-2xl p-6 flex flex-col items-center justify-center gap-2 min-h-[136px] hover:bg-[#112a75] transition-all">
-              <span className="font-jost font-black text-[36px] sm:text-[40px] leading-tight text-white">500+</span>
-              <span className="font-manrope font-semibold text-sm sm:text-[16px] text-[#A5B8EF] text-center">
+            <div className="bg-[#091741] border border-white/10 rounded-[16px] p-6 flex flex-col items-center justify-center gap-3 min-h-[148px] hover:bg-[#112F82]/50 transition-all duration-300 shadow-xl">
+              <span className="font-jost font-black text-[48px] sm:text-[54px] leading-none text-white tracking-tight">500+</span>
+              <span className="font-manrope font-semibold text-[14px] sm:text-[16px] text-[#A5B8EF] text-center leading-snug">
                 Players are already earning with us
               </span>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-[#0C1F56] border border-white/5 rounded-2xl p-6 flex flex-col items-center justify-center gap-2 min-h-[136px] hover:bg-[#112a75] transition-all">
-              <span className="font-jost font-black text-[36px] sm:text-[40px] leading-tight text-white">19,000</span>
-              <span className="font-manrope font-semibold text-sm sm:text-[16px] text-[#A5B8EF] text-center">
+            <div className="bg-[#091741] border border-white/10 rounded-[16px] p-6 flex flex-col items-center justify-center gap-3 min-h-[148px] hover:bg-[#112F82]/50 transition-all duration-300 shadow-xl">
+              <span className="font-jost font-black text-[48px] sm:text-[54px] leading-none text-white tracking-tight">19,000</span>
+              <span className="font-manrope font-semibold text-[14px] sm:text-[16px] text-[#A5B8EF] text-center leading-snug">
                 Free Spins received by friends
               </span>
             </div>
@@ -394,10 +395,12 @@ export default function ReferralsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
             
             {/* Column 1: What you get */}
-            <div className="bg-[#0C1F56] border border-white/5 rounded-2xl p-6 sm:p-[40px] relative overflow-hidden flex flex-col gap-6">
-              {/* Green blur glow background */}
-              <div className="absolute w-[182px] h-[182px] left-[-30px] top-[-30px] rounded-full bg-[#57FF3D] filter blur-[60px] opacity-20 pointer-events-none" />
-
+            <div 
+              style={{
+                background: 'radial-gradient(circle at 0% 0%, rgba(87, 255, 61, 0.12) 0%, rgba(9, 23, 65, 0) 50%), #091741',
+              }}
+              className="border border-white/10 rounded-[16px] p-6 sm:p-[40px] relative overflow-hidden flex flex-col gap-6 shadow-xl"
+            >
               <h3 className="font-jost font-black text-[20px] text-white tracking-wider uppercase z-10 text-left">
                 WHAT YOU GET
               </h3>
@@ -406,14 +409,19 @@ export default function ReferralsPage() {
                 
                 {/* List Item 1 */}
                 <div className="flex gap-4 items-start">
-                  <div className="w-5 h-5 mt-1 bg-[#57FF3D] rounded-full flex items-center justify-center shrink-0">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="4">
-                      <polyline points="20 6 9 17 4 12" />
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#57FF3D]/10 flex items-center justify-center text-[#57FF3D] shrink-0">
+                    {/* Coin Stack Icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2C6.5 2 2 3.8 2 6s4.5 4 10 4 10-1.8 10-4-4.5-4-10-4z" />
+                      <path d="M2 11.7c0 2.2 4.5 4 10 4s10-1.8 10-4" />
+                      <path d="M2 17.3c0 2.2 4.5 4 10 4s10-1.8 10-4" />
+                      <path d="M2 6v11.3" />
+                      <path d="M22 6v11.3" />
                     </svg>
                   </div>
-                  <div className="flex flex-col text-left">
-                    <span className="font-sans font-bold text-sm sm:text-base text-white">Lifetime earnings from each deposit</span>
-                    <span className="font-sans font-medium text-sm text-[#A5B8EF] mt-1">
+                  <div className="flex flex-col text-left justify-center min-h-[40px]">
+                    <span className="font-manrope font-bold text-base text-white">Lifetime earnings from each deposit</span>
+                    <span className="font-manrope font-medium text-sm text-[#A5B8EF] mt-1">
                       You get a percentage of every deposit your friends complete.
                     </span>
                   </div>
@@ -421,14 +429,15 @@ export default function ReferralsPage() {
 
                 {/* List Item 2 */}
                 <div className="flex gap-4 items-start">
-                  <div className="w-5 h-5 mt-1 bg-[#57FF3D] rounded-full flex items-center justify-center shrink-0">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="4">
-                      <polyline points="20 6 9 17 4 12" />
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#57FF3D]/10 flex items-center justify-center text-[#57FF3D] shrink-0">
+                    {/* Lightning Bolt Icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                     </svg>
                   </div>
-                  <div className="flex flex-col text-left">
-                    <span className="font-sans font-bold text-sm sm:text-base text-white">Instant crediting</span>
-                    <span className="font-sans font-medium text-sm text-[#A5B8EF] mt-1">
+                  <div className="flex flex-col text-left justify-center min-h-[40px]">
+                    <span className="font-manrope font-bold text-base text-white">Instant crediting</span>
+                    <span className="font-manrope font-medium text-sm text-[#A5B8EF] mt-1">
                       Your income is credited a few minutes after your friend’s deposit is completed.
                     </span>
                   </div>
@@ -436,14 +445,15 @@ export default function ReferralsPage() {
 
                 {/* List Item 3 */}
                 <div className="flex gap-4 items-start">
-                  <div className="w-5 h-5 mt-1 bg-[#57FF3D] rounded-full flex items-center justify-center shrink-0">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="4">
-                      <polyline points="20 6 9 17 4 12" />
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#57FF3D]/10 flex items-center justify-center text-[#57FF3D] shrink-0">
+                    {/* Infinity Icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4z" />
                     </svg>
                   </div>
-                  <div className="flex flex-col text-left">
-                    <span className="font-sans font-bold text-sm sm:text-base text-white">No limits for earnings</span>
-                    <span className="font-sans font-medium text-sm text-[#A5B8EF] mt-1">
+                  <div className="flex flex-col text-left justify-center min-h-[40px]">
+                    <span className="font-manrope font-bold text-base text-white">No limits for earnings</span>
+                    <span className="font-manrope font-medium text-sm text-[#A5B8EF] mt-1">
                       Your earnings are not capped. Sky (and your friend’s wallet) is the limit!
                     </span>
                   </div>
@@ -453,10 +463,12 @@ export default function ReferralsPage() {
             </div>
 
             {/* Column 2: What your friend gets */}
-            <div className="bg-[#0C1F56] border border-white/5 rounded-2xl p-6 sm:p-[40px] relative overflow-hidden flex flex-col gap-6">
-              {/* Blue blur glow background */}
-              <div className="absolute w-[182px] h-[182px] right-[-30px] top-[-30px] rounded-full bg-[#1463FF] filter blur-[60px] opacity-20 pointer-events-none" />
-
+            <div 
+              style={{
+                background: 'radial-gradient(circle at 100% 0%, rgba(20, 99, 255, 0.12) 0%, rgba(9, 23, 65, 0) 50%), #091741',
+              }}
+              className="border border-white/10 rounded-[16px] p-6 sm:p-[40px] relative overflow-hidden flex flex-col gap-6 shadow-xl"
+            >
               <h3 className="font-jost font-black text-[20px] text-white tracking-wider uppercase z-10 text-left">
                 WHAT YOUR FRIEND GETS
               </h3>
@@ -465,45 +477,52 @@ export default function ReferralsPage() {
                 
                 {/* List Item 1 */}
                 <div className="flex gap-4 items-start">
-                  <div className="w-5 h-5 mt-1 bg-[#1463FF] rounded-full flex items-center justify-center shrink-0">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="4">
-                      <polyline points="20 6 9 17 4 12" />
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#1463FF]/10 flex items-center justify-center text-[#1463FF] shrink-0">
+                    {/* Coin Stack Icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2C6.5 2 2 3.8 2 6s4.5 4 10 4 10-1.8 10-4-4.5-4-10-4z" />
+                      <path d="M2 11.7c0 2.2 4.5 4 10 4s10-1.8 10-4" />
+                      <path d="M2 17.3c0 2.2 4.5 4 10 4s10-1.8 10-4" />
+                      <path d="M2 6v11.3" />
+                      <path d="M22 6v11.3" />
                     </svg>
                   </div>
-                  <div className="flex flex-col text-left">
-                    <span className="font-sans font-bold text-sm sm:text-base text-white">Welcome pack up to $1,000 + 100 Free Spins</span>
-                    <span className="font-sans font-medium text-sm text-[#A5B8EF] mt-1">
-                      Your friend gets access to the most generous bonuses.
+                  <div className="flex flex-col text-left justify-center min-h-[40px]">
+                    <span className="font-manrope font-bold text-base text-white">Lifetime earnings from each deposit</span>
+                    <span className="font-manrope font-medium text-sm text-[#A5B8EF] mt-1">
+                      You get a percentage of every deposit your friends complete.
                     </span>
                   </div>
                 </div>
 
                 {/* List Item 2 */}
                 <div className="flex gap-4 items-start">
-                  <div className="w-5 h-5 mt-1 bg-[#1463FF] rounded-full flex items-center justify-center shrink-0">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="4">
-                      <polyline points="20 6 9 17 4 12" />
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#1463FF]/10 flex items-center justify-center text-[#1463FF] shrink-0">
+                    {/* Lightning Bolt Icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                     </svg>
                   </div>
-                  <div className="flex flex-col text-left">
-                    <span className="font-sans font-bold text-sm sm:text-base text-white">Provably fair games</span>
-                    <span className="font-sans font-medium text-sm text-[#A5B8EF] mt-1">
-                      Complete transparency and safety for every game play.
+                  <div className="flex flex-col text-left justify-center min-h-[40px]">
+                    <span className="font-manrope font-bold text-base text-white">Instant crediting</span>
+                    <span className="font-manrope font-medium text-sm text-[#A5B8EF] mt-1">
+                      Your income is credited a few minutes after your friend’s deposit is completed.
                     </span>
                   </div>
                 </div>
 
                 {/* List Item 3 */}
                 <div className="flex gap-4 items-start">
-                  <div className="w-5 h-5 mt-1 bg-[#1463FF] rounded-full flex items-center justify-center shrink-0">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="4">
-                      <polyline points="20 6 9 17 4 12" />
+                  <div className="w-[40px] h-[40px] rounded-xl bg-[#1463FF]/10 flex items-center justify-center text-[#1463FF] shrink-0">
+                    {/* Infinity Icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4z" />
                     </svg>
                   </div>
-                  <div className="flex flex-col text-left">
-                    <span className="font-sans font-bold text-sm sm:text-base text-white">24/7 VIP Support</span>
-                    <span className="font-sans font-medium text-sm text-[#A5B8EF] mt-1">
-                      Instant help and assistance whenever they need it.
+                  <div className="flex flex-col text-left justify-center min-h-[40px]">
+                    <span className="font-manrope font-bold text-base text-white">No limits for earnings</span>
+                    <span className="font-manrope font-medium text-sm text-[#A5B8EF] mt-1">
+                      Your earnings are not capped. Sky (and your friend’s wallet) is the limit!
                     </span>
                   </div>
                 </div>
@@ -518,10 +537,12 @@ export default function ReferralsPage() {
             
             {/* Header */}
             <div className="flex flex-row items-center gap-3">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFC83D" strokeWidth="2.5" className="shrink-0">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                <line x1="12" y1="17" x2="12.01" y2="17" />
+              {/* Crown Icon */}
+              <svg width="28" height="20" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                <path
+                  d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z"
+                  fill="url(#crown-gradient)"
+                />
               </svg>
               <h2 className="font-jost font-black text-xl text-white tracking-wide uppercase select-none">
                 HOW REFERRAL PROGRAM WORKS
@@ -534,57 +555,57 @@ export default function ReferralsPage() {
               {/* Step 1 */}
               <div 
                 style={{
-                  background: `linear-gradient(357.52deg, #06102B 0.07%, rgba(6, 16, 43, 0) 34.29%), linear-gradient(90.32deg, #001958 8.61%, rgba(0, 25, 88, 0) 58.87%), url(/games/refrels/r1.png)`,
+                  background: `linear-gradient(180deg, rgba(6, 16, 43, 0) 40%, rgba(6, 16, 43, 0.95) 90%), url(/games/refrels/r1.png)`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="h-[220px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group hover:scale-[1.02] transition-all duration-300"
+                className="h-[280px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 shadow-xl"
               >
                 {/* Number Badge */}
-                <div className="w-10 h-10 bg-[#1463FF] rounded-lg flex items-center justify-center font-jost font-black text-xl text-white select-none">
+                <div className="w-9 h-9 bg-[#1463FF] rounded-[8px] flex items-center justify-center font-jost font-black text-[16px] text-white select-none">
                   1
                 </div>
                 {/* Title */}
                 <span className="font-jost font-black text-base leading-tight text-white uppercase max-w-[220px] z-10">
-                  Share invitation link with your friend
+                  SHARE INVITATION LINK WITH YOUR FRIEND
                 </span>
               </div>
 
               {/* Step 2 */}
               <div 
                 style={{
-                  background: `linear-gradient(359.97deg, #06102B 0.03%, rgba(6, 16, 43, 0) 39.1%), linear-gradient(90.32deg, #001958 8.61%, rgba(0, 25, 88, 0) 58.87%), url(/games/refrels/r2.png)`,
+                  background: `linear-gradient(180deg, rgba(6, 16, 43, 0) 40%, rgba(6, 16, 43, 0.95) 90%), url(/games/refrels/r2.png)`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="h-[220px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group hover:scale-[1.02] transition-all duration-300"
+                className="h-[280px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 shadow-xl"
               >
                 {/* Number Badge */}
-                <div className="w-10 h-10 bg-[#1463FF] rounded-lg flex items-center justify-center font-jost font-black text-xl text-white select-none">
+                <div className="w-9 h-9 bg-[#1463FF] rounded-[8px] flex items-center justify-center font-jost font-black text-[16px] text-white select-none">
                   2
                 </div>
                 {/* Title */}
                 <span className="font-jost font-black text-base leading-tight text-white uppercase max-w-[220px] z-10">
-                  Your friend joins & receives 50 Free Spins to get started
+                  YOUR FRIEND JOINS & RECEIVES <span className="text-[#FFC83D]">50 FREE SPINS</span> TO GET STARTED
                 </span>
               </div>
 
               {/* Step 3 */}
               <div 
                 style={{
-                  background: `linear-gradient(358.76deg, #06102B 1.27%, rgba(6, 16, 43, 0) 36.65%), linear-gradient(90.32deg, #001958 8.61%, rgba(0, 25, 88, 0) 58.87%), url(/games/refrels/r3.png)`,
+                  background: `linear-gradient(180deg, rgba(6, 16, 43, 0) 40%, rgba(6, 16, 43, 0.95) 90%), url(/games/refrels/r3.png)`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="h-[220px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group hover:scale-[1.02] transition-all duration-300"
+                className="h-[280px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group hover:scale-[1.02] transition-all duration-300 shadow-xl"
               >
                 {/* Number Badge */}
-                <div className="w-10 h-10 bg-[#1463FF] rounded-lg flex items-center justify-center font-jost font-black text-xl text-white select-none">
+                <div className="w-9 h-9 bg-[#1463FF] rounded-lg flex items-center justify-center font-jost font-black text-[16px] text-white select-none">
                   3
                 </div>
                 {/* Title */}
                 <span className="font-jost font-black text-base leading-tight text-white uppercase max-w-[220px] z-10">
-                  Now, you’ll get paid every time your friend deposits & play
+                  NOW, YOU’LL GET PAID <span className="text-[#FFC83D]">EVERY TIME</span> YOUR FRIEND DEPOSITS & PLAY
                 </span>
               </div>
 
@@ -653,116 +674,228 @@ export default function ReferralsPage() {
               })}
             </div>
           </div>
+                    {/* Child 2: SEO Text Area */}
+          <div className="flex flex-col items-start p-0 gap-[40px] w-full max-w-[1136px] mx-auto select-none">
+            <div className="flex flex-col items-center p-0 gap-[32px] w-full max-w-[1136px] isolate relative">
+              <div className={`w-full max-w-[800px] flex flex-col gap-[32px] overflow-hidden transition-all duration-500 ease-in-out ${isSeoExpanded ? 'max-h-[1500px]' : 'max-h-[580px]'}`}>
 
-          {/* SEO/ABOUT CASINO TEXT AREA */}
-          <div className="w-full border-t border-[#112F82] pt-[40px] flex flex-col items-center gap-[32px]">
-            <div className="flex flex-col gap-6 max-w-[800px] w-full text-center">
-              
-              <div className="flex flex-col gap-6 text-left">
-                <h1 className="font-jost font-bold text-2xl sm:text-[32px] leading-tight text-white tracking-tight">
-                  Play the Best Crypto Casino Games Online at Mighty Luck — Fast, Fair and Secure
-                </h1>
-                
-                <p className="font-manrope font-semibold text-sm sm:text-base text-[#D2DCF7] leading-relaxed">
-                  Step into a next-generation gaming experience where every spin, bet, and hand is powered by blockchain technology. At Mighty Luck Casino, you can explore more than 9,000 crypto casino games across slots, table games, live dealer games, and crash-style favorites. As one of the top crypto casinos online, Mighty Luck gives players instant withdrawals, enhanced privacy, and a secure gambling environment without the friction of traditional payment methods. Whether you're here to play table games, explore Bitcoin casino games, or try the latest provably fair slots, Mighty Luck delivers one of the most complete online casino experiences available today. Ready to play games and win real crypto? Start playing crypto casino games at Mighty Luck Casino.
-                </p>
+                {/* Frame 3 */}
+                <div className="flex flex-col items-start p-0 gap-[24px] w-full max-w-[800px]">
+                  <h1 className="w-full font-jost font-bold text-[32px] leading-[120%] tracking-[-0.02em] text-white">
+                    Play the Best Crypto Casino Games Online at Mighty Luck — Fast, Fair and Secure
+                  </h1>
+                  <div className="flex flex-col gap-[16px] w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
+                    <p>
+                      Step into a next-generation gaming experience where every spin, bet, and hand is powered by blockchain technology. At Mighty Luck Casino, you can explore more than 9,000 crypto casino games across slots, table games, live dealer games, and crash-style favorites. As one of the top crypto casinos online, Mighty Luck gives players instant withdrawals, enhanced privacy, and a secure gambling environment without the friction of traditional payment methods.
+                    </p>
+                    <p>
+                      Whether you're here to play table games, explore Bitcoin casino games, or try the latest provably fair slots, Mighty Luck delivers one of the most complete online casino experiences available today.
+                    </p>
+                    <p>
+                      Ready to play games and win real crypto?
+                    </p>
+                    <p>
+                      Start playing crypto casino games at Mighty Luck Casino.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Frame 4 */}
+                <div className="flex flex-col items-start p-0 gap-[16px] w-full max-w-[800px]">
+                  <h2 className="w-full font-jost font-bold text-[24px] leading-[35px] text-white">
+                    Why Mighty Luck Is the Ultimate Place to Play Crypto Casino Games
+                  </h2>
+                  <p className="w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
+                    Mighty Luck Casino offers the perfect blend of crypto gambling convenience, online casino entertainment, and world-class security. Compared to traditional online casinos, Mighty Luck delivers significantly faster payouts, more generous bonuses, and an unmatched selection of various games.
+                  </p>
+                </div>
+
+                {/* Frame 5 */}
+                <div className="flex flex-col items-start p-0 gap-[16px] w-full max-w-[800px]">
+                  <h2 className="w-full font-jost font-bold text-[24px] leading-[35px] text-white">
+                    Massive Game Variety
+                  </h2>
+                  <p className="w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
+                    With more than 9,000 casino games, Mighty Luck outshines many crypto casinos and traditional casinos alike. You'll find slots, card games, custom crash formats, and high-stakes tables to suit any gaming budget.
+                  </p>
+                </div>
+
               </div>
 
-              <div className="flex flex-col gap-4 text-left">
-                <h2 className="font-jost font-bold text-xl sm:text-2xl text-white">
-                  Why Mighty Luck Is the Ultimate Place to Play Crypto Casino Games
-                </h2>
-                <p className="font-manrope font-semibold text-sm sm:text-base text-[#D2DCF7] leading-relaxed">
-                  Mighty Luck Casino offers the perfect blend of crypto gambling convenience, online casino entertainment, and world-class security. Compared to traditional online casinos, Mighty Luck delivers significantly faster payouts, more generous bonuses, and an unmatched selection of various games.
-                </p>
-              </div>
+              {!isSeoExpanded && (
+                <div
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[200px] flex flex-col justify-end items-center p-[24px_10px] gap-[10px] z-10 pointer-events-none"
+                  style={{ background: 'linear-gradient(0deg, #091741 0%, rgba(9, 23, 65, 0) 100%)' }}
+                >
+                  <button
+                    onClick={() => setIsSeoExpanded(true)}
+                    className="flex flex-row items-center p-0 gap-[4px] w-[93px] h-[19px] bg-transparent border-none outline-none cursor-pointer group pointer-events-auto select-none"
+                  >
+                    <span className="w-[73px] h-[19px] font-sans font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFBF1F] group-hover:text-white transition-colors">
+                      Read more
+                    </span>
+                    <div className="w-[16px] h-[16px] flex items-center justify-center relative">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 transition-transform duration-300 group-hover:scale-110">
+                        <line x1="8" y1="3" x2="8" y2="13" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M4 9L8 13L12 9" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+              )}
 
-              <div className="flex flex-col gap-4 text-left">
-                <h2 className="font-jost font-bold text-xl sm:text-2xl text-white">
-                  Massive Game Variety
-                </h2>
-                <p className="font-manrope font-semibold text-sm sm:text-base text-[#D2DCF7] leading-relaxed font-semibold">
-                  With more than 9,000 casino games, Mighty Luck outshines many crypto casinos and traditional casinos alike. You'll find slots, card games, custom crash formats, and high-stakes tables to suit any gaming budget.
-                </p>
-              </div>
-
+              {isSeoExpanded && (
+                <div className="flex justify-center w-full z-10 mt-[8px]">
+                  <button
+                    onClick={() => setIsSeoExpanded(false)}
+                    className="flex flex-row items-center p-0 gap-[4px] w-[93px] h-[19px] bg-transparent border-none outline-none cursor-pointer group select-none"
+                  >
+                    <span className="w-[73px] h-[19px] font-sans font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFBF1F] group-hover:text-white transition-colors">
+                      Read less
+                    </span>
+                    <div className="w-[16px] h-[16px] flex items-center justify-center relative">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 rotate-180 transition-transform duration-300 group-hover:scale-110">
+                        <line x1="8" y1="3" x2="8" y2="13" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M4 9L8 13L12 9" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* FOOTER */}
-          <footer className="w-full flex flex-col gap-12 border-t border-[#112F82] pt-[48px] pb-8">
-            <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
-              
-              {/* Left Logo Column */}
-              <div className="flex flex-col items-start gap-4">
-                <div className="flex items-center gap-2">
-                  <svg width="34" height="25" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z"
-                      fill="url(#crown-gradient)"
-                    />
+          {/* Child 3: CRYPTO PAYMENT METHOD FOOTER ICONS */}
+          <section className="w-full h-auto py-6 md:h-[100px] flex flex-col md:flex-row justify-between items-center px-[20px] md:px-[40px] border-b border-[#112F82] relative overflow-hidden shrink-0 select-none">
+            <div className="absolute w-[390px] h-[390px] left-[calc(50%-195px)] top-[77px] bg-[#1463FF] rounded-full filter blur-[50px] opacity-80 pointer-events-none z-0" />
+            <div className="flex flex-row flex-wrap justify-center items-center gap-[16px] md:gap-[28px] mx-auto z-10">
+              {Array.from({ length: 11 }, (_, i) => (
+                <img
+                  key={i}
+                  src={`/games/deposite-icon/d${i + 1}.svg`}
+                  alt={`Crypto Method ${i + 1}`}
+                  className="h-[19.05px] w-auto object-contain filter brightness-0 invert hover:scale-110 transition-all duration-300 cursor-pointer" style={{ color: '#FFFFFF' }}
+                />
+              ))}
+            </div>
+          </section>
+
+          {/* Child 4: MAIN WEBSITE FOOTER */}
+          <footer className="w-full flex flex-col gap-[48px] select-none text-white pb-[40px]">
+
+            {/* Top Row: logo + menus */}
+            <div className="w-full flex flex-col md:flex-row justify-between items-start gap-[49px]">
+
+              {/* Logo + copyright */}
+              <div className="flex flex-col items-start gap-[16px] w-[213px] shrink-0">
+                {/* Inline Logo: crown icon (logo.svg path) + MIGHTY + LUCK text */}
+                <div className="w-[132px] h-[50px] relative">
+                  <svg width="132" height="50" viewBox="0 0 132 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="gLogoU" x1="0" y1="0" x2="132" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="12%" stopColor="#FFD85A" />
+                        <stop offset="86.68%" stopColor="#FFB800" />
+                      </linearGradient>
+                      <linearGradient id="gCrownU" x1="4.07" y1="12.38" x2="29.42" y2="12.38" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#FFD85A" />
+                        <stop offset="1" stopColor="#FFB800" />
+                      </linearGradient>
+                    </defs>
+                    {/* Crown icon — exact path from logo.svg, scaled to fit top 26px */}
+                    <g transform="translate(49, 0) scale(1.09)">
+                      <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="url(#gCrownU)" />
+                    </g>
+                    {/* MIGHTY — white, Jost 800 */}
+                    <text x="18" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="#FFFFFF">MIGHTY</text>
+                    {/* LUCK — gold gradient, Jost 800 */}
+                    <text x="78" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="url(#gLogoU)">LUCK</text>
                   </svg>
-                  <span className="font-sans font-black text-white tracking-[0.02em] text-[20px] leading-[26px]">
-                    MIGHTY <span className="text-[#FFC83D]">LUCK</span>
-                  </span>
                 </div>
-                <p className="font-sans font-semibold text-xs text-[#D2DCF7] mt-1 select-none">
+                <span className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px]">
                   © 2026 Mighty Luck. All rights reserved.
-                </p>
+                </span>
               </div>
 
-              {/* Footer Links Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-16 w-full lg:w-auto">
-                {/* Menu Col 1 */}
-                <div className="flex flex-col gap-3 text-left">
-                  <h4 className="font-jost font-bold text-xs uppercase tracking-wider text-white">Casino</h4>
-                  <div className="flex flex-col gap-2">
-                    {['Lobby', 'Slots', 'Originals', 'Crash Games'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">{item}</span>
+              {/* Menu columns wrapper — 728px, 5 cols × 120px, gap 32px */}
+              <div className="flex flex-row flex-wrap md:flex-nowrap items-start gap-[32px] w-full md:w-[728px]">
+
+                {/* Column 1: Slot Games */}
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                    Slot Games
+                  </h3>
+                  <div className="flex flex-col gap-[8px]">
+                    {['Slots', 'Skill Games', 'Jackpot', 'Bonus Buy', 'Crash Games'].map((item) => (
+                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                        {item}
+                      </span>
                     ))}
                   </div>
                 </div>
 
-                {/* Menu Col 2 */}
-                <div className="flex flex-col gap-3 text-left">
-                  <h4 className="font-jost font-bold text-xs uppercase tracking-wider text-white">Promo</h4>
-                  <div className="flex flex-col gap-2">
-                    {['Promotions', 'VIP Club', 'Tournaments', 'Refer A Friend'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">{item}</span>
+                {/* Column 2: Live Casino */}
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                    Live Casino
+                  </h3>
+                  <div className="flex flex-col gap-[8px]">
+                    {['Roulette', 'Blackjack', 'Live Casino', 'Table Games', 'Video Poker'].map((item) => (
+                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                        {item}
+                      </span>
                     ))}
                   </div>
                 </div>
 
-                {/* Menu Col 3 */}
-                <div className="flex flex-col gap-3 text-left">
-                  <h4 className="font-jost font-bold text-xs uppercase tracking-wider text-white">About</h4>
-                  <div className="flex flex-col gap-2">
-                    {['About Us', 'Support', 'Blog', 'FAQs'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">{item}</span>
+                {/* Column 3: Casino */}
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                    Casino
+                  </h3>
+                  <div className="flex flex-col gap-[8px]">
+                    {['About Us', 'Promotions', 'Tournaments', 'Affiliate Program', 'VIP Club', 'Refer a Friend', 'Blog', 'Bonus Shop'].map((item) => (
+                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                        {item}
+                      </span>
                     ))}
                   </div>
                 </div>
 
-                {/* Menu Col 4 */}
-                <div className="flex flex-col gap-3 text-left">
-                  <h4 className="font-jost font-bold text-xs uppercase tracking-wider text-white">Legal</h4>
-                  <div className="flex flex-col gap-2">
-                    {['Privacy Policy', 'Terms & Conditions', 'Bonus Terms', 'Responsible Gambling'].map((item) => (
-                      <span key={item} className="font-sans font-semibold text-[11px] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">{item}</span>
+                {/* Column 4: Legal */}
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                    Legal
+                  </h3>
+                  <div className="flex flex-col gap-[8px]">
+                    {['Privacy Policy', 'Terms & Conditions', 'Bonus Terms', 'Responsible Gambling', 'Payment Methods', 'Sportsbook Rules'].map((item) => (
+                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                        {item}
+                      </span>
                     ))}
                   </div>
                 </div>
+
+                {/* Column 5: Support */}
+                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
+                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
+                    Support
+                  </h3>
+                  <div className="flex flex-col gap-[8px]">
+                    <span className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
+                      Live Support
+                    </span>
+                  </div>
+                </div>
+
               </div>
-
             </div>
 
-            {/* License details */}
-            <div className="w-full border-t border-[#112F82] pt-[48px] flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+            {/* Bottom strip - border-top, legal + badges */}
+            <div className="w-full border-t border-[#112F82] pt-[48px] flex flex-col md:flex-row justify-between items-start gap-6">
               <p className="font-sans font-semibold text-[10px] leading-[14px] text-justify tracking-[0.01em] text-[#D2DCF7] w-full md:w-[445px]">
                 MightyLuck.com is owned and operated by Company Name B.V. a company that is incorporated under the laws of Curacao with company registration number XXXXXX, having its registered address at Street 3XX9, City, Curaçao. MightyLuck.com is licensed and holds a valid Certificate of Operation (ABC/XXXX/XXX/XXXX).
               </p>
-
-              <div className="flex flex-row items-center justify-center md:justify-end gap-[32px] w-full md:w-[288.5px] h-[38px] shrink-0">
+              <div className="flex flex-row items-center justify-end gap-[32px] w-full md:w-[288.5px] h-[38px] shrink-0">
                 <img src="/games/footer/18.svg" className="w-[38px] h-[38px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="18+" />
                 <img src="/games/footer/gamble-aware.svg" className="w-[120px] h-[24px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="Gamble Aware" />
                 <img src="/games/footer/gaming-license.svg" className="w-[66.5px] h-[38px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="GCB License Curacao" />
