@@ -422,8 +422,8 @@ export default function GuestHome() {
                   {filteredSlots.map((game) => (
                     <div
                       key={game.id}
-                      onClick={() => dispatch(openAuthModal('join'))}
-                      className="game-card group"
+                      onClick={() => router.push(`/game/${game.id}`)}
+                      className="game-card group cursor-pointer"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -449,7 +449,7 @@ export default function GuestHome() {
                           </svg>
                         </button>
                         <div
-                          onClick={() => dispatch(openAuthModal('join'))}
+                          onClick={() => router.push(`/game/${game.id}`)}
                           className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
                         >
                           <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
@@ -509,8 +509,8 @@ export default function GuestHome() {
                   {filteredOriginals.map((game) => (
                     <div
                       key={game.id}
-                      onClick={() => dispatch(openAuthModal('join'))}
-                      className="game-card group"
+                      onClick={() => router.push(`/game/${game.id}`)}
+                      className="game-card group cursor-pointer"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -536,7 +536,7 @@ export default function GuestHome() {
                           </svg>
                         </button>
                         <div
-                          onClick={() => dispatch(openAuthModal('join'))}
+                          onClick={() => router.push(`/game/${game.id}`)}
                           className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
                         >
                           <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
@@ -628,8 +628,8 @@ export default function GuestHome() {
                   {filteredCrash.map((game) => (
                     <div
                       key={game.id}
-                      onClick={() => dispatch(openAuthModal('join'))}
-                      className="game-card group"
+                      onClick={() => router.push(`/game/${game.id}`)}
+                      className="game-card group cursor-pointer"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -655,7 +655,7 @@ export default function GuestHome() {
                           </svg>
                         </button>
                         <div
-                          onClick={() => dispatch(openAuthModal('join'))}
+                          onClick={() => router.push(`/game/${game.id}`)}
                           className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
                         >
                           <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
@@ -781,8 +781,8 @@ export default function GuestHome() {
                   {filteredTable.map((game) => (
                     <div
                       key={game.id}
-                      onClick={() => dispatch(openAuthModal('join'))}
-                      className="game-card group"
+                      onClick={() => router.push(`/game/${game.id}`)}
+                      className="game-card group cursor-pointer"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -808,7 +808,7 @@ export default function GuestHome() {
                           </svg>
                         </button>
                         <div
-                          onClick={() => dispatch(openAuthModal('join'))}
+                          onClick={() => router.push(`/game/${game.id}`)}
                           className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
                         >
                           <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
@@ -868,8 +868,8 @@ export default function GuestHome() {
                   {filteredBonus.map((game) => (
                     <div
                       key={game.id}
-                      onClick={() => dispatch(openAuthModal('join'))}
-                      className="game-card group"
+                      onClick={() => router.push(`/game/${game.id}`)}
+                      className="game-card group cursor-pointer"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -895,7 +895,7 @@ export default function GuestHome() {
                           </svg>
                         </button>
                         <div
-                          onClick={() => dispatch(openAuthModal('join'))}
+                          onClick={() => router.push(`/game/${game.id}`)}
                           className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
                         >
                           <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
@@ -1160,9 +1160,9 @@ export default function GuestHome() {
                         <stop offset="1" stopColor="#FFB800" />
                       </linearGradient>
                     </defs>
-                    {/* Crown icon — exact path from logo.svg, scaled to fit top 26px */}
+                    {/* Crown icon — loaded from logo.svg, scaled to fit top 26px */}
                     <g transform="translate(49, 0) scale(1.09)">
-                      <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="url(#gCrown)" />
+                      <image href="/images/logo.svg" width="34" height="25" />
                     </g>
                     {/* MIGHTY — white, Jost 800 */}
                     <text x="18" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="#FFFFFF">MIGHTY</text>
