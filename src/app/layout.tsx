@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className={`${manrope.variable} ${jost.variable} h-full antialiased bg-[#03081e]`}>
         <ReduxProvider>
           <Navbar />
-          <div className="pt-[24px] bg-[#091741] min-h-screen">
+          <div className="pt-0 md:pt-[24px] pb-[60px] md:pb-0 bg-[#091741] min-h-screen">
             {children}
           </div>
         </ReduxProvider>

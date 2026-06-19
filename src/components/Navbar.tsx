@@ -26,23 +26,25 @@ export default function Navbar() {
   };
 
   return (
-    <header className="relative z-[60] w-full h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate shrink-0">
-      <div className="w-full max-w-[1440px] mx-auto h-full flex flex-row justify-between items-center px-3 sm:px-[24px] gap-2 sm:gap-[50px]">
+    <header className="relative z-[60] w-full h-[50px] md:h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate shrink-0">
+      {/* Ellipse 6: Glow behind the crown logo */}
+      <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[10px] bg-[#1463FF]/70 rounded-full filter blur-[12.5px] pointer-events-none z-0" />
+      <div className="w-full max-w-[1440px] mx-auto h-full flex flex-row justify-between items-center px-[20px] md:px-[24px] gap-2 md:gap-[50px]">
 
         {/* Left Section: Menu, Logo, Search */}
         <div className="flex flex-row items-center gap-2 sm:gap-4 lg:gap-[51px] flex-1 h-[40px] z-10 order-1 relative">
 
-          {/* Menu Toggler */}
+          {/* Menu Toggler - Hidden on mobile responsive per user request */}
           <button
             onClick={() => dispatch(toggleSidebar())}
-            className="w-[24px] h-[24px] flex items-center justify-center hover:opacity-80 transition-opacity cursor-pointer focus:outline-none shrink-0"
+            className="hidden md:flex w-[24px] h-[24px] items-center justify-center hover:opacity-80 transition-opacity cursor-pointer focus:outline-none shrink-0"
             aria-label="Toggle Navigation Sidebar"
           >
             <img src="/images/Vector.png" className="w-[20.57px] h-[13.71px] object-contain" alt="Toggle Sidebar" />
           </button>
 
-          {/* Horizontal logo (190px x 34.66px) */}
-          <div className="flex flex-row items-center gap-[10px] cursor-pointer w-auto h-[34.66px] shrink-0 relative">
+          {/* Horizontal logo */}
+          <div className="flex flex-row items-center gap-[10px] cursor-pointer w-auto h-[30px] md:h-[34.66px] shrink-0 relative">
             {/* Custom SVG Crown with Lightning Cutout (34px x 25px) */}
             <svg width="34" height="25" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
               <defs>
@@ -56,15 +58,15 @@ export default function Navbar() {
                 fill="url(#crown-gradient)"
               />
             </svg>
-            {/* Logo Text */}
-            <span className="font-sans font-black text-white tracking-[0.02em] text-[20px] leading-[26px]">
+            {/* Logo Text - Hidden on mobile per user request */}
+            <span className="hidden sm:inline font-sans font-black text-white tracking-[0.02em] text-[20px] leading-[26px]">
               MIGHTY <span className="text-[#FFC83D]">LUCK</span>
             </span>
           </div>
 
           {/* Figma: Search Frame (Forms background #112F82, width 280px, height 40px) */}
           <div className="hidden sm:flex flex-row items-center gap-[10px] w-full max-w-[280px] h-[40px] bg-[#112F82] px-[20px] py-[10px] rounded-lg border border-white/5 focus-within:border-brand-accent/40 focus-within:bg-[#153896] transition-all duration-200 shrink-0">
-            {/* Search Icon (image 23 Traced 16px x 15.99px) */}
+            {/* Search Icon */}
             <svg width="16" height="15.99" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white shrink-0">
               <path
                 d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
@@ -95,227 +97,88 @@ export default function Navbar() {
         </div>
 
         {/* Right Section: Auth Action Buttons or Logged-in UI */}
-        <div className="flex flex-row items-center gap-[10px] w-auto h-[40px] z-10 order-2 relative shrink-0">
+        <div className="flex flex-row items-center gap-[10px] w-auto h-[30px] md:h-[40px] z-10 order-2 relative shrink-0">
 
           {isAuthenticated && user ? (
             /* Logged-in UI */
-            <div style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-              padding: '0px',
-              gap: '8px',
-              width: 'auto',
-              height: '40px',
-              zIndex: 2,
-            }}>
+            <div className="flex flex-row justify-end items-center p-0 gap-[4px] md:gap-[8px] w-auto h-[30px] md:h-[40px] z-10">
               {/* Dollar Container & Deposit Container Wrapper */}
-              <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                padding: '0px',
-                gap: '4px',
-                width: 'auto',
-                height: '40px',
-              }}>
-                {/* Dollar Container - hidden on xs, shown on sm+ */}
-                <div className="hidden sm:flex" style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  padding: '10px 16px',
-                  gap: '10px',
-                  width: 'auto',
-                  height: '40px',
-                  background: '#112F82',
-                  borderRadius: '8px',
-                  boxSizing: 'border-box',
-                }}>
-                  <span style={{
-                    width: '56px',
-                    height: '19px',
-                    fontFamily: "'Manrope', sans-serif",
-                    fontStyle: 'normal',
-                    fontWeight: 700,
-                    fontSize: '14px',
-                    lineHeight: '19px',
-                    letterSpacing: '0.02em',
-                    color: '#FFFFFF',
-                    textAlign: 'center',
-                  }}>
+              <div className="flex flex-row items-center p-0 gap-[4px] w-auto h-[30px] md:h-[40px]">
+                {/* Dollar Container - always visible */}
+                <div className="flex flex-row justify-center items-center px-[8px] py-[6px] md:px-[12px] md:py-[10px] gap-[10px] w-auto h-[30px] md:h-[40px] bg-[#112F82] rounded-[6px] md:rounded-[8px] box-border">
+                  <span className="font-manrope font-bold text-[12px] md:text-[14px] leading-[16px] md:leading-[19px] tracking-[0.02em] text-white whitespace-nowrap">
                     ${user.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
 
-                {/* Deposit Button */}
+                {/* Deposit Button - icon only on mobile, icon+text on sm+ */}
                 <button
                   onClick={() => dispatch(openDepositModal())}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '10px 16px',
-                    gap: '8px',
-                    width: '110px',
-                    height: '40px',
-                    background: '#FFC83D',
-                    borderRadius: '8px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    boxSizing: 'border-box',
-                  }}
+                  className="flex flex-row justify-center items-center p-0 w-[30px] h-[30px] md:w-auto md:px-[12px] md:py-[10px] gap-[8px] h-[30px] md:h-[40px] bg-[#FFC83D] rounded-[6px] md:rounded-[8px] border-none cursor-pointer box-border hover:bg-[#ffd362] active:scale-95 transition-all duration-200"
                 >
-                  {/* Wallet Icon */}
-                  <div style={{ width: '16px', height: '16px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div className="w-[16px] h-[15px] flex shrink-0 items-center justify-center">
                     <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M14 3.5H2C1.45 3.5 1 3.95 1 4.5V12.5C1 13.05 1.45 13.5 2 13.5H14C14.55 13.5 15 13.05 15 12.5V4.5C15 3.95 14.55 3.5 14 3.5Z" stroke="#1A1404" strokeWidth="1.5" strokeLinejoin="round" />
                       <path d="M12 1.5H3C2.45 1.5 2 1.95 2 2.5H14C14 1.95 13.55 1.5 12 1.5Z" stroke="#1A1404" strokeWidth="1.5" strokeLinejoin="round" />
                       <circle cx="12" cy="8.5" r="1.5" fill="#1A1404" />
                     </svg>
                   </div>
-                  <span style={{
-                    width: '54px',
-                    height: '19px',
-                    fontFamily: "'Manrope', sans-serif",
-                    fontStyle: 'normal',
-                    fontWeight: 600,
-                    fontSize: '14px',
-                    lineHeight: '19px',
-                    letterSpacing: '0.02em',
-                    color: '#1A1404',
-                  }}>
+                  <span className="hidden md:inline font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#1A1404]">
                     Deposit
                   </span>
                 </button>
               </div>
 
-              <div className="hidden xs:flex sm:flex" style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                padding: '0px',
-                gap: '8px',
-                width: 'auto',
-                height: '40px',
-              }}>
+              {/* Notification & Gift Buttons wrapper */}
+              <div className="flex flex-row items-center p-0 gap-[4px] md:gap-[8px] w-auto h-[30px] md:h-[40px]">
                 {/* Notification Button */}
-                <button style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  padding: '10px 12px',
-                  gap: '10px',
-                  isolation: 'isolate',
-                  width: '40px',
-                  height: '40px',
-                  background: '#173EAD',
-                  borderRadius: '6px',
-                  border: 'none',
-                  position: 'relative',
-                  cursor: 'pointer',
-                  boxSizing: 'border-box',
-                }}>
-                  <div style={{ width: '16px', height: '16px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <button className="flex flex-row justify-center items-center w-[30px] h-[30px] md:w-[40px] md:h-[40px] p-0 bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer box-border hover:bg-[#2051db] transition-colors">
+                  <div className="w-[16px] h-[16px] relative flex items-center justify-center">
                     <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M7 16C7.9 16 8.62 15.28 8.62 14.38H5.38C5.38 15.28 6.1 16 7 16ZM12.27 11.12V7C12.27 4.87 11.13 3.09 9.14 2.62V2.12C9.14 1.5 8.64 1 8.02 1H5.98C5.36 1 4.86 1.5 4.86 2.12V2.62C2.86 3.09 1.73 4.86 1.73 7V11.12L0.1 12.75C-0.23 13.08 0 13.62 0.47 13.62H13.53C14 13.62 14.23 13.08 13.9 12.75L12.27 11.12Z" fill="#D2DCF7" />
                     </svg>
                   </div>
                   {/* Red dot */}
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '3.07692px',
-                    gap: '3.08px',
-                    position: 'absolute',
-                    width: '8px',
-                    height: '8px',
-                    left: '32px',
-                    top: '0px',
-                    background: '#FF0E0E',
-                    borderRadius: '66.6667px',
-                  }} />
+                  <div className="absolute w-[6px] h-[6px] md:w-[8px] md:h-[8px] left-[22px] md:left-[32px] top-0 bg-[#FF0E0E] rounded-full" />
                 </button>
 
                 {/* Gift Button */}
-                <button style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  padding: '10px 12px',
-                  gap: '10px',
-                  isolation: 'isolate',
-                  width: '40px',
-                  height: '40px',
-                  background: '#173EAD',
-                  borderRadius: '6px',
-                  border: 'none',
-                  position: 'relative',
-                  cursor: 'pointer',
-                  boxSizing: 'border-box',
-                }}>
-                  <div style={{ width: '16px', height: '16px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src="/images/bonus-icon.svg" style={{ width: '16px', height: '16px', objectFit: 'contain' }} alt="Gift" />
+                <button className="flex flex-row justify-center items-center w-[30px] h-[30px] md:w-[40px] md:h-[40px] p-0 bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer box-border hover:bg-[#2051db] transition-colors">
+                  <div className="w-[16px] h-[16px] relative flex items-center justify-center">
+                    <img src="/images/bonus-icon.svg" className="w-[16px] h-[16px] object-contain" alt="Gift" />
                   </div>
                   {/* Red dot */}
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '3.07692px',
-                    gap: '3.08px',
-                    position: 'absolute',
-                    width: '8px',
-                    height: '8px',
-                    left: '32px',
-                    top: '0px',
-                    background: '#FF0E0E',
-                    borderRadius: '66.6667px',
-                  }} />
+                  <div className="absolute w-[6px] h-[6px] md:w-[8px] md:h-[8px] left-[22px] md:left-[32px] top-0 bg-[#FF0E0E] rounded-full" />
                 </button>
               </div>
 
               {/* Profile Avatar Dropdown */}
-              <div className="relative" style={{ width: '40px', height: '40px' }}>
+              <div className="relative w-[30px] h-[30px] md:w-[40px] md:h-[40px]">
                 <button
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: '0px',
-                    background: 'none',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
+                  className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] rounded-full border-none cursor-pointer p-0 bg-none overflow-hidden flex items-center justify-center"
                 >
                   <img
                     src="/image.png"
                     alt="User Avatar"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      objectFit: 'cover',
-                    }}
+                    className="w-full h-full object-cover"
                   />
                 </button>
 
                 {profileDropdownOpen && (
                   <>
-                    <div className="fixed inset-0 z-20" onClick={() => setProfileDropdownOpen(false)} />
-                    <div className="absolute right-0 mt-2 w-48 rounded-xl border border-white/10 bg-[#0C1F56] p-2 shadow-2xl z-30">
-                      <div className="px-3 py-2 border-b border-white/5 text-xs text-brand-text-muted">
-                        Logged in as <strong className="text-white block truncate">{user.username}</strong>
+                    {/* Overlay to close dropdown */}
+                    <div
+                      onClick={() => setProfileDropdownOpen(false)}
+                      className="fixed inset-0 z-40 bg-transparent cursor-default"
+                    />
+
+                    {/* Dropdown Menu */}
+                    <div className="absolute right-0 mt-2 w-[180px] bg-[#0E1B3D] border border-white/5 rounded-xl shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                      <div className="px-3 py-2 border-b border-white/5">
+                        <p className="text-xs text-[#D2DCF7] font-semibold truncate">
+                          {user.username || 'User'}
+                        </p>
                       </div>
                       <button
                         onClick={() => {
@@ -353,23 +216,23 @@ export default function Navbar() {
             </div>
           ) : (
             /* Logged-out Buttons */
-            <>
-              {/* Figma Frame: Login Button (Accent bg #1463FF, width 99px, height 40px) */}
+            <div className="flex flex-row items-center gap-[10px] h-[30px] md:h-[40px]">
+              {/* Figma Frame: Login Button (Accent bg #1463FF) */}
               <button
                 onClick={handleLoginClick}
-                className="w-[99px] h-[40px] bg-[#1463FF] rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all duration-200 shrink-0"
+                className="w-[74px] h-[30px] md:w-[99px] md:h-[40px] bg-[#1463FF] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[10.5px] md:text-[14px] leading-[14px] md:leading-[19px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all duration-200 shrink-0"
               >
                 Login
               </button>
 
-              {/* Figma Frame: Join Button (bg #FFC83D, width 90px, height 40px) */}
+              {/* Figma Frame: Join Button (bg #FFC83D) */}
               <button
                 onClick={handleJoinClick}
-                className="w-[90px] h-[40px] bg-[#FFC83D] rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all duration-200 shrink-0"
+                className="w-[67px] h-[30px] md:w-[90px] md:h-[40px] bg-[#FFC83D] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[10.5px] md:text-[14px] leading-[14px] md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all duration-200 shrink-0"
               >
                 Join
               </button>
-            </>
+            </div>
           )}
 
         </div>
