@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import Sidebar from '@/components/Sidebar';
 import DepositModal from '@/components/DepositModal';
+import Footer from '@/components/Footer';
 import { useAppSelector, useAppDispatch } from '@/redux/store';
 import { openDepositModal, closeDepositModal, toggleSidebar } from '@/redux/features/uiSlice';
 
@@ -66,8 +67,6 @@ export default function UserHome() {
 
   const [canScrollCollectionsLeft, setCanScrollCollectionsLeft] = useState(false);
   const [canScrollCollectionsRight, setCanScrollCollectionsRight] = useState(true);
-
-  const [isSeoExpanded, setIsSeoExpanded] = useState(false);
 
   // Function to toggle a game in favorites
   const toggleFavorite = (e: React.MouseEvent, gameId: string) => {
@@ -1162,234 +1161,8 @@ export default function UserHome() {
             </section>
           </div>
 
-          {/* Child 2: SEO Text Area */}
-          <div className="flex flex-col items-start p-0 gap-[40px] w-full max-w-[1136px] mx-auto select-none">
-            <div className="flex flex-col items-center p-0 gap-[32px] w-full max-w-[1136px] isolate relative">
-              <div className={`w-full max-w-[800px] flex flex-col gap-[32px] overflow-hidden transition-all duration-500 ease-in-out ${isSeoExpanded ? 'max-h-[1500px]' : 'max-h-[580px]'}`}>
-
-                {/* Frame 3 */}
-                <div className="flex flex-col items-start p-0 gap-[24px] w-full max-w-[800px]">
-                  <h1 className="w-full font-jost font-bold text-[32px] leading-[120%] tracking-[-0.02em] text-white">
-                    Play the Best Crypto Casino Games Online at Mighty Luck — Fast, Fair and Secure
-                  </h1>
-                  <div className="flex flex-col gap-[16px] w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
-                    <p>
-                      Step into a next-generation gaming experience where every spin, bet, and hand is powered by blockchain technology. At Mighty Luck Casino, you can explore more than 9,000 crypto casino games across slots, table games, live dealer games, and crash-style favorites. As one of the top crypto casinos online, Mighty Luck gives players instant withdrawals, enhanced privacy, and a secure gambling environment without the friction of traditional payment methods.
-                    </p>
-                    <p>
-                      Whether you're here to play table games, explore Bitcoin casino games, or try the latest provably fair slots, Mighty Luck delivers one of the most complete online casino experiences available today.
-                    </p>
-                    <p>
-                      Ready to play games and win real crypto?
-                    </p>
-                    <p>
-                      Start playing crypto casino games at Mighty Luck Casino.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Frame 4 */}
-                <div className="flex flex-col items-start p-0 gap-[16px] w-full max-w-[800px]">
-                  <h2 className="w-full font-jost font-bold text-[24px] leading-[35px] text-white">
-                    Why Mighty Luck Is the Ultimate Place to Play Crypto Casino Games
-                  </h2>
-                  <p className="w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
-                    Mighty Luck Casino offers the perfect blend of crypto gambling convenience, online casino entertainment, and world-class security. Compared to traditional online casinos, Mighty Luck delivers significantly faster payouts, more generous bonuses, and an unmatched selection of various games.
-                  </p>
-                </div>
-
-                {/* Frame 5 */}
-                <div className="flex flex-col items-start p-0 gap-[16px] w-full max-w-[800px]">
-                  <h2 className="w-full font-jost font-bold text-[24px] leading-[35px] text-white">
-                    Massive Game Variety
-                  </h2>
-                  <p className="w-full font-sans font-medium text-[16px] leading-[160%] text-[#D2DCF7]">
-                    With more than 9,000 casino games, Mighty Luck outshines many crypto casinos and traditional casinos alike. You'll find:
-                  </p>
-                </div>
-
-              </div>
-
-              {!isSeoExpanded && (
-                <div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[200px] flex flex-col justify-end items-center p-[24px_10px] gap-[10px] z-10 pointer-events-none"
-                  style={{ background: 'linear-gradient(0deg, #091741 0%, rgba(9, 23, 65, 0) 100%)' }}
-                >
-                  <button
-                    onClick={() => setIsSeoExpanded(true)}
-                    className="flex flex-row items-center p-0 gap-[4px] w-[93px] h-[19px] bg-transparent border-none outline-none cursor-pointer group pointer-events-auto select-none"
-                  >
-                    <span className="w-[73px] h-[19px] font-sans font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFBF1F] group-hover:text-white transition-colors">
-                      Read more
-                    </span>
-                    <div className="w-[16px] h-[16px] flex items-center justify-center relative">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 transition-transform duration-300 group-hover:scale-110">
-                        <line x1="8" y1="3" x2="8" y2="13" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M4 9L8 13L12 9" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </button>
-                </div>
-              )}
-
-              {isSeoExpanded && (
-                <div className="flex justify-center w-full z-10 mt-[8px]">
-                  <button
-                    onClick={() => setIsSeoExpanded(false)}
-                    className="flex flex-row items-center p-0 gap-[4px] w-[93px] h-[19px] bg-transparent border-none outline-none cursor-pointer group select-none"
-                  >
-                    <span className="w-[73px] h-[19px] font-sans font-semibold text-[14px] leading-[19px] tracking-[0.01em] text-[#FFBF1F] group-hover:text-white transition-colors">
-                      Read less
-                    </span>
-                    <div className="w-[16px] h-[16px] flex items-center justify-center relative">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 rotate-180 transition-transform duration-300 group-hover:scale-110">
-                        <line x1="8" y1="3" x2="8" y2="13" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M4 9L8 13L12 9" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Child 3: CRYPTO PAYMENT METHOD FOOTER ICONS */}
-          <section className="w-full h-auto py-6 md:h-[100px] flex flex-col md:flex-row justify-between items-center px-[20px] md:px-[40px] border-b border-[#112F82] relative overflow-hidden shrink-0 select-none">
-            <div className="absolute w-[390px] h-[390px] left-[calc(50%-195px)] top-[77px] bg-[#1463FF] rounded-full filter blur-[50px] opacity-80 pointer-events-none z-0" />
-            <div className="flex flex-row flex-wrap justify-center items-center gap-[16px] md:gap-[28px] mx-auto z-10">
-              {Array.from({ length: 11 }, (_, i) => (
-                <img
-                  key={i}
-                  src={`/games/deposite-icon/d${i + 1}.svg`}
-                  alt={`Crypto Method ${i + 1}`}
-                  className="h-[19.05px] w-auto object-contain filter brightness-0 invert hover:scale-110 transition-all duration-300 cursor-pointer" style={{ color: '#FFFFFF' }}
-                />
-              ))}
-            </div>
-          </section>
-
-          {/* Child 4: MAIN WEBSITE FOOTER */}
-          <footer className="w-full flex flex-col gap-[48px] select-none text-white pb-[40px]">
-
-            {/* Top Row: logo + menus */}
-            <div className="w-full flex flex-col md:flex-row justify-between items-start gap-[49px]">
-
-              {/* Logo + copyright */}
-              <div className="flex flex-col items-start gap-[16px] w-[213px] shrink-0">
-                {/* Inline Logo: crown icon (logo.svg path) + MIGHTY + LUCK text */}
-                <div className="w-[132px] h-[50px] relative">
-                  <svg width="132" height="50" viewBox="0 0 132 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="gLogoU" x1="0" y1="0" x2="132" y2="0" gradientUnits="userSpaceOnUse">
-                        <stop offset="12%" stopColor="#FFD85A" />
-                        <stop offset="86.68%" stopColor="#FFB800" />
-                      </linearGradient>
-                      <linearGradient id="gCrownU" x1="4.07" y1="12.38" x2="29.42" y2="12.38" gradientUnits="userSpaceOnUse">
-                        <stop stopColor="#FFD85A" />
-                        <stop offset="1" stopColor="#FFB800" />
-                      </linearGradient>
-                    </defs>
-                    {/* Crown icon — loaded from logo.svg, scaled to fit top 26px */}
-                    <g transform="translate(49, 0) scale(1.09)">
-                      <image href="/images/logo.svg" width="34" height="25" />
-                    </g>
-                    {/* MIGHTY — white, Jost 800 */}
-                    <text x="18" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="#FFFFFF">MIGHTY</text>
-                    {/* LUCK — gold gradient, Jost 800 */}
-                    <text x="78" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="url(#gLogoU)">LUCK</text>
-                  </svg>
-                </div>
-                <span className="font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px]">
-                  @ 2026 Mighty Luck. All rights reserved.
-                </span>
-              </div>
-
-              {/* Menu columns wrapper — 728px, 5 cols × 120px, gap 32px */}
-              <div className="flex flex-row flex-wrap md:flex-nowrap items-start gap-[32px] w-full md:w-[728px]">
-
-                {/* Column 1: Slot Games */}
-                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
-                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
-                    Slot Games
-                  </h3>
-                  <div className="flex flex-col gap-[8px]">
-                    {['Slots', 'Skill Games', 'Jackpot', 'Bonus Buy', 'Crash Games'].map((item) => (
-                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Column 2: Live Casino */}
-                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
-                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
-                    Live Casino
-                  </h3>
-                  <div className="flex flex-col gap-[8px]">
-                    {['Roulette', 'Blackjack', 'Live Casino', 'Table Games', 'Video Poker'].map((item) => (
-                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Column 3: Casino */}
-                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
-                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
-                    Casino
-                  </h3>
-                  <div className="flex flex-col gap-[8px]">
-                    {['About Us', 'Promotions', 'Tournaments', 'Affiliate Program', 'VIP Club', 'Refer a Friend', 'Blog', 'Bonus Shop'].map((item) => (
-                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Column 4: Legal */}
-                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
-                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
-                    Legal
-                  </h3>
-                  <div className="flex flex-col gap-[8px]">
-                    {['Privacy Policy', 'Terms & Conditions', 'Bonus Terms', 'Responsible Gambling', 'Payment Methods', 'Sportsbook Rules'].map((item) => (
-                      <span key={item} className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Column 5: Support */}
-                <div className="flex flex-col gap-[12px] w-[120px] shrink-0">
-                  <h3 className="w-[120px] font-jost font-bold text-[12px] leading-[17px] tracking-[0.02em] uppercase text-white">
-                    Support
-                  </h3>
-                  <div className="flex flex-col gap-[8px]">
-                    <span className="w-[120px] font-sans font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors">
-                      Live Support
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Bottom strip — border-top, legal + badges */}
-            <div className="w-full border-t border-[#112F82] pt-[48px] flex flex-col md:flex-row justify-between items-start gap-6">
-              <p className="font-sans font-semibold text-[10px] leading-[14px] text-justify tracking-[0.01em] text-[#D2DCF7] w-full md:w-[445px]">
-                MightyLuck.com is owned and operated by Company Name B.V. a company that is incorporated under the laws of Curacao with company registration number XXXXXX, having its registered address at Street 3XX9, City, Curaçao. MightyLuck.com is licensed and holds a valid Certificate of Operation (ABC/XXXX/XXX/XXXX).
-              </p>
-              <div className="flex flex-row items-center justify-end gap-[32px] w-full md:w-[288.5px] h-[38px] shrink-0">
-                <img src="/games/footer/18.svg" className="w-[38px] h-[38px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="18+" />
-                <img src="/games/footer/gamble-aware.svg" className="w-[120px] h-[24px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="Gamble Aware" />
-                <img src="/games/footer/gaming-license.svg" className="w-[66.5px] h-[38px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="GCB License Curacao" />
-              </div>
-            </div>
-          </footer>
+          {/* Reusable responsive Footer component */}
+          <Footer />
 
         </div>
       </div>
@@ -1400,27 +1173,25 @@ export default function UserHome() {
       />
 
       {/* Mobile Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 flex md:hidden flex-row items-center justify-around bg-[#0C1F56] border-t border-white/5 h-[60px] px-2">
+      <nav className="fixed bottom-0 left-0 right-0 z-[55] flex md:hidden flex-row items-center justify-around bg-[#0C1F56] border-t border-white/5 h-[60px] px-2">
         <button onClick={() => dispatch(toggleSidebar())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><path d="M3 12h12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+          <img src="/mobile/sidebar/menu.png" alt="Menu" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Menu</span>
         </button>
         <button onClick={() => {}} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+          <img src="/mobile/sidebar/search.png" alt="Search" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Search</span>
         </button>
         <button onClick={() => dispatch(openDepositModal())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 12 20 22 4 22 4 12" /><rect x="2" y="7" width="20" height="5" /><line x1="12" y1="22" x2="12" y2="7" /><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" /><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" /></svg>
+          <img src="/mobile/sidebar/gift.png" alt="Offers" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Offers</span>
         </button>
         <button onClick={() => {}} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <div className="w-5 h-5 flex items-center justify-center">
-            <span className="text-[9px] font-black text-[#D2DCF7] border border-[#D2DCF7] rounded px-[2px] leading-none">VIP</span>
-          </div>
+          <img src="/mobile/sidebar/vip.png" alt="VIP" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">VIP</span>
         </button>
         <button onClick={() => {}} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
+          <img src="/mobile/sidebar/trophy.png" alt="Tourneys" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Tourneys</span>
         </button>
       </nav>

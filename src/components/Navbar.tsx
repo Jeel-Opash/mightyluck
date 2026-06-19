@@ -26,7 +26,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="relative z-[60] w-full h-[50px] md:h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate shrink-0">
+    <header className="fixed top-0 left-0 right-0 z-[60] w-full h-[50px] md:h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate shrink-0">
       {/* Ellipse 6: Glow behind the crown logo */}
       <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[10px] bg-[#1463FF]/70 rounded-full filter blur-[12.5px] pointer-events-none z-0" />
       <div className="w-full max-w-[1440px] mx-auto h-full flex flex-row justify-between items-center px-[20px] md:px-[24px] gap-2 md:gap-[50px]">
