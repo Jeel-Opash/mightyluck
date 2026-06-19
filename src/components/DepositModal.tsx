@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAppSelector } from '@/redux/store';
 
-// Helper Icons for the premium mobile Wallet design
+
 const YellowWalletIcon = () => (
   <svg width="20" height="20" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
     <path d="M14 3.5H2C1.45 3.5 1 3.95 1 4.5V12.5C1 13.05 1.45 13.5 2 13.5H14C14.55 13.5 15 13.05 15 12.5V4.5C15 3.95 14.55 3.5 14 3.5Z" stroke="#FFC83D" strokeWidth="1.5" strokeLinejoin="round" />
