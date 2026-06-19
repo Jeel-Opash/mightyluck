@@ -18,10 +18,12 @@ export default function Navbar() {
   };
 
   const handleLoginClick = () => {
+    if (window.innerWidth < 768) { router.push('/auth/login'); return; }
     dispatch(openAuthModal('login'));
   };
 
   const handleJoinClick = () => {
+    if (window.innerWidth < 768) { router.push('/auth/register'); return; }
     dispatch(openAuthModal('join'));
   };
 
