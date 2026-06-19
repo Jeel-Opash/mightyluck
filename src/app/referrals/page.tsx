@@ -96,7 +96,7 @@ export default function ReferralsPage() {
         <div className="w-full min-w-0 flex-1 flex flex-col gap-12 lg:gap-[100px]">
 
           {/* MAIN HERO BANNER & STATS */}
-          <div className="flex flex-col gap-6 w-full">
+          <div className="flex flex-col gap-5 w-full max-w-[1136px] mx-auto select-none">
             
             {/* Hero Container */}
             <div 
@@ -104,191 +104,260 @@ export default function ReferralsPage() {
                 background: `linear-gradient(95.59deg, #06102B 13.87%, rgba(6, 16, 43, 0) 35.34%), url(/games/refrels/refer.png), #2A0B3E`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                borderRadius: '16px',
               }}
-              className="w-full min-h-[533px] flex flex-col lg:flex-row items-center justify-between p-6 sm:p-10 gap-8 lg:gap-6 relative overflow-hidden border border-white/5"
+              className="w-full min-h-[533px] lg:h-[533px] flex flex-col justify-between p-6 sm:p-8 lg:p-[32px_40px] gap-5 relative overflow-hidden border border-white/5 rounded-[16px]"
             >
-              
-              {/* Left Column: Heading */}
-              <div className="flex flex-col gap-4 max-w-[457px] w-full text-left z-10 lg:ml-4">
-                <span className="font-jost font-medium text-[20px] sm:text-[28px] leading-tight text-white">
-                  Get <span className="text-[#FFC83D] font-extrabold">PAID</span> every time
-                </span>
-                <span className="font-jost font-black text-[36px] sm:text-[48px] leading-[100%] text-white tracking-wide uppercase">
-                  YOUR FRIEND<br />PLAYS!
-                </span>
-
-                {/* Referral Link Copy Box (Convenience bonus) */}
-                <div className="mt-4 flex flex-col gap-2 bg-[#091741]/85 p-3 rounded-xl border border-white/10 max-w-[380px]">
-                  <span className="text-xs text-[#BBCAF3] font-semibold">Your Referral Link:</span>
-                  <div className="flex items-center gap-2">
-                    <input 
-                      type="text" 
-                      readOnly 
-                      value="mightyluck.com/ref?u=123" 
-                      className="bg-[#112F82] border-0 text-white text-xs font-sans font-bold px-3 py-2 rounded-md flex-1 outline-none focus:ring-0"
-                    />
-                    <button 
-                      onClick={handleCopyLink}
-                      className="bg-[#1463FF] hover:bg-[#2e74ff] text-white text-xs font-bold px-3 py-2 rounded-md transition-colors whitespace-nowrap cursor-pointer"
-                    >
-                      {copiedLink ? 'Copied!' : 'Copy'}
-                    </button>
+              {/* Inner row: Text + Calculator */}
+              <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-[24px]">
+                
+                {/* Left Column: Heading */}
+                <div className="flex flex-col gap-6 max-w-[457px] w-full text-left z-10">
+                  <div className="flex flex-col gap-1 w-full">
+                    <span className="font-jost font-medium text-[28px] leading-[40px] text-white">
+                      Get <span className="text-[#FFC83D] font-extrabold">PAID</span> every time
+                    </span>
+                    <h2 className="font-jost font-black text-[48px] leading-[100%] text-white tracking-wide uppercase">
+                      YOUR FRIEND<br />PLAYS!
+                    </h2>
                   </div>
                 </div>
-              </div>
 
-              {/* Right Column: Earnings Estimator Box */}
-              <div className="relative w-full max-w-[430px] bg-[#091741] rounded-[16px] p-5 sm:p-6 flex flex-col items-center gap-6 border border-white/10 z-10 shadow-2xl overflow-visible">
-                
-                {/* Accent glow on top */}
-                <div className="absolute w-[173px] h-[173px] left-[calc(50%-173px/2)] top-[-60px] rounded-full bg-[#1463FF] filter blur-[40px] opacity-60 pointer-events-none -z-10" />
+                {/* Right Column: Earnings Estimator Box */}
+                <div className="relative w-full max-w-[430px] h-auto lg:h-[345px] bg-[#091741] rounded-[16px] p-5 lg:p-[20px] flex flex-col items-center gap-6 border border-white/10 z-10 shadow-2xl overflow-visible isolation-isolate">
+                  
+                  {/* Accent glow on top */}
+                  <div className="absolute w-[173px] h-[173px] left-[calc(50%-173px/2-0.5px)] top-[-118px] rounded-full bg-[#1463FF] filter blur-[40px] opacity-60 pointer-events-none z-0" />
 
-                {/* Box Title */}
-                <h3 className="font-jost font-extrabold text-[20px] leading-[29px] text-center text-white max-w-[300px]">
-                  How much can you earn with Mighty Luck?
-                </h3>
-
-                <div className="w-full flex flex-col gap-6">
-                  {/* Slider Component */}
-                  <div className="flex flex-col gap-2 w-full">
-                    <div className="flex justify-between items-center text-xs font-semibold text-[#BBCAF3] tracking-wider font-manrope">
-                      <span>Invited Friends</span>
-                      <span className="text-[#FFC83D] font-bold">{invitedFriends} Friends</span>
+                  {/* Inner Frame */}
+                  <div className="w-full flex flex-col gap-3 z-10">
+                    
+                    {/* Box Title */}
+                    <div className="w-full flex justify-center items-start h-[58px] mb-1">
+                      <h3 className="font-jost font-extrabold text-[20px] leading-[29px] text-center text-white max-w-[300px] tracking-[0.01em]">
+                        How much can you earn with Mighty Luck?
+                      </h3>
                     </div>
 
-                    {/* Progress slider bar wrapper */}
-                    <div className="relative w-full h-10 flex items-center mt-1">
-                      {/* Custom Range Slider */}
-                      <input 
-                        type="range"
-                        min="1"
-                        max="50"
-                        value={invitedFriends}
-                        onChange={(e) => setInvitedFriends(parseInt(e.target.value))}
-                        className="w-full h-[6px] bg-[#112F82] rounded-lg appearance-none cursor-pointer accent-[#1463FF] outline-none"
-                        style={{
-                          background: `linear-gradient(to right, #1463FF 0%, #1463FF ${(invitedFriends / 50) * 100}%, #112F82 ${(invitedFriends / 50) * 100}%, #112F82 100%)`
-                        }}
-                      />
-                      
-                      {/* Draggable indicator pill (Figma style overlaying the progress) */}
-                      <div 
-                        style={{
-                          left: `calc(${(invitedFriends / 50) * 100}% - 27px)`,
-                          pointerEvents: 'none',
-                        }}
-                        className="absolute top-[5px] w-[54px] h-[30px] bg-[#1463FF] rounded-full flex items-center justify-center shadow-lg transition-all duration-75"
-                      >
-                        <span className="font-sans font-bold text-sm text-white">{invitedFriends}</span>
+                    <div className="w-full flex flex-col gap-4">
+                      {/* Slider Component */}
+                      <div className="flex flex-col gap-2 w-full h-[64px]">
+                        <div className="flex justify-between items-center h-4">
+                          <span className="font-manrope font-semibold text-[12px] leading-4 text-[#BBCAF3] tracking-[0.02em]">Invited Friends</span>
+                        </div>
+
+                        {/* Progress slider bar wrapper */}
+                        <div className="relative w-full h-10 flex items-center">
+                          {/* Invisible HTML range input spanning the whole container width to catch drag events */}
+                          <input 
+                            type="range"
+                            min="1"
+                            max="50"
+                            value={invitedFriends}
+                            onChange={(e) => setInvitedFriends(parseInt(e.target.value))}
+                            className="absolute inset-0 w-full h-full opacity-0 z-20 cursor-pointer"
+                          />
+
+                          {/* Custom Range Slider Track underneath */}
+                          <div className="absolute left-0 right-0 top-[17px] h-[6px] bg-[#112F82] rounded-[100px] pointer-events-none" />
+                          
+                          {/* Active filled track */}
+                          <div 
+                            style={{
+                              width: `calc(${(invitedFriends - 1) / 49} * (100% - 54px) + 27px)`
+                            }}
+                            className="absolute left-0 top-[17px] h-[6px] bg-[#1463FF] rounded-[100px_0_0_100px] pointer-events-none"
+                          />
+                          
+                          {/* Draggable indicator pill */}
+                          <div 
+                            style={{
+                              left: `calc(${(invitedFriends - 1) / 49} * (100% - 54px))`
+                            }}
+                            className="absolute top-[5px] w-[54px] h-[30px] bg-[#1463FF] rounded-[100px] flex items-center justify-center gap-1 shadow-lg transition-all duration-75 pointer-events-none"
+                          >
+                            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" className="text-white shrink-0">
+                              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.04-.32.07-.64.07-.97 0-2.94-1.87-5.46-4.5-6.4a5.964 5.964 0 015.5 6.4c0 .33.03.65.07.97h3.93zM9 11a6 6 0 00-6 6h12a6 6 0 00-6-6z" />
+                            </svg>
+                            <span className="font-manrope font-bold text-[16px] leading-[22px] tracking-[0.02em] text-white">
+                              {invitedFriends}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Monthly Earnings Frame */}
+                      <div className="w-full flex flex-col gap-3 h-[99px]">
+                        <div className="w-full bg-[#112F82] rounded-[8px] p-[10px_16px] flex items-center justify-center h-[60px]">
+                          <div className="w-full max-w-[358px] flex items-center justify-between h-[33px]">
+                            <span className="font-manrope font-bold text-[14px] leading-[19px] text-white tracking-[0.02em]">
+                              Your monthly earnings:
+                            </span>
+                            <span className="font-manrope font-bold text-[24px] leading-[33px] text-white tracking-[0.02em]">
+                              ${monthlyEarnings.toLocaleString()}
+                            </span>
+                          </div>
+                        </div>
+
+                        <p className="font-manrope font-medium text-[10px] leading-[14px] text-[#7795E8] tracking-[0.02em] select-none h-7">
+                          * Calculations are based on average player activity and may vary in individual cases
+                        </p>
+                      </div>
+
+                      {/* Email Invite Box */}
+                      <form onSubmit={handleSendInvite} className="w-full flex items-center gap-2 h-10 mt-1">
+                        <div className="flex-1 max-w-[260px] h-10 bg-[#112F82] rounded-[8px] p-[10px_16px] flex items-center gap-3">
+                          <input 
+                            type="email"
+                            required
+                            placeholder="Enter email address"
+                            value={emailAddress}
+                            onChange={(e) => setEmailAddress(e.target.value)}
+                            className="w-full bg-transparent border-0 outline-none text-white font-manrope font-semibold text-[14px] leading-[19px] placeholder-[#7795E8] focus:ring-0 p-0"
+                          />
+                        </div>
+                        <button 
+                          type="submit"
+                          disabled={inviteStatus === 'sending'}
+                          className="w-[122px] h-10 bg-[#FFC83D] hover:bg-[#ffd362] active:scale-95 disabled:opacity-50 text-[#1A1404] font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] rounded-[8px] flex items-center justify-center transition-all cursor-pointer shrink-0"
+                        >
+                          {inviteStatus === 'sending' ? 'Sending...' : 'Send Invite'}
+                        </button>
+                      </form>
+                      {inviteStatus === 'success' && (
+                        <span className="text-xs text-green-400 font-semibold text-center -mt-2 animate-pulse">
+                          Invite sent successfully!
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Bottom Stats Container */}
+              <div className="w-full max-w-[1056px] h-auto lg:h-[104px] bg-[#091741] rounded-[16px] p-[20px_24px] flex flex-col justify-center border border-white/10 mt-auto">
+                <div className="w-full max-w-[1008px] h-auto lg:h-[64px] flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row items-center gap-[8px]">
+                  
+                  {/* Card 1: Total Referrals */}
+                  <div className="w-full lg:w-[246px] h-[64px] flex flex-col gap-2 text-left">
+                    <div className="w-full h-4 flex items-center">
+                      <span className="font-manrope font-semibold text-[12px] leading-[16px] text-[#BBCAF3] tracking-[0.02em]">
+                        Total Referrals
+                      </span>
+                    </div>
+                    <div className="w-full h-10 bg-[#112F82] rounded-[8px] p-[10px_16px] flex items-center">
+                      <div className="w-full max-w-[214px] h-[22px] flex items-center gap-2">
+                        {/* Coin Icon */}
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
+                          <circle cx="10" cy="10" r="10" fill="#FFC83D" />
+                          <path d="M10 5.5v9M8 7.5h3.5a1.5 1.5 0 0 1 0 3H8.5a1.5 1.5 0 0 0 0 3H12" stroke="#1A1404" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span className="font-manrope font-bold text-[16px] leading-[22px] text-white tracking-[0.02em]">
+                          12
+                        </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Monthly Earnings Card */}
-                  <div className="w-full bg-[#112F82] rounded-lg p-4 flex flex-row items-center justify-between min-h-[60px]">
-                    <span className="font-sans font-bold text-sm text-white">
-                      Your monthly earnings:
-                    </span>
-                    <span className="font-sans font-black text-2xl text-[#FFC83D] tracking-wide">
-                      ${monthlyEarnings.toLocaleString()}
-                    </span>
+                  {/* Card 2: Total Deposits */}
+                  <div className="w-full lg:w-[246px] h-[64px] flex flex-col gap-2 text-left">
+                    <div className="w-full h-4 flex items-center">
+                      <span className="font-manrope font-semibold text-[12px] leading-[16px] text-[#BBCAF3] tracking-[0.02em]">
+                        Total Deposits
+                      </span>
+                    </div>
+                    <div className="w-full h-10 bg-[#112F82] rounded-[8px] p-[10px_16px] flex items-center">
+                      <div className="w-full max-w-[214px] h-[22px] flex items-center gap-2">
+                        {/* Coin Icon */}
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
+                          <circle cx="10" cy="10" r="10" fill="#FFC83D" />
+                          <path d="M10 5.5v9M8 7.5h3.5a1.5 1.5 0 0 1 0 3H8.5a1.5 1.5 0 0 0 0 3H12" stroke="#1A1404" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span className="font-manrope font-bold text-[16px] leading-[22px] text-white tracking-[0.02em]">
+                          $5,000.00
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
-                  <p className="font-sans font-medium text-[10px] leading-[14px] text-[#7795E8] text-center max-w-[390px] mx-auto select-none">
-                    * Calculations are based on average player activity and may vary in individual cases
-                  </p>
+                  {/* Card 3: Total Earnings */}
+                  <div className="w-full lg:w-[246px] h-[64px] flex flex-col gap-2 text-left">
+                    <div className="w-full h-4 flex items-center">
+                      <span className="font-manrope font-semibold text-[12px] leading-[16px] text-[#BBCAF3] tracking-[0.02em]">
+                        Total Earnings
+                      </span>
+                    </div>
+                    <div className="w-full h-10 bg-[#112F82] rounded-[8px] p-[10px_16px] flex items-center">
+                      <div className="w-full max-w-[214px] h-[22px] flex items-center gap-2">
+                        {/* Coin Icon */}
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
+                          <circle cx="10" cy="10" r="10" fill="#FFC83D" />
+                          <path d="M10 5.5v9M8 7.5h3.5a1.5 1.5 0 0 1 0 3H8.5a1.5 1.5 0 0 0 0 3H12" stroke="#1A1404" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span className="font-manrope font-bold text-[16px] leading-[22px] text-white tracking-[0.02em]">
+                          $500.00
+                        </span>
+                      </div>
+                    </div>
+                  </div>
 
-                  {/* Email Invite Box */}
-                  <form onSubmit={handleSendInvite} className="w-full flex items-center gap-2 mt-2">
-                    <input 
-                      type="email"
-                      required
-                      placeholder="Enter email address"
-                      value={emailAddress}
-                      onChange={(e) => setEmailAddress(e.target.value)}
-                      className="flex-1 h-10 bg-[#112F82] text-white placeholder-[#7795E8] border border-white/5 rounded-lg px-4 text-sm font-sans font-semibold outline-none focus:border-[#1463FF]/50 transition-all focus:ring-0"
-                    />
-                    <button 
-                      type="submit"
-                      disabled={inviteStatus === 'sending'}
-                      className="w-[122px] h-10 bg-[#FFC83D] hover:bg-[#ffd362] active:scale-95 disabled:opacity-50 text-[#1A1404] font-sans font-bold text-sm rounded-lg flex items-center justify-center transition-all cursor-pointer shrink-0"
-                    >
-                      {inviteStatus === 'sending' ? 'Sending...' : 'Send Invite'}
-                    </button>
-                  </form>
-                  {inviteStatus === 'success' && (
-                    <span className="text-xs text-green-400 font-semibold text-center -mt-2 animate-pulse">
-                      Invite sent successfully!
-                    </span>
-                  )}
+                  {/* Card 4: Pending Income */}
+                  <div className="w-full lg:w-[246px] h-[64px] flex flex-col gap-2 text-left">
+                    <div className="w-full h-4 flex items-center">
+                      <span className="font-manrope font-semibold text-[12px] leading-[16px] text-[#BBCAF3] tracking-[0.02em]">
+                        Pending Income
+                      </span>
+                    </div>
+                    <div className="w-full h-10 bg-[#112F82] rounded-[8px] p-[10px_16px] flex items-center justify-between">
+                      <div className="w-full max-w-[136px] h-[22px] flex items-center gap-2">
+                        {/* Coin Icon */}
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="shrink-0">
+                          <circle cx="10" cy="10" r="10" fill="#FFC83D" />
+                          <path d="M10 5.5v9M8 7.5h3.5a1.5 1.5 0 0 1 0 3H8.5a1.5 1.5 0 0 0 0 3H12" stroke="#1A1404" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        <span className="font-manrope font-bold text-[16px] leading-[22px] text-white tracking-[0.02em]">
+                          {pendingIncomeClaimed ? '$0.00' : '$150.00'}
+                        </span>
+                      </div>
+                      
+                      {/* Claim Button */}
+                      <button 
+                        onClick={handleClaimPending}
+                        disabled={pendingIncomeClaimed}
+                        className="w-[66px] h-[24px] bg-[#1463FF] hover:bg-[#2e74ff] active:scale-95 disabled:opacity-40 disabled:hover:bg-[#1463FF] rounded-[6px] flex items-center justify-center font-manrope font-semibold text-[12px] leading-[16px] text-white tracking-[0.02em] transition-all cursor-pointer border-none outline-none shrink-0"
+                      >
+                        {pendingIncomeClaimed ? 'Claimed' : 'Claim'}
+                      </button>
+                    </div>
+                  </div>
+
                 </div>
               </div>
+
             </div>
 
-            {/* Stats Ribbon Below Hero */}
-            <div className="w-full bg-[#091741] rounded-[16px] p-5 lg:p-6 border border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-              
-              {/* Card 1: Total Referrals */}
-              <div className="flex-1 w-full flex flex-col gap-2 text-left">
-                <span className="font-sans font-semibold text-xs text-[#BBCAF3] uppercase tracking-wider">Total Referrals</span>
-                <div className="h-10 bg-[#112F82] rounded-lg px-4 flex items-center gap-3">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFC83D" strokeWidth="2" strokeLinecap="round" className="shrink-0">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                  </svg>
-                  <span className="font-sans font-extrabold text-base text-white">12</span>
-                </div>
+            {/* COPY REFERRAL LINK BOX */}
+            <div className="w-full bg-[#0C1F56] border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row justify-between items-center gap-4 mt-2">
+              <div className="flex flex-col text-left">
+                <span className="font-jost font-black text-lg text-white uppercase tracking-wider">Your Referral Link</span>
+                <span className="font-manrope font-semibold text-sm text-[#A5B8EF] mt-1">
+                  Share this link with your friends and start earning together!
+                </span>
               </div>
-
-              {/* Card 2: Total Deposits */}
-              <div className="flex-1 w-full flex flex-col gap-2 text-left">
-                <span className="font-sans font-semibold text-xs text-[#BBCAF3] uppercase tracking-wider">Total Deposits</span>
-                <div className="h-10 bg-[#112F82] rounded-lg px-4 flex items-center gap-3">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFC83D" strokeWidth="2" className="shrink-0">
-                    <line x1="12" y1="1" x2="12" y2="23" />
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                  </svg>
-                  <span className="font-sans font-extrabold text-base text-white">$5,000.00</span>
-                </div>
+              <div className="flex items-center gap-2 w-full md:w-auto max-w-[450px]">
+                <input 
+                  type="text" 
+                  readOnly 
+                  value="https://mightyluck.com/register?ref=user123" 
+                  className="bg-[#112F82] border border-white/5 text-white text-sm font-manrope font-bold px-4 py-2.5 rounded-lg flex-1 outline-none focus:ring-0 min-w-[250px]"
+                />
+                <button 
+                  onClick={handleCopyLink}
+                  className="bg-[#1463FF] hover:bg-[#2e74ff] text-white text-sm font-manrope font-bold px-5 py-2.5 rounded-lg transition-colors whitespace-nowrap cursor-pointer"
+                >
+                  {copiedLink ? 'Copied!' : 'Copy'}
+                </button>
               </div>
-
-              {/* Card 3: Total Earnings */}
-              <div className="flex-1 w-full flex flex-col gap-2 text-left">
-                <span className="font-sans font-semibold text-xs text-[#BBCAF3] uppercase tracking-wider">Total Earnings</span>
-                <div className="h-10 bg-[#112F82] rounded-lg px-4 flex items-center gap-3">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFC83D" strokeWidth="2" className="shrink-0">
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 8v8" />
-                    <path d="M8 12h8" />
-                  </svg>
-                  <span className="font-sans font-extrabold text-base text-white">$500.00</span>
-                </div>
-              </div>
-
-              {/* Card 4: Pending Income */}
-              <div className="flex-1 w-full flex flex-col gap-2 text-left">
-                <span className="font-sans font-semibold text-xs text-[#BBCAF3] uppercase tracking-wider">Pending Income</span>
-                <div className="h-10 bg-[#112F82] rounded-lg px-4 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFC83D" strokeWidth="2" className="shrink-0">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    <span className="font-sans font-extrabold text-base text-white">
-                      {pendingIncomeClaimed ? '$0.00' : '$150.00'}
-                    </span>
-                  </div>
-                  <button 
-                    onClick={handleClaimPending}
-                    disabled={pendingIncomeClaimed}
-                    className="h-6 px-3 bg-[#1463FF] hover:bg-[#2e74ff] disabled:opacity-40 disabled:hover:bg-[#1463FF] rounded-[6px] flex items-center justify-center font-sans font-bold text-xs text-white transition-colors cursor-pointer select-none border-none outline-none"
-                  >
-                    {pendingIncomeClaimed ? 'Claimed' : 'Claim'}
-                  </button>
-                </div>
-              </div>
-
             </div>
           </div>
 
