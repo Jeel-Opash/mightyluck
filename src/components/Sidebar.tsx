@@ -3,15 +3,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/redux/store';
-import { toggleSidebar } from '@/redux/features/uiSlice';
-import AllGamesModal from '@/components/AllGamesModal';
+import { toggleSidebar, openAllGamesModal } from '@/redux/features/uiSlice';
 
 export default function Sidebar() {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const sidebarOpen = useAppSelector((state) => state.ui.sidebarOpen);
   const [casinoExpanded, setCasinoExpanded] = useState(true);
-  const [showAllGames, setShowAllGames] = useState(false);
 
   return (
     <>
@@ -129,7 +127,7 @@ export default function Sidebar() {
               {casinoExpanded && (
                 <div className="flex flex-col gap-[20px] p-[20px_16px] w-[200px] h-[220px]">
                   {[
-                    { icon: '/games/side-icon/all.svg', label: 'All Games', onClick: () => setShowAllGames(true) },
+                    { icon: '/games/side-icon/all.svg', label: 'All Games', onClick: () => dispatch(openAllGamesModal()) },
                     { icon: '/games/side-icon/new.svg', label: 'New Games', onClick: () => {} },
                     { icon: '/games/side-icon/popular.svg', label: 'Popular Games', onClick: () => {} },
                     { icon: '/games/side-icon/original.svg', label: 'Original Games', onClick: () => {} },
@@ -219,7 +217,7 @@ export default function Sidebar() {
               {casinoExpanded && (
                 <div className="flex flex-col justify-center items-start p-[20px_16px] gap-[20px] w-full h-[230px] border-b border-[#112F82] rounded-b-[8px]">
                   {[
-                    { icon: '/games/side-icon/all.svg', label: 'All Games', onClick: () => { setShowAllGames(true); dispatch(toggleSidebar()); } },
+                    { icon: '/games/side-icon/all.svg', label: 'All Games', onClick: () => { dispatch(openAllGamesModal()); dispatch(toggleSidebar()); } },
                     { icon: '/games/side-icon/new.svg', label: 'New Games', onClick: () => { dispatch(toggleSidebar()); } },
                     { icon: '/games/side-icon/popular.svg', label: 'Popular Games', onClick: () => { dispatch(toggleSidebar()); } },
                     { icon: '/games/side-icon/original.svg', label: 'Original Games', onClick: () => { dispatch(toggleSidebar()); } },
@@ -258,8 +256,6 @@ export default function Sidebar() {
 
       </div>
 
-      {/* All Games Modal */}
-      <AllGamesModal isOpen={showAllGames} onClose={() => setShowAllGames(false)} />
     </>
   );
 }

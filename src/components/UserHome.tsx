@@ -4,10 +4,9 @@ import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import Sidebar from '@/components/Sidebar';
-import DepositModal from '@/components/DepositModal';
 import Footer from '@/components/Footer';
 import { useAppSelector, useAppDispatch } from '@/redux/store';
-import { openDepositModal, closeDepositModal, toggleSidebar } from '@/redux/features/uiSlice';
+import { openDepositModal, toggleSidebar, openAllGamesModal } from '@/redux/features/uiSlice';
 
 // Interface for casino game cards
 interface GameCard {
@@ -28,7 +27,6 @@ export default function UserHome() {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const searchQuery = useAppSelector((state) => state.ui.searchQuery);
-  const depositModalOpen = useAppSelector((state) => state.ui.depositModalOpen);
 
   const [favorites, setFavorites] = useState<string[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>('lobby');
@@ -1159,18 +1157,13 @@ export default function UserHome() {
         </div>
       </div>
 
-      <DepositModal
-        isOpen={depositModalOpen}
-        onClose={() => dispatch(closeDepositModal())}
-      />
-
       {/* Mobile Bottom Nav */}
       <nav className="fixed bottom-0 left-0 right-0 z-[55] flex md:hidden flex-row items-center justify-around bg-[#0C1F56] border-t border-white/5 h-[60px] px-2">
         <button onClick={() => dispatch(toggleSidebar())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
           <img src="/mobile/sidebar/menu.png" alt="Menu" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Menu</span>
         </button>
-        <button onClick={() => {}} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
+        <button onClick={() => dispatch(openAllGamesModal())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
           <img src="/mobile/sidebar/search.png" alt="Search" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Search</span>
         </button>

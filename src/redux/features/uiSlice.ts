@@ -6,6 +6,7 @@ interface UIState {
   authModalOpen: boolean;
   authModalType: 'login' | 'join';
   depositModalOpen: boolean;
+  allGamesOpen: boolean;
 }
 
 const initialState: UIState = {
@@ -14,6 +15,7 @@ const initialState: UIState = {
   authModalOpen: false,
   authModalType: 'login',
   depositModalOpen: false,
+  allGamesOpen: false,
 };
 
 export const uiSlice = createSlice({
@@ -42,6 +44,12 @@ export const uiSlice = createSlice({
     closeDepositModal: (state) => {
       state.depositModalOpen = false;
     },
+    openAllGamesModal: (state) => {
+      state.allGamesOpen = true;
+    },
+    closeAllGamesModal: (state) => {
+      state.allGamesOpen = false;
+    },
   },
 });
 
@@ -53,5 +61,7 @@ export const {
   closeAuthModal,
   openDepositModal,
   closeDepositModal,
+  openAllGamesModal,
+  closeAllGamesModal,
 } = uiSlice.actions;
 export default uiSlice.reducer;

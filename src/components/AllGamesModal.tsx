@@ -10,9 +10,9 @@ interface AllGamesModalProps {
 
 /* ── all game data ─────────────────────────────────────────── */
 const ALL_GAMES = [
-  { id: 's1', title: 'ALLY ALIENS',              provider: 'Belatra',       category: 'Slots',    image: '/games/slots/slot-1.png' },
-  { id: 's2', title: "ANUBIS' TRIAL",            provider: 'BGaming',       category: 'Slots',    image: '/games/slots/slot-2.png' },
-  { id: 's3', title: 'CACTUS GOES NUTS',         provider: 'Endorphina',    category: 'Slots',    image: '/games/slots/slot-3.png' },
+  { id: 's1', title: 'PATRICK VS NEFERTITI',          provider: 'Belatra',       category: 'Slots',    image: '/games/slots/slot-1.png' },
+  { id: 's2', title: "SWEET BONANZA SUPER SCATTER",   provider: 'BGaming',       category: 'Slots',    image: '/games/slots/slot-2.png' },
+  { id: 's3', title: 'AMERICAN ROULETTE',             provider: 'Endorphina',    category: 'Slots',    image: '/games/slots/slot-3.png' },
   { id: 's4', title: "PANTHER'S RICHES",         provider: 'Nolimit City',  category: 'Slots',    image: '/games/slots/slot-4.png' },
   { id: 's5', title: 'HONEY MONEY MULTIPLIER',   provider: 'Hacksaw',       category: 'Slots',    image: '/games/slots/slot-5.png' },
   { id: 's6', title: 'POPPING MANIA',            provider: 'BGaming',       category: 'Slots',    image: '/games/slots/slot-6.png' },
@@ -91,15 +91,19 @@ function GameCard({ game, onClick }: { game: typeof ALL_GAMES[0]; onClick: () =>
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
-      className="aspect-[152/200] w-full max-w-[160px] mx-auto rounded-[12px] overflow-hidden relative cursor-pointer bg-[#1A1F3C] transition-transform duration-200 hover:scale-[1.03] select-none"
-      style={{
-        backgroundImage: `url(${game.image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
+      className="aspect-[152/200] w-full max-w-[160px] mx-auto rounded-[12px] overflow-hidden relative cursor-pointer bg-[#CDCDCD] transition-transform duration-200 hover:scale-[1.03] select-none"
     >
+      <div
+        className="absolute inset-0 bg-[#CDCDCD]"
+        style={{
+          backgroundImage: `url(${game.image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          borderRadius: '12px',
+        }}
+      />
       {/* bottom gradient + text */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-[32px_8px_10px] flex flex-col gap-[2px]">
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-[32px_8px_10px] flex flex-col gap-[2px] z-10">
         <span className="font-jost font-extrabold text-[12px] leading-[14px] tracking-[0.01em] uppercase text-white truncate">
           {game.title}
         </span>
@@ -109,7 +113,7 @@ function GameCard({ game, onClick }: { game: typeof ALL_GAMES[0]; onClick: () =>
       </div>
 
       {/* hover play overlay */}
-      <div className={`absolute inset-0 bg-black/45 flex items-center justify-center transition-opacity duration-200 ${
+      <div className={`absolute inset-0 bg-black/45 flex items-center justify-center transition-opacity duration-200 z-20 ${
         hovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}>
         <div className="w-[44px] h-[44px] rounded-full bg-[#FFC83D] flex items-center justify-center shadow-[0_4px_12px_rgba(255,200,61,0.5)] transform transition-transform duration-200 hover:scale-115">
@@ -166,21 +170,27 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
 
   return (
     <>
-      {/* placeholder input style */}
       <style>{`
-        .agm-search::placeholder { color: #BBCAF3; opacity: 1;
-          font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 14px; }
+        .agm-scrollbar-none::-webkit-scrollbar { display: none !important; }
+        .agm-scrollbar-none { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+        .agm-search-placeholder::placeholder {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 600;
+          font-size: 16px;
+          color: #BBCAF3;
+          opacity: 1;
+        }
       `}</style>
 
-      {/* Backdrop */}
+      {/* ── DESKTOP MODAL VIEW (md and up) ── */}
       <div
         onClick={onClose}
-        className="fixed inset-0 z-[9999] bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4"
+        className="fixed inset-0 z-[9999] bg-black/75 backdrop-blur-sm hidden md:flex items-center justify-center p-3 sm:p-4 animate-in fade-in duration-200"
       >
         {/* Modal Box */}
         <div
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-[1056px] h-full max-h-[636px] bg-[#091741] rounded-[20px] p-5 md:p-6 flex flex-col md:flex-row gap-5 overflow-hidden border border-white/10 shadow-2xl"
+          className="relative w-full max-w-[1056px] h-full max-h-[636px] bg-[#091741] rounded-[20px] p-5 md:p-6 flex flex-col md:flex-row gap-5 overflow-hidden border border-white/10 shadow-2xl animate-in fade-in zoom-in-95 duration-200"
         >
           {/* Header row for mobile close */}
           <div className="flex flex-row items-center justify-between md:hidden w-full border-b border-white/5 pb-2">
@@ -196,7 +206,6 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
           </div>
 
           {/* ── LEFT SIDEBAR ── */}
-          {/* On mobile: horizontal scroll container. On desktop: vertical layout. */}
           <div className="flex flex-col gap-3 w-full md:w-[180px] shrink-0">
             {/* Desktop Close Button */}
             <div className="hidden md:flex flex-row justify-end w-full">
@@ -256,8 +265,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="What are you looking for?"
-                className="agm-search w-full bg-transparent border-none outline-none font-sans font-semibold text-[14px] text-white placeholder-[#BBCAF3]"
+                placeholder="Start typing a game name"
+                className="w-full bg-transparent border-none outline-none font-sans font-semibold text-[14px] text-white placeholder-[#BBCAF3] focus:ring-0 p-0"
               />
 
               {/* Clear button */}
@@ -306,7 +315,278 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
               )}
             </div>
           </div>
+        </div>
+      </div>
 
+      {/* ── MOBILE OVERLAY VIEW (md and down) ── */}
+      <div
+        className={`fixed top-[50px] left-0 right-0 bottom-[60px] z-[52] bg-[#0C1F56] flex md:hidden flex-col p-5 gap-5 overflow-y-auto transition-all duration-300 ease-in-out ${
+          isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Mobile Search input bar (Figma specified: height 50px, background #112F82, rounded 8px) */}
+        <div className="flex flex-row items-center gap-[12px] w-full h-[50px] bg-[#112F82] px-[20px] rounded-lg shrink-0 border border-white/5 focus-within:border-[#1463FF]/40">
+          {/* Search Icon */}
+          <svg width="16" height="15.99" viewBox="0 0 16 16" fill="none" className="shrink-0 text-[#BBCAF3]">
+            <circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" strokeWidth="1.8" />
+            <path d="M10.5 10.5L14.5 14.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+
+          {/* Search input field */}
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Start typing a game name"
+            className="agm-search-placeholder flex-1 h-[22px] bg-transparent border-none outline-none text-white font-sans font-semibold text-[16px] leading-[22px] placeholder-[#BBCAF3] focus:ring-0 p-0"
+          />
+
+          {/* Close button inside mobile search bar */}
+          <button
+            onClick={onClose}
+            className="w-[20px] h-[20px] flex items-center justify-center text-[#A5B8EF] hover:text-white bg-transparent border-0 cursor-pointer p-0"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Categories Row (Figma: width 506.37px, height 40px, scrollable) */}
+        <div className="w-full overflow-x-auto agm-scrollbar-none shrink-0 select-none">
+          <div className="flex flex-row items-start gap-2 w-[510px] h-[40px]">
+            {/* All Games button */}
+            <button
+              onClick={() => { setActiveCategory('All Games'); setSearch(''); }}
+              className={`flex flex-row items-center justify-center h-[40px] w-[107px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${
+                activeCategory === 'All Games' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
+              }`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <rect x="2" y="6" width="20" height="12" rx="3" />
+                <line x1="6" y1="12" x2="10" y2="12" />
+                <line x1="8" y1="10" x2="8" y2="14" />
+                <line x1="15" y1="13" x2="15.01" y2="13" />
+                <line x1="18" y1="11" x2="18.01" y2="11" />
+              </svg>
+              <span className="font-sans font-semibold text-[12px] tracking-[0.02em]">All Games</span>
+            </button>
+
+            {/* Recently Played */}
+            <button
+              onClick={() => { setActiveCategory('Recently Played'); setSearch(''); }}
+              className={`flex flex-row items-center justify-center h-[40px] w-[143px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${
+                activeCategory === 'Recently Played' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
+              }`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span className="font-sans font-semibold text-[12px] tracking-[0.02em]">Recently Played</span>
+            </button>
+
+            {/* Favorites */}
+            <button
+              onClick={() => { setActiveCategory('Favorites'); setSearch(''); }}
+              className={`flex flex-row items-center justify-center h-[40px] w-[103px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${
+                activeCategory === 'Favorites' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
+              }`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+              <span className="font-sans font-semibold text-[12px] tracking-[0.02em]">Favorites</span>
+            </button>
+
+            {/* New Releases */}
+            <button
+              onClick={() => { setActiveCategory('New Releases'); setSearch(''); }}
+              className={`flex flex-row items-center justify-center h-[40px] w-[129.37px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${
+                activeCategory === 'New Releases' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
+              }`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              <span className="font-sans font-semibold text-[12px] tracking-[0.02em]">New Releases</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Scrollable Mobile Body Content */}
+        <div className="flex-1 w-full flex flex-col gap-6 overflow-y-auto agm-scrollbar-none">
+          {search ? (
+            /* Search results view */
+            <div className="w-full flex flex-col gap-3">
+              <span className="font-jost font-black text-[16px] tracking-wide uppercase text-white">
+                Search Results ({visibleGames.length})
+              </span>
+              {visibleGames.length > 0 ? (
+                <div className="grid grid-cols-3 gap-x-2 gap-y-3 pb-6">
+                  {visibleGames.map((game) => (
+                    <div
+                      key={game.id}
+                      onClick={() => {
+                        router.push(`/game/${game.id}`);
+                        onClose();
+                      }}
+                      className="w-full aspect-[121.6/160] max-w-[121.6px] mx-auto relative cursor-pointer active:scale-95 transition-transform"
+                    >
+                      <div
+                        className="absolute inset-0 bg-[#CDCDCD]"
+                        style={{
+                          backgroundImage: `url(${game.image})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          borderRadius: '9.6px',
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                  <span className="font-jost font-extrabold text-[16px] text-white">No Results found</span>
+                  <span className="font-sans text-[12px] text-[#A5B8EF] mt-1">Try another keyword.</span>
+                </div>
+              )}
+            </div>
+          ) : activeCategory === 'All Games' ? (
+            /* Dashboard view containing popular games & game providers */
+            <>
+              {/* Popular Games Section (Figma: width 510.4px, height 160px scrollable cards) */}
+              <div className="flex flex-col gap-3 w-full shrink-0">
+                {/* Section Header */}
+                <div className="flex flex-row justify-between items-center w-full">
+                  <div className="flex flex-row items-center gap-[7.2px]">
+                    {/* Flame Icon */}
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 fill-[#FFBF1F]">
+                      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+                    </svg>
+                    <h2 className="font-jost font-black text-[16px] leading-[23px] uppercase text-white tracking-[0.01em]">
+                      Popular Games
+                    </h2>
+                  </div>
+                  <button className="font-sans font-bold text-[12px] text-[#FFBF1F] bg-transparent border-0 cursor-pointer">
+                    View all
+                  </button>
+                </div>
+
+                {/* Horizontal Scroll list of Popular Games (Figma width 121.6px, height 160px, rounded 9.6px) */}
+                <div className="w-full overflow-x-auto agm-scrollbar-none">
+                  <div className="flex flex-row items-center gap-2 w-[512px]">
+                    {ALL_GAMES.slice(0, 4).map((game) => (
+                      <div
+                        key={game.id}
+                        onClick={() => {
+                          router.push(`/game/${game.id}`);
+                          onClose();
+                        }}
+                        className="w-[121.6px] h-[160px] relative shrink-0 active:scale-95 transition-transform cursor-pointer"
+                      >
+                        <div
+                          className="absolute inset-0 bg-[#CDCDCD]"
+                          style={{
+                            backgroundImage: `url(${game.image})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            borderRadius: '9.6px',
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Game Providers Section */}
+              <div className="flex flex-col gap-3 w-full shrink-0 pb-6">
+                {/* Section Header */}
+                <div className="flex flex-row justify-between items-center w-full">
+                  <div className="flex flex-row items-center gap-[7.2px]">
+                    {/* User profile / Key Icon */}
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFC83D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 fill-[#FFC83D]">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <h2 className="font-jost font-black text-[16px] leading-[23px] uppercase text-white tracking-[0.01em]">
+                      GAME PROVIDERS
+                    </h2>
+                  </div>
+                  <button className="font-sans font-bold text-[12px] text-[#FFBF1F] bg-transparent border-0 cursor-pointer">
+                    View all
+                  </button>
+                </div>
+
+                {/* Horizontal Scroll list of Game Providers (Figma: width 472px total, height 60px, rounded 8px, bg #112F82) */}
+                <div className="w-full overflow-x-auto agm-scrollbar-none">
+                  <div className="flex flex-row items-center gap-2 w-[472px] h-[60px]">
+                    {[
+                      { name: 'BELATRA', logo: '/games/providers/g1.png', count: '226 Games' },
+                      { name: 'BGAMING', logo: '/games/providers/g2.png', count: '226 Games' },
+                      { name: 'TaDa GAMING', logo: '/games/providers/g3.png', count: '226 Games' },
+                      { name: 'ENDORPHINA', logo: '/games/providers/g4.png', count: '226 Games' },
+                      { name: 'NOLIMIT CITY', logo: '/games/providers/g5.png', count: '226 Games' },
+                    ].map((provider) => (
+                      <div
+                        key={provider.name}
+                        onClick={() => {
+                          setSearch(provider.name);
+                        }}
+                        className="flex flex-col justify-center items-center p-[7.2px_14.4px] gap-[4.8px] w-[88px] h-[60px] bg-[#112F82] rounded-[8px] shrink-0 cursor-pointer active:scale-95 transition-transform"
+                      >
+                        <img
+                          src={provider.logo}
+                          alt={provider.name}
+                          className="w-[48px] h-[24px] object-contain filter brightness-100"
+                        />
+                        <span className="font-manrope font-semibold text-[8px] leading-[11px] text-center text-[#FFC83D] whitespace-nowrap">
+                          {provider.count}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            /* Selected category grid view (e.g. Recently Played, Favorites, New Releases) */
+            <div className="w-full flex flex-col gap-3">
+              <span className="font-jost font-black text-[16px] tracking-wide uppercase text-white">
+                {activeCategory} ({visibleGames.length})
+              </span>
+              {visibleGames.length > 0 ? (
+                <div className="grid grid-cols-3 gap-x-2 gap-y-3 pb-6">
+                  {visibleGames.map((game) => (
+                    <div
+                      key={game.id}
+                      onClick={() => {
+                        router.push(`/game/${game.id}`);
+                        onClose();
+                      }}
+                      className="w-full aspect-[121.6/160] max-w-[121.6px] mx-auto relative cursor-pointer active:scale-95 transition-transform"
+                    >
+                      <div
+                        className="absolute inset-0 bg-[#CDCDCD]"
+                        style={{
+                          backgroundImage: `url(${game.image})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          borderRadius: '9.6px',
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                  <span className="font-jost font-extrabold text-[16px] text-white">No games in this category</span>
+                  <span className="font-sans text-[12px] text-[#A5B8EF] mt-1">Check back later!</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>
