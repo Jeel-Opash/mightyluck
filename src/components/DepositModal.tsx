@@ -165,20 +165,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
   // Country Flags
   const USFlag = () => (
-    <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-[1px] shrink-0">
-      <rect width="18" height="12" fill="#B22234" />
-      <path d="M0 1H18M0 3H18M0 5H18M0 7H18M0 9H18M0 11H18" stroke="#FFFFFF" strokeWidth="1" />
-      <rect width="9" height="7" fill="#3C3B6E" />
-      <circle cx="1.5" cy="1.5" r="0.4" fill="white" />
-      <circle cx="3.5" cy="1.5" r="0.4" fill="white" />
-      <circle cx="5.5" cy="1.5" r="0.4" fill="white" />
-      <circle cx="1.5" cy="3.5" r="0.4" fill="white" />
-      <circle cx="3.5" cy="3.5" r="0.4" fill="white" />
-      <circle cx="5.5" cy="3.5" r="0.4" fill="white" />
-      <circle cx="1.5" cy="5.5" r="0.4" fill="white" />
-      <circle cx="3.5" cy="5.5" r="0.4" fill="white" />
-      <circle cx="5.5" cy="5.5" r="0.4" fill="white" />
-    </svg>
+    <img src="/images/america.svg" className="w-[18px] h-[12px] object-contain rounded-[1px] shrink-0" alt="US" />
   );
 
   const CanadaFlag = () => (
@@ -230,40 +217,36 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
     switch (iconType) {
       case 'gift':
         return (
-          <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 12V22H4V12M2 8H22V12H2V8ZM12 2C11.5 2 9.5 4 9.5 6.5C9.5 9 12 9.5 12 9.5C12 9.5 14.5 9 14.5 6.5C14.5 4 12.5 2 12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <img src="/images/bonus-icon.svg" className={`${className} object-contain`} alt="Reload Bonus" />
         );
       case 'star':
         return (
-          <svg className={className} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 0L9.5 3.5L13 2L11.5 5.5L15 5L12.5 7.5L15 10L11.5 9.5L13 13L9.5 11.5L8 15L6.5 11.5L3 13L4.5 9.5L1 10L3.5 7.5L1 5L4.5 5.5L3 2L6.5 3.5L8 0Z" fill="currentColor" />
-          </svg>
+          <img src="/games/deposite-cashback/350.svg" className={`${className} object-contain`} alt="Welcome Bonus" />
         );
       case 'coin':
         return (
-          <svg className={className} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="2" />
-            <circle cx="8" cy="8" r="3" fill="currentColor" />
-          </svg>
+          <img src="/games/deposite-cashback/500.svg" className={`${className} object-contain`} alt="Crypto Bonus" />
         );
       case 'slash':
         return (
-          <svg className={className} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="2" />
-            <line x1="3" y1="13" x2="13" y2="3" stroke="currentColor" strokeWidth="2" />
-          </svg>
+          <img src="/games/deposite-cashback/i.svg" className={`${className} object-contain`} alt="No Bonus" />
         );
       default:
         return null;
     }
   };
 
-    if (!isOpen) return null;
+  const getSelectedBonusIcon = () => {
+    if (selectedBonus.includes('150%')) return 'gift';
+    if (selectedBonus.includes('350%')) return 'star';
+    if (selectedBonus.includes('500%')) return 'coin';
+    return 'slash';
+  };
+
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-0 sm:p-4">
-      {/* Placeholder colour for promo input — #7795E8, Manrope 600 14px */}
       <style>{`
         .promo-input::placeholder {
           font-family: 'Manrope', sans-serif;
@@ -275,20 +258,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           opacity: 1;
         }
       `}</style>
-      {/* Background click listener */}
       <div className="absolute inset-0" onClick={onClose} />
 
-      {/* ──────────────────────────────────────────────────────── */}
-      {/* MOBILE CONTAINER (visible on mobile, hidden on sm+) */}
-      {/* ──────────────────────────────────────────────────────── */}
       <div className="sm:hidden relative w-full h-full bg-[#0C1F56] overflow-hidden flex flex-col items-center gap-0 border border-white/10 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-200">
         
-        {/* Crest Glowing Aura behind Logo (Ellipse 6) */}
         <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[32px] bg-[#1463FF] rounded-full filter blur-[12.5px] pointer-events-none z-0" />
 
-        {/* Top Header Bar (Figma specified: height 50px, background: #0C1F56) */}
         <div className="w-full h-[50px] flex flex-row justify-between items-center px-[20px] bg-[#0C1F56] shrink-0 z-10 relative select-none">
-          {/* Logo on Left */}
           <div className="flex flex-row items-center gap-[10px] w-auto h-[30px] shrink-0 relative">
             <svg width="34" height="25" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
               <defs>
@@ -304,9 +280,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             </svg>
           </div>
 
-          {/* Right Section: Balance, Plus button, Notifications, Gift, Avatar */}
           <div className="flex flex-row items-center gap-[16px] h-[30px] shrink-0">
-            {/* Balance Pill */}
             <div className="flex flex-row justify-center items-center px-[20px] h-[30px] bg-[#112F82] rounded-[6px] shrink-0">
               <span className="font-manrope font-bold text-[10.5px] leading-[14px] tracking-[0.02em] text-white">
                 ${user ? user.balance.toLocaleString('en-US', { minimumFractionDigits: 2 }) : '105,98'}
@@ -397,35 +371,27 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             })}
           </div>
 
-          {/* Scrollable Fields Content Container (Figma specified: background: #0C1F56, border-radius: 16px, height: 396px) */}
           <div className="flex-1 w-full bg-[#0C1F56] rounded-[16px] p-[16px] gap-[16px] flex flex-col z-10 overflow-y-auto scrollbar-none min-h-[250px] sm:h-[396px]">
             {depositConfirmed ? (
-              /* ── Deposit Pending Confirmation Screen ── */
               <div className="flex flex-col items-center justify-center w-full h-full gap-[20px] text-center select-none py-4">
-                {/* Top message */}
                 <p className="font-sans font-semibold text-[14px] leading-[22px] tracking-[0.01em] text-white max-w-[320px]">
                   Your transaction in progress and pending confirmation from the blockchain.
                 </p>
 
-                {/* Crown icons row – using the Mighty Luck logo shape, white-coloured */}
                 <div className="flex flex-row items-center justify-center gap-[24px] my-[8px]">
-                  {/* Crown 1 – white */}
                   <svg width="52" height="38" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
                   </svg>
 
-                  {/* Crown 2 – white */}
                   <svg width="52" height="38" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
                   </svg>
 
-                  {/* Crown 3 – white at 35% opacity (pending) */}
                   <svg width="52" height="38" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" style={{opacity: 0.35}}>
                     <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
                   </svg>
                 </div>
 
-                {/* Bottom confirmation message */}
                 <p className="font-sans font-medium text-[13px] leading-[21px] tracking-[0.01em] text-white max-w-[320px]">
                   1 confirmation is required for deposits to be credited.{' '}
                   <br className="hidden sm:block" />
@@ -1447,25 +1413,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               }}
             >
               {/* Wallet Icon Frame (20px x 20px) */}
-              <div style={{ width: '20px', height: '20px', position: 'relative' }}>
-                <svg 
-                  width="20" 
-                  height="18" 
-                  viewBox="0 0 20 18" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{
-                    position: 'absolute',
-                    width: '20px',
-                    height: '17.96px',
-                    left: 'calc(50% - 20px/2)',
-                    top: 'calc(50% - 17.96px/2 + 0.23px)',
-                    background: '#FFC83D',
-                  }}
-                  className="rounded-[2px]"
-                >
-                  {/* Yellow wallet background */}
-                </svg>
+              <div style={{ width: '20px', height: '20px', position: 'relative' }} className="flex items-center justify-center shrink-0">
+                <img src="/games/wallet.svg" alt="Wallet" style={{ width: '20px', height: '18px', objectFit: 'contain' }} />
               </div>
 
               {/* Wallet Text */}
@@ -1687,8 +1636,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           height: '19px',
                         }}
                       >
-                        <div className="w-[16px] h-[16px] relative text-[#FFC83D] flex items-center justify-center shrink-0">
-                          {renderBonusIcon('gift', 'w-[16px] h-[16px]')}
+                        <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0">
+                          {renderBonusIcon(getSelectedBonusIcon(), 'w-[16px] h-[16px]')}
                         </div>
                         <span 
                           style={{
@@ -1842,8 +1791,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       >
                         {selectedPayment === 'Bitcoin' ? (
                           <>
-                            <div style={{ width: '16px', height: '16px', position: 'relative' }} className="shrink-0">
-                              <BitcoinCircleIcon />
+                            <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0">
+                              <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain" alt="Bitcoin" />
                             </div>
                             <div 
                               style={{
@@ -1891,7 +1840,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         ) : (
                           <>
                             <div className="flex flex-row items-center gap-[4px] shrink-0">
-                              <VisaIcon />
+                              <img src="/images/visa.svg" className="w-[24px] h-[15px] object-contain" alt="Visa" />
                               <MastercardIcon />
                             </div>
                             <div className="flex flex-row items-center gap-[8px]">
@@ -1949,7 +1898,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         >
                           <div className="flex flex-row items-center gap-[8px]">
                             <div className="flex flex-row items-center gap-[4px]">
-                              <VisaIcon />
+                              <img src="/images/visa.svg" className="w-[24px] h-[15px] object-contain" alt="Visa" />
                               <MastercardIcon />
                             </div>
                             <span>Credit Card (Min. $30 - Max. $2500)</span>
@@ -1964,7 +1913,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
                         >
                           <div className="flex flex-row items-center gap-[8px]">
-                            <BitcoinCircleIcon />
+                            <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain" alt="Bitcoin" />
                             <span>Bitcoin (Min. $10)</span>
                           </div>
                         </div>
@@ -1988,23 +1937,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         }}
                         className="shrink-0"
                       >
-                        <div style={{ width: '12px', height: '12px', position: 'relative' }} className="shrink-0">
-                          <svg 
-                            width="12" 
-                            height="12" 
-                            viewBox="0 0 12 12" 
-                            fill="none" 
-                            xmlns="http://www.w3.org/2000/svg"
-                            style={{
-                              position: 'absolute',
-                              width: '12px',
-                              height: '12px',
-                              left: '0px',
-                              top: '0px',
-                              background: '#7795E8',
-                            }}
-                            className="rounded-full"
-                          />
+                        <div className="shrink-0 flex items-center justify-center pt-[2px]">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="7" cy="7" r="6" stroke="#7795E8" strokeWidth="1.5"/>
+                            <path d="M7 4V4.5" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
+                            <path d="M7 6V10" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
+                          </svg>
                         </div>
 
                         <span 
@@ -2081,7 +2019,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             }}
                             className="flex-grow border border-white/5"
                           >
-                            <DollarCircleIcon />
+                            <img src="/images/doller.svg" className="w-5 h-5 object-contain shrink-0" alt="USD" />
                             <input 
                               type="number"
                               value={usdAmount}
@@ -2152,7 +2090,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             }}
                             className="flex-grow border border-white/5"
                           >
-                            <BitcoinCircleIcon />
+                            <img src="/images/bitcoin.svg" className="w-5 h-5 object-contain shrink-0" alt="BTC" />
                             <input 
                               type="number"
                               value={btcAmount}
@@ -2192,7 +2130,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       >
                         <span 
                           style={{
-                            width: '135px',
+                            width: '100%',
                             height: '16px',
                             fontFamily: "'Manrope', sans-serif",
                             fontStyle: 'normal',
@@ -2223,7 +2161,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         >
                           <span 
                             style={{
-                              width: '290px',
+                              flex: 1,
                               height: '19px',
                               fontFamily: "'Manrope', sans-serif",
                               fontStyle: 'normal',
@@ -2232,8 +2170,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               lineHeight: '19px',
                               letterSpacing: '0.02em',
                               color: '#7795E8',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              whiteSpace: 'nowrap',
                             }}
-                            className="truncate select-all"
+                            className="select-all"
                           >
                             {btcAddress}
                           </span>
@@ -2261,9 +2202,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   Copied!
                                 </span>
                               )}
-                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 5H6C4.89543 5 4 5.89543 4 7V19C4 20.1046 4.89543 21 6 21H16C17.1046 21 18 20.1046 18 19V17M16 3H10C8.89543 3 8 3.89543 8 5V15C8 16.1046 8.89543 17 10 17H16C17.1046 17 18 16.1046 18 15V5C18 3.89543 17.1046 3 16 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
+                              <img src="/images/paste.png" className="w-[16px] h-[16px] object-contain" alt="Copy" />
                             </button>
 
                             {/* QR button */}
@@ -2272,9 +2211,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               style={{ width: '16px', height: '16px', position: 'relative', border: 'none', background: 'transparent', padding: '0px', cursor: 'pointer' }}
                               className="text-[#BBCAF3] hover:text-white flex items-center justify-center"
                             >
-                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 11H9V3H3V11ZM5 5H7V9H5V5ZM3 21H9V13H3V21ZM5 15H7V19H5V15ZM13 3V11H19V3H13ZM15 5H17V9H15V5ZM13 13H15V15H13V13ZM15 15H17V17H15V15ZM13 17H15V19H13V17ZM15 19H17V21H15V19ZM17 13H19V15H17V13ZM17 17H19V21H17V17Z" fill="currentColor"/>
-                              </svg>
+                              <img src="/images/scan.png" className="w-[16px] h-[16px] object-contain" alt="Scan" />
                             </button>
                           </div>
                         </div>
