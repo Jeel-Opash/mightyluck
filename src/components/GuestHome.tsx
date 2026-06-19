@@ -551,33 +551,31 @@ export default function GuestHome() {
             </section>
 
             {/* WHY JOIN MIGHTY LUCK? SECTION */}
-            <section className="flex flex-col gap-[28px] w-full h-auto select-none mt-4">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] w-auto h-[30px]">
-                  <div className="flex items-center justify-center w-[30px] h-[30px]">
-                    <img src="/games/game-icons/why.svg" alt="Why Join" className="w-[30px] h-[30px]" />
+            <section className="game-section-container mt-4">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/why.svg" alt="Why Join" />
                   </div>
-                  <h2 className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] text-white uppercase select-none">
-                    WHY JOIN MIGHTY LUCK?
-                  </h2>
+                  <h2 className="game-section-title">WHY JOIN MIGHTY LUCK?</h2>
                 </div>
               </div>
 
-              <div className="flex flex-row items-center gap-[12px] w-full">
+              <div className="flex flex-row items-center gap-[12px] w-full overflow-x-auto scrollbar-none snap-x snap-mandatory">
                 <img
                   src="/games/join/clock.png"
                   alt="Fast Withdrawals"
-                  className="flex-1 min-w-0 h-[220px] rounded-[12px] object-cover"
+                  className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0"
                 />
                 <img
                   src="/games/join/trophy.png"
                   alt="Big Winners Welcome"
-                  className="flex-1 min-w-0 h-[220px] rounded-[12px] object-cover"
+                  className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0"
                 />
                 <img
                   src="/games/join/10.png"
                   alt="Weekly 10% Cashback"
-                  className="flex-1 min-w-0 h-[220px] rounded-[12px] object-cover"
+                  className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0"
                 />
               </div>
             </section>

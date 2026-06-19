@@ -439,31 +439,25 @@ export default function UserHome() {
             </nav>
 
             {/* SLOTS SECTION */}
-            <section className="flex flex-col gap-[16px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/slot.svg" alt="Slots" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/slot.svg" alt="Slots" />
                   </div>
-                  <h2
-                    style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em' }}
-                    className="text-white uppercase select-none"
-                  >
-                    SLOTS (1,487)
-                  </h2>
+                  <h2 className="game-section-title">SLOTS (1,487)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[20px] w-[133px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(slotsRef, 'left')}
                       disabled={!canScrollSlotsLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -472,8 +466,7 @@ export default function UserHome() {
                     <button
                       onClick={() => scrollCarousel(slotsRef, 'right')}
                       disabled={!canScrollSlotsRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -518,31 +511,25 @@ export default function UserHome() {
             </section>
 
             {/* ORIGINALS SECTION */}
-            <section className="flex flex-col gap-[16px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/originals.svg" alt="Originals" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/originals.svg" alt="Originals" />
                   </div>
-                  <h2
-                    style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em' }}
-                    className="text-white uppercase select-none"
-                  >
-                    ORIGINALS (14)
-                  </h2>
+                  <h2 className="game-section-title">ORIGINALS (14)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[20px] w-[133px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(originalsRef, 'left')}
                       disabled={!canScrollOriginalsLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -551,8 +538,7 @@ export default function UserHome() {
                     <button
                       onClick={() => scrollCarousel(originalsRef, 'right')}
                       disabled={!canScrollOriginalsRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -726,31 +712,25 @@ export default function UserHome() {
 
 
             {/* CRASH GAMES SECTION */}
-            <section className="flex flex-col gap-[16px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/crash.svg" alt="Crash Games" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/crash.svg" alt="Crash Games" />
                   </div>
-                  <h2
-                    style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em' }}
-                    className="text-white uppercase select-none"
-                  >
-                    CRASH GAMES (723)
-                  </h2>
+                  <h2 className="game-section-title">CRASH GAMES (723)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[125px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(crashRef, 'left')}
                       disabled={!canScrollCrashLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -759,8 +739,7 @@ export default function UserHome() {
                     <button
                       onClick={() => scrollCarousel(crashRef, 'right')}
                       disabled={!canScrollCrashRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -820,31 +799,25 @@ export default function UserHome() {
             </section>
 
             {/* GAME PROVIDERS SECTION */}
-            <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/game.svg" alt="Game Providers" />
                   </div>
-                  <h2
-                    style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em' }}
-                    className="text-white uppercase select-none"
-                  >
-                    GAME PROVIDERS (34)
-                  </h2>
+                  <h2 className="game-section-title">GAME PROVIDERS (34)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[125px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(providersRef, 'left')}
                       disabled={!canScrollProvidersLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -853,8 +826,7 @@ export default function UserHome() {
                     <button
                       onClick={() => scrollCarousel(providersRef, 'right')}
                       disabled={!canScrollProvidersRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -893,31 +865,25 @@ export default function UserHome() {
             </section>
 
             {/* TABLE GAMES SECTION */}
-            <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/table.svg" alt="Table Games" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/table.svg" alt="Table Games" />
                   </div>
-                  <h2
-                    style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em' }}
-                    className="text-white uppercase select-none"
-                  >
-                    TABLE GAMES (51)
-                  </h2>
+                  <h2 className="game-section-title">TABLE GAMES (51)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[124px] h-[30px]">
-                  <span className="font-sans font-medium text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(tableRef, 'left')}
                       disabled={!canScrollTableLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -926,8 +892,7 @@ export default function UserHome() {
                     <button
                       onClick={() => scrollCarousel(tableRef, 'right')}
                       disabled={!canScrollTableRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -987,31 +952,25 @@ export default function UserHome() {
             </section>
 
             {/* BONUS BUYS SECTION */}
-            <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" />
                   </div>
-                  <h2
-                    style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em' }}
-                    className="text-white uppercase select-none"
-                  >
-                    BONUS BUYS (145)
-                  </h2>
+                  <h2 className="game-section-title">BONUS BUYS (145)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[125px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(bonusRef, 'left')}
                       disabled={!canScrollBonusLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -1020,8 +979,7 @@ export default function UserHome() {
                     <button
                       onClick={() => scrollCarousel(bonusRef, 'right')}
                       disabled={!canScrollBonusRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -1081,31 +1039,25 @@ export default function UserHome() {
             </section>
 
             {/* COLLECTIONS SECTION */}
-            <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] h-[30px]">
-                  <div className="flex items-center justify-center w-[29.89px] h-[30px]">
-                    <img src="/games/game-icons/collections.svg" alt="Collections" className="w-[29.89px] h-[30px] object-contain" />
+            <section className="game-section-container">
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/collections.svg" alt="Collections" />
                   </div>
-                  <h2
-                    style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em' }}
-                    className="text-white uppercase select-none"
-                  >
-                    COLLECTIONS (17)
-                  </h2>
+                  <h2 className="game-section-title">COLLECTIONS (17)</h2>
                 </div>
 
-                <div className="flex flex-row items-center gap-[12px] w-[125px] h-[30px]">
-                  <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none">
+                <div className="game-section-actions-wrapper">
+                  <span className="game-section-view-all">
                     View all
                   </span>
 
-                  <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                  <div className="game-section-nav">
                     <button
                       onClick={() => scrollCarousel(collectionsRef, 'left')}
                       disabled={!canScrollCollectionsLeft}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -1114,8 +1066,7 @@ export default function UserHome() {
                     <button
                       onClick={() => scrollCarousel(collectionsRef, 'right')}
                       disabled={!canScrollCollectionsRight}
-                      style={{ background: '#112F82' }}
-                      className="w-[30px] h-[30px] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-40 opacity-100 hover:opacity-100 hover:bg-[#1463FF] text-white"
+                      className="game-section-btn"
                     >
                       <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

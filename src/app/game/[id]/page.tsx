@@ -110,7 +110,7 @@ export default function GamePage() {
 
               {/* Game window */}
               <div
-                className="relative w-full h-[657px] rounded-[16px] overflow-hidden"
+                className="relative w-full h-[220px] xs:h-[280px] sm:h-[380px] md:h-[480px] lg:h-[657px] rounded-[16px] overflow-hidden"
                 style={{
                   backgroundImage: "url('/game-1.png')",
                   backgroundSize: 'cover',
@@ -120,33 +120,33 @@ export default function GamePage() {
               />
 
               {/* Info / Control Bar */}
-              <div className="flex flex-row justify-between items-center w-full max-w-[1136px] h-[100px] bg-[#0C1F56] rounded-[16px] py-[12px] px-[30px] gap-[12px]">
+              <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-[1136px] min-h-[80px] sm:h-[100px] bg-[#0C1F56] rounded-[16px] py-[16px] sm:py-[12px] px-[20px] sm:px-[30px] gap-4 sm:gap-[12px]">
 
                 {/* Left: provider logo + separator line + title */}
-                <div className="flex flex-row items-center gap-[32px] w-[295px] h-[40px]">
+                <div className="flex flex-row items-center gap-4 sm:gap-[32px] w-full sm:w-auto h-[40px] justify-start">
                   {/* Provider Logo */}
                   <div className="w-[80px] h-[40px] flex items-center justify-center shrink-0">
                     <img
                       src="/games/providers/g2.png"
                       alt="Provider logo"
-                      className="w-[1136px] h-[777px] object-contain"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                   {/* Vertical Separator Line */}
                   <div className="w-[1px] h-[33px] bg-white/60 shrink-0" />
                   {/* Game Title */}
-                  <div className="flex flex-row justify-center items-center shrink-0 w-[151px] h-[29px]">
-                    <span className="font-jost font-bold text-[20px] leading-[29px] text-white text-center truncate">
+                  <div className="flex flex-row justify-start items-center shrink-0 w-auto max-w-[150px] h-[29px]">
+                    <span className="font-jost font-bold text-[18px] sm:text-[20px] leading-[29px] text-white truncate">
                       {game.title}
                     </span>
                   </div>
                 </div>
 
                 {/* Right Actions: expand, like, and switch */}
-                <div className="flex flex-row justify-end items-center gap-[40px] w-[265px] h-[24px]">
+                <div className="flex flex-row justify-between sm:justify-end items-center gap-6 sm:gap-[40px] w-full sm:w-auto h-[24px]">
 
                   {/* Expand and Like icons */}
-                  <div className="flex flex-row items-center gap-[24px] w-[64px] h-[20px]">
+                  <div className="flex flex-row items-center gap-[24px] w-auto h-[20px]">
                     <button className="w-[20px] h-[20px] bg-transparent border-none outline-none cursor-pointer flex items-center justify-center hover:scale-110 transition-transform">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.0885417 0.458333C0.145833 0.328125 0.255208 0.192708 0.364583 0.125L0.546875 0.00520833L6.09375 0L6.29167 0.119792C6.41667 0.197917 6.51562 0.317708 6.57812 0.458333C6.625 0.578125 6.66667 0.755208 6.66667 0.84375C6.66667 0.9375 6.61979 1.11458 6.5625 1.23438C6.48438 1.40104 6.40104 1.48438 6.23958 1.5625C6.03125 1.65625 5.90104 1.66667 2.83854 1.66667L5.14062 3.96875C7.0625 5.89583 7.44792 6.30729 7.47396 6.45833C7.49479 6.55729 7.49479 6.72917 7.47917 6.83333C7.45833 6.96875 7.38021 7.09896 7.23958 7.23958C7.09896 7.38021 6.96875 7.45833 6.83854 7.47917C6.72917 7.49479 6.55729 7.49479 6.45833 7.47396C6.30729 7.44792 5.89583 7.0625 1.66667 2.83854V4.42708C1.66667 5.90104 1.65625 6.03125 1.5625 6.23437C1.48438 6.40104 1.40104 6.48438 1.23958 6.5625C1.11458 6.61979 0.932292 6.66667 0.833333 6.66667C0.734375 6.66667 0.552083 6.61979 0.432292 6.5625C0.270833 6.48958 0.177083 6.39583 0.104167 6.25C0.00520833 6.05208 0 5.9375 0 3.35938C0 0.921875 0.0104167 0.65625 0.0885417 0.458333Z" fill="white" />
@@ -173,7 +173,7 @@ export default function GamePage() {
                   </div>
 
                   {/* Fun / Real Play Switch */}
-                  <div className="flex flex-row items-center gap-[8px] w-[161px] h-[24px]">
+                  <div className="flex flex-row items-center gap-[8px] w-auto h-[24px]">
                     <span className="font-manrope font-semibold text-[12px] leading-[16px] text-[#A5B8EF] tracking-[0.02em] whitespace-nowrap select-none">
                       Fun Play
                     </span>
@@ -199,58 +199,52 @@ export default function GamePage() {
             </div>
           </div>
 
-          {/* Other games you might like */}
-          <div className="flex flex-col items-start p-0 gap-[20px] w-full max-w-[1136px]">
+          <div className="game-section-container w-full max-w-[1136px]">
 
-            {/* Header */}
-            <div className="flex flex-row justify-between items-center w-full h-[30px]">
+            <div className="game-section-header">
 
-              {/* Left Title block */}
-              <div className="flex flex-row items-center gap-[12px] w-[374px] h-[30px]">
-                <div className="w-[30px] h-[30px] flex items-center justify-center shrink-0">
-                  <svg width="30" height="30" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div className="game-section-title-wrapper">
+                <div className="game-section-icon">
+                  <svg viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                     <path
                       d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z"
                       fill="#FFBF1F"
                     />
                   </svg>
                 </div>
-                <h2 className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] text-white uppercase whitespace-nowrap">
+                <h2 className="game-section-title">
                   OTHER GAMES YOU MIGHT LIKE
                 </h2>
               </div>
 
-              {/* Right View all + navigation */}
-              <div className="flex flex-row items-center gap-[12px] w-[124px] h-[30px] shrink-0">
+              <div className="game-section-actions-wrapper">
                 <span
                   onClick={() => router.push('/')}
-                  className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors"
+                  className="game-section-view-all"
                 >
                   View all
                 </span>
 
                 {/* Navigation arrows */}
-                <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
+                <div className="game-section-nav">
                   {/* Left scroll */}
                   <button
                     onClick={() => { scrollRef.current?.scrollBy({ left: -480, behavior: 'smooth' }); setTimeout(checkScroll, 350); }}
                     disabled={!canScrollLeft}
-                    className={`w-[30px] h-[30px] rounded-[4px] bg-[#112F82] flex items-center justify-center border-none outline-none cursor-pointer transition-colors ${canScrollLeft ? 'opacity-100 hover:bg-[#1463FF]' : 'opacity-40'
-                      }`}
+                    className="game-section-btn"
                   >
                     <svg width="6" height="10" viewBox="0 0 6 10" fill="none">
-                      <path d="M5 9L1 5L5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                   {/* Right scroll */}
                   <button
                     onClick={() => { scrollRef.current?.scrollBy({ left: 480, behavior: 'smooth' }); setTimeout(checkScroll, 350); }}
                     disabled={!canScrollRight}
-                    className={`w-[30px] h-[30px] rounded-[4px] bg-[#112F82] flex items-center justify-center border-none outline-none cursor-pointer transition-colors ${canScrollRight ? 'opacity-100 hover:bg-[#1463FF]' : 'opacity-40'
-                      }`}
+                    className="game-section-btn"
                   >
                     <svg width="6" height="10" viewBox="0 0 6 10" fill="none">
-                      <path d="M1 9L5 5L1 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
                 </div>
