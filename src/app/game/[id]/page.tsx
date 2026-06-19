@@ -256,13 +256,13 @@ export default function GamePage() {
             <div
               ref={scrollRef}
               onScroll={checkScroll}
-              className="flex flex-row gap-[12px] overflow-x-auto scroll-smooth w-full h-[200px] [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] select-none"
+              className="game-cards-slider scrollbar-none"
             >
               {otherGames.map((g) => (
                 <div
                   key={g.id}
                   onClick={() => router.push(`/game/${g.id}`)}
-                  className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#0C1F56] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                  className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#0C1F56] cursor-pointer group transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] game-card"
                 >
                   <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"

@@ -839,22 +839,22 @@ export default function UserHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={providersRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[100px] select-none md:flex-row mobile-providers-grid"
+                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[76px] md:h-[110px] select-none mobile-providers-grid"
                 >
                   {providerList.map((provider) => (
                     <div
                       key={provider.id}
-                      className="w-[152px] h-[100px] flex-none rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-col justify-center items-center p-[12px] gap-[8px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
+                      className="w-[88px] h-[60px] md:w-[152px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-col justify-center items-center py-[7.2px] px-[14.4px] md:p-[12px] gap-[4.8px] md:gap-[8px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
                     >
-                      <div className="w-[80px] h-[40px] flex items-center justify-center">
+                      <div className="w-full h-[24px] md:w-[80px] md:h-[40px] flex items-center justify-center">
                         <img
                           src={provider.logo}
                           alt={provider.name}
                           className="max-w-full max-h-full object-contain filter brightness-100 transition-all duration-300"
                         />
                       </div>
-                      <div className="flex flex-row justify-center items-center w-[104px] h-[14px]">
-                        <span className="font-sans font-semibold text-[10px] leading-[14px] text-center text-[#FFC83D]">
+                      <div className="flex flex-row justify-center items-center w-full h-[10px] md:h-[14px]">
+                        <span className="font-sans font-semibold text-[8px] md:text-[10px] leading-[10px] md:leading-[14px] text-center text-[#FFC83D] whitespace-nowrap">
                           {provider.gamesCount} Games
                         </span>
                       </div>
