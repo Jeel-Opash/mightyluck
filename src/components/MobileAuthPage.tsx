@@ -179,6 +179,14 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
         {/* Inner wrapper: gap=32 */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: 0, gap: '32px', width: '100%' }}>
 
+          {/* Logo */}
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', width: '100%', gap: '8px', marginBottom: '-10px' }}>
+            <img src="/images/logo.svg" style={{ width: '24.48px', height: '18px', objectFit: 'contain' }} alt="Mighty Luck" />
+            <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 900, fontSize: '18px', lineHeight: '24px', letterSpacing: '0.02em', color: '#FFFFFF' }}>
+              MIGHTY <span style={{ color: '#FFC83D' }}>LUCK</span>
+            </span>
+          </div>
+
           {/* Fields + disclaimer  gap=16 */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: 0, gap: '16px', width: '100%' }}>
 

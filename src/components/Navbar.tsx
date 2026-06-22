@@ -29,10 +29,13 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[60] w-full h-[50px] md:h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate shrink-0">
-      <div className="w-full max-w-[1440px] mx-auto h-full flex flex-row justify-between items-center px-[20px] md:px-[24px] gap-2 md:gap-[50px]">
+      {/* Ellipse 6: Glow behind the logo */}
+      <div className="absolute w-[143px] h-[143px] left-[114px] top-[37px] -translate-y-1/2 bg-[#1463FF]/35 rounded-full blur-[25px] pointer-events-none z-0 hidden md:block" />
+
+      <div className="w-full max-w-[1440px] mx-auto h-full flex flex-row justify-between items-center px-[20px] md:px-[24px] gap-4">
 
         {/* Left Section: Menu, Logo, Search */}
-        <div className="flex flex-row items-center gap-2 sm:gap-4 lg:gap-[51px] flex-1 h-[40px] z-10 order-1 relative">
+        <div className="flex flex-row items-center gap-2 sm:gap-4 md:gap-[51px] h-[40px] z-10 order-1 relative">
 
           {/* Menu Toggler - Hidden on mobile responsive per user request */}
           <button
@@ -44,25 +47,15 @@ export default function Navbar() {
           </button>
 
           {/* Horizontal logo */}
-          <div className="flex flex-row items-center gap-[10px] cursor-pointer w-auto h-[30px] md:h-[34.66px] shrink-0 relative">
-            {/* Ellipse 6: Glow behind the crown logo & text */}
-            <div className="absolute w-[60px] sm:w-[140px] h-[25px] sm:h-[35px] left-[50%] -translate-x-[50%] top-[65%] -translate-y-[50%] bg-[#1463FF]/75 rounded-full filter blur-[10px] sm:filter blur-[15px] pointer-events-none z-0" />
+          <div className="flex flex-row items-center gap-[10px] cursor-pointer w-auto md:w-[190px] h-[30px] md:h-[34.66px] shrink-0 relative">
+            {/* Dedicated crown glow for mobile when the main desktop Ellipse 6 is hidden */}
+            <div className="absolute w-[45px] h-[45px] left-[17px] top-[12.5px] -translate-x-1/2 -translate-y-1/2 bg-[#1463FF]/55 rounded-full blur-[10px] pointer-events-none z-0 md:hidden" />
 
-            {/* Custom SVG Crown with Lightning Cutout (34px x 25px) */}
-            <svg width="34" height="25" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 z-10 relative">
-              <defs>
-                <linearGradient id="crown-gradient" x1="4.07382" y1="12.3753" x2="29.4186" y2="12.3753" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#FFD85A" />
-                  <stop offset="1" stopColor="#FFB800" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z"
-                fill="url(#crown-gradient)"
-              />
-            </svg>
+            {/* Logo Crown image from public/images/logo.svg */}
+            <img src="/images/logo.svg" className="w-[34px] h-[25px] object-contain shrink-0 relative z-10" alt="Mighty Luck" />
+
             {/* Logo Text - Hidden on mobile per user request */}
-            <span className="hidden sm:inline font-jost font-black text-white tracking-[0.02em] text-[20px] leading-[26px] z-10 relative">
+            <span className="hidden sm:inline font-jost font-black text-white tracking-[0.02em] text-[19px] leading-[26px] z-10 relative">
               MIGHTY <span className="text-[#FFC83D]">LUCK</span>
             </span>
           </div>
@@ -70,17 +63,17 @@ export default function Navbar() {
           {/* Figma: Search Frame (Forms background #112F82, width 280px, height 40px) */}
           <div className="hidden sm:flex flex-row items-center gap-[10px] w-full max-w-[280px] h-[40px] bg-[#112F82] px-[20px] py-[10px] rounded-lg border border-white/5 focus-within:border-brand-accent/40 focus-within:bg-[#153896] transition-all duration-200 shrink-0">
             {/* Search Icon */}
-            <svg width="16" height="15.99" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white shrink-0">
+            <svg width="16" height="15.99" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#BBCAF3] shrink-0">
               <path
                 d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
-                stroke="#BBCAF3"
+                stroke="currentColor"
                 strokeWidth="1.71429"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
               <path
                 d="M14 14L11.1 11.1"
-                stroke="#BBCAF3"
+                stroke="currentColor"
                 strokeWidth="1.71429"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -104,23 +97,23 @@ export default function Navbar() {
 
           {isAuthenticated && user ? (
             /* Logged-in UI */
-            <div className="flex flex-row justify-end items-center p-0 gap-[4px] md:gap-[8px] w-auto h-[30px] md:h-[40px] z-10">
+            <div className="flex flex-row justify-end items-center p-0 gap-[4px] md:gap-[16px] h-[30px] md:h-[40px] z-10">
               {/* Dollar Container & Deposit Container Wrapper */}
-              <div className="flex flex-row items-center p-0 gap-[4px] w-auto h-[30px] md:h-[40px]">
+              <div className="flex flex-row items-center p-0 gap-[4px] h-[30px] md:h-[40px]">
                 {/* Dollar Container - always visible */}
-                <div className="flex flex-row justify-center items-center px-[8px] py-[6px] md:px-[12px] md:py-[10px] gap-[10px] w-auto h-[30px] md:h-[40px] bg-[#112F82] rounded-[6px] md:rounded-[8px] box-border">
+                <div className="flex flex-row justify-center items-center px-[8px] py-[6px] md:px-[12px] md:py-[10px] lg:px-[30px] lg:py-[10px] gap-[10px] w-auto lg:w-[116px] h-[30px] md:h-[40px] bg-[#112F82] rounded-[6px] md:rounded-[8px] box-border">
                   <span className="font-manrope font-bold text-[12px] md:text-[14px] leading-[16px] md:leading-[19px] tracking-[0.02em] text-white whitespace-nowrap">
                     ${user.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
 
-                {/* Deposit Button - icon only on mobile, icon+text on sm+ */}
+                {/* Deposit Button - icon only on mobile, icon+text on md+ */}
                 <button
                   onClick={() => dispatch(openDepositModal())}
-                  className="flex flex-row justify-center items-center p-0 w-[30px] h-[30px] md:w-auto md:px-[12px] md:py-[10px] gap-[8px] h-[30px] md:h-[40px] bg-[#FFC83D] rounded-[6px] md:rounded-[8px] border-none cursor-pointer box-border hover:bg-[#ffd362] active:scale-95 transition-all duration-200"
+                  className="flex flex-row justify-center items-center p-0 w-[30px] h-[30px] md:w-auto md:px-[12px] md:py-[10px] lg:w-[110px] lg:h-[40px] lg:px-[16px] lg:py-[10px] gap-[8px] bg-[#FFC83D] rounded-[6px] md:rounded-[8px] border-none cursor-pointer box-border hover:bg-[#ffd362] active:scale-95 transition-all duration-200 shrink-0"
                 >
-                  <div className="w-[16px] h-[15px] flex shrink-0 items-center justify-center">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div className="w-[16px] h-[16px] flex shrink-0 items-center justify-center relative">
+                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute w-[16px] h-[14.37px]">
                       <path d="M14 3.5H2C1.45 3.5 1 3.95 1 4.5V12.5C1 13.05 1.45 13.5 2 13.5H14C14.55 13.5 15 13.05 15 12.5V4.5C15 3.95 14.55 3.5 14 3.5Z" stroke="#1A1404" strokeWidth="1.5" strokeLinejoin="round" />
                       <path d="M12 1.5H3C2.45 1.5 2 1.95 2 2.5H14C14 1.95 13.55 1.5 12 1.5Z" stroke="#1A1404" strokeWidth="1.5" strokeLinejoin="round" />
                       <circle cx="12" cy="8.5" r="1.5" fill="#1A1404" />
@@ -133,11 +126,11 @@ export default function Navbar() {
               </div>
 
               {/* Notification & Gift Buttons wrapper */}
-              <div className="flex flex-row items-center p-0 gap-[4px] md:gap-[8px] w-auto h-[30px] md:h-[40px]">
+              <div className="flex flex-row items-center p-0 gap-[4px] md:gap-[8px] h-[30px] md:h-[40px]">
                 {/* Notification Button */}
-                <button className="flex flex-row justify-center items-center w-[30px] h-[30px] md:w-[40px] md:h-[40px] p-0 bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer box-border hover:bg-[#2051db] transition-colors">
+                <button className="flex flex-row justify-center items-center w-[30px] h-[30px] md:w-[40px] md:h-[40px] p-0 bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer box-border hover:bg-[#2051db] transition-colors shrink-0">
                   <div className="w-[16px] h-[16px] relative flex items-center justify-center">
-                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[13.74px] h-[16px]">
                       <path d="M7 16C7.9 16 8.62 15.28 8.62 14.38H5.38C5.38 15.28 6.1 16 7 16ZM12.27 11.12V7C12.27 4.87 11.13 3.09 9.14 2.62V2.12C9.14 1.5 8.64 1 8.02 1H5.98C5.36 1 4.86 1.5 4.86 2.12V2.62C2.86 3.09 1.73 4.86 1.73 7V11.12L0.1 12.75C-0.23 13.08 0 13.62 0.47 13.62H13.53C14 13.62 14.23 13.08 13.9 12.75L12.27 11.12Z" fill="#D2DCF7" />
                     </svg>
                   </div>
@@ -146,7 +139,7 @@ export default function Navbar() {
                 </button>
 
                 {/* Gift Button */}
-                <button className="flex flex-row justify-center items-center w-[30px] h-[30px] md:w-[40px] md:h-[40px] p-0 bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer box-border hover:bg-[#2051db] transition-colors">
+                <button className="flex flex-row justify-center items-center w-[30px] h-[30px] md:w-[40px] md:h-[40px] p-0 bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer box-border hover:bg-[#2051db] transition-colors shrink-0">
                   <div className="w-[16px] h-[16px] relative flex items-center justify-center">
                     <img src="/images/bonus-icon.svg" className="w-[16px] h-[16px] object-contain" alt="Gift" />
                   </div>
@@ -156,7 +149,7 @@ export default function Navbar() {
               </div>
 
               {/* Profile Avatar Dropdown */}
-              <div className="relative w-[30px] h-[30px] md:w-[40px] md:h-[40px]">
+              <div className="relative w-[30px] h-[30px] md:w-[40px] md:h-[40px] shrink-0">
                 <button
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                   className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] rounded-full border-none cursor-pointer p-0 bg-none overflow-hidden flex items-center justify-center"

@@ -9,6 +9,7 @@ export default function Sidebar() {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const sidebarOpen = useAppSelector((state) => state.ui.sidebarOpen);
+  const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
   const [casinoExpanded, setCasinoExpanded] = useState(true);
 
   return (
@@ -87,21 +88,25 @@ export default function Sidebar() {
               </div>
             </button>
 
-            {/* Recently Played */}
-            <button className="flex items-center justify-between w-[200px] h-[44px] bg-[#112F82] hover:bg-[#153896] px-[10px] rounded-[8px] transition-colors cursor-pointer text-left focus:outline-none shrink-0 group">
-              <div className="flex items-center gap-[12px] w-[160px] h-[20px]">
-                <img src="/games/side-icon/recent.svg" className="w-[20px] h-[20px] object-contain opacity-90 group-hover:opacity-100" alt="Recently Played" />
-                <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7] group-hover:text-white transition-colors">Recently Played</span>
-              </div>
-            </button>
+            {isAuthenticated && (
+              <>
+                {/* Recently Played */}
+                <button className="flex items-center justify-between w-[200px] h-[44px] bg-[#112F82] hover:bg-[#153896] px-[10px] rounded-[8px] transition-colors cursor-pointer text-left focus:outline-none shrink-0 group">
+                  <div className="flex items-center gap-[12px] w-[160px] h-[20px]">
+                    <img src="/games/side-icon/recent.svg" className="w-[20px] h-[20px] object-contain opacity-90 group-hover:opacity-100" alt="Recently Played" />
+                    <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7] group-hover:text-white transition-colors">Recently Played</span>
+                  </div>
+                </button>
 
-            {/* Favorite Games */}
-            <button className="flex items-center justify-between w-[200px] h-[44px] bg-[#112F82] hover:bg-[#153896] px-[10px] rounded-[8px] transition-colors cursor-pointer text-left focus:outline-none shrink-0 group">
-              <div className="flex items-center gap-[12px] w-[160px] h-[20px]">
-                <img src="/games/side-icon/like.svg" className="w-[20px] h-[20px] object-contain opacity-90 group-hover:opacity-100" alt="Favorite Games" />
-                <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7] group-hover:text-white transition-colors">Favorite Games</span>
-              </div>
-            </button>
+                {/* Favorite Games */}
+                <button className="flex items-center justify-between w-[200px] h-[44px] bg-[#112F82] hover:bg-[#153896] px-[10px] rounded-[8px] transition-colors cursor-pointer text-left focus:outline-none shrink-0 group">
+                  <div className="flex items-center gap-[12px] w-[160px] h-[20px]">
+                    <img src="/games/side-icon/like.svg" className="w-[20px] h-[20px] object-contain opacity-90 group-hover:opacity-100" alt="Favorite Games" />
+                    <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#D2DCF7] group-hover:text-white transition-colors">Favorite Games</span>
+                  </div>
+                </button>
+              </>
+            )}
 
             {/* Casino Accordion */}
             <div
@@ -193,6 +198,26 @@ export default function Sidebar() {
                 <span className="font-manrope font-semibold text-[16px] leading-[22px] tracking-[0.02em] text-[#D2DCF7] group-hover:text-white transition-colors">Tournaments</span>
               </div>
             </button>
+
+            {isAuthenticated && (
+              <>
+                {/* Recently Played */}
+                <button onClick={() => { dispatch(toggleSidebar()); }} className="flex items-center justify-between w-full h-[50px] bg-[#112F82] hover:bg-[#153896] px-[10px] rounded-[8px] transition-colors cursor-pointer text-left focus:outline-none shrink-0 group">
+                  <div className="flex items-center gap-[12px] w-[160px] h-[22px]">
+                    <img src="/games/side-icon/recent.svg" className="w-[20px] h-[20px] object-contain opacity-90 group-hover:opacity-100" alt="Recently Played" />
+                    <span className="font-manrope font-semibold text-[16px] leading-[22px] tracking-[0.02em] text-[#D2DCF7] group-hover:text-white transition-colors">Recently Played</span>
+                  </div>
+                </button>
+
+                {/* Favorite Games */}
+                <button onClick={() => { dispatch(toggleSidebar()); }} className="flex items-center justify-between w-full h-[50px] bg-[#112F82] hover:bg-[#153896] px-[10px] rounded-[8px] transition-colors cursor-pointer text-left focus:outline-none shrink-0 group">
+                  <div className="flex items-center gap-[12px] w-[160px] h-[22px]">
+                    <img src="/games/side-icon/like.svg" className="w-[20px] h-[20px] object-contain opacity-90 group-hover:opacity-100" alt="Favorite Games" />
+                    <span className="font-manrope font-semibold text-[16px] leading-[22px] tracking-[0.02em] text-[#D2DCF7] group-hover:text-white transition-colors">Favorite Games</span>
+                  </div>
+                </button>
+              </>
+            )}
 
             {/* Casino Accordion Container */}
             <div

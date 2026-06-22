@@ -117,11 +117,8 @@ export default function AuthModal() {
             {/* Logo */}
             <div className="flex items-center justify-center w-full">
               <div className="flex items-center gap-1.5">
-                <svg width="20" height="15" viewBox="0 0 34 25" fill="none">
-                  <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198Z" fill="url(#cg)" />
-                  <defs><linearGradient id="cg" x1="4" y1="12" x2="30" y2="12" gradientUnits="userSpaceOnUse"><stop stopColor="#FFD85A" /><stop offset="1" stopColor="#FFB800" /></linearGradient></defs>
-                </svg>
-                <span className="font-sans font-black text-white text-sm tracking-[0.02em]">MIGHTY <span className="text-[#FFC83D]">LUCK</span></span>
+                <img src="/images/logo.svg" className="w-[20.4px] h-[15px] object-contain" alt="Mighty Luck Logo" />
+                <span className="font-jost font-black text-white text-sm tracking-[0.02em]">MIGHTY <span className="text-[#FFC83D]">LUCK</span></span>
               </div>
             </div>
 
