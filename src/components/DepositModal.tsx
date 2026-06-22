@@ -416,6 +416,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             ) : activeTab === 'deposit' ? (
               <>
                 {/* 1. Select a Bonus */}
+                {/* mobile deposit tab */}
                 <div className="flex flex-col items-start gap-[8px] w-full relative shrink-0" ref={bonusDropdownRef}>
                   <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                     1.Select a Bonus
@@ -930,7 +931,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   </div>
                 )}
               </>
-            )}
+            ) : null}
 
             {activeTab === 'bonuses' && (
               <div className="flex flex-col gap-[16px] w-full h-full select-none shrink-0">
@@ -1438,7 +1439,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               height: '29px',
             }}
             className="relative"
-          >
+          > 
             {/* Wallet Group (94px x 29px) */}
             <div
               style={{
@@ -2508,7 +2509,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     </div>
                   )}
                 </>
-              )}
+              ) : null}
 
               {activeTab === 'bonuses' && (
                 <div
