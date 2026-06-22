@@ -313,12 +313,12 @@ export default function GuestHome() {
               <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
               <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
 
-              <div className="absolute w-[80%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
-                <div className="flex flex-col gap-[4px] w-full">
-                  <span className="font-jost font-medium text-[11px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
+              <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
+                <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
+                  <span className="font-jost font-medium text-[12px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
                     Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
                   </span>
-                  <span className="font-jost font-black text-[18px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
+                  <span className="font-jost font-black text-[20px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
                     250% WELCOME<br />BONUS!
                   </span>
                 </div>
@@ -326,14 +326,14 @@ export default function GuestHome() {
                 {/* Join Now Button */}
                 <button
                   onClick={() => dispatch(openAuthModal('join'))}
-                  className="w-[110px] h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-lg flex items-center justify-center font-sans font-bold text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
+                  className="w-[96px] h-[32px] md:w-[110px] md:h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[12px] md:text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
                 >
                   Join Now
                 </button>
               </div>
 
               {/* Carousel Dots indicator */}
-              <div className="absolute bottom-[20px] left-1/2 transform -translate-x-1/2 flex gap-[8px] z-10">
+              <div className="absolute bottom-[12px] md:bottom-[20px] left-1/2 transform -translate-x-1/2 flex gap-[8px] z-10">
                 <span className="w-[12px] h-[6px] bg-white rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />

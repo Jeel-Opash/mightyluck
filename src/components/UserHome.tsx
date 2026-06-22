@@ -322,27 +322,25 @@ export default function UserHome() {
               <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
               <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
 
-              <div className="absolute w-[80%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
-                <div className="flex flex-col gap-[4px] w-full">
-                  <span className="font-jost font-medium text-[11px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
+              <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
+                <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
+                  <span className="font-jost font-medium text-[12px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
                     Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
                   </span>
-                  <span className="font-jost font-black text-[18px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
+                  <span className="font-jost font-black text-[20px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
                     250% WELCOME<br />BONUS!
                   </span>
                 </div>
 
-                {/* Deposit Now Button */}
                 <button
                   onClick={() => dispatch(openDepositModal())}
-                  className="w-[120px] h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-lg flex items-center justify-center font-sans font-bold text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
+                  className="w-[108px] h-[32px] md:w-[120px] md:h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[12px] md:text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
                 >
                   Deposit Now
                 </button>
               </div>
 
-              {/* Carousel Dots indicator */}
-              <div className="absolute bottom-[20px] left-1/2 transform -translate-x-1/2 flex gap-[8px] z-10">
+              <div className="absolute bottom-[12px] md:bottom-[20px] left-1/2 transform -translate-x-1/2 flex gap-[8px] z-10">
                 <span className="w-[12px] h-[6px] bg-white rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
@@ -351,16 +349,15 @@ export default function UserHome() {
 
 
 
-            {/* CATEGORY NAVIGATION — Figma: h=40, radius=6, padding=8px 12.8px, gap=6.4px, fill width */}
             <nav className="w-full flex flex-row items-center overflow-x-auto scrollbar-none select-none shrink-0" style={{ gap: '8px' }}>
               {[
-                { id: 'lobby',       name: 'Lobby',      icon: '/games/game-icons/lobby.png',       ref: null },
-                { id: 'slots',       name: 'Slots',      icon: '/games/game-icons/slot.svg',        ref: slotsRef },
-                { id: 'originals',   name: 'Originals',  icon: '/games/game-icons/originals.svg',   ref: originalsRef },
-                { id: 'crash',       name: 'Crash Games',      icon: '/games/game-icons/crash.svg',       ref: crashRef },
-                { id: 'providers',   name: 'Providers',  icon: '/games/game-icons/game.svg',        ref: providersRef },
-                { id: 'table',       name: 'Table Games',      icon: '/games/game-icons/table.svg',       ref: tableRef },
-                { id: 'bonus',       name: 'Bonus Buys',      icon: '/games/game-icons/bonus.svg',       ref: bonusRef },
+                { id: 'lobby', name: 'Lobby', icon: '/games/game-icons/lobby.png', ref: null },
+                { id: 'slots', name: 'Slots', icon: '/games/game-icons/slot.svg', ref: slotsRef },
+                { id: 'originals', name: 'Originals', icon: '/games/game-icons/originals.svg', ref: originalsRef },
+                { id: 'crash', name: 'Crash Games', icon: '/games/game-icons/crash.svg', ref: crashRef },
+                { id: 'providers', name: 'Providers', icon: '/games/game-icons/game.svg', ref: providersRef },
+                { id: 'table', name: 'Table Games', icon: '/games/game-icons/table.svg', ref: tableRef },
+                { id: 'bonus', name: 'Bonus Buys', icon: '/games/game-icons/bonus.svg', ref: bonusRef },
                 { id: 'collections', name: 'Collection', icon: '/games/game-icons/collections.svg', ref: collectionsRef },
               ].map((cat) => {
                 const isActive = activeCategory === cat.id;
@@ -480,7 +477,7 @@ export default function UserHome() {
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
                         style={{ backgroundImage: `url(${game.image})` }}
                       />
-                                            <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                         <button
                           onClick={(e) => toggleFavorite(e, game.id)}
                           className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
@@ -552,7 +549,7 @@ export default function UserHome() {
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
                         style={{ backgroundImage: `url(${game.image})` }}
                       />
-                                            <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                         <button
                           onClick={(e) => toggleFavorite(e, game.id)}
                           className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
@@ -753,7 +750,7 @@ export default function UserHome() {
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
                         style={{ backgroundImage: `url(${game.image})` }}
                       />
-                                            <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                         <button
                           onClick={(e) => toggleFavorite(e, game.id)}
                           className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
@@ -906,7 +903,7 @@ export default function UserHome() {
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
                         style={{ backgroundImage: `url(${game.image})` }}
                       />
-                                            <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                         <button
                           onClick={(e) => toggleFavorite(e, game.id)}
                           className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
@@ -993,7 +990,7 @@ export default function UserHome() {
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
                         style={{ backgroundImage: `url(${game.image})` }}
                       />
-                                            <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                         <button
                           onClick={(e) => toggleFavorite(e, game.id)}
                           className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
@@ -1171,11 +1168,11 @@ export default function UserHome() {
           <img src="/mobile/sidebar/gift.png" alt="Offers" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Offers</span>
         </button>
-        <button onClick={() => {}} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
+        <button onClick={() => { }} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
           <img src="/mobile/sidebar/vip.png" alt="VIP" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">VIP</span>
         </button>
-        <button onClick={() => {}} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
+        <button onClick={() => { }} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
           <img src="/mobile/sidebar/trophy.png" alt="Tourneys" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Tourneys</span>
         </button>

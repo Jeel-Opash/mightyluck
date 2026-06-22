@@ -251,11 +251,7 @@ export default function Navbar() {
                   onClick={() => dispatch(openDepositModal())}
                   style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '8px', width: '30px', height: '30px', background: '#FFC83D', borderRadius: '6px', border: 'none', cursor: 'pointer', boxSizing: 'border-box' }}
                 >
-                  <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10.5 2.5H1.5C1.05 2.5 0.7 2.85 0.7 3.3V9.7C0.7 10.15 1.05 10.5 1.5 10.5H10.5C10.95 10.5 11.3 10.15 11.3 9.7V3.3C11.3 2.85 10.95 2.5 10.5 2.5Z" stroke="#1A1404" strokeWidth="1.2" strokeLinejoin="round" />
-                    <path d="M9 0.7H2.2C1.75 0.7 1.4 1.05 1.4 1.5H10.6C10.6 1.05 10.25 0.7 9 0.7Z" stroke="#1A1404" strokeWidth="1.2" strokeLinejoin="round" />
-                    <circle cx="9" cy="6.5" r="1.1" fill="#1A1404" />
-                  </svg>
+                  <img src="/mobile/navbar/wallet.svg" className="w-[12px] h-[12px] object-contain shrink-0" alt="Deposit" />
                 </button>
               </div>
 
@@ -264,20 +260,14 @@ export default function Navbar() {
                 
                 {/* Notification: 30px x 30px */}
                 <button className="flex flex-row justify-center items-center w-[30px] h-[30px] p-[7.5px_9px] bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer hover:bg-[#2051db] transition-colors shrink-0">
-                  <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.5 12C6.2 12 6.78 11.42 6.78 10.72H4.22C4.22 11.42 4.8 12 5.5 12ZM9.67 8.32V5.25C9.67 3.65 8.78 2.31 7.22 1.96V1.59C7.22 1.12 6.83 0.75 6.35 0.75H4.65C4.17 0.75 3.78 1.12 3.78 1.59V1.96C2.22 2.31 1.33 3.64 1.33 5.25V8.32L0.05 9.54C-0.2 9.79 0 10.2H10.95C11.2 10.2 11.38 9.79 11.13 9.54L9.67 8.32Z" fill="#D2DCF7" />
-                  </svg>
+                  <img src="/mobile/navbar/bell.png" className="w-[12px] h-[12px] object-contain shrink-0" alt="Notifications" />
                   {/* Red dot badge */}
                   <div className="absolute w-[8px] h-[8px] left-[22px] top-0 bg-[#FF0E0E] rounded-[50px]" />
                 </button>
 
                 {/* Gift: 30px x 30px */}
                 <button className="flex flex-row justify-center items-center w-[30px] h-[30px] p-[7.5px_9px] bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer hover:bg-[#2051db] transition-colors shrink-0">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.5 4.5H10.5V10.5C10.5 11 10 11.5 9.5 11.5H2.5C2 11.5 1.5 11 1.5 10.5V4.5Z" stroke="#D2DCF7" strokeWidth="1.2" />
-                    <path d="M0.5 2.5H11.5V4.5H0.5V2.5Z" fill="#D2DCF7" />
-                    <path d="M6 0.5C5 0.5 4.5 1.5 6 2.5C7.5 1.5 7 0.5 6 0.5Z" fill="#D2DCF7" />
-                  </svg>
+                  <img src="/mobile/navbar/gift.png" className="w-[12px] h-[12px] object-contain shrink-0" alt="Gift" />
                   {/* Red dot badge */}
                   <div className="absolute w-[8px] h-[8px] left-[22px] top-0 bg-[#FF0E0E] rounded-[50px]" />
                 </button>
