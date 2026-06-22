@@ -15,7 +15,7 @@ const YellowWalletIcon = () => (
 const DollarCircleIcon = () => (
   <div className="w-5 h-5 rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0 shadow-sm">
     <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 1V9M2 2.5H5.5C6.328 2.5 7 3.172 7 4C7 4.828 6.328 5.5 5.5 5.5H2.5C1.672 5.5 1 6.172 1 7C1 7.828 1.672 8.5 2.5 8.5H6" stroke="#1A1404" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M4 1V9M2 2.5H5.5C6.328 2.5 7 3.172 7 4C7 4.828 6.328 5.5 5.5 5.5H2.5C1.672 5.5 1 6.172 1 7C1 7.828 1.672 8.5 2.5 8.5H6" stroke="#1A1404" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </div>
 );
@@ -23,15 +23,15 @@ const DollarCircleIcon = () => (
 const BitcoinCircleIcon = () => (
   <div className="w-5 h-5 rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0 shadow-sm">
     <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3.5 2.5H5.5C6.052 2.5 6.5 2.948 6.5 3.5C6.5 4.052 6.052 4.5 5.5 4.5M3.5 4.5H6C6.552 4.5 7 4.948 7 5.5C7 6.052 6.552 6.5 6 6.5H3.5M3.5 1.5V8.5M5 1.5V2.5M5 7.5V8.5M2.5 2.5H3.5M2.5 6.5H3.5" stroke="#1A1404" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M3.5 2.5H5.5C6.052 2.5 6.5 2.948 6.5 3.5C6.5 4.052 6.052 4.5 5.5 4.5M3.5 4.5H6C6.552 4.5 7 4.948 7 5.5C7 6.052 6.552 6.5 6 6.5H3.5M3.5 1.5V8.5M5 1.5V2.5M5 7.5V8.5M2.5 2.5H3.5M2.5 6.5H3.5" stroke="#1A1404" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </div>
 );
 
 const SwapIcon = () => (
   <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
-    <path d="M1 4H14.5M14.5 4L11 1M14.5 4L11 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M17 10H3.5M3.5 10L7 7M3.5 10L7 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M1 4H14.5M14.5 4L11 1M14.5 4L11 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M17 10H3.5M3.5 10L7 7M3.5 10L7 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -45,14 +45,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   const [activeTab, setActiveTab] = useState<'deposit' | 'bonuses' | 'withdraw' | 'transactions'>('deposit');
   const [selectedBonus, setSelectedBonus] = useState('150% Reload Bonus + 30 Free Spins');
   const [isBonusDropdownOpen, setIsBonusDropdownOpen] = useState(false);
-  
+
   const [selectedPayment, setSelectedPayment] = useState<'Bitcoin' | 'Credit Card'>('Bitcoin');
   const [isPaymentDropdownOpen, setIsPaymentDropdownOpen] = useState(false);
-  
+
   const [usdAmount, setUsdAmount] = useState('100');
   const [btcAmount, setBtcAmount] = useState('0.00954');
   const [isUsdPrimary, setIsUsdPrimary] = useState(true);
-  
+
   const [copied, setCopied] = useState(false);
   const [showQrCode, setShowQrCode] = useState(false);
   const [depositConfirmed, setDepositConfirmed] = useState(false);
@@ -165,25 +165,29 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
   // Country Flags
   const USFlag = () => (
-    <img src="/images/america.svg" className="w-[18px] h-[12px] object-contain rounded-[1px] shrink-0" alt="US" />
+    <img src="/images/america.svg" className="w-[20px] h-[20px] object-cover rounded-full shrink-0" alt="US" />
   );
 
   const CanadaFlag = () => (
-    <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-[1px] shrink-0">
-      <rect width="18" height="12" fill="#D80621" />
-      <rect x="4.5" width="9" height="12" fill="#FFFFFF" />
-      <path d="M9 3L10 5.5L12 5L10.5 7L11 9.5L9 8L7 9.5L7.5 7L6 5L8 5.5L9 3Z" fill="#D80621" />
-    </svg>
+    <div className="w-[20px] h-[20px] rounded-full overflow-hidden shrink-0 flex items-center justify-center">
+      <svg width="20" height="20" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
+        <rect width="18" height="12" fill="#D80621" />
+        <rect x="4.5" width="9" height="12" fill="#FFFFFF" />
+        <path d="M9 3L10 5.5L12 5L10.5 7L11 9.5L9 8L7 9.5L7.5 7L6 5L8 5.5L9 3Z" fill="#D80621" />
+      </svg>
+    </div>
   );
 
   const UKFlag = () => (
-    <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="rounded-[1px] shrink-0">
-      <rect width="18" height="12" fill="#012169" />
-      <path d="M0 0L18 12M18 0L0 12" stroke="#FFFFFF" strokeWidth="2" />
-      <path d="M0 0L18 12M18 0L0 12" stroke="#C8102E" strokeWidth="1" />
-      <path d="M9 0V12M0 6H18" stroke="#FFFFFF" strokeWidth="3" />
-      <path d="M9 0V12M0 6H18" stroke="#C8102E" strokeWidth="2" />
-    </svg>
+    <div className="w-[20px] h-[20px] rounded-full overflow-hidden shrink-0 flex items-center justify-center">
+      <svg width="20" height="20" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
+        <rect width="18" height="12" fill="#012169" />
+        <path d="M0 0L18 12M18 0L0 12" stroke="#FFFFFF" strokeWidth="2" />
+        <path d="M0 0L18 12M18 0L0 12" stroke="#C8102E" strokeWidth="1" />
+        <path d="M9 0V12M0 6H18" stroke="#FFFFFF" strokeWidth="3" />
+        <path d="M9 0V12M0 6H18" stroke="#C8102E" strokeWidth="2" />
+      </svg>
+    </div>
   );
 
   const bonusOptions = [
@@ -217,7 +221,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
     switch (iconType) {
       case 'gift':
         return (
-          <img src="/images/bonus-icon.svg" className={`${className} object-contain`} alt="Reload Bonus" />
+          <img src="/games/deposite-cashback/150.svg" className={`${className} object-contain`} alt="Reload Bonus" />
         );
       case 'star':
         return (
@@ -261,7 +265,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
       <div className="absolute inset-0" onClick={onClose} />
 
       <div className="sm:hidden relative w-full h-full bg-[#0C1F56] overflow-hidden flex flex-col items-center gap-0 border border-white/10 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-200">
-        
+
         <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[32px] bg-[#1463FF] rounded-full filter blur-[12.5px] pointer-events-none z-0" />
 
         <div className="w-full h-[50px] flex flex-row justify-between items-center px-[20px] bg-[#0C1F56] shrink-0 z-10 relative select-none">
@@ -290,7 +294,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             {/* Plus Button */}
             <div className="w-[30px] h-[30px] bg-[#FFC83D] rounded-[6px] flex items-center justify-center shrink-0 shadow-sm cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 1V11M1 6H11" stroke="#1A1404" strokeWidth="2" strokeLinecap="round"/>
+                <path d="M6 1V11M1 6H11" stroke="#1A1404" strokeWidth="2" strokeLinecap="round" />
               </svg>
             </div>
 
@@ -318,12 +322,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
         {/* Main Wallet Panel (Figma specified: background: #091741, border-radius: 30px 30px 0px 0px) */}
         <div className="flex-1 w-full bg-[#091741] rounded-t-[30px] flex flex-col items-center p-[16px_20px_24px] gap-[16px] relative overflow-hidden select-none">
-          
+
           {/* Glowing Aura inside Modal Body (Ellipse 7) */}
           <div className="absolute w-[174px] h-[176px] left-[calc(50%-174px/2-165px)] top-[-125px] bg-[#1463FF] filter blur-[40px] pointer-events-none z-0" />
 
           {/* Drag handle/indicator (Rectangle 226) */}
-          <div 
+          <div
             onClick={onClose}
             className="w-[70px] h-[6px] bg-[#112F82] rounded-[100px] shrink-0 cursor-pointer z-10 hover:bg-[#1a44bb] transition-colors"
             title="Dismiss Wallet"
@@ -341,7 +345,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#A5B8EF] hover:text-white transition-all cursor-pointer border-none bg-transparent"
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
@@ -372,7 +376,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           </div>
 
           <div className="flex-1 w-full bg-[#0C1F56] rounded-[16px] p-[16px] gap-[16px] flex flex-col z-10 overflow-y-auto scrollbar-none min-h-[250px] sm:h-[396px]">
-            {depositConfirmed ? (
+            {activeTab === 'deposit' && depositConfirmed ? (
               <div className="flex flex-col items-center justify-center w-full h-full gap-[20px] text-center select-none py-4">
                 <p className="font-sans font-semibold text-[14px] leading-[22px] tracking-[0.01em] text-white max-w-[320px]">
                   Your transaction in progress and pending confirmation from the blockchain.
@@ -380,15 +384,15 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                 <div className="flex flex-row items-center justify-center gap-[24px] my-[8px]">
                   <svg width="52" height="38" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
+                    <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white" />
                   </svg>
 
                   <svg width="52" height="38" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
+                    <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white" />
                   </svg>
 
-                  <svg width="52" height="38" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" style={{opacity: 0.35}}>
-                    <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
+                  <svg width="52" height="38" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.35 }}>
+                    <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white" />
                   </svg>
                 </div>
 
@@ -399,25 +403,25 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   <br />
                   Please{' '}
                   <a
-                     href="https://www.blockchain.com/explorer"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="text-[#FFC83D] hover:text-[#ffd362] underline underline-offset-2 transition-colors font-semibold"
+                    href="https://www.blockchain.com/explorer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#FFC83D] hover:text-[#ffd362] underline underline-offset-2 transition-colors font-semibold"
                   >
                     click here
                   </a>
                   .
                 </p>
               </div>
-            ) : activeTab === 'deposit' && (
+            ) : activeTab === 'deposit' ? (
               <>
                 {/* 1. Select a Bonus */}
                 <div className="flex flex-col items-start gap-[8px] w-full relative shrink-0" ref={bonusDropdownRef}>
                   <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                     1.Select a Bonus
                   </span>
-                  
-                  <div 
+
+                  <div
                     onClick={() => setIsBonusDropdownOpen(!isBonusDropdownOpen)}
                     style={{
                       border: isBonusDropdownOpen ? '1px solid #1463FF' : '1px solid rgba(255,255,255,0.05)'
@@ -432,14 +436,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         {selectedBonus}
                       </span>
                     </div>
-                    <svg 
-                      width="10" 
-                      height="6" 
-                      viewBox="0 0 10 6" 
-                      fill="none" 
+                    <svg
+                      width="10"
+                      height="6"
+                      viewBox="0 0 10 6"
+                      fill="none"
                       className={`transform transition-transform duration-200 ${isBonusDropdownOpen ? 'rotate-180' : ''}`}
                     >
-                      <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
 
@@ -452,15 +456,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         {bonusOptions.map((opt) => {
                           const isSelected = selectedBonus === opt.title;
                           return (
-                            <div 
+                            <div
                               key={opt.id}
                               onClick={() => {
                                 setSelectedBonus(opt.title);
                                 setIsBonusDropdownOpen(false);
                               }}
-                              className={`flex flex-row items-center gap-[12px] px-[16px] py-[10px] cursor-pointer transition-colors ${
-                                isSelected ? 'bg-[#1463FF]' : 'hover:bg-[#112F82]'
-                              }`}
+                              className={`flex flex-row items-center gap-[12px] px-[16px] py-[10px] cursor-pointer transition-colors ${isSelected ? 'bg-[#112F82]' : 'hover:bg-[#1463FF]'
+                                }`}
                             >
                               <div className={`shrink-0 ${isSelected ? 'text-white' : 'text-[#A5B8EF]'}`}>
                                 {renderBonusIcon(opt.icon, 'w-[16px] h-[16px]')}
@@ -470,9 +473,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   {opt.title}
                                 </span>
                                 {opt.subtext && (
-                                  <span className={`font-sans font-semibold text-[10px] ${
-                                    isSelected ? 'text-white/80' : 'text-[#7795E8]'
-                                  }`}>
+                                  <span className={`font-sans font-semibold text-[10px] ${isSelected ? 'text-white/80' : 'text-[#7795E8]'
+                                    }`}>
                                     {opt.subtext}
                                   </span>
                                 )}
@@ -490,8 +492,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                     2.Select a payment method
                   </span>
-                  
-                  <div 
+
+                  <div
                     onClick={() => setIsPaymentDropdownOpen(!isPaymentDropdownOpen)}
                     className="flex flex-row items-center justify-between px-[16px] w-full h-[50px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
                   >
@@ -503,7 +505,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
                               Bitcoin
                             </span>
-                            <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
+                            <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#BBCAF3]">
                               (Min. Deposit $10)
                             </span>
                           </div>
@@ -518,28 +520,28 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
                               Credit Card
                             </span>
-                            <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
+                            <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#BBCAF3]">
                               (Min. $30 - Max. $2500)
                             </span>
                           </div>
                         </>
                       )}
                     </div>
-                    <svg 
-                      width="10" 
-                      height="6" 
-                      viewBox="0 0 10 6" 
-                      fill="none" 
+                    <svg
+                      width="10"
+                      height="6"
+                      viewBox="0 0 10 6"
+                      fill="none"
                       className={`transform transition-transform duration-200 ${isPaymentDropdownOpen ? 'rotate-180' : ''}`}
                     >
-                      <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
 
                   {isPaymentDropdownOpen && (
                     <div className="absolute top-[78px] left-0 right-0 bg-[#112F82] rounded-[8px] border border-white/10 shadow-xl z-50 overflow-hidden">
                       {/* Option 1: Credit Card */}
-                      <div 
+                      <div
                         onClick={() => {
                           setSelectedPayment('Credit Card');
                           setIsPaymentDropdownOpen(false);
@@ -554,9 +556,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           <span>Credit Card (Min. $30 - Max. $2500)</span>
                         </div>
                       </div>
-                      
+
                       {/* Option 2: Bitcoin */}
-                      <div 
+                      <div
                         onClick={() => {
                           setSelectedPayment('Bitcoin');
                           setIsPaymentDropdownOpen(false);
@@ -579,7 +581,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     <div className="flex flex-row items-start gap-[8px] w-full shrink-0">
                       <div className="w-[12px] h-[12px] mt-[2px] flex items-center justify-center shrink-0">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8"/>
+                          <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
                         </svg>
                       </div>
                       <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
@@ -592,11 +594,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                         3.Calculate the amount you want to deposit
                       </span>
-                      
+
                       <div className="flex flex-row justify-center items-center gap-[8px] w-full h-[50px]">
                         <div className="flex flex-row items-center px-[16px] gap-[12px] flex-grow h-full bg-[#112F82] rounded-[8px] border border-white/5">
                           <DollarCircleIcon />
-                          <input 
+                          <input
                             type="number"
                             value={usdAmount}
                             onChange={(e) => handleUsdChange(e.target.value)}
@@ -605,7 +607,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           />
                         </div>
 
-                        <button 
+                        <button
                           onClick={togglePrimaryCurrency}
                           className="w-[50px] h-[50px] bg-[#1463FF] hover:bg-[#2c75ff] rounded-[8px] flex items-center justify-center text-white shrink-0 active:scale-90 transition-transform cursor-pointer border-none bg-transparent"
                         >
@@ -614,7 +616,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                         <div className="flex flex-row items-center px-[16px] gap-[12px] flex-grow h-full bg-[#112F82] rounded-[8px] border border-white/5">
                           <BitcoinCircleIcon />
-                          <input 
+                          <input
                             type="number"
                             value={btcAmount}
                             onChange={(e) => handleBtcChange(e.target.value)}
@@ -630,14 +632,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                         4.BTC Deposit Address
                       </span>
-                      
+
                       <div className="flex flex-row items-center justify-between px-[16px] w-full h-[50px] bg-[#112F82] rounded-[8px] border border-white/5">
                         <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#7795E8] truncate max-w-[200px] sm:max-w-[250px] select-all">
                           {btcAddress}
                         </span>
-                        
+
                         <div className="flex flex-row items-center gap-[12px] shrink-0">
-                          <button 
+                          <button
                             onClick={copyAddress}
                             className="w-[16px] h-[16px] text-[#BBCAF3] hover:text-white transition-colors cursor-pointer relative border-none bg-transparent p-0 flex items-center justify-center"
                             title="Copy Address"
@@ -648,17 +650,17 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               </span>
                             ) : null}
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M8 5H6C4.89543 5 4 5.89543 4 7V19C4 20.1046 4.89543 21 6 21H16C17.1046 21 18 20.1046 18 19V17M16 3H10C8.89543 3 8 3.89543 8 5V15C8 16.1046 8.89543 17 10 17H16C17.1046 17 18 16.1046 18 15V5C18 3.89543 17.1046 3 16 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M8 5H6C4.89543 5 4 5.89543 4 7V19C4 20.1046 4.89543 21 6 21H16C17.1046 21 18 20.1046 18 19V17M16 3H10C8.89543 3 8 3.89543 8 5V15C8 16.1046 8.89543 17 10 17H16C17.1046 17 18 16.1046 18 15V5C18 3.89543 17.1046 3 16 3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </button>
 
-                          <button 
+                          <button
                             onClick={() => setShowQrCode(!showQrCode)}
                             className="w-[16px] h-[16px] text-[#BBCAF3] hover:text-white transition-colors cursor-pointer border-none bg-transparent p-0 flex items-center justify-center"
                             title="Show QR Code"
                           >
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M3 11H9V3H3V11ZM5 5H7V9H5V5ZM3 21H9V13H3V21ZM5 15H7V19H5V15ZM13 3V11H19V3H13ZM15 5H17V9H15V5ZM13 13H15V15H13V13ZM15 15H17V17H15V15ZM13 17H15V19H13V17ZM15 19H17V21H15V19ZM17 13H19V15H17V13ZM17 17H19V21H17V17Z" fill="currentColor"/>
+                              <path d="M3 11H9V3H3V11ZM5 5H7V9H5V5ZM3 21H9V13H3V21ZM5 15H7V19H5V15ZM13 3V11H19V3H13ZM15 5H17V9H15V5ZM13 13H15V15H13V13ZM15 15H17V17H15V15ZM13 17H15V19H13V17ZM15 19H17V21H15V19ZM17 13H19V15H17V13ZM17 17H19V21H17V17Z" fill="currentColor" />
                             </svg>
                           </button>
                         </div>
@@ -670,10 +672,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             {Array.from({ length: 144 }).map((_, i) => {
                               const isFilled = (i % 3 === 0 && i % 4 !== 0) || (i < 30 && i % 2 === 0) || (i > 110 && i % 5 === 0) || (i % 7 === 1);
                               return (
-                                <div 
-                                  key={i} 
+                                <div
+                                  key={i}
                                   style={{ background: isFilled ? '#091741' : '#FFFFFF' }}
-                                  className="w-[8px] h-[8px]" 
+                                  className="w-[8px] h-[8px]"
                                 />
                               );
                             })}
@@ -693,7 +695,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       <div className="flex flex-row items-start gap-[8px] w-full mt-[2px]">
                         <div className="w-[12px] h-[12px] mt-[2px] flex items-center justify-center shrink-0">
                           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8"/>
+                            <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
                           </svg>
                         </div>
                         <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
@@ -703,7 +705,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     </div>
 
                     {/* Street */}
-                    <input 
+                    <input
                       type="text"
                       value={street}
                       onChange={(e) => setStreet(e.target.value)}
@@ -713,14 +715,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                     {/* City & Postal Code */}
                     <div className="flex flex-row gap-[8px] w-full">
-                      <input 
+                      <input
                         type="text"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                         className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-white placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                         placeholder="City"
                       />
-                      <input 
+                      <input
                         type="text"
                         value={postalCode}
                         onChange={(e) => setPostalCode(e.target.value)}
@@ -731,37 +733,50 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                     {/* State & Country */}
                     <div className="flex flex-row gap-[8px] w-full relative">
-                      <input 
+                      <input
                         type="text"
                         value={state}
                         onChange={(e) => setState(e.target.value)}
                         className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-white placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                         placeholder="State"
                       />
-                      
+
                       {/* Country dropdown */}
                       <div className="flex-1 relative" ref={countryDropdownRef}>
-                        <div 
+                        <div
                           onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
                           className="flex flex-row items-center justify-between px-[16px] h-[50px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
                         >
-                          <div className="flex flex-row items-center gap-[8px] truncate">
+                          <div className="flex flex-row items-center gap-[10px] truncate">
                             {country === 'United States' && <USFlag />}
                             {country === 'Canada' && <CanadaFlag />}
                             {country === 'United Kingdom' && <UKFlag />}
-                            <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white truncate">
+                            <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-white truncate">
                               {country}
                             </span>
                           </div>
-                          <svg 
-                            width="10" 
-                            height="6" 
-                            viewBox="0 0 10 6" 
-                            fill="none" 
-                            className={`transform transition-transform duration-200 shrink-0 ${isCountryDropdownOpen ? 'rotate-180' : ''}`}
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: '14px',
+                              height: '14px',
+                            }}
+                            className="shrink-0"
                           >
-                            <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
+                            <div
+                              style={{
+                                width: '6px',
+                                height: '6px',
+                                borderLeft: '1.5px solid #A5B8EF',
+                                borderBottom: '1.5px solid #A5B8EF',
+                                transform: isCountryDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
+                                transition: 'transform 0.2s ease-in-out',
+                              }}
+                              className="shrink-0"
+                            />
+                          </div>
                         </div>
 
                         {isCountryDropdownOpen && (
@@ -771,13 +786,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               { name: 'Canada', flag: <CanadaFlag /> },
                               { name: 'United Kingdom', flag: <UKFlag /> }
                             ].map((c, idx) => (
-                              <div 
+                              <div
                                 key={idx}
                                 onClick={() => {
                                   setCountry(c.name);
                                   setIsCountryDropdownOpen(false);
                                 }}
-                                className="flex flex-row items-center gap-[8px] px-[16px] py-[10px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
+                                className="flex flex-row items-center gap-[8px] px-[16px] py-[10px] text-white font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] hover:bg-[#1463FF] cursor-pointer transition-colors"
                               >
                                 {c.flag}
                                 <span>{c.name}</span>
@@ -791,7 +806,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 ) : (
                   /* Credit Card Payment Details (Step 2) */
                   <div className="flex flex-col items-start gap-[12px] w-full shrink-0">
-                    
+
                     {/* Select an amount */}
                     <div className="flex flex-col items-start gap-[8px] w-full">
                       <div className="flex flex-row items-center justify-between w-full">
@@ -799,12 +814,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           Select an amount
                         </span>
                         {creditCardStep === 'payment' && (
-                          <button 
+                          <button
                             onClick={() => setCreditCardStep('address')}
                             className="font-sans font-semibold text-[10px] text-[#7795E8] hover:text-white transition-colors cursor-pointer flex items-center gap-1 border-none bg-transparent p-0"
                           >
                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M6 8L3 5L6 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M6 8L3 5L6 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             Edit Address
                           </button>
@@ -819,11 +834,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               key={amount}
                               type="button"
                               onClick={() => setCcAmountOption(amount as any)}
-                              className={`flex-1 h-full rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] transition-all cursor-pointer border-none ${
-                                isActive 
-                                  ? 'bg-[#1463FF] text-white' 
-                                  : 'bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e]'
-                              }`}
+                              className={`flex-1 h-full rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] transition-all cursor-pointer border-none ${isActive
+                                ? 'bg-[#1463FF] text-white'
+                                : 'bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e]'
+                                }`}
                             >
                               ${amount}
                             </button>
@@ -835,7 +849,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           {ccAmountOption === 'custom' ? (
                             <div className="flex flex-row items-center px-[12px] w-full h-full bg-[#112F82] border border-[#1463FF] rounded-[8px]">
                               <span className="font-sans font-bold text-[14px] text-white mr-1">$</span>
-                              <input 
+                              <input
                                 type="number"
                                 value={ccCustomAmount}
                                 onChange={(e) => setCcCustomAmount(e.target.value)}
@@ -864,7 +878,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       </span>
 
                       {/* Card Number Input */}
-                      <input 
+                      <input
                         type="text"
                         value={creditCardNumber}
                         onChange={(e) => {
@@ -878,7 +892,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                       {/* Exp. and CCV */}
                       <div className="flex flex-row gap-[8px] w-full">
-                        <input 
+                        <input
                           type="text"
                           value={creditCardExp}
                           onChange={(e) => {
@@ -892,7 +906,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-white placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                           placeholder="Exp. (MM/YY)"
                         />
-                        <input 
+                        <input
                           type="password"
                           value={creditCardCcv}
                           onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
@@ -906,7 +920,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     <div className="flex flex-row items-start gap-[8px] w-full mt-[2px]">
                       <div className="w-[12px] h-[12px] mt-[2px] flex items-center justify-center shrink-0">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8"/>
+                          <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
                         </svg>
                       </div>
                       <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
@@ -1281,9 +1295,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               </button>
               <div className="flex flex-row items-center gap-[6px]">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="7" cy="7" r="6" stroke="#A5B8EF" strokeWidth="1.5"/>
-                  <path d="M7 4V7.5" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round"/>
-                  <circle cx="7" cy="10" r="0.75" fill="#A5B8EF"/>
+                  <circle cx="7" cy="7" r="6" stroke="#A5B8EF" strokeWidth="1.5" />
+                  <path d="M7 4V7.5" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" />
+                  <circle cx="7" cy="10" r="0.75" fill="#A5B8EF" />
                 </svg>
                 <span className="font-sans font-medium text-[12px] leading-[16px] tracking-[0.01em] text-[#A5B8EF]">
                   Having problems?{' '}
@@ -1345,10 +1359,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
       {/* ──────────────────────────────────────────────────────── */}
       {/* DESKTOP CONTAINER (hidden on mobile, visible on sm+) */}
       {/* ──────────────────────────────────────────────────────── */}
-      <div 
+      <div
         style={{
           width: '500px',
-          height: '604px',
+          height: activeTab === 'bonuses' ? '518px' : (activeTab === 'deposit' && depositConfirmed ? '532px' : '604px'),
           padding: '24px 20px 32px',
           gap: '24px',
           background: '#091741',
@@ -1357,8 +1371,33 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         }}
         className="hidden sm:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
       >
+        {/* Close Button on the top-right outside the modal wrapper */}
+        <button
+          onClick={onClose}
+          style={{
+            position: 'absolute',
+            right: '-36px',
+            top: '0px',
+            width: '24px',
+            height: '24px',
+            border: 'none',
+            background: 'transparent',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0px',
+            zIndex: 100,
+          }}
+          className="text-white hover:text-white/80 transition-colors"
+          title="Close Modal"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
         {/* Glowing Aura inside Modal Body (Ellipse 7) */}
-        <div 
+        <div
           style={{
             position: 'absolute',
             width: '173px',
@@ -1369,14 +1408,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             filter: 'blur(40px)',
             zIndex: 0,
           }}
-          className="pointer-events-none" 
+          className="pointer-events-none"
         />
 
         {/* Inner layout frame (460px x 474px, order 1, z-index 1) */}
-        <div 
+        <div
           style={{
             width: '460px',
-            height: '474px',
+            height: activeTab === 'bonuses' ? '462px' : (activeTab === 'deposit' && depositConfirmed ? '386px' : '474px'),
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
@@ -1387,7 +1426,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           className="select-none"
         >
           {/* Title bar (460px x 29px, order 0) */}
-          <div 
+          <div
             style={{
               display: 'flex',
               flexDirection: 'row',
@@ -1401,7 +1440,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             className="relative"
           >
             {/* Wallet Group (94px x 29px) */}
-            <div 
+            <div
               style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -1418,7 +1457,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               </div>
 
               {/* Wallet Text */}
-              <span 
+              <span
                 style={{
                   width: '62px',
                   height: '29px',
@@ -1434,34 +1473,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 Wallet
               </span>
             </div>
-
-            {/* Dismiss X button absolute-positioned on right */}
-            <button
-              onClick={onClose}
-              style={{
-                position: 'absolute',
-                right: '0px',
-                top: '0px',
-                width: '29px',
-                height: '29px',
-                borderRadius: '50%',
-                background: 'rgba(255,255,255,0.05)',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              className="text-[#A5B8EF] hover:text-white hover:bg-white/10 transition-colors"
-            >
-              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
           </div>
 
           {/* Body Frame (460px x 421px, order 1) */}
-          <div 
+          <div
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -1469,11 +1484,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               padding: '0px',
               gap: '16px',
               width: '460px',
-              height: '421px',
+              height: activeTab === 'bonuses' ? '409px' : (activeTab === 'deposit' && depositConfirmed ? '333px' : '421px'),
             }}
           >
             {/* Tab Buttons (460px x 30px, order 0) */}
-            <div 
+            <div
               style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -1525,61 +1540,125 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             </div>
 
             {/* Content Container (460px x 375px, order 1, background: #0C1F56, border-radius: 16px) */}
-            <div 
+            <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                padding: '16px',
+                padding: activeTab === 'deposit' && depositConfirmed ? '20px 16px' : '16px',
                 gap: '16px',
                 width: '460px',
-                height: '375px',
+                height: activeTab === 'bonuses' ? '363px' : (activeTab === 'deposit' && depositConfirmed ? '287px' : '375px'),
                 background: '#0C1F56',
                 borderRadius: '16px',
                 boxSizing: 'border-box',
               }}
               className="overflow-y-auto scrollbar-none"
             >
-              {depositConfirmed ? (
+              {activeTab === 'deposit' && depositConfirmed ? (
                 /* Confirmed/Pending Screen */
-                <div className="flex flex-col items-center justify-center w-full h-full gap-[20px] text-center select-none py-2">
-                  <p className="font-sans font-semibold text-[14px] leading-[22px] tracking-[0.01em] text-white max-w-[320px]">
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    padding: '0px',
+                    gap: '16px',
+                    width: '428px',
+                    height: '247px',
+                  }}
+                  className="select-none"
+                >
+                  <p
+                    style={{
+                      width: '428px',
+                      height: '38px',
+                      fontFamily: "'Manrope', sans-serif",
+                      fontStyle: 'normal',
+                      fontWeight: 600,
+                      fontSize: '14px',
+                      lineHeight: '19px',
+                      textAlign: 'center',
+                      letterSpacing: '0.02em',
+                      color: '#A5B8EF',
+                    }}
+                    className="m-0"
+                  >
                     Your transaction in progress and pending confirmation from the blockchain.
                   </p>
 
-                  <div className="flex flex-row items-center justify-center gap-[24px] my-[4px]">
-                    <svg width="42" height="30" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
-                    </svg>
-                    <svg width="42" height="30" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
-                    </svg>
-                    <svg width="42" height="30" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.35 }}>
-                      <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="white"/>
-                    </svg>
+                  {/* Confirmation Indicators Row */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      padding: '0px',
+                      gap: '10px',
+                      width: '428px',
+                      height: '120px',
+                    }}
+                  >
+                    {/* Crown 1 */}
+                    <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg width="29" height="21" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#A5B8EF" />
+                      </svg>
+                    </div>
+
+                    {/* Crown 2 */}
+                    <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg width="29" height="21" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#A5B8EF" />
+                      </svg>
+                    </div>
+
+                    {/* Crown 3 */}
+                    <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg width="29" height="21" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#112F82" />
+                      </svg>
+                    </div>
                   </div>
 
-                  <p className="font-sans font-medium text-[12px] leading-[18px] tracking-[0.01em] text-white max-w-[320px]">
-                    1 confirmation is required for deposits to be credited.{' '}
-                    <br className="hidden sm:block" />
-                    Want to know how many confirmations this transaction has?{' '}
+                  {/* Text 2 */}
+                  <p
+                    style={{
+                      width: '428px',
+                      height: '57px',
+                      fontFamily: "'Manrope', sans-serif",
+                      fontStyle: 'normal',
+                      fontWeight: 600,
+                      fontSize: '14px',
+                      lineHeight: '19px',
+                      textAlign: 'center',
+                      letterSpacing: '0.02em',
+                      color: '#A5B8EF',
+                    }}
+                    className="m-0"
+                  >
+                    1 confirmation is required for deposits to be credited.
+                    <br />
+                    Want to know how many confirmations this transaction has?
                     <br />
                     Please{' '}
                     <a
                       href="https://www.blockchain.com/explorer"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[#FFC83D] hover:text-[#ffd362] underline underline-offset-2 transition-colors font-semibold"
+                      style={{ color: '#FFC83D', textDecoration: 'none' }}
+                      className="hover:underline font-bold"
                     >
                       click here
                     </a>
                     .
                   </p>
                 </div>
-              ) : activeTab === 'deposit' && (
+              ) : activeTab === 'deposit' ? (
                 <>
                   {/* 1. Select a Bonus */}
-                  <div 
+                  <div
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
@@ -1589,10 +1668,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       width: '428px',
                       height: '62px',
                     }}
-                    className="relative shrink-0" 
+                    className="relative shrink-0"
                     ref={bonusDropdownRef}
                   >
-                    <span 
+                    <span
                       style={{
                         width: '97px',
                         height: '16px',
@@ -1607,8 +1686,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     >
                       1.Select a Bonus
                     </span>
-                    
-                    <div 
+
+                    <div
                       onClick={() => setIsBonusDropdownOpen(!isBonusDropdownOpen)}
                       style={{
                         display: 'flex',
@@ -1625,7 +1704,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       }}
                       className="cursor-pointer hover:bg-[#153a9e] transition-all duration-150"
                     >
-                      <div 
+                      <div
                         style={{
                           display: 'flex',
                           flexDirection: 'row',
@@ -1639,15 +1718,15 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0">
                           {renderBonusIcon(getSelectedBonusIcon(), 'w-[16px] h-[16px]')}
                         </div>
-                        <span 
+                        <span
                           style={{
                             width: '245px',
-                            height: '19px',
+                            height: '16px',
                             fontFamily: "'Manrope', sans-serif",
                             fontStyle: 'normal',
                             fontWeight: 700,
-                            fontSize: '14px',
-                            lineHeight: '19px',
+                            fontSize: '12px',
+                            lineHeight: '16px',
                             letterSpacing: '0.02em',
                             color: '#FFFFFF',
                           }}
@@ -1656,39 +1735,34 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           {selectedBonus}
                         </span>
                       </div>
-                      
-                      <div 
+
+                      <div
                         style={{
                           display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'space-between',
                           alignItems: 'center',
-                          padding: '0px',
-                          gap: '11.67px',
+                          justifyContent: 'center',
                           width: '14px',
                           height: '14px',
                         }}
                         className="shrink-0"
                       >
-                        <div 
+                        <div
                           style={{
-                            margin: '0 auto',
-                            width: '7px',
-                            height: '3.5px',
-                            border: '1.5px solid #A5B8EF',
-                            borderTop: 'none',
-                            borderRight: 'none',
-                            transform: isBonusDropdownOpen ? 'rotate(135deg) translateY(-1px)' : 'rotate(-45deg)',
-                            transition: 'transform 0.2s',
+                            width: '6px',
+                            height: '6px',
+                            borderLeft: '1.5px solid #A5B8EF',
+                            borderBottom: '1.5px solid #A5B8EF',
+                            transform: isBonusDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
+                            transition: 'transform 0.2s ease-in-out',
                           }}
-                          className="shrink-0" 
+                          className="shrink-0"
                         />
                       </div>
                     </div>
 
                     {isBonusDropdownOpen && (
-                      <div 
-                        style={{ width: '428px', top: '68px' }} 
+                      <div
+                        style={{ width: '428px', top: '68px' }}
                         className="absolute left-0 bg-[#0C1F56] rounded-[8px] border-2 border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col"
                       >
                         <div className="px-[16px] py-[12px] border-b border-white/5 font-sans font-bold text-[12px] text-white bg-[#091741]">
@@ -1698,15 +1772,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           {bonusOptions.map((opt) => {
                             const isSelected = selectedBonus === opt.title;
                             return (
-                              <div 
+                              <div
                                 key={opt.id}
                                 onClick={() => {
                                   setSelectedBonus(opt.title);
                                   setIsBonusDropdownOpen(false);
                                 }}
-                                className={`flex flex-row items-center gap-[12px] px-[16px] py-[10px] cursor-pointer transition-colors ${
-                                  isSelected ? 'bg-[#1463FF]' : 'hover:bg-[#112F82]'
-                                }`}
+                                className={`flex flex-row items-center gap-[12px] px-[16px] py-[10px] cursor-pointer transition-colors ${isSelected ? 'bg-[#1463FF]' : 'hover:bg-[#112F82]'
+                                  }`}
                               >
                                 <div className={`shrink-0 ${isSelected ? 'text-white' : 'text-[#A5B8EF]'}`}>
                                   {renderBonusIcon(opt.icon, 'w-[16px] h-[16px]')}
@@ -1716,9 +1789,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                     {opt.title}
                                   </span>
                                   {opt.subtext && (
-                                    <span className={`font-sans font-semibold text-[10px] ${
-                                      isSelected ? 'text-white/80' : 'text-[#7795E8]'
-                                    }`}>
+                                    <span className={`font-sans font-semibold text-[10px] ${isSelected ? 'text-white/80' : 'text-[#7795E8]'
+                                      }`}>
                                       {opt.subtext}
                                     </span>
                                   )}
@@ -1732,7 +1804,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   </div>
 
                   {/* 2. Select a payment method */}
-                  <div 
+                  <div
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
@@ -1742,10 +1814,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       width: '428px',
                       height: '63px',
                     }}
-                    className="relative shrink-0" 
+                    className="relative shrink-0"
                     ref={paymentDropdownRef}
                   >
-                    <span 
+                    <span
                       style={{
                         width: '163px',
                         height: '16px',
@@ -1760,8 +1832,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     >
                       2.Select a payment method
                     </span>
-                    
-                    <div 
+
+                    <div
                       onClick={() => setIsPaymentDropdownOpen(!isPaymentDropdownOpen)}
                       style={{
                         display: 'flex',
@@ -1778,7 +1850,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       }}
                       className="cursor-pointer hover:bg-[#153a9e] transition-all duration-150"
                     >
-                      <div 
+                      <div
                         style={{
                           display: 'flex',
                           flexDirection: 'row',
@@ -1794,33 +1866,33 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0">
                               <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain" alt="Bitcoin" />
                             </div>
-                            <div 
+                            <div
                               style={{
                                 display: 'flex',
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 padding: '0px',
-                                gap: '8px',
+                                gap: '4px',
                                 width: '346px',
-                                height: '19px',
+                                height: '16px',
                               }}
                             >
-                              <span 
+                              <span
                                 style={{
-                                  width: '50px',
-                                  height: '19px',
+                                  width: '43px',
+                                  height: '16px',
                                   fontFamily: "'Manrope', sans-serif",
                                   fontStyle: 'normal',
                                   fontWeight: 700,
-                                  fontSize: '14px',
-                                  lineHeight: '19px',
+                                  fontSize: '12px',
+                                  lineHeight: '16px',
                                   letterSpacing: '0.02em',
                                   color: '#FFFFFF',
                                 }}
                               >
                                 Bitcoin
                               </span>
-                              <span 
+                              <span
                                 style={{
                                   width: '89px',
                                   height: '14px',
@@ -1830,7 +1902,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   fontSize: '10px',
                                   lineHeight: '14px',
                                   letterSpacing: '0.02em',
-                                  color: '#7795E8',
+                                  color: '#BBCAF3',
                                 }}
                               >
                                 (Min. Deposit $10)
@@ -1840,56 +1912,50 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         ) : (
                           <>
                             <div className="flex flex-row items-center gap-[4px] shrink-0">
-                              <img src="/images/visa.svg" className="w-[24px] h-[15px] object-contain" alt="Visa" />
-                              <MastercardIcon />
+                              <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain" alt="Visa" />
                             </div>
                             <div className="flex flex-row items-center gap-[8px]">
                               <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
                                 Credit Card
                               </span>
                               <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
-                                (Min. $30 - Max. $2500)
+                                (Min.Deposite $30 - Max.Deposite $2500)
                               </span>
                             </div>
                           </>
                         )}
                       </div>
 
-                      <div 
+                      <div
                         style={{
                           display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'space-between',
                           alignItems: 'center',
-                          padding: '0px',
-                          gap: '11.67px',
+                          justifyContent: 'center',
                           width: '14px',
                           height: '14px',
                         }}
                         className="shrink-0"
                       >
-                        <div 
+                        <div
                           style={{
-                            margin: '0 auto',
-                            width: '7px',
-                            height: '3.5px',
-                            border: '1.5px solid #A5B8EF',
-                            borderTop: 'none',
-                            borderRight: 'none',
-                            transform: isPaymentDropdownOpen ? 'rotate(135deg) translateY(-1px)' : 'rotate(-45deg)',
-                            transition: 'transform 0.2s',
+                            width: '6px',
+                            height: '6px',
+                            borderLeft: '1.5px solid #A5B8EF',
+                            borderBottom: '1.5px solid #A5B8EF',
+                            transform: isPaymentDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
+                            transition: 'transform 0.2s ease-in-out',
                           }}
-                          className="shrink-0" 
+                          className="shrink-0"
                         />
                       </div>
                     </div>
 
                     {isPaymentDropdownOpen && (
-                      <div 
-                        style={{ width: '428px', top: '68px' }} 
+                      <div
+                        style={{ width: '428px', top: '68px' }}
                         className="absolute left-0 bg-[#112F82] rounded-[8px] border border-white/10 shadow-xl z-50 overflow-hidden"
                       >
-                        <div 
+                        <div
                           onClick={() => {
                             setSelectedPayment('Credit Card');
                             setIsPaymentDropdownOpen(false);
@@ -1898,14 +1964,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         >
                           <div className="flex flex-row items-center gap-[8px]">
                             <div className="flex flex-row items-center gap-[4px]">
-                              <img src="/images/visa.svg" className="w-[24px] h-[15px] object-contain" alt="Visa" />
-                              <MastercardIcon />
+                              <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain" alt="Visa" />
                             </div>
                             <span>Credit Card (Min. $30 - Max. $2500)</span>
                           </div>
                         </div>
-                        
-                        <div 
+
+                        <div
                           onClick={() => {
                             setSelectedPayment('Bitcoin');
                             setIsPaymentDropdownOpen(false);
@@ -1925,7 +1990,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   {selectedPayment === 'Bitcoin' ? (
                     <>
                       {/* Warning message */}
-                      <div 
+                      <div
                         style={{
                           display: 'flex',
                           flexDirection: 'row',
@@ -1939,13 +2004,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       >
                         <div className="shrink-0 flex items-center justify-center pt-[2px]">
                           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="7" cy="7" r="6" stroke="#7795E8" strokeWidth="1.5"/>
-                            <path d="M7 4V4.5" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
-                            <path d="M7 6V10" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round"/>
+                            <circle cx="7" cy="7" r="6" stroke="#7795E8" strokeWidth="1.5" />
+                            <path d="M7 4V4.5" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" />
+                            <path d="M7 6V10" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" />
                           </svg>
                         </div>
 
-                        <span 
+                        <span
                           style={{
                             width: '408px',
                             height: '28px',
@@ -1963,7 +2028,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       </div>
 
                       {/* 3. Calculate amount */}
-                      <div 
+                      <div
                         style={{
                           display: 'flex',
                           flexDirection: 'column',
@@ -1975,7 +2040,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         }}
                         className="shrink-0"
                       >
-                        <span 
+                        <span
                           style={{
                             width: '259px',
                             height: '16px',
@@ -1990,8 +2055,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         >
                           3.Calculate the amount you want to deposit
                         </span>
-                        
-                        <div 
+
+                        <div
                           style={{
                             display: 'flex',
                             flexDirection: 'row',
@@ -2004,7 +2069,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           }}
                         >
                           {/* USD Input Frame */}
-                          <div 
+                          <div
                             style={{
                               display: 'flex',
                               flexDirection: 'row',
@@ -2020,18 +2085,18 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             className="flex-grow border border-white/5"
                           >
                             <img src="/images/doller.svg" className="w-5 h-5 object-contain shrink-0" alt="USD" />
-                            <input 
+                            <input
                               type="number"
                               value={usdAmount}
                               onChange={(e) => handleUsdChange(e.target.value)}
                               style={{
                                 width: '130px',
-                                height: '19px',
+                                height: '16px',
                                 fontFamily: "'Manrope', sans-serif",
                                 fontStyle: 'normal',
                                 fontWeight: 700,
-                                fontSize: '14px',
-                                lineHeight: '19px',
+                                fontSize: '12px',
+                                lineHeight: '16px',
                                 letterSpacing: '0.02em',
                                 color: '#FFFFFF',
                                 background: 'transparent',
@@ -2043,7 +2108,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           </div>
 
                           {/* Swap Button Frame */}
-                          <button 
+                          <button
                             onClick={togglePrimaryCurrency}
                             style={{
                               display: 'flex',
@@ -2054,28 +2119,28 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               gap: '2px',
                               width: '40px',
                               height: '40px',
-                              background: '#1463FF',
+                              background: '#112F82',
                               borderRadius: '8px',
                               border: 'none',
                               cursor: 'pointer',
                             }}
-                            className="hover:bg-[#2c75ff] transition-colors shrink-0 active:scale-95 duration-100"
+                            className="hover:bg-[#153a9e] transition-colors shrink-0 active:scale-95 duration-100 border border-white/5"
                           >
                             {/* SVG swap arrows */}
                             <div style={{ width: '14px', height: '8px', position: 'relative' }}>
                               <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
-                                <path d="M12.5 4H1.5M12.5 4L9.5 1M12.5 4L9.5 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M12.5 4H1.5M12.5 4L9.5 1M12.5 4L9.5 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
                             </div>
                             <div style={{ width: '14px', height: '8px', position: 'relative', transform: 'matrix(-1, 0, 0, 1, 0, 0)' }}>
                               <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
-                                <path d="M12.5 4H1.5M12.5 4L9.5 1M12.5 4L9.5 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M12.5 4H1.5M12.5 4L9.5 1M12.5 4L9.5 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
                             </div>
                           </button>
 
                           {/* BTC Input Frame */}
-                          <div 
+                          <div
                             style={{
                               display: 'flex',
                               flexDirection: 'row',
@@ -2091,18 +2156,18 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             className="flex-grow border border-white/5"
                           >
                             <img src="/images/bitcoin.svg" className="w-5 h-5 object-contain shrink-0" alt="BTC" />
-                            <input 
+                            <input
                               type="number"
                               value={btcAmount}
                               onChange={(e) => handleBtcChange(e.target.value)}
                               style={{
                                 width: '130px',
-                                height: '19px',
+                                height: '16px',
                                 fontFamily: "'Manrope', sans-serif",
                                 fontStyle: 'normal',
                                 fontWeight: 700,
-                                fontSize: '14px',
-                                lineHeight: '19px',
+                                fontSize: '12px',
+                                lineHeight: '16px',
                                 letterSpacing: '0.02em',
                                 color: '#FFFFFF',
                                 background: 'transparent',
@@ -2116,7 +2181,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       </div>
 
                       {/* 4. BTC Deposit Address */}
-                      <div 
+                      <div
                         style={{
                           display: 'flex',
                           flexDirection: 'column',
@@ -2128,7 +2193,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         }}
                         className="relative shrink-0"
                       >
-                        <span 
+                        <span
                           style={{
                             width: '100%',
                             height: '16px',
@@ -2143,8 +2208,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         >
                           4.BTC Deposit Address
                         </span>
-                        
-                        <div 
+
+                        <div
                           style={{
                             display: 'flex',
                             flexDirection: 'row',
@@ -2159,15 +2224,15 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             border: '1px solid rgba(255,255,255,0.05)',
                           }}
                         >
-                          <span 
+                          <span
                             style={{
                               flex: 1,
-                              height: '19px',
+                              height: '16px',
                               fontFamily: "'Manrope', sans-serif",
                               fontStyle: 'normal',
-                              fontWeight: 600,
-                              fontSize: '14px',
-                              lineHeight: '19px',
+                              fontWeight: 700,
+                              fontSize: '12px',
+                              lineHeight: '16px',
                               letterSpacing: '0.02em',
                               color: '#7795E8',
                               overflow: 'hidden',
@@ -2178,8 +2243,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           >
                             {btcAddress}
                           </span>
-                          
-                          <div 
+
+                          <div
                             style={{
                               display: 'flex',
                               flexDirection: 'row',
@@ -2192,7 +2257,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             className="shrink-0"
                           >
                             {/* Copy button */}
-                            <button 
+                            <button
                               onClick={copyAddress}
                               style={{ width: '16px', height: '16px', position: 'relative', border: 'none', background: 'transparent', padding: '0px', cursor: 'pointer' }}
                               className="text-[#BBCAF3] hover:text-white flex items-center justify-center"
@@ -2206,7 +2271,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             </button>
 
                             {/* QR button */}
-                            <button 
+                            <button
                               onClick={() => setShowQrCode(!showQrCode)}
                               style={{ width: '16px', height: '16px', position: 'relative', border: 'none', background: 'transparent', padding: '0px', cursor: 'pointer' }}
                               className="text-[#BBCAF3] hover:text-white flex items-center justify-center"
@@ -2222,10 +2287,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               {Array.from({ length: 64 }).map((_, i) => {
                                 const isFilled = (i % 3 === 0 && i % 4 !== 0) || (i < 20 && i % 2 === 0) || (i > 50 && i % 5 === 0) || (i % 7 === 1);
                                 return (
-                                  <div 
-                                    key={i} 
+                                  <div
+                                    key={i}
                                     style={{ background: isFilled ? '#091741' : '#FFFFFF' }}
-                                    className="w-[8px] h-[8px]" 
+                                    className="w-[8px] h-[8px]"
                                   />
                                 );
                               })}
@@ -2238,63 +2303,81 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   ) : creditCardStep === 'address' ? (
                     /* CC Address step */
                     <div className="flex flex-col items-start gap-[12px] w-full shrink-0 select-none">
-                      <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                      <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
                         Enter your address
                       </span>
 
                       {/* Street */}
-                      <input 
+                      <input
                         type="text"
                         value={street}
                         onChange={(e) => setStreet(e.target.value)}
-                        className="w-[428px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                        className="w-[428px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                         placeholder="Street"
                       />
 
                       {/* City & Zip */}
                       <div className="flex flex-row gap-[8px] w-[428px]">
-                        <input 
+                        <input
                           type="text"
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
-                          className="flex-1 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                          className="flex-1 w-[210px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="City"
                         />
-                        <input 
+                        <input
                           type="text"
                           value={postalCode}
                           onChange={(e) => setPostalCode(e.target.value)}
-                          className="flex-1 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                          className="flex-1 w-[210px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="Postal Code"
                         />
                       </div>
 
-                      {/* State & Country */}
                       <div className="flex flex-row gap-[8px] w-[428px] relative">
-                        <input 
+                        <input
                           type="text"
                           value={state}
                           onChange={(e) => setState(e.target.value)}
-                          className="flex-1 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                          className="flex-1 w-[210px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="State"
                         />
-                        
-                        <div className="flex-1 relative" ref={countryDropdownRef}>
-                          <div 
+
+                        <div className="flex-1 w-[210px] relative" ref={countryDropdownRef}>
+                          <div
                             onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
                             className="flex flex-row items-center justify-between px-[16px] h-[40px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
                           >
-                            <div className="flex flex-row items-center gap-[8px] truncate">
+                            <div className="flex flex-row items-center gap-[10px] truncate">
                               {country === 'United States' && <USFlag />}
                               {country === 'Canada' && <CanadaFlag />}
                               {country === 'United Kingdom' && <UKFlag />}
-                              <span className="font-sans font-semibold text-[13px] text-white truncate">
+                              <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-white truncate">
                                 {country}
                               </span>
                             </div>
-                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className={`transform transition-transform shrink-0 ${isCountryDropdownOpen ? 'rotate-180' : ''}`}>
-                              <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '14px',
+                                height: '14px',
+                              }}
+                              className="shrink-0"
+                            >
+                              <div
+                                style={{
+                                  width: '6px',
+                                  height: '6px',
+                                  borderLeft: '1.5px solid #A5B8EF',
+                                  borderBottom: '1.5px solid #A5B8EF',
+                                  transform: isCountryDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
+                                  transition: 'transform 0.2s ease-in-out',
+                                }}
+                                className="shrink-0"
+                              />
+                            </div>
                           </div>
 
                           {isCountryDropdownOpen && (
@@ -2304,13 +2387,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 { name: 'Canada', flag: <CanadaFlag /> },
                                 { name: 'United Kingdom', flag: <UKFlag /> }
                               ].map((c, idx) => (
-                                <div 
+                                <div
                                   key={idx}
                                   onClick={() => {
                                     setCountry(c.name);
                                     setIsCountryDropdownOpen(false);
                                   }}
-                                  className="flex flex-row items-center gap-[8px] px-[16px] py-[8px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
+                                  className="flex flex-row items-center gap-[8px] px-[16px] py-[8px] text-white font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] hover:bg-[#1463FF] cursor-pointer transition-colors"
                                 >
                                   {c.flag}
                                   <span>{c.name}</span>
@@ -2328,12 +2411,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         <span className="font-sans font-semibold text-[12px] text-[#BBCAF3]">
                           Select an amount
                         </span>
-                        <button 
+                        <button
                           onClick={() => setCreditCardStep('address')}
                           className="font-sans font-semibold text-[10px] text-[#7795E8] hover:text-white transition-colors cursor-pointer flex items-center gap-1 border-none bg-transparent p-0"
                         >
                           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 8L3 5L6 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M6 8L3 5L6 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                           Edit Address
                         </button>
@@ -2362,7 +2445,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           {ccAmountOption === 'custom' ? (
                             <div className="flex flex-row items-center px-[12px] w-full h-full bg-[#112F82] border border-[#1463FF] rounded-[8px] box-sizing-border">
                               <span className="font-sans font-bold text-[14px] text-white mr-1">$</span>
-                              <input 
+                              <input
                                 type="number"
                                 value={ccCustomAmount}
                                 onChange={(e) => setCcCustomAmount(e.target.value)}
@@ -2387,7 +2470,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         Enter payment details
                       </span>
 
-                      <input 
+                      <input
                         type="text"
                         value={creditCardNumber}
                         onChange={(e) => {
@@ -2400,7 +2483,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       />
 
                       <div className="flex flex-row gap-[8px] w-[428px]">
-                        <input 
+                        <input
                           type="text"
                           value={creditCardExp}
                           onChange={(e) => {
@@ -2414,7 +2497,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           className="flex-1 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
                           placeholder="Exp. (MM/YY)"
                         />
-                        <input 
+                        <input
                           type="password"
                           value={creditCardCcv}
                           onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
@@ -2428,115 +2511,564 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               )}
 
               {activeTab === 'bonuses' && (
-                <div className="flex flex-col gap-[12px] w-full h-full select-none shrink-0">
-                  <span className="font-sans font-medium text-[13px] text-white">
-                    If you have a Bonus Code &ndash; enter it here
-                  </span>
-                  
-                  <div className="flex flex-row items-center gap-[8px] w-[428px] h-[40px]">
-                    <div className="flex flex-row items-center px-[16px] w-[320px] h-[40px] bg-[#112F82] rounded-[8px] border border-white/5 box-sizing-border">
-                      <input
-                        type="text"
-                        value={promoCode}
-                        onChange={(e) => setPromoCode(e.target.value)}
-                        placeholder="Promo Code"
-                        className="promo-input w-full bg-transparent border-none outline-none font-sans font-semibold text-[14px] text-white"
-                      />
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (!promoCode.trim()) return;
-                        alert(`Promo code "${promoCode}" applied!`);
-                        setPromoCode('');
-                      }}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    padding: '0px',
+                    gap: '16px',
+                    width: '460px',
+                    height: '331px',
+                  }}
+                  className="select-none shrink-0"
+                >
+                  {/* Promo Code section */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      padding: '0px',
+                      gap: '8px',
+                      width: '428px',
+                      height: '64px',
+                    }}
+                  >
+                    <span
                       style={{
-                        background: '#FFC83D',
-                        borderRadius: '8px',
-                        border: 'none',
-                        cursor: 'pointer',
-                        fontWeight: 700,
+                        width: '236px',
+                        height: '16px',
+                        fontFamily: "'Manrope', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 600,
                         fontSize: '12px',
-                        color: '#1A1404',
+                        lineHeight: '16px',
+                        letterSpacing: '0.02em',
+                        color: '#BBCAF3',
                       }}
-                      className="w-[100px] h-[40px] flex items-center justify-center hover:bg-[#ffd362] active:scale-95 duration-100 font-sans"
                     >
-                      Apply
-                    </button>
-                  </div>
+                      If you have a Bonus Code &mdash; enter it here
+                    </span>
 
-                  <span className="font-sans font-medium text-[13px] text-white mt-[4px]">
-                    Available bonuses for you
-                  </span>
-
-                  <div className="flex flex-row gap-[10px] overflow-x-auto scrollbar-none snap-x snap-mandatory w-[428px] h-[190px]">
-                    {[
-                      {
-                        title: '150% Reload Bonus + 30 Free Spins',
-                        minDeposit: '$30',
-                        maxCashout: '40x',
-                        maxAmount: '$30',
-                        wager: '10x',
-                      },
-                      {
-                        title: '350% Welcome Bonus',
-                        minDeposit: '$20',
-                        maxCashout: '45x',
-                        maxAmount: '$50',
-                        wager: '45x',
-                      },
-                      {
-                        title: '500% Crypto Bonus',
-                        minDeposit: '$20',
-                        maxCashout: '50x',
-                        maxAmount: '$100',
-                        wager: '45x',
-                      },
-                    ].map((bonus, i) => (
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'flex-start',
+                        padding: '0px',
+                        gap: '8px',
+                        width: '428px',
+                        height: '40px',
+                      }}
+                    >
                       <div
-                        key={i}
                         style={{
                           display: 'flex',
-                          flexDirection: 'column',
-                          padding: '16px',
-                          gap: '10px',
-                          width: '260px',
-                          height: '180px',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          padding: '10px 16px',
+                          gap: '12px',
+                          width: '320px',
+                          height: '40px',
                           background: '#112F82',
-                          borderRadius: '12px',
-                          flexShrink: 0,
-                          scrollSnapAlign: 'start',
+                          borderRadius: '8px',
                           boxSizing: 'border-box',
                         }}
                       >
-                        <span className="font-jost font-bold text-[13px] text-white truncate w-full">{bonus.title}</span>
-                        <div className="grid grid-cols-2 gap-x-2 gap-y-1.5 w-full">
-                          <div className="flex flex-col">
-                            <span className="text-[9px] text-[#BBCAF3] font-sans font-medium">Min. Deposit</span>
-                            <span className="text-[12px] text-white font-jost font-bold">{bonus.minDeposit}</span>
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[9px] text-[#BBCAF3] font-sans font-medium">Max. Cashout</span>
-                            <span className="text-[12px] text-white font-jost font-bold">{bonus.maxCashout}</span>
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[9px] text-[#BBCAF3] font-sans font-medium">Max. Amount</span>
-                            <span className="text-[12px] text-white font-jost font-bold">{bonus.maxAmount}</span>
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[9px] text-[#BBCAF3] font-sans font-medium">Wager</span>
-                            <span className="text-[12px] text-white font-jost font-bold">{bonus.wager}</span>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => alert(`"${bonus.title}" activated!`)}
-                          className="w-full h-[32px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] border-none text-[#1A1404] font-sans font-bold text-[11px] cursor-pointer mt-auto flex items-center justify-center"
-                        >
-                          Activate
-                        </button>
+                        <input
+                          type="text"
+                          value={promoCode}
+                          onChange={(e) => setPromoCode(e.target.value)}
+                          placeholder="Promo Code"
+                          style={{
+                            width: '288px',
+                            height: '19px',
+                            fontFamily: "'Manrope', sans-serif",
+                            fontStyle: 'normal',
+                            fontWeight: 600,
+                            fontSize: '14px',
+                            lineHeight: '19px',
+                            letterSpacing: '0.02em',
+                            color: '#FFFFFF',
+                            background: 'transparent',
+                            border: 'none',
+                            outline: 'none',
+                          }}
+                          className="placeholder-[#7795E8]"
+                        />
                       </div>
-                    ))}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (!promoCode.trim()) return;
+                          alert(`Promo code "${promoCode}" applied!`);
+                          setPromoCode('');
+                        }}
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: '10px 30px',
+                          gap: '10px',
+                          width: '100px',
+                          height: '40px',
+                          background: '#FFC83D',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
+                        className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                      >
+                        <span
+                          style={{
+                            width: '40px',
+                            height: '19px',
+                            fontFamily: "'Manrope', sans-serif",
+                            fontStyle: 'normal',
+                            fontWeight: 700,
+                            fontSize: '14px',
+                            lineHeight: '19px',
+                            letterSpacing: '0.02em',
+                            color: '#1A1404',
+                          }}
+                        >
+                          Join
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Available bonuses section */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      padding: '0px',
+                      gap: '12px',
+                      width: '428px',
+                      height: '251px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: '151px',
+                        height: '16px',
+                        fontFamily: "'Manrope', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 600,
+                        fontSize: '12px',
+                        lineHeight: '16px',
+                        letterSpacing: '0.02em',
+                        color: '#BBCAF3',
+                      }}
+                    >
+                      Available bonuses for you
+                    </span>
+
+                    {/* Bonus Card slider/carousel */}
+                    <div
+                      ref={bonusScrollRef}
+                      onScroll={() => {
+                        if (bonusScrollRef.current) {
+                          const scrollLeft = bonusScrollRef.current.scrollLeft;
+                          // card width 300px + gap 8px = 308px
+                          const index = Math.round(scrollLeft / 308);
+                          if (index !== activeBonusCard) {
+                            setActiveBonusCard(index);
+                          }
+                        }
+                      }}
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'flex-start',
+                        padding: '0px',
+                        gap: '8px',
+                        width: '428px',
+                        height: '205px',
+                      }}
+                      className="overflow-x-auto scrollbar-none snap-x snap-mandatory"
+                    >
+                      {[
+                        {
+                          title: '150% Reload Bonus + 30 Free Spins',
+                          minDeposit: '$30',
+                          maxCashout: '40x',
+                          maxAmount: '$30',
+                          wager: '10x',
+                        },
+                        {
+                          title: '350% Welcome Bonus',
+                          minDeposit: '$20',
+                          maxCashout: '45x',
+                          maxAmount: '$50',
+                          wager: '45x',
+                        },
+                        {
+                          title: '500% Crypto Bonus',
+                          minDeposit: '$20',
+                          maxCashout: '50x',
+                          maxAmount: '$100',
+                          wager: '45x',
+                        },
+                      ].map((bonus, idx) => (
+                        <div
+                          key={idx}
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'flex-start',
+                            padding: '20px',
+                            gap: '12px',
+                            width: '300px',
+                            height: '205px',
+                            background: '#112F82',
+                            borderRadius: '12px',
+                            flexShrink: 0,
+                            scrollSnapAlign: 'start',
+                            boxSizing: 'border-box',
+                          }}
+                        >
+                          {/* Bonus title */}
+                          <span
+                            style={{
+                              width: '260px',
+                              height: '20px',
+                              fontFamily: "'Jost', sans-serif",
+                              fontStyle: 'normal',
+                              fontWeight: 700,
+                              fontSize: '14px',
+                              lineHeight: '20px',
+                              letterSpacing: '0.02em',
+                              color: '#FFFFFF',
+                            }}
+                            className="truncate block"
+                          >
+                            {bonus.title}
+                          </span>
+
+                          {/* Info Grid (260px x 81px, gap 9px) */}
+                          <div
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'flex-start',
+                              padding: '0px',
+                              gap: '9px',
+                              width: '260px',
+                              height: '81px',
+                            }}
+                          >
+                            {/* Row 1 */}
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'flex-start',
+                                padding: '0px',
+                                gap: '12px',
+                                width: '260px',
+                                height: '36px',
+                              }}
+                            >
+                              {/* Min. Deposit */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '2px',
+                                  width: '124px',
+                                  height: '36px',
+                                  flexGrow: 1,
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    width: '124px',
+                                    height: '14px',
+                                    fontFamily: "'Manrope', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 500,
+                                    fontSize: '10px',
+                                    lineHeight: '14px',
+                                    letterSpacing: '0.02em',
+                                    color: '#BBCAF3',
+                                  }}
+                                  className="truncate"
+                                >
+                                  Min. Deposit
+                                </span>
+                                <span
+                                  style={{
+                                    width: '124px',
+                                    height: '20px',
+                                    fontFamily: "'Jost', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 700,
+                                    fontSize: '14px',
+                                    lineHeight: '20px',
+                                    letterSpacing: '0.02em',
+                                    color: '#FFFFFF',
+                                  }}
+                                  className="truncate"
+                                >
+                                  {bonus.minDeposit}
+                                </span>
+                              </div>
+
+                              {/* Max. Cashout */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '2px',
+                                  width: '124px',
+                                  height: '36px',
+                                  flexGrow: 1,
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    width: '124px',
+                                    height: '14px',
+                                    fontFamily: "'Manrope', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 500,
+                                    fontSize: '10px',
+                                    lineHeight: '14px',
+                                    letterSpacing: '0.02em',
+                                    color: '#BBCAF3',
+                                  }}
+                                  className="truncate"
+                                >
+                                  Max. Cashout
+                                </span>
+                                <span
+                                  style={{
+                                    width: '124px',
+                                    height: '20px',
+                                    fontFamily: "'Jost', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 700,
+                                    fontSize: '14px',
+                                    lineHeight: '20px',
+                                    letterSpacing: '0.02em',
+                                    color: '#FFFFFF',
+                                  }}
+                                  className="truncate"
+                                >
+                                  {bonus.maxCashout}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Row 2 */}
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'flex-start',
+                                padding: '0px',
+                                gap: '12px',
+                                width: '260px',
+                                height: '36px',
+                              }}
+                            >
+                              {/* Max. Amount */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '2px',
+                                  width: '124px',
+                                  height: '36px',
+                                  flexGrow: 1,
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    width: '124px',
+                                    height: '14px',
+                                    fontFamily: "'Manrope', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 500,
+                                    fontSize: '10px',
+                                    lineHeight: '14px',
+                                    letterSpacing: '0.02em',
+                                    color: '#BBCAF3',
+                                  }}
+                                  className="truncate"
+                                >
+                                  Max. Amount
+                                </span>
+                                <span
+                                  style={{
+                                    width: '124px',
+                                    height: '20px',
+                                    fontFamily: "'Jost', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 700,
+                                    fontSize: '14px',
+                                    lineHeight: '20px',
+                                    letterSpacing: '0.02em',
+                                    color: '#FFFFFF',
+                                  }}
+                                  className="truncate"
+                                >
+                                  {bonus.maxAmount}
+                                </span>
+                              </div>
+
+                              {/* Wager */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '2px',
+                                  width: '124px',
+                                  height: '36px',
+                                  flexGrow: 1,
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    width: '124px',
+                                    height: '14px',
+                                    fontFamily: "'Manrope', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 500,
+                                    fontSize: '10px',
+                                    lineHeight: '14px',
+                                    letterSpacing: '0.02em',
+                                    color: '#BBCAF3',
+                                  }}
+                                  className="truncate"
+                                >
+                                  Wager (dep. + bonus)
+                                </span>
+                                <span
+                                  style={{
+                                    width: '124px',
+                                    height: '20px',
+                                    fontFamily: "'Jost', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 700,
+                                    fontSize: '14px',
+                                    lineHeight: '20px',
+                                    letterSpacing: '0.02em',
+                                    color: '#FFFFFF',
+                                  }}
+                                  className="truncate"
+                                >
+                                  {bonus.wager}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Join / Activate Button */}
+                          <button
+                            type="button"
+                            onClick={() => alert(`"${bonus.title}" activated!`)}
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              padding: '10px 20px',
+                              gap: '10px',
+                              width: '260px',
+                              height: '40px',
+                              background: '#FFC83D',
+                              borderRadius: '6px',
+                              border: 'none',
+                              cursor: 'pointer',
+                            }}
+                            className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                          >
+                            <span
+                              style={{
+                                width: '51px',
+                                height: '16px',
+                                fontFamily: "'Manrope', sans-serif",
+                                fontStyle: 'normal',
+                                fontWeight: 700,
+                                fontSize: '12px',
+                                lineHeight: '16px',
+                                letterSpacing: '0.02em',
+                                color: '#1A1404',
+                              }}
+                            >
+                              Join
+                            </span>
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Pagination indicators frame */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        padding: '0px',
+                        width: '428px',
+                        height: '6px',
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: '0px',
+                          gap: '4px',
+                          width: '32px',
+                          height: '6px',
+                        }}
+                      >
+                        {[0, 1, 2].map((idx) => {
+                          const isDotActive = idx === activeBonusCard;
+                          return (
+                            <div
+                              key={idx}
+                              style={{
+                                width: isDotActive ? '12px' : '6px',
+                                height: '6px',
+                                background: '#BBCAF3',
+                                borderRadius: '150px',
+                                opacity: isDotActive ? 1 : 0.35,
+                                transition: 'all 0.2s ease',
+                                cursor: 'pointer',
+                              }}
+                              onClick={() => {
+                                if (bonusScrollRef.current) {
+                                  bonusScrollRef.current.scrollTo({
+                                    left: idx * 308,
+                                    behavior: 'smooth',
+                                  });
+                                  setActiveBonusCard(idx);
+                                }
+                              }}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
@@ -2570,20 +3102,32 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
         {/* Join CTA Frame (300px x 50px, background: #FFC83D, border-radius: 8px, order 2, z-index 2) */}
         {activeTab !== 'bonuses' && (
-          <div 
-            style={{
-              width: '300px',
-              height: '50px',
-              zIndex: 2,
-            }}
-            className="flex items-center justify-center shrink-0 mt-auto"
-          >
-            {depositConfirmed ? (
+          depositConfirmed ? (
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                padding: '0px',
+                gap: '12px',
+                width: '460px',
+                height: '66px',
+                zIndex: 2,
+              }}
+              className="shrink-0 mt-auto"
+            >
+              {/* Go to games button */}
               <button
                 onClick={onClose}
                 style={{
-                  width: '300px',
-                  height: '50px',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '10px 30px',
+                  gap: '10px',
+                  width: '350px',
+                  height: '40px',
                   background: '#FFC83D',
                   borderRadius: '8px',
                   border: 'none',
@@ -2595,87 +3139,149 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   letterSpacing: '0.02em',
                   color: '#1A1404',
                 }}
-                className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                className="hover:bg-[#ffd362] active:scale-95 duration-100 font-sans"
               >
                 Go to games
               </button>
-            ) : selectedPayment === 'Bitcoin' ? (
-              <button
-                onClick={() => setDepositConfirmed(true)}
+
+              {/* Support frame */}
+              <div
                 style={{
-                  width: '300px',
-                  height: '50px',
-                  background: '#FFC83D',
-                  borderRadius: '8px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontFamily: "'Manrope', sans-serif",
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  lineHeight: '19px',
-                  letterSpacing: '0.02em',
-                  color: '#1A1404',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '0px',
+                  gap: '8px',
+                  width: '460px',
+                  height: '14px',
                 }}
-                className="hover:bg-[#ffd362] active:scale-95 duration-100"
               >
-                I&apos;ve completed my deposit
-              </button>
-            ) : creditCardStep === 'address' ? (
-              <button
-                onClick={() => {
-                  if (!street || !city || !postalCode || !state) {
-                    alert('Please fill out all address details.');
-                    return;
-                  }
-                  setCreditCardStep('payment');
-                }}
-                style={{
-                  width: '300px',
-                  height: '50px',
-                  background: '#FFC83D',
-                  borderRadius: '8px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontFamily: "'Manrope', sans-serif",
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  lineHeight: '19px',
-                  letterSpacing: '0.02em',
-                  color: '#1A1404',
-                }}
-                className="hover:bg-[#ffd362] active:scale-95 duration-100"
-              >
-                Continue
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  if (!creditCardNumber || !creditCardExp || !creditCardCcv) {
-                    alert('Please fill out all credit card details.');
-                    return;
-                  }
-                  setDepositConfirmed(true);
-                }}
-                style={{
-                  width: '300px',
-                  height: '50px',
-                  background: '#FFC83D',
-                  borderRadius: '8px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontFamily: "'Manrope', sans-serif",
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  lineHeight: '19px',
-                  letterSpacing: '0.02em',
-                  color: '#1A1404',
-                }}
-                className="hover:bg-[#ffd362] active:scale-95 duration-100"
-              >
-                Deposit ${getDepositAmount()}
-              </button>
-            )}
-          </div>
+                {/* Question Icon */}
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                  <circle cx="6" cy="6" r="5" stroke="#7795E8" strokeWidth="1.25" />
+                  <path d="M6 8V7.5" stroke="#7795E8" strokeWidth="1.25" strokeLinecap="round" />
+                  <path d="M6 6C6.5 5.5 7 5.25 7 4.5C7 3.67 6.33 3 5.5 3C4.67 3 4.25 3.67 4.25 3.67" stroke="#7795E8" strokeWidth="1.25" strokeLinecap="round" />
+                </svg>
+
+                <span
+                  style={{
+                    height: '14px',
+                    fontFamily: "'Manrope', sans-serif",
+                    fontStyle: 'normal',
+                    fontWeight: 500,
+                    fontSize: '10px',
+                    lineHeight: '14px',
+                    letterSpacing: '0.02em',
+                    color: '#7795E8',
+                  }}
+                >
+                  Having problems?{' '}
+                  <a
+                    href="/support"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Contact support triggered!');
+                    }}
+                    style={{
+                      color: '#FFC83D',
+                      textDecoration: 'none',
+                      fontWeight: 700,
+                    }}
+                    className="hover:underline"
+                  >
+                    Contact support
+                  </a>
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div
+              style={{
+                width: '300px',
+                height: '50px',
+                zIndex: 2,
+              }}
+              className="flex items-center justify-center shrink-0 mt-auto"
+            >
+              {selectedPayment === 'Bitcoin' ? (
+                <button
+                  onClick={() => setDepositConfirmed(true)}
+                  style={{
+                    width: '300px',
+                    height: '50px',
+                    background: '#FFC83D',
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: "'Manrope', sans-serif",
+                    fontWeight: 700,
+                    fontSize: '14px',
+                    lineHeight: '19px',
+                    letterSpacing: '0.02em',
+                    color: '#1A1404',
+                  }}
+                  className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                >
+                  I&apos;ve completed my deposit
+                </button>
+              ) : creditCardStep === 'address' ? (
+                <button
+                  onClick={() => {
+                    if (!street || !city || !postalCode || !state) {
+                      alert('Please fill out all address details.');
+                      return;
+                    }
+                    setCreditCardStep('payment');
+                  }}
+                  style={{
+                    width: '300px',
+                    height: '50px',
+                    background: '#FFC83D',
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: "'Manrope', sans-serif",
+                    fontWeight: 700,
+                    fontSize: '14px',
+                    lineHeight: '19px',
+                    letterSpacing: '0.02em',
+                    color: '#1A1404',
+                  }}
+                  className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                >
+                  Continue
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    if (!creditCardNumber || !creditCardExp || !creditCardCcv) {
+                      alert('Please fill out all credit card details.');
+                      return;
+                    }
+                    setDepositConfirmed(true);
+                  }}
+                  style={{
+                    width: '300px',
+                    height: '50px',
+                    background: '#FFC83D',
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: "'Manrope', sans-serif",
+                    fontWeight: 700,
+                    fontSize: '14px',
+                    lineHeight: '19px',
+                    letterSpacing: '0.02em',
+                    color: '#1A1404',
+                  }}
+                  className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                >
+                  Deposit ${getDepositAmount()}
+                </button>
+              )}
+            </div>
+          )
         )}
       </div>
     </div>
