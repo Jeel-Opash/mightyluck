@@ -306,39 +306,40 @@ export default function GuestHome() {
           {/* Child 1: Main Games Area */}
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
-            {/* HERO BANNER */}
-            <section className="relative w-full rounded-xl lg:rounded-2xl overflow-hidden border border-white/5" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '1136/356', minHeight: 160 }}>
-              {/* Blurs inside banner */}
-              <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
-              <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
-              <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
+            <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
+              <section className="relative w-full rounded-xl lg:rounded-2xl overflow-hidden border border-white/5" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '1136/356', minHeight: 160 }}>
+                {/* Blurs inside banner */}
+                <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
+                <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
+                <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
 
-              <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
-                <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
-                  <span className="font-jost font-medium text-[12px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
-                    Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
-                  </span>
-                  <span className="font-jost font-black text-[20px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
-                    250% WELCOME<br />BONUS!
-                  </span>
+                <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
+                  <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
+                    <span className="font-jost font-medium text-[12px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
+                      Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
+                    </span>
+                    <span className="font-jost font-black text-[20px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
+                      250% WELCOME<br />BONUS!
+                    </span>
+                  </div>
+
+                  {/* Join Now Button */}
+                  <button
+                    onClick={() => dispatch(openAuthModal('join'))}
+                    className="w-[96px] h-[32px] md:w-[110px] md:h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[12px] md:text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
+                  >
+                    Join Now
+                  </button>
                 </div>
-
-                {/* Join Now Button */}
-                <button
-                  onClick={() => dispatch(openAuthModal('join'))}
-                  className="w-[96px] h-[32px] md:w-[110px] md:h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[12px] md:text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
-                >
-                  Join Now
-                </button>
-              </div>
+              </section>
 
               {/* Carousel Dots indicator */}
-              <div className="absolute bottom-[12px] md:bottom-[20px] left-1/2 transform -translate-x-1/2 flex gap-[8px] z-10">
+              <div className="flex gap-[8px] z-10">
                 <span className="w-[12px] h-[6px] bg-white rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
               </div>
-            </section>
+            </div>
 
             {/* DEPOSIT NOW RIBBON */}
             <section className="relative w-full py-4 lg:py-0 lg:h-[100px] bg-[#0C1F56] rounded-[16px] flex flex-col sm:flex-row justify-between items-center px-4 lg:px-[40px] gap-3 lg:gap-[40px] overflow-hidden border border-white/5 select-none">
@@ -380,7 +381,8 @@ export default function GuestHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/slot.svg" alt="Slots" />
+                    <img src="/games/game-icons/slot.svg" alt="Slots" className="hidden sm:block" />
+                    <img src="/games/side-icon/casino.svg" alt="Slots" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">SLOTS (1,487)</h2>
                 </div>
@@ -467,7 +469,8 @@ export default function GuestHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/originals.svg" alt="Originals" />
+                    <img src="/games/game-icons/originals.svg" alt="Originals" className="hidden sm:block" />
+                    <img src="/games/side-icon/original.svg" alt="Originals" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">ORIGINALS (14)</h2>
                 </div>
@@ -584,7 +587,8 @@ export default function GuestHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/crash.svg" alt="Crash Games" />
+                    <img src="/games/game-icons/crash.svg" alt="Crash Games" className="hidden sm:block" />
+                    <img src="/games/side-icon/crash.svg" alt="Crash Games" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">CRASH GAMES (723)</h2>
                 </div>
@@ -670,7 +674,8 @@ export default function GuestHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/game.svg" alt="Game Providers" />
+                    <img src="/games/game-icons/game.svg" alt="Game Providers" className="hidden sm:block" />
+                    <img src="/games/side-icon/game-p.svg" alt="Game Providers" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">GAME PROVIDERS (34)</h2>
                 </div>
@@ -735,7 +740,8 @@ export default function GuestHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/table.svg" alt="Table Games" />
+                    <img src="/games/game-icons/table.svg" alt="Table Games" className="hidden sm:block" />
+                    <img src="/games/side-icon/roulette.svg" alt="Table Games" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">TABLE GAMES (51)</h2>
                 </div>
@@ -822,7 +828,8 @@ export default function GuestHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" />
+                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="hidden sm:block" />
+                    <img src="/games/side-icon/new.svg" alt="Bonus Buys" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">BONUS BUYS (145)</h2>
                 </div>
@@ -909,7 +916,8 @@ export default function GuestHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/collections.svg" alt="Collections" />
+                    <img src="/games/game-icons/collections.svg" alt="Collections" className="hidden sm:block" />
+                    <img src="/games/side-icon/popular.svg" alt="Collections" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">COLLECTIONS (17)</h2>
                 </div>
@@ -1046,15 +1054,15 @@ export default function GuestHome() {
           <span className="text-[10px] font-semibold font-sans">Search</span>
         </button>
         <button onClick={() => dispatch(openAuthModal('join'))} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/gift.png" alt="Offers" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/pro.svg" alt="Offers" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Offers</span>
         </button>
         <button onClick={() => { }} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/vip.png" alt="VIP" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/vip.svg" alt="VIP" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">VIP</span>
         </button>
         <button onClick={() => { }} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/trophy.png" alt="Tourneys" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/tour.svg" alt="Tourneys" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Tourneys</span>
         </button>
       </nav>

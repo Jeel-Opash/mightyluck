@@ -315,50 +315,52 @@ export default function UserHome() {
           {/* Child 1: Main Games Area */}
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
-            {/* HERO BANNER */}
-            <section className="relative w-full rounded-xl lg:rounded-2xl overflow-hidden border border-white/5" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '1136/356', minHeight: 160 }}>
-              {/* Blurs inside banner */}
-              <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
-              <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
-              <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
+            <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
+              <section className="relative w-full rounded-xl lg:rounded-2xl overflow-hidden border border-white/5" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '1136/356', minHeight: 160 }}>
+                {/* Blurs inside banner */}
+                <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
+                <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
+                <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
 
-              <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
-                <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
-                  <span className="font-jost font-medium text-[12px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
-                    Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
-                  </span>
-                  <span className="font-jost font-black text-[20px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
-                    250% WELCOME<br />BONUS!
-                  </span>
+                <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
+                  <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
+                    <span className="font-jost font-medium text-[12px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
+                      Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
+                    </span>
+                    <span className="font-jost font-black text-[20px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
+                      250% WELCOME<br />BONUS!
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={() => dispatch(openDepositModal())}
+                    className="w-[108px] h-[32px] md:w-[120px] md:h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[12px] md:text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
+                  >
+                    Deposit Now
+                  </button>
                 </div>
+              </section>
 
-                <button
-                  onClick={() => dispatch(openDepositModal())}
-                  className="w-[108px] h-[32px] md:w-[120px] md:h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[12px] md:text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
-                >
-                  Deposit Now
-                </button>
-              </div>
-
-              <div className="absolute bottom-[12px] md:bottom-[20px] left-1/2 transform -translate-x-1/2 flex gap-[8px] z-10">
+              {/* Carousel Dots indicator */}
+              <div className="flex gap-[8px] z-10">
                 <span className="w-[12px] h-[6px] bg-white rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
               </div>
-            </section>
+            </div>
 
 
 
             <nav className="w-full flex flex-row items-center overflow-x-auto scrollbar-none select-none shrink-0" style={{ gap: '8px' }}>
               {[
-                { id: 'lobby', name: 'Lobby', icon: '/games/game-icons/lobby.png', ref: null },
-                { id: 'slots', name: 'Slots', icon: '/games/game-icons/slot.svg', ref: slotsRef },
-                { id: 'originals', name: 'Originals', icon: '/games/game-icons/originals.svg', ref: originalsRef },
-                { id: 'crash', name: 'Crash Games', icon: '/games/game-icons/crash.svg', ref: crashRef },
-                { id: 'providers', name: 'Providers', icon: '/games/game-icons/game.svg', ref: providersRef },
-                { id: 'table', name: 'Table Games', icon: '/games/game-icons/table.svg', ref: tableRef },
-                { id: 'bonus', name: 'Bonus Buys', icon: '/games/game-icons/bonus.svg', ref: bonusRef },
-                { id: 'collections', name: 'Collection', icon: '/games/game-icons/collections.svg', ref: collectionsRef },
+                { id: 'lobby', name: 'Lobby', icon: '/games/game-icons/lobby.png', mobileIcon: '/games/side-icon/all.svg', ref: null },
+                { id: 'slots', name: 'Slots', icon: '/games/game-icons/slot.svg', mobileIcon: '/games/side-icon/casino.svg', ref: slotsRef },
+                { id: 'originals', name: 'Originals', icon: '/games/game-icons/originals.svg', mobileIcon: '/games/side-icon/original.svg', ref: originalsRef },
+                { id: 'crash', name: 'Crash Games', icon: '/games/game-icons/crash.svg', mobileIcon: '/games/side-icon/crash.svg', ref: crashRef },
+                { id: 'providers', name: 'Providers', icon: '/games/game-icons/game.svg', mobileIcon: '/games/side-icon/game-p.svg', ref: providersRef },
+                { id: 'table', name: 'Table Games', icon: '/games/game-icons/table.svg', mobileIcon: '/games/side-icon/roulette.svg', ref: tableRef },
+                { id: 'bonus', name: 'Bonus Buys', icon: '/games/game-icons/bonus.svg', mobileIcon: '/games/side-icon/new.svg', ref: bonusRef },
+                { id: 'collections', name: 'Collection', icon: '/games/game-icons/collections.svg', mobileIcon: '/games/side-icon/popular.svg', ref: collectionsRef },
               ].map((cat) => {
                 const isActive = activeCategory === cat.id;
                 return (
@@ -378,9 +380,9 @@ export default function UserHome() {
                       justifyContent: 'center',
                       alignItems: 'center',
                       padding: '10px',
-                      gap: '8px',
-                      height: '50px',
-                      minWidth: '135px',
+                      gap: '6.4px',
+                      height: '40px',
+                      minWidth: '106.6px',
                       flex: '1 0 auto',
                       background: isActive ? '#1463FF' : '#0C1F56',
                       borderRadius: '6px',
@@ -403,6 +405,22 @@ export default function UserHome() {
                           : 'brightness(0) invert(1) opacity(0.75)',
                         transition: 'filter 0.15s',
                       }}
+                      className="hidden sm:block"
+                    />
+                    <img
+                      src={cat.mobileIcon}
+                      alt={cat.name}
+                      style={{
+                        width: '16px',
+                        height: '16px',
+                        objectFit: 'contain',
+                        flexShrink: 0,
+                        filter: isActive
+                          ? 'brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%)'
+                          : 'brightness(0) invert(1) opacity(0.75)',
+                        transition: 'filter 0.15s',
+                      }}
+                      className="block sm:hidden"
                     />
                     <span
                       style={{
@@ -429,7 +447,8 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/slot.svg" alt="Slots" />
+                    <img src="/games/game-icons/slot.svg" alt="Slots" className="hidden sm:block" />
+                    <img src="/games/side-icon/casino.svg" alt="Slots" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">SLOTS (1,487)</h2>
                 </div>
@@ -501,7 +520,8 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/originals.svg" alt="Originals" />
+                    <img src="/games/game-icons/originals.svg" alt="Originals" className="hidden sm:block" />
+                    <img src="/games/side-icon/original.svg" alt="Originals" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">ORIGINALS (14)</h2>
                 </div>
@@ -632,18 +652,18 @@ export default function UserHome() {
                   {/* Card 1 */}
                   <div className="relative w-[560px] h-[220px] flex-none rounded-[16px] overflow-hidden border border-white/5 shadow-lg select-none group promo-card">
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
+                      className="absolute inset-0 bg-cover bg-right md:bg-center transition-transform duration-500 ease-out group-hover:scale-105"
                       style={{ backgroundImage: `linear-gradient(90deg, #091741 21.96%, rgba(9, 23, 65, 0) 60.27%), url('/promotion 1.png')` }}
                     />
                     <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
 
-                    <div className="absolute w-[290px] h-[114px] left-[24px] top-[calc(50%-57px)] flex flex-col items-start gap-[16px] z-20">
-                      <h3 className="font-jost font-extrabold text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
+                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-[17.78px] md:bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
+                      <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
                         150% RELOAD BONUS + 50 FREE SPINS
                       </h3>
                       <button
                         onClick={() => alert('Promotion 1 claimed')}
-                        className="w-[110px] h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
+                        className="w-[90px] h-[30px] md:w-[110px] md:h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[11px] md:text-[14px] leading-none md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
                       >
                         Claim Now
                       </button>
@@ -653,18 +673,18 @@ export default function UserHome() {
                   {/* Card 2 */}
                   <div className="relative w-[560px] h-[220px] flex-none rounded-[16px] overflow-hidden border border-white/5 shadow-lg select-none group promo-card">
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
+                      className="absolute inset-0 bg-cover bg-right md:bg-center transition-transform duration-500 ease-out group-hover:scale-105"
                       style={{ backgroundImage: `linear-gradient(90deg, #060B4D 39.55%, rgba(6, 11, 77, 0) 50%), url('/promotion 2.png')` }}
                     />
                     <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
 
-                    <div className="absolute w-[290px] h-[114px] left-[24px] top-[calc(50%-57px)] flex flex-col items-start gap-[16px] z-20">
-                      <h3 className="font-jost font-extrabold text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
+                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-[17.78px] md:bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
+                      <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
                         150% RELOAD BONUS + 50 FREE SPINS
                       </h3>
                       <button
                         onClick={() => alert('Promotion 2 claimed')}
-                        className="w-[110px] h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
+                        className="w-[90px] h-[30px] md:w-[110px] md:h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[11px] md:text-[14px] leading-none md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
                       >
                         Claim Now
                       </button>
@@ -674,18 +694,18 @@ export default function UserHome() {
                   {/* Card 3 */}
                   <div className="relative w-[560px] h-[220px] flex-none rounded-[16px] overflow-hidden border border-white/5 shadow-lg select-none group promo-card">
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
+                      className="absolute inset-0 bg-cover bg-right md:bg-center transition-transform duration-500 ease-out group-hover:scale-105"
                       style={{ backgroundImage: `linear-gradient(90deg, #091741 21.96%, rgba(9, 23, 65, 0) 60.27%), url('/promotion 1.png')` }}
                     />
                     <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
 
-                    <div className="absolute w-[290px] h-[114px] left-[24px] top-[calc(50%-57px)] flex flex-col items-start gap-[16px] z-20">
-                      <h3 className="font-jost font-extrabold text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
+                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-[17.78px] md:bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
+                      <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
                         150% RELOAD BONUS + 50 FREE SPINS
                       </h3>
                       <button
                         onClick={() => alert('Promotion 3 claimed')}
-                        className="w-[110px] h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
+                        className="w-[90px] h-[30px] md:w-[110px] md:h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[11px] md:text-[14px] leading-none md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
                       >
                         Claim Now
                       </button>
@@ -702,7 +722,8 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/crash.svg" alt="Crash Games" />
+                    <img src="/games/game-icons/crash.svg" alt="Crash Games" className="hidden sm:block" />
+                    <img src="/games/side-icon/crash.svg" alt="Crash Games" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">CRASH GAMES (723)</h2>
                 </div>
@@ -789,7 +810,8 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/game.svg" alt="Game Providers" />
+                    <img src="/games/game-icons/game.svg" alt="Game Providers" className="hidden sm:block" />
+                    <img src="/games/side-icon/game-p.svg" alt="Game Providers" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">GAME PROVIDERS (34)</h2>
                 </div>
@@ -855,7 +877,8 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/table.svg" alt="Table Games" />
+                    <img src="/games/game-icons/table.svg" alt="Table Games" className="hidden sm:block" />
+                    <img src="/games/side-icon/roulette.svg" alt="Table Games" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">TABLE GAMES (51)</h2>
                 </div>
@@ -942,7 +965,8 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" />
+                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="hidden sm:block" />
+                    <img src="/games/side-icon/new.svg" alt="Bonus Buys" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">BONUS BUYS (145)</h2>
                 </div>
@@ -1029,7 +1053,8 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/collections.svg" alt="Collections" />
+                    <img src="/games/game-icons/collections.svg" alt="Collections" className="hidden sm:block" />
+                    <img src="/games/side-icon/popular.svg" alt="Collections" className="block sm:hidden" />
                   </div>
                   <h2 className="game-section-title">COLLECTIONS (17)</h2>
                 </div>
@@ -1065,22 +1090,22 @@ export default function UserHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={collectionsRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[100px] select-none"
+                  className="flex flex-row items-center gap-[7.2px] md:gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full py-[4px] h-[68px] md:h-[108px] select-none"
                 >
                   {filteredCollections.map((col) => (
                     <div
                       key={col.id}
-                      className="w-[316px] h-[100px] flex-none rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-row items-center p-[12px] pr-[24px] pl-[12px] gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
+                      className="w-[183px] md:w-[316px] h-[60px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#1463FF] flex flex-row items-center pt-[7.2px] pr-[14.4px] pb-[7.2px] pl-[7.2px] md:p-[12px] md:pr-[24px] md:pl-[12px] gap-[7.2px] md:gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
                     >
-                      <div className="w-[76px] h-[76px] flex-none bg-[#0E1B3D] rounded-[8px] relative overflow-hidden">
-                        <div className="absolute w-[70px] h-[70px] left-[calc(50%-35px)] top-[calc(50%-35px)] bg-[#1463FF]/60 rounded-full filter blur-[15px] group-hover:scale-125 transition-transform duration-300 pointer-events-none" />
+                      <div className="w-[45.6px] md:w-[76px] h-[45.6px] md:h-[76px] flex-none bg-[#0E1B3D] rounded-[5px] md:rounded-[8px] relative overflow-hidden">
+                        <div className="absolute w-[42px] md:w-[70px] h-[42px] md:h-[70px] left-[calc(50%-21px)] md:left-[calc(50%-35px)] top-[calc(50%-21px)] md:top-[calc(50%-35px)] bg-[#1463FF]/60 rounded-full filter blur-[9px] md:blur-[15px] group-hover:scale-125 transition-transform duration-300 pointer-events-none" />
                         <img
                           src={col.image}
                           alt={col.name}
-                          className="absolute w-[71px] h-[67px] left-[calc(50%-35.5px)] top-[calc(50%-33.5px)] object-contain transition-transform duration-300 group-hover:scale-110"
+                          className="absolute w-[42.6px] md:w-[71px] h-[40.2px] md:h-[67px] left-[calc(50%-21.3px)] md:left-[calc(50%-35.5px)] top-[calc(50%-20.1px)] md:top-[calc(50%-33.5px)] object-contain transition-transform duration-300 group-hover:scale-110"
                         />
                       </div>
-                      <span className="font-jost font-extrabold text-[22px] leading-[32px] tracking-[0.01em] text-white uppercase text-center flex-grow select-none">
+                      <span className="font-jost font-extrabold text-[14px] md:text-[22px] leading-tight md:leading-[32px] tracking-[0.01em] text-white uppercase text-center flex-grow select-none">
                         {col.name}
                       </span>
                     </div>
@@ -1165,15 +1190,15 @@ export default function UserHome() {
           <span className="text-[10px] font-semibold font-sans">Search</span>
         </button>
         <button onClick={() => dispatch(openDepositModal())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/gift.png" alt="Offers" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/pro.svg" alt="Offers" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Offers</span>
         </button>
         <button onClick={() => { }} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/vip.png" alt="VIP" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/vip.svg" alt="VIP" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">VIP</span>
         </button>
         <button onClick={() => { }} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/trophy.png" alt="Tourneys" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/tour.svg" alt="Tourneys" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Tourneys</span>
         </button>
       </nav>

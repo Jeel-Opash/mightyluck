@@ -301,15 +301,15 @@ export default function GamePage() {
           <span className="text-[10px] font-semibold font-sans">Search</span>
         </button>
         <button onClick={() => dispatch(openDepositModal())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/gift.png" alt="Offers" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/pro.svg" alt="Offers" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Offers</span>
         </button>
         <button className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/vip.png" alt="VIP" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/vip.svg" alt="VIP" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">VIP</span>
         </button>
         <button className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/trophy.png" alt="Challenges" className="w-5 h-5 object-contain" />
+          <img src="/games/side-icon/tour.svg" alt="Challenges" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Challenges</span>
         </button>
       </nav>
