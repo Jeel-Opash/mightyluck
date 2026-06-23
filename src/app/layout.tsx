@@ -19,6 +19,7 @@ const jost = Jost({
 export const metadata: Metadata = {
   title: 'Mighty Luck Casino - Premium Online Casino',
   description: 'Unleash the Power of Mighty Luck. Play slots, table games, and enjoy instant payouts.',
+  icons: { icon: '/images/logo.svg' },
 };
 
 export default function RootLayout({
