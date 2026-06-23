@@ -191,31 +191,8 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
-      >
-        {/* Blue glow ellipse: 281×281, centered */}
-        <div style={{ position: 'absolute', width: '281px', height: '281px', left: 'calc(50% - 140.5px)', top: 'calc(50% - 140.5px)', background: '#0051F1', filter: 'blur(62.39px)', borderRadius: '50%' }} />
+      />
 
-        {/* Content stack: 220.13×119, centered */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0, gap: '12px', position: 'absolute', width: '220.13px', height: '119px', left: 'calc(50% - 110.065px)', top: 'calc(50% - 59.5px)' }}>
-
-          {/* 350% text */}
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: 0, gap: '10px', width: '132px', height: '31px' }}>
-            <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '44px', lineHeight: '44px', textAlign: 'center', letterSpacing: '0.01em', color: '#FFFFFF', display: 'block', height: '31px', overflow: 'visible' }}>350%</span>
-          </div>
-
-          {/* WELCOME PACKAGE pill: 140.59×32 */}
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '8.65px 17.3px', gap: '8.65px', width: '140.59px', height: '32px', background: '#2BEA51', borderRadius: '86.49px', flexShrink: 0 }}>
-            <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '10px', lineHeight: '14px', textAlign: 'center', color: '#051D09', whiteSpace: 'nowrap' }}>WELCOME PACKAGE</span>
-          </div>
-
-          {/* Subtitle */}
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-start', padding: 0, gap: '10px', width: '220.13px', height: '32px' }}>
-            <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: '12px', lineHeight: '16px', textAlign: 'center', letterSpacing: '0.01em', color: '#FFFFFF', width: '200px' }}>
-              Boost your deposits with 350% in Bonus and 200 Free Spins
-            </span>
-          </div>
-        </div>
-      </div>
 
       {/* ── Row 3: Form area px=20, pt=20, pb=40, gap=60 ── */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px 20px 40px', gap: '32px', width: '100%', flexShrink: 0, boxSizing: 'border-box' }}>
