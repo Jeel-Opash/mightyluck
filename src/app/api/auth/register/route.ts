@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectDB } from '@/lib/db';
+import { dbConnect } from '@/lib/db';
+import mongoose from 'mongoose';
 import crypto from 'crypto';
 import { cookies } from 'next/headers';
 import { encryptSession } from '@/lib/auth';
@@ -20,7 +21,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const db = await connectDB();
+    await dbConnect();
+    const db = mongoose.connection.db;
+    if (!db) {
+      throw new Error('Database connection not established');
+    }
     const users = db.collection('users');
 
     const existing = await users.findOne({

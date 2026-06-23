@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { connectDB } from '@/lib/db';
+import { dbConnect } from '@/lib/db';
+import mongoose from 'mongoose';
 import { decryptSession } from '@/lib/auth';
 import { ObjectId } from 'mongodb';
 
@@ -18,7 +19,11 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ authenticated: false }, { status: 401 });
     }
 
-    const db = await connectDB();
+    await dbConnect();
+    const db = mongoose.connection.db;
+    if (!db) {
+      throw new Error('Database connection not established');
+    }
     const users = db.collection('users');
 
     let objId;

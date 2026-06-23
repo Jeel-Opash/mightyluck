@@ -1,17 +1,27 @@
-import { MongoClient, Db } from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mightyluck';
-const DB_NAME     = MONGODB_URI.split('/').pop()?.split('?')[0] || 'mightyluck';
+import mongoose from "mongoose";
 
-let client: MongoClient | null = null;
-let db: Db | null = null;
+type ConnectionObject = {
+  isConnected?: number;
+};
 
-export async function connectDB(): Promise<Db> {
-  if (db) return db;
+const connection: ConnectionObject = {};
 
-  client = new MongoClient(MONGODB_URI);
-  await client.connect();
-  db = client.db(DB_NAME);
-  console.log(`✅ MongoDB connected → ${MONGODB_URI}`);
-  return db;
+export async function dbConnect(): Promise<void> {
+  if (connection.isConnected) {
+    console.log("Already Database connection");
+    return;
+  }
+
+  try {
+    const uri = process.env.MONGODB_URI || "";
+    const db = await mongoose.connect(uri);
+    connection.isConnected = db.connections[0].readyState;
+    console.log("Database Connected Successfully");
+    console.log(db.connections[0].readyState);
+  } catch (error) {
+    console.log("Database Connection Failed", error);
+    process.exit(1);
+  }
 }
+;
