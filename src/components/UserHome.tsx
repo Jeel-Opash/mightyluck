@@ -1127,6 +1127,11 @@ export default function UserHome() {
                 </div>
               </div>
 
+              {/* Mobile-only progress line divider */}
+              <div className="md:hidden w-full h-[8px] rounded-full bg-white/10 overflow-hidden mt-[12px] mb-[16px]">
+                <div className="h-full w-[70%] bg-[#1463FF] rounded-full" />
+              </div>
+
               <div className="winners-table-container scrollbar-none">
                 <div className="winners-table-inner">
                   <div className="winners-table-header-row">

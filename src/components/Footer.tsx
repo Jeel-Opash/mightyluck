@@ -59,7 +59,7 @@ export default function Footer({ className }: FooterProps = {}) {
         <div className="flex flex-col items-center p-0 w-full isolate relative">
           <div
             className={`w-full max-w-[800px] flex flex-col gap-[24px] md:gap-[32px] overflow-hidden transition-all duration-500 ease-in-out ${
-              isSeoExpanded ? 'max-h-[2500px]' : 'max-h-[420px] md:max-h-[660px]'
+              isSeoExpanded ? 'max-h-[2500px]' : 'max-h-[590px] md:max-h-[660px]'
             }`}
           >
             {/* Play the Best Crypto Casino Games... */}
