@@ -13,6 +13,9 @@
   --color-brand-accent: #1463FF;
   --color-brand-yellow: #FFC83D;
   --color-brand-text-muted: #BBCAF3;
+
+  /* Redefine breakpoints so tablet sizes (768px-1023px) are treated as mobile */
+  --breakpoint-md: 1024px;
 }
 
 body {
@@ -203,7 +206,7 @@ input::placeholder {
   transform: scale(0.95);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .game-section-header {
     height: 30px;
   }
@@ -508,7 +511,7 @@ input::placeholder {
 }
 
 /* ── Mobile ──────────────────────────────────────────────────────────────── */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
 
   /* Game slider: horizontal snap, 3 cards visible */
   .game-cards-slider {

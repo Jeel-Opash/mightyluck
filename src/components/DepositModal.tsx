@@ -274,7 +274,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-0 sm:p-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-0 md:p-4">
       <style>{`
         .promo-input::placeholder {
           font-family: 'Manrope', sans-serif;
@@ -288,10 +288,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
       `}</style>
       <div className="absolute inset-0" onClick={onClose} />
 
-      <div className="sm:hidden relative w-full h-full bg-[#0C1F56] overflow-hidden flex flex-col items-center gap-0 border border-white/10 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-200">
+      <div className="md:hidden relative w-full h-full bg-[#0C1F56] overflow-hidden flex flex-col items-center gap-0 border border-white/10 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-200">
 
-        {/* Ellipse 6 (Aura) */}
-        <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[32px] bg-[#1463FF] rounded-full filter blur-[12.5px] pointer-events-none z-0" />
+        {/* Glow wrapper to prevent leaking below/above the header */}
+        <div className="absolute top-0 left-0 right-0 h-[50px] overflow-hidden pointer-events-none z-0">
+          {/* Ellipse 6 (Aura) */}
+          <div className="absolute w-[71.5px] h-[71.5px] left-[6px] top-[32px] -translate-y-1/2 bg-[#1463FF] rounded-full filter blur-[12.5px] pointer-events-none" />
+        </div>
 
         {/* Header - height: 50px */}
         <div className="w-full h-[50px] flex flex-row justify-between items-center px-[20px] bg-[#0C1F56] shrink-0 z-10 relative select-none">
@@ -403,15 +406,39 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         Your transaction in progress and pending confirmation from the blockchain.
                       </p>
 
-                      <div className="flex flex-row items-center justify-center gap-[12px] my-[16px]">
-                        <CrownIcon fill="#A5B8EF" width={42} height={32} />
-                        <CrownIcon fill="#A5B8EF" width={42} height={32} />
-                        <CrownIcon fill="#112F82" width={42} height={32} />
+                      <div className="relative w-[150px] h-[150px] flex items-center justify-center my-[16px] select-none">
+                        <svg className="absolute inset-0 w-full h-full animate-spin [animation-duration:3.5s]" viewBox="0 0 100 100">
+                          {/* Inner dark blue background circle */}
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="44"
+                            stroke="#112F82"
+                            strokeWidth="3.5"
+                            fill="transparent"
+                          />
+                          {/* Outer yellow progress arc */}
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="44"
+                            stroke="#FFC83D"
+                            strokeWidth="3.5"
+                            fill="transparent"
+                            strokeDasharray="276"
+                            strokeDashoffset="65"
+                            strokeLinecap="round"
+                            transform="rotate(-90 50 50)"
+                          />
+                        </svg>
+                        <div className="w-[122px] h-[122px] rounded-full bg-[#112F82] flex items-center justify-center z-10 shadow-[0_0_15px_rgba(20,99,255,0.1)]">
+                          <img src="/images/logo.svg" className="w-[60px] h-[40px] object-contain" alt="Mighty Luck" />
+                        </div>
                       </div>
 
                       <p className="font-sans font-medium text-[13px] leading-[21px] tracking-[0.01em] text-[#BBCAF3] max-w-[320px]">
                         1 confirmation is required for deposits to be credited.{' '}
-                        <br className="hidden sm:block" />
+                        <br className="hidden md:block" />
                         Want to know how many confirmations this transaction has?{' '}
                         <br />
                         Please{' '}
@@ -643,7 +670,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             </span>
 
                             <div className="flex flex-row items-center justify-between px-[16px] w-full h-[50px] bg-[#112F82] rounded-[8px] border border-white/5">
-                              <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#7795E8] truncate max-w-[200px] sm:max-w-[250px] select-all">
+                              <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#7795E8] truncate max-w-[200px] md:max-w-[250px] select-all">
                                 {btcAddress}
                               </span>
 
@@ -724,14 +751,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               type="text"
                               value={city}
                               onChange={(e) => setCity(e.target.value)}
-                              className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                               placeholder="City"
                             />
                             <input
                               type="text"
                               value={postalCode}
                               onChange={(e) => setPostalCode(e.target.value)}
-                              className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                               placeholder="Postal Code"
                             />
                           </div>
@@ -742,12 +769,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               type="text"
                               value={state}
                               onChange={(e) => setState(e.target.value)}
-                              className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="flex-1 min-w-0 h-[50px] px-[0px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                               placeholder="State"
                             />
 
                             {/* Country dropdown */}
-                            <div className="flex-1 relative" ref={countryDropdownRefMobile}>
+                            <div className="flex-1 min-w-0 relative" ref={countryDropdownRefMobile}>
                               <div
                                 onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
                                 className="flex flex-row items-center justify-between px-[16px] h-[50px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
@@ -1366,7 +1393,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           borderRadius: '16px',
           isolation: 'isolate',
         }}
-        className="hidden sm:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
+        className="hidden md:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
       >
         {/* Close Button on the top-right outside the modal wrapper */}
         <button
@@ -2283,7 +2310,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     </>
                   ) : creditCardStep === 'address' ? (
                     <div className="flex flex-col items-start gap-[12px] w-full shrink-0 select-none">
-                      <div className="flex flex-col gap-[2px] w-[428px]">
+                      <div className="flex flex-col gap-[2px] w-full">
                         <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
                           Enter your address
                         </span>
@@ -2303,37 +2330,37 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         type="text"
                         value={street}
                         onChange={(e) => setStreet(e.target.value)}
-                        className="w-[428px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                        className="w-full h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                         placeholder="Street"
                       />
 
-                      <div className="flex flex-row gap-[8px] w-[428px]">
+                      <div className="flex flex-row gap-[8px] w-full">
                         <input
                           type="text"
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
-                          className="flex-1 w-[210px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                          className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="City"
                         />
                         <input
                           type="text"
                           value={postalCode}
                           onChange={(e) => setPostalCode(e.target.value)}
-                          className="flex-1 w-[210px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                          className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="Postal Code"
                         />
                       </div>
 
-                      <div className="flex flex-row gap-[8px] w-[428px] relative">
+                      <div className="flex flex-row gap-[8px] w-full relative">
                         <input
                           type="text"
                           value={state}
                           onChange={(e) => setState(e.target.value)}
-                          className="flex-1 w-[210px] h-[40px] px-[0px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                          className="flex-1 min-w-0 h-[40px] px-[0px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="State"
                         />
 
-                        <div className="flex-1 w-[210px] relative" ref={countryDropdownRefDesktop}>
+                        <div className="flex-1 min-w-0 relative" ref={countryDropdownRefDesktop}>
                           <div
                             onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
                             className="flex flex-row items-center justify-between px-[16px] h-[40px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
@@ -2397,7 +2424,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     </div>
                   ) : (
                     <div className="flex flex-col items-start gap-[12px] w-full shrink-0 select-none">
-                      <div className="flex flex-row items-center justify-between w-[428px]">
+                      <div className="flex flex-row items-center justify-between w-full">
                         <span className="font-sans font-semibold text-[12px] text-[#BBCAF3]">
                           Select an amount
                         </span>
@@ -2412,7 +2439,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </button>
                       </div>
 
-                      <div className="flex flex-row items-center gap-[8px] w-[428px] h-[40px]">
+                      <div className="flex flex-row items-center gap-[8px] w-full h-[40px]">
                         {[20, 30, 100].map((amount) => {
                           const isActive = ccAmountOption === amount;
                           return (
@@ -2468,11 +2495,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           const match = val.match(/.{1,4}/g);
                           setCreditCardNumber(match ? match.join(' ') : val);
                         }}
-                        className="w-[428px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                        className="w-full h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
                         placeholder="Credit Card Number"
                       />
 
-                      <div className="flex flex-row gap-[8px] w-[428px]">
+                      <div className="flex flex-row gap-[8px] w-full">
                         <input
                           type="text"
                           value={creditCardExp}
@@ -2484,14 +2511,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               setCreditCardExp(val);
                             }
                           }}
-                          className="flex-1 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                          className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
                           placeholder="Exp."
                         />
                         <input
                           type="password"
                           value={creditCardCcv}
                           onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
-                          className="flex-1 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                          className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
                           placeholder="CCV"
                         />
                       </div>
