@@ -726,7 +726,15 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                     height: '524px',
                   }}
                 >
-
+                  {/* Category Header */}
+                  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px', flexShrink: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px' }}>
+                      {renderCategoryIcon(activeCategory, true)}
+                    </div>
+                    <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em', textTransform: 'uppercase', color: '#FFFFFF' }}>
+                      {activeCategory}
+                    </span>
+                  </div>
 
                   <div
                     style={{

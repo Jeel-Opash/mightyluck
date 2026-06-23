@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/redux/store';
 import { toggleSidebar, openAllGamesModal } from '@/redux/features/uiSlice';
@@ -11,6 +11,25 @@ export default function Sidebar() {
   const sidebarOpen = useAppSelector((state) => state.ui.sidebarOpen);
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated);
   const [casinoExpanded, setCasinoExpanded] = useState(true);
+
+  // Lock body scroll when sidebar is open on mobile
+  useEffect(() => {
+    // Only apply overflow lock if the screen is mobile size (lg is 1024px)
+    const handleResize = () => {
+      if (window.innerWidth < 1024 && sidebarOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.body.style.overflow = '';
+    };
+  }, [sidebarOpen]);
 
   return (
     <>

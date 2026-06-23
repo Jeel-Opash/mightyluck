@@ -6,11 +6,11 @@ import { closeAuthModal, openAuthModal } from '@/redux/features/uiSlice';
 import { loginSuccess } from '@/redux/features/authSlice';
 
 const COUNTRY_CODES = [
-  { code: '+380', flag: '🇺🇦', name: 'Ukraine', image: null },
+  { code: '+380', flag: '🇺🇦', name: 'Ukraine', image: '/images/ukraine.svg' },
   { code: '+1', flag: '🇺🇸', name: 'United States', image: '/images/america.svg' },
-  { code: '+44', flag: '🇬🇧', name: 'United Kingdom', image: null },
-  { code: '+49', flag: '🇩🇪', name: 'Germany', image: null },
-  { code: '+91', flag: '🇮🇳', name: 'India', image: null },
+  { code: '+44', flag: '🇬🇧', name: 'United Kingdom', image: '/images/uk.svg' },
+  { code: '+49', flag: '🇩🇪', name: 'Germany', image: '/images/germany.svg' },
+  { code: '+91', flag: '🇮🇳', name: 'India', image: '/images/india.svg' },
 ];
 
 function FlagIcon({ c, size = 20 }: { c: typeof COUNTRY_CODES[0]; size?: number }) {
@@ -113,7 +113,7 @@ export default function AuthModal() {
             </svg>
           </button>
 
-          <form onSubmit={onSubmit} className="flex flex-col items-start gap-4 w-full z-9">
+          <form onSubmit={onSubmit} className="relative z-20 flex flex-col items-start gap-4 w-full">
             {/* Logo */}
             <div className="flex items-center justify-center w-full">
               <div className="flex items-center gap-1.5">
@@ -172,7 +172,7 @@ export default function AuthModal() {
 
               {/* Phone (join only) */}
               {type === 'join' && (
-                <div className="relative flex flex-row gap-2 w-full">
+                <div className="relative z-30 flex flex-row gap-2 w-full">
                   <div className="relative flex-shrink-0">
                     <button type="button" onClick={() => setDropOpen(!dropOpen)}
                       className="flex flex-row items-center px-4 gap-2 h-10 bg-[#112F82] rounded-lg border-0 cursor-pointer box-border min-w-[100px]">
@@ -185,7 +185,7 @@ export default function AuthModal() {
                     {dropOpen && (
                       <>
                         <div onClick={() => setDropOpen(false)} className="fixed inset-0 z-20" />
-                        <div className="absolute left-0 bottom-11 w-44 bg-[#0C1F56] rounded-lg border border-white/10 p-1.5 z-30 flex flex-col gap-0.5">
+                        <div className="absolute left-0 top-11 w-44 bg-[#0C1F56] rounded-lg border border-white/10 p-1.5 z-30 flex flex-col gap-0.5">
                           {COUNTRY_CODES.map(c => (
                             <button key={c.code} type="button" onClick={() => { setCountry(c); setDropOpen(false); }}
                               className="flex items-center gap-2 px-2 py-1.5 bg-transparent border-0 rounded cursor-pointer text-white hover:bg-white/5 text-xs font-sans">

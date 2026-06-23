@@ -2,7 +2,11 @@
 
 import React, { useState } from 'react';
 
-export default function Footer() {
+interface FooterProps {
+  className?: string;
+}
+
+export default function Footer({ className }: FooterProps = {}) {
   const [isSeoExpanded, setIsSeoExpanded] = useState(false);
   const [openAccordions, setOpenAccordions] = useState<{ [key: string]: boolean }>({
     'slot-games': false,
@@ -48,14 +52,14 @@ export default function Footer() {
   ];
 
   return (
-    <div className="w-full flex flex-col gap-[40px] md:gap-[100px] mt-[40px] md:mt-[100px]">
+    <div className={className || "w-full flex flex-col gap-[40px] md:gap-[100px] mt-[40px] md:mt-[100px]"}>
       
       {/* Child 1: SEO Text Area */}
       <div className="flex flex-col items-start p-0 w-full max-w-[1136px] mx-auto select-none px-4 md:px-0">
         <div className="flex flex-col items-center p-0 w-full isolate relative">
           <div
             className={`w-full max-w-[800px] flex flex-col gap-[24px] md:gap-[32px] overflow-hidden transition-all duration-500 ease-in-out ${
-              isSeoExpanded ? 'max-h-[2500px]' : 'max-h-[300px] md:max-h-[580px]'
+              isSeoExpanded ? 'max-h-[2500px]' : 'max-h-[420px] md:max-h-[660px]'
             }`}
           >
             {/* Play the Best Crypto Casino Games... */}

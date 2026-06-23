@@ -30,8 +30,8 @@ body {
 ::-webkit-scrollbar-thumb { background: #112F82; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #1463FF; }
 
-.scrollbar-none::-webkit-scrollbar { display: none; }
-.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none !important; }
+.scrollbar-none { -ms-overflow-style: none !important; scrollbar-width: none !important; }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

@@ -6,11 +6,11 @@ import { useAppDispatch } from '@/redux/store';
 import { loginSuccess } from '@/redux/features/authSlice';
 
 const COUNTRY_CODES = [
-  { code: '+380', flag: '🇺🇦', name: 'Ukraine' },
-  { code: '+1', flag: '🇺🇸', name: 'United States' },
-  { code: '+44', flag: '🇬🇧', name: 'United Kingdom' },
-  { code: '+49', flag: '🇩🇪', name: 'Germany' },
-  { code: '+91', flag: '🇮🇳', name: 'India' },
+  { code: '+380', flag: '🇺🇦', name: 'Ukraine', image: '/images/ukraine.svg' },
+  { code: '+1', flag: '🇺🇸', name: 'United States', image: '/images/america.svg' },
+  { code: '+44', flag: '🇬🇧', name: 'United Kingdom', image: '/images/uk.svg' },
+  { code: '+49', flag: '🇩🇪', name: 'Germany', image: '/images/germany.svg' },
+  { code: '+91', flag: '🇮🇳', name: 'India', image: '/images/india.svg' },
 ];
 
 const inputStyle: React.CSSProperties = {
@@ -282,7 +282,7 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
 
             {/* Phone row (join only) */}
             {tab === 'join' && (
-              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', padding: 0, gap: '8px', width: '100%', height: '50px', position: 'relative', boxSizing: 'border-box' }}>
+              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', padding: 0, gap: '8px', width: '100%', height: '50px', position: 'relative', zIndex: 30, boxSizing: 'border-box' }}>
 
                 {/* Country picker: 121×50 */}
                 <div style={{ position: 'relative', flexShrink: 0 }}>
@@ -291,7 +291,9 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
                     onClick={() => setDropOpen(!dropOpen)}
                     style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '10px 16px', gap: '10px', width: '121px', height: '50px', background: '#112F82', borderRadius: '8px', border: 'none', cursor: 'pointer', boxSizing: 'border-box' }}
                   >
-                    <span style={{ fontSize: '20px', lineHeight: '20px', width: '20px', height: '20px', display: 'flex', alignItems: 'center', flexShrink: 0 }}>{country.flag}</span>
+                    <div style={{ width: '20px', height: '20px', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                      <img src={country.image} alt={country.name} width="20" height="20" style={{ width: '20px', height: '20px', objectFit: 'cover', borderRadius: '50%' }} />
+                    </div>
                     <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: '14px', lineHeight: '19px', letterSpacing: '0.02em', color: '#FFFFFF', width: '35px', flexShrink: 0 }}>{country.code}</span>
                     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '14px', height: '14px', flexShrink: 0 }}>
                       <svg width="7" height="4" viewBox="0 0 7 4" fill="none" style={{ transform: dropOpen ? 'rotate(180deg)' : 'none', transition: '.2s' }}>
@@ -303,11 +305,11 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
                   {dropOpen && (
                     <>
                       <div onClick={() => setDropOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 20 }} />
-                      <div style={{ position: 'absolute', left: 0, bottom: '54px', width: '176px', background: '#0C1F56', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', padding: '6px', zIndex: 30, display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                      <div style={{ position: 'absolute', left: 0, top: '54px', width: '176px', background: '#0C1F56', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', padding: '6px', zIndex: 30, display: 'flex', flexDirection: 'column', gap: '2px' }}>
                         {COUNTRY_CODES.map(c => (
                           <button key={c.code} type="button" onClick={() => { setCountry(c); setDropOpen(false); }}
                             style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px', background: 'transparent', border: 'none', borderRadius: '6px', cursor: 'pointer', color: '#fff', fontSize: '12px', fontFamily: "'Manrope', sans-serif" }}>
-                            <span style={{ fontSize: '16px' }}>{c.flag}</span>
+                            <img src={c.image} alt={c.name} width="16" height="16" style={{ width: '16px', height: '16px', objectFit: 'cover', borderRadius: '50%', flexShrink: 0 }} />
                             <span style={{ fontWeight: 700 }}>{c.code}</span>
                             <span style={{ color: '#A5B8EF' }}>{c.name}</span>
                           </button>

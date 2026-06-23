@@ -204,7 +204,7 @@ export default function ReferralsPage() {
                   </div>
 
                   {/* Result Pill */}
-                  <div className="w-full bg-[#112F82] rounded-[8px] p-[10px_16px] h-[60px] flex items-center justify-between border border-white/5 shrink-0 box-border">
+                  <div className="w-full bg-[#112F82] rounded-[8px] p-[10px_16px] h-[60px] flex items-center justify-center gap-4 border border-white/5 shrink-0 box-border">
                     <span className="font-manrope font-bold text-[14px] leading-[19px] text-[#BBCAF3]">
                       Your monthly earnings:
                     </span>
@@ -434,7 +434,7 @@ export default function ReferralsPage() {
                   </div>
                 </div>
 
-                <div className="w-full bg-[#112F82] rounded-[8px] py-[10px_16px] h-[60px] flex items-center justify-between border border-white/5">
+                <div className="w-full bg-[#112F82] rounded-[8px] py-[10px_16px] h-[60px] flex items-center justify-center gap-4 border border-white/5">
                   <span className="font-manrope font-bold text-[14px] text-[#BBCAF3]">
                     Your monthly earnings:
                   </span>
@@ -447,19 +447,19 @@ export default function ReferralsPage() {
                   * Calculations are based on average player activity and may vary in individual cases
                 </p>
 
-                <form onSubmit={handleSendInvite} className="w-full flex flex-col gap-2 mt-2">
+                <form onSubmit={handleSendInvite} className="w-full flex flex-row gap-2 mt-2">
                   <input 
                     type="email"
                     required
                     placeholder="Enter email address"
                     value={emailAddress}
                     onChange={(e) => setEmailAddress(e.target.value)}
-                    className="w-full h-[40px] bg-[#112F82] rounded-[8px] px-4 border border-white/5 text-white font-manrope font-semibold text-[14px] placeholder-[#BBCAF3] focus:outline-none focus:ring-1 focus:ring-[#1463FF]"
+                    className="flex-1 h-[40px] bg-[#112F82] rounded-[8px] px-4 border border-white/5 text-white font-manrope font-semibold text-[14px] placeholder-[#BBCAF3] focus:outline-none focus:ring-1 focus:ring-[#1463FF]"
                   />
                   <button
                     type="submit"
                     disabled={inviteStatus === 'sending'}
-                    className="w-full h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] active:scale-[0.98] disabled:opacity-50 text-[#1A1404] font-manrope font-bold text-[14px] rounded-[8px] flex items-center justify-center transition-all cursor-pointer border-none"
+                    className="w-[122px] h-[40px] shrink-0 bg-[#FFC83D] hover:bg-[#ffd362] active:scale-[0.98] disabled:opacity-50 text-[#1A1404] font-manrope font-bold text-[14px] rounded-[8px] flex items-center justify-center transition-all cursor-pointer border-none"
                   >
                     {inviteStatus === 'sending' ? 'Sending...' : 'Send Invite'}
                   </button>

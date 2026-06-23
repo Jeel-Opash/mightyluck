@@ -88,7 +88,7 @@ export default function GamePage() {
         <div className="lg:hidden"><Sidebar /></div>
 
         {/* Main content */}
-        <div className="w-full min-w-0 flex-1 flex flex-col gap-[40px] pt-4">
+        <div className="w-full min-w-0 flex-1 flex flex-col gap-[60px] pt-4">
 
           {/* Top content wrapper containing back button and game container */}
           <div className="flex flex-col gap-[40px] w-full max-w-[1136px]">
@@ -281,7 +281,7 @@ export default function GamePage() {
           </div>
 
           {/* Reusable responsive Footer component */}
-          <Footer />
+          <Footer className="w-full flex flex-col gap-[40px] md:gap-[100px] mt-0 md:mt-[10px]" />
 
         </div>
       </div>
