@@ -563,22 +563,27 @@ export default function GuestHome() {
                 </div>
               </div>
 
-              <div className="flex flex-row items-center gap-[12px] w-full overflow-x-auto scrollbar-none snap-x snap-mandatory">
-                <img
-                  src="/games/join/clock.png"
-                  alt="Fast Withdrawals"
-                  className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0"
-                />
-                <img
-                  src="/games/join/trophy.png"
-                  alt="Big Winners Welcome"
-                  className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0"
-                />
-                <img
-                  src="/games/join/10.png"
-                  alt="Weekly 10% Cashback"
-                  className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0"
-                />
+              <div className="relative w-full overflow-hidden">
+                <div className="flex flex-row items-center gap-[12px] w-full overflow-x-auto scrollbar-none snap-x snap-mandatory touch-pan-x">
+                  <img
+                    src="/games/join/clock.png"
+                    alt="Fast Withdrawals"
+                    draggable={false}
+                    className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
+                  />
+                  <img
+                    src="/games/join/trophy.png"
+                    alt="Big Winners Welcome"
+                    draggable={false}
+                    className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
+                  />
+                  <img
+                    src="/games/join/10.png"
+                    alt="Weekly 10% Cashback"
+                    draggable={false}
+                    className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
+                  />
+                </div>
               </div>
             </section>
 

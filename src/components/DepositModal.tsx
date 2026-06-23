@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useAppSelector } from '@/redux/store';
+import CrownIcon from './CrownIcon';
 
 
 const YellowWalletIcon = () => (
@@ -22,16 +23,16 @@ const CreditCardLogos = () => (
 );
 
 const DollarCircleIcon = () => (
-  <div className="w-5 h-5 rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0 shadow-sm">
-    <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div className="w-4 h-4 rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0 shadow-sm">
+    <svg width="7" height="9" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M4 1V9M2 2.5H5.5C6.328 2.5 7 3.172 7 4C7 4.828 6.328 5.5 5.5 5.5H2.5C1.672 5.5 1 6.172 1 7C1 7.828 1.672 8.5 2.5 8.5H6" stroke="#1A1404" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </div>
 );
 
 const BitcoinCircleIcon = () => (
-  <div className="w-5 h-5 rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0 shadow-sm">
-    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div className="w-4 h-4 rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0 shadow-sm">
+    <svg width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M3.5 2.5H5.5C6.052 2.5 6.5 2.948 6.5 3.5C6.5 4.052 6.052 4.5 5.5 4.5M3.5 4.5H6C6.552 4.5 7 4.948 7 5.5C7 6.052 6.552 6.5 6 6.5H3.5M3.5 1.5V8.5M5 1.5V2.5M5 7.5V8.5M2.5 2.5H3.5M2.5 6.5H3.5" stroke="#1A1404" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </div>
@@ -295,18 +296,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         {/* Header - height: 50px */}
         <div className="w-full h-[50px] flex flex-row justify-between items-center px-[20px] bg-[#0C1F56] shrink-0 z-10 relative select-none">
           <div className="flex flex-row items-center gap-[10px] w-auto h-[30px] shrink-0 relative">
-            <svg width="34" height="25" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
-              <defs>
-                <linearGradient id="crown-gradient-modal" x1="4.07382" y1="12.3753" x2="29.4186" y2="12.3753" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#FFD85A" />
-                  <stop offset="1" stopColor="#FFB800" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z"
-                fill="url(#crown-gradient-modal)"
-              />
-            </svg>
+            <CrownIcon fill="url(#crown-gradient-modal)" className="shrink-0" />
           </div>
 
           <div className="flex flex-row items-center gap-[16px] h-[30px] shrink-0">
@@ -414,15 +404,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       </p>
 
                       <div className="flex flex-row items-center justify-center gap-[12px] my-[16px]">
-                        <svg width="42" height="32" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#A5B8EF" />
-                        </svg>
-                        <svg width="42" height="32" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#A5B8EF" />
-                        </svg>
-                        <svg width="42" height="32" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#112F82" />
-                        </svg>
+                        <CrownIcon fill="#A5B8EF" width={42} height={32} />
+                        <CrownIcon fill="#A5B8EF" width={42} height={32} />
+                        <CrownIcon fill="#112F82" width={42} height={32} />
                       </div>
 
                       <p className="font-sans font-medium text-[13px] leading-[21px] tracking-[0.01em] text-[#BBCAF3] max-w-[320px]">
@@ -674,7 +658,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                       Copied!
                                     </span>
                                   ) : null}
-                                  <img src="/images/paste.png" className="w-[16px] h-[16px] object-contain" alt="Copy" />
+                                  <img src="/images/paste.png" className="w-[16px] h-[16px] object-contain  bg-[#1463FF]" alt="Copy" />
                                 </button>
 
                                 <button
@@ -1466,7 +1450,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             >
               {/* Wallet Icon Frame (20px x 20px) */}
               <div style={{ width: '20px', height: '20px', position: 'relative' }} className="flex items-center justify-center shrink-0">
-                <img src="/games/wallet.svg" alt="Wallet" style={{ width: '20px', height: '18px', objectFit: 'contain' }} />
+                <img src="/games/wallet.svg" alt="Wallet" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
               </div>
 
               {/* Wallet Text */}
@@ -1615,23 +1599,17 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   >
                     {/* Crown 1 */}
                     <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <svg width="29" height="21" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#A5B8EF" />
-                      </svg>
+                      <CrownIcon fill="#A5B8EF" width={29} height={21} />
                     </div>
 
                     {/* Crown 2 */}
                     <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <svg width="29" height="21" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#A5B8EF" />
-                      </svg>
+                      <CrownIcon fill="#A5B8EF" width={29} height={21} />
                     </div>
 
                     {/* Crown 3 */}
                     <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <svg width="29" height="21" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M33.1198 7.41853L24.191 11.0541C23.9175 11.1662 23.6056 11.0595 23.4552 10.8051L17.478 0.292432C17.2455 -0.104222 16.6655 -0.0960149 16.4467 0.308846L10.1796 10.8325C10.0346 11.1006 9.70631 11.2155 9.42455 11.0951L0.826733 7.41853C0.36169 7.21883 -0.122501 7.65925 0.027954 8.14071L5.1106 24.3269C5.18719 24.5731 5.41698 24.7427 5.67685 24.7427L27.4354 24.7482C27.6843 24.7482 27.9059 24.5923 27.9934 24.3598L33.9022 8.1708C34.0773 7.68661 33.5986 7.2243 33.1226 7.41853H33.1198ZM20.602 15.2668L16.351 22.7896C16.2908 22.8962 16.1321 22.8552 16.1266 22.7348L15.9543 18.1802H14.4689V18.1637C14.4306 18.1692 14.3923 18.1802 14.3513 18.1802H11.2683C11.178 18.1802 11.1206 18.0817 11.1616 18.0023L15.7437 9.51395C15.9051 9.23493 16.2005 9.06532 16.5206 9.06532H19.6035C19.6938 9.06532 19.7512 9.1638 19.7102 9.24313L16.5534 15.089H20.4953C20.5883 15.089 20.6458 15.1875 20.5993 15.2695L20.602 15.2668Z" fill="#112F82" />
-                      </svg>
+                      <CrownIcon fill="#112F82" width={29} height={21} />
                     </div>
                   </div>
 
@@ -1776,12 +1754,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     {isBonusDropdownOpen && (
                       <div
                         style={{ width: '428px', top: '68px' }}
-                        className="absolute left-0 bg-[#0C1F56] rounded-[8px] border-2 border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col"
+                        className="absolute left-0 bg-[#112f82] rounded-[8px] border-2 border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col"
                       >
-                        <div className="px-[16px] py-[12px] border-b border-white/5 font-sans font-bold text-[12px] text-white bg-[#091741]">
+                        <div className="px-[16px] py-[12px] border-b border-white/5 font-sans font-bold text-[12px] text-white bg-[#112f82]">
                           Choose one bonus on next deposits
                         </div>
-                        <div className="flex flex-col max-h-[160px] overflow-y-auto">
+                        <div className="flex flex-col max-h-[192px] overflow-y-auto">
                           {bonusOptions.map((opt) => {
                             const isSelected = selectedBonus === opt.title;
                             return (
@@ -1991,7 +1969,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
                         >
                           <div className="flex flex-row items-center gap-[8px]">
-                            <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain" alt="Bitcoin" />
+                            <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain " alt="Bitcoin" />
                             <span>Bitcoin (Min. $10)</span>
                           </div>
                         </div>
@@ -2093,7 +2071,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             }}
                             className="flex-grow border border-white/5"
                           >
-                            <img src="/images/doller.svg" className="w-5 h-5 object-contain shrink-0" alt="USD" />
+                            <img src="/images/doller.svg" className="w-4 h-4 object-contain shrink-0" alt="USD" />
                             <input
                               type="number"
                               value={usdAmount}
@@ -2161,7 +2139,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             }}
                             className="flex-grow border border-white/5"
                           >
-                            <img src="/images/bitcoin.svg" className="w-5 h-5 object-contain shrink-0" alt="BTC" />
+                            <img src="/images/bitcoin.svg" className="w-4 h-4 object-contain shrink-0" alt="BTC" />
                             <input
                               type="number"
                               value={btcAmount}
@@ -2305,9 +2283,21 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     </>
                   ) : creditCardStep === 'address' ? (
                     <div className="flex flex-col items-start gap-[12px] w-full shrink-0 select-none">
-                      <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
-                        Enter your address
-                      </span>
+                      <div className="flex flex-col gap-[2px] w-[428px]">
+                        <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                          Enter your address
+                        </span>
+                        <div className="flex flex-row items-start gap-[8px] w-full mt-[2px]">
+                          <div className="w-[12px] h-[12px] mt-[2px] flex items-center justify-center shrink-0">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
+                            </svg>
+                          </div>
+                          <span className="font-manrope font-medium text-[11px] leading-[15px] tracking-[0.02em] text-[#7795E8] select-none">
+                            Please fill up your address details before completing your deposit. This information is required for credit card deposits.
+                          </span>
+                        </div>
+                      </div>
 
                       <input
                         type="text"
@@ -2339,7 +2329,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           type="text"
                           value={state}
                           onChange={(e) => setState(e.target.value)}
-                          className="flex-1 w-[210px] h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                          className="flex-1 w-[210px] h-[40px] px-[0px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="State"
                         />
 
@@ -2355,6 +2345,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-white truncate">
                                 {country}
                               </span>
+
                             </div>
                             <div
                               style={{
@@ -2494,7 +2485,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             }
                           }}
                           className="flex-1 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
-                          placeholder="Exp. (MM/YY)"
+                          placeholder="Exp."
                         />
                         <input
                           type="password"
@@ -2633,7 +2624,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             color: '#1A1404',
                           }}
                         >
-                          Join
+                          Apply
                         </span>
                       </button>
                     </div>
@@ -3010,7 +3001,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 color: '#1A1404',
                               }}
                             >
-                              Join
+                              Apply
                             </span>
                           </button>
                         </div>

@@ -10,32 +10,32 @@ interface AllGamesModalProps {
 
 /* ── all game data ─────────────────────────────────────────── */
 const ALL_GAMES = [
-  { id: 's1', title: 'PATRICK VS NEFERTITI',          provider: 'Belatra',       category: 'Slots',    image: '/games/slots/slot-1.png' },
-  { id: 's2', title: "SWEET BONANZA SUPER SCATTER",   provider: 'Pragmatic Play',category: 'Slots',    image: '/games/slots/slot-2.png' },
-  { id: 's3', title: 'AMERICAN ROULETTE',             provider: 'Endorphina',    category: 'Roulette', image: '/games/slots/slot-3.png' },
-  { id: 's4', title: "CASH-O-MATIC! EXTREME CASH OUT",provider: 'Nolimit City',  category: 'Slots',    image: '/games/slots/slot-4.png' },
-  { id: 's5', title: 'RIDE\'EM POKER',                provider: 'Hacksaw',       category: 'Table Games', image: '/games/slots/slot-5.png' },
-  { id: 's6', title: 'POPPING MANIA',            provider: 'BGaming',       category: 'Slots',    image: '/games/slots/slot-6.png' },
-  { id: 's7', title: 'DOUBLE WIN COLLECTION',    provider: 'Booming',       category: 'Slots',    image: '/games/slots/slot-7.png' },
-  { id: 'o1', title: 'MIGHTY MINES',             provider: 'Mighty Luck',   category: 'Original', image: '/games/original/original-1.png' },
-  { id: 'o2', title: 'WINTER PLINKO',            provider: 'Mighty Luck',   category: 'Original', image: '/games/original/original-2.png' },
-  { id: 'o3', title: 'LUCKY CRASH',              provider: 'Mighty Luck',   category: 'Original', image: '/games/original/original-3.png' },
-  { id: 'o4', title: 'DICE DELUXE',              provider: 'Mighty Luck',   category: 'Original', image: '/games/original/original-4.png' },
-  { id: 'o5', title: 'WHEEL OF LUCK',            provider: 'Mighty Luck',   category: 'Original', image: '/games/original/original-5.png' },
-  { id: 'c1', title: 'CRASH',                    provider: 'Belatra',       category: 'Crash Games', image: '/games/crash/crash-1.png' },
-  { id: 'c2', title: 'CRASH TOUCHDOWN',          provider: 'BGaming',       category: 'Crash Games', image: '/games/crash/crash-2.png' },
-  { id: 'c3', title: 'CRUSADER',                 provider: 'Endorphina',    category: 'Crash Games', image: '/games/crash/crash-3.png' },
-  { id: 'c4', title: 'CRASH BONUS',              provider: 'Hacksaw',       category: 'Crash Games', image: '/games/crash/crash-4.png' },
-  { id: 't1', title: 'BACCARAT ELITE',           provider: 'Belatra',       category: 'Baccarat',    image: '/games/table/table-1.png' },
-  { id: 't2', title: 'CLASSIC ROULETTE',         provider: 'Pragmatic Play',category: 'Roulette',    image: '/games/table/table-2.png' },
-  { id: 't3', title: 'LA PARTAGE ROULETTE',      provider: 'Belatra',       category: 'Roulette',    image: '/games/table/table-3.png' },
-  { id: 't4', title: 'DRAGON TIGER LUCK',        provider: 'BGaming',       category: 'Table Games', image: '/games/table/table-4.png' },
+  { id: 's1', title: 'PATRICK VS NEFERTITI', provider: 'Belatra', category: 'Slots', image: '/games/slots/slot-1.png' },
+  { id: 's2', title: "SWEET BONANZA SUPER SCATTER", provider: 'Pragmatic Play', category: 'Slots', image: '/games/slots/slot-2.png' },
+  { id: 's3', title: 'AMERICAN ROULETTE', provider: 'Endorphina', category: 'Roulette', image: '/games/slots/slot-3.png' },
+  { id: 's4', title: "CASH-O-MATIC! EXTREME CASH OUT", provider: 'Nolimit City', category: 'Slots', image: '/games/slots/slot-4.png' },
+  { id: 's5', title: 'RIDE\'EM POKER', provider: 'Hacksaw', category: 'Table Games', image: '/games/slots/slot-5.png' },
+  { id: 's6', title: 'POPPING MANIA', provider: 'BGaming', category: 'Slots', image: '/games/slots/slot-6.png' },
+  { id: 's7', title: 'DOUBLE WIN COLLECTION', provider: 'Booming', category: 'Slots', image: '/games/slots/slot-7.png' },
+  { id: 'o1', title: 'MIGHTY MINES', provider: 'Mighty Luck', category: 'Original', image: '/games/original/original-1.png' },
+  { id: 'o2', title: 'WINTER PLINKO', provider: 'Mighty Luck', category: 'Original', image: '/games/original/original-2.png' },
+  { id: 'o3', title: 'LUCKY CRASH', provider: 'Mighty Luck', category: 'Original', image: '/games/original/original-3.png' },
+  { id: 'o4', title: 'DICE DELUXE', provider: 'Mighty Luck', category: 'Original', image: '/games/original/original-4.png' },
+  { id: 'o5', title: 'WHEEL OF LUCK', provider: 'Mighty Luck', category: 'Original', image: '/games/original/original-5.png' },
+  { id: 'c1', title: 'CRASH', provider: 'Belatra', category: 'Crash Games', image: '/games/crash/crash-1.png' },
+  { id: 'c2', title: 'CRASH TOUCHDOWN', provider: 'BGaming', category: 'Crash Games', image: '/games/crash/crash-2.png' },
+  { id: 'c3', title: 'CRUSADER', provider: 'Endorphina', category: 'Crash Games', image: '/games/crash/crash-3.png' },
+  { id: 'c4', title: 'CRASH BONUS', provider: 'Hacksaw', category: 'Crash Games', image: '/games/crash/crash-4.png' },
+  { id: 't1', title: 'BACCARAT ELITE', provider: 'Belatra', category: 'Baccarat', image: '/games/table/table-1.png' },
+  { id: 't2', title: 'CLASSIC ROULETTE', provider: 'Pragmatic Play', category: 'Roulette', image: '/games/table/table-2.png' },
+  { id: 't3', title: 'LA PARTAGE ROULETTE', provider: 'Belatra', category: 'Roulette', image: '/games/table/table-3.png' },
+  { id: 't4', title: 'DRAGON TIGER LUCK', provider: 'BGaming', category: 'Table Games', image: '/games/table/table-4.png' },
 ];
 
 type SideCategory =
   | 'All Games' | 'Recently Played' | 'Favorites' | 'New Releases'
-  | 'Original'  | 'Slots'           | 'Roulette'  | 'Crash Games'
-  | 'Table Games' | 'Live Casino'   | 'Baccarat'  | 'Blackjack';
+  | 'Original' | 'Slots' | 'Roulette' | 'Crash Games'
+  | 'Table Games' | 'Live Casino' | 'Baccarat' | 'Blackjack';
 
 const topItems: SideCategory[] = [
   'All Games', 'Recently Played', 'Favorites', 'New Releases'
@@ -48,105 +48,64 @@ const bottomItems: SideCategory[] = [
 
 /* ── inline category icon renderer ────────────────────────── */
 const renderCategoryIcon = (label: SideCategory, active: boolean) => {
-  const color = active ? '#FFFFFF' : '#A5B8EF';
+  let src = '';
   switch (label) {
     case 'All Games':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="7" height="7" />
-          <rect x="14" y="3" width="7" height="7" />
-          <rect x="14" y="14" width="7" height="7" />
-          <rect x="3" y="14" width="7" height="7" />
-        </svg>
-      );
+      src = '/games/side-icon/all.svg';
+      break;
     case 'Recently Played':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
-        </svg>
-      );
+      src = '/games/side-icon/recent.svg';
+      break;
     case 'Favorites':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-        </svg>
-      );
+      src = '/games/side-icon/like.svg';
+      break;
     case 'New Releases':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-      );
+      src = '/games/side-icon/new.svg';
+      break;
     case 'Original':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-        </svg>
-      );
+      src = '/games/side-icon/original.svg';
+      break;
     case 'Slots':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" />
-          <line x1="2" y1="9" x2="22" y2="9" />
-          <circle cx="7" cy="13" r="1.5" />
-          <circle cx="12" cy="13" r="1.5" />
-          <circle cx="17" cy="13" r="1.5" />
-          <path d="M22 6h2v6h-2" />
-        </svg>
-      );
+      src = '/games/side-icon/casino.svg';
+      break;
     case 'Roulette':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2">
-          <circle cx="12" cy="12" r="9" />
-          <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="3" x2="12" y2="21" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="5.6" y1="5.6" x2="18.4" y2="18.4" />
-          <line x1="18.4" y1="5.6" x2="5.6" y2="18.4" />
-        </svg>
-      );
+      src = '/games/side-icon/roulette.svg';
+      break;
     case 'Crash Games':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4.5 16.5L9 12L13 16L19.5 8" />
-          <polyline points="15 8 19.5 8 19.5 12.5" />
-        </svg>
-      );
+      src = '/games/side-icon/crash.svg';
+      break;
     case 'Table Games':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-          <circle cx="9" cy="9" r="1.5" />
-          <circle cx="15" cy="15" r="1.5" />
-          <circle cx="9" cy="15" r="1.5" />
-          <circle cx="15" cy="9" r="1.5" />
-        </svg>
-      );
+      src = '/games/game-icons/table.svg';
+      break;
     case 'Live Casino':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2a10 10 0 0 0-10 10c0 5.523 4.477 10 10 10s10-4.477 10-10A10 10 0 0 0 12 2z" />
-          <path d="M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12z" />
-          <circle cx="12" cy="12" r="2" />
-        </svg>
-      );
+      src = '/games/side-icon/live.svg';
+      break;
     case 'Baccarat':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2s-8 6-8 12c0 4.418 3.582 8 8 8s8-3.582 8-8c0-6-8-12-8-12z" />
-        </svg>
-      );
+      src = '/games/side-icon/baccrarat.svg';
+      break;
     case 'Blackjack':
-      return (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="6" width="12" height="16" rx="2" transform="rotate(-10 3 6)" />
-          <rect x="8" y="3" width="12" height="16" rx="2" transform="rotate(10 8 3)" />
-        </svg>
-      );
+      src = '/games/side-icon/blackjack.svg';
+      break;
     default:
       return null;
   }
+
+  return (
+    <img
+      src={src}
+      alt={label}
+      style={{
+        width: '16px',
+        height: '16px',
+        objectFit: 'contain',
+        flexShrink: 0,
+        filter: active
+          ? 'brightness(0) saturate(100%) invert(100%)' // Solid white
+          : 'brightness(0) saturate(100%) invert(77%) sepia(21%) saturate(760%) hue-rotate(192deg) brightness(98%) contrast(96%)', // Solid #A5B8EF
+        transition: 'filter 0.15s ease',
+      }}
+    />
+  );
 };
 
 /* ── single game card component ────────────────────────────── */
@@ -267,7 +226,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
   const visibleGames = ALL_GAMES.filter((g) =>
     currentCats.includes(g.category) &&
     (g.title.toLowerCase().includes(search.toLowerCase()) ||
-     g.provider.toLowerCase().includes(search.toLowerCase()))
+      g.provider.toLowerCase().includes(search.toLowerCase()))
   );
 
   const isDefaultView = activeCategory === 'All Games' && !search;
@@ -321,7 +280,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
             title="Close"
           >
             <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
 
@@ -582,9 +541,30 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '20px', width: '808px', height: '249px', flexShrink: 0 }}>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '808px', height: '29px' }}>
                       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px' }}>
-                        {/* Flame Icon */}
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M10 0C5.5 2.75 3.6 6.36 4.5 10.91C5.4 15.45 8.1 17.27 10 20C11.9 17.27 14.6 15.45 15.5 10.91C16.4 6.36 14.5 2.75 10 0ZM10 16.36C8.2 16.36 6.8 14.95 6.8 13.18C6.8 10.91 8.6 9.55 10 7.73C11.4 9.55 13.2 10.91 13.2 13.18C13.2 14.95 11.8 16.36 10 16.36Z" fill="#FFBF1F"/>
+                        {/* Flame Icon: large for desktop, small for mobile */}
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="hidden sm:block shrink-0"
+                          style={{ width: '20px', height: '20px' }}
+                        >
+                          <path
+                            d="M8.46484 0.332031C8.48828 0.289062 8.57422 0.195312 8.65625 0.125C8.78125 0.0234375 8.83984 0 8.99609 0C9.15625 0 9.24219 0.0390625 9.64062 0.277344C9.89062 0.429688 10.2305 0.652344 10.3906 0.773438C10.5508 0.890625 10.9297 1.23828 11.2305 1.53906C11.5391 1.84766 11.8867 2.24609 12.0312 2.44922C12.1719 2.64844 12.3789 2.97266 12.4961 3.17188C12.6133 3.37109 12.793 3.73828 12.8984 3.98438C13.0078 4.23047 13.1523 4.64453 13.2266 4.90234C13.3047 5.16016 13.4023 5.57422 13.4453 5.82031C13.5156 6.1875 13.5312 6.42578 13.5312 7.15625C13.5352 7.90625 13.543 8.03516 13.5898 7.99609C13.6211 7.96875 13.7617 7.80078 13.9023 7.61719C14.043 7.4375 14.2773 7.09375 14.418 6.85547C14.582 6.58203 14.7227 6.39453 14.8086 6.33594C14.8984 6.27734 14.9961 6.25 15.1172 6.25C15.2148 6.25 15.3438 6.28125 15.4102 6.32031C15.4727 6.35938 15.6719 6.55469 15.8516 6.75C16.0273 6.94922 16.2656 7.23828 16.3789 7.39453C16.4922 7.54688 16.6563 7.78906 16.7461 7.92969C16.832 8.07031 16.9922 8.35938 17.0977 8.57422C17.207 8.78906 17.3555 9.13281 17.4336 9.33594C17.5078 9.53906 17.6172 9.89062 17.6719 10.1172C17.7266 10.3438 17.8086 10.7656 17.8516 11.0547C17.8945 11.3516 17.9297 11.7812 17.9297 12.0312C17.9297 12.2773 17.9141 12.6289 17.8906 12.8125C17.8672 12.9961 17.8242 13.3047 17.7891 13.4961C17.7539 13.6875 17.6758 14.0273 17.6133 14.25C17.5508 14.4687 17.4453 14.7852 17.3789 14.9531C17.3125 15.1172 17.1719 15.4297 17.0625 15.6445C16.9531 15.8594 16.7578 16.2031 16.625 16.4062C16.4922 16.6094 16.25 16.9375 16.0859 17.1289C15.9258 17.3203 15.6367 17.6289 15.4453 17.8125C15.2539 17.9961 14.9492 18.2617 14.7656 18.3984C14.582 18.5352 14.2305 18.7695 13.9844 18.9141C13.7383 19.0625 13.3516 19.2578 13.125 19.3516C12.8984 19.4453 12.5469 19.5781 12.3438 19.6406C12.1406 19.707 11.7812 19.7969 11.543 19.8398C11.3047 19.8867 11.0156 19.9375 10.8984 19.9609C10.7812 19.9805 10.3867 20 10.0195 20C9.65625 20 9.24219 19.9805 9.10156 19.957C8.96094 19.9336 8.66406 19.8789 8.4375 19.8359C8.21094 19.793 7.80078 19.6836 7.51953 19.5898C7.24219 19.5 6.80859 19.3281 6.5625 19.2109C6.31641 19.0898 5.92969 18.8711 5.70312 18.7227C5.47656 18.5742 5.16016 18.3438 5 18.2148C4.83984 18.082 4.53125 17.7969 4.31641 17.5742C4.10156 17.3516 3.84375 17.0625 3.74609 16.9336C3.64453 16.8047 3.47266 16.5586 3.35938 16.3867C3.25 16.2148 3.04297 15.8438 2.90625 15.5664C2.76562 15.2891 2.58594 14.8477 2.5 14.5898C2.41797 14.332 2.3125 13.9609 2.26953 13.7695C2.22656 13.5781 2.16406 13.2148 2.13281 12.9688C2.09766 12.7227 2.07031 12.3125 2.07031 12.0586C2.07031 11.8086 2.09766 11.4023 2.13281 11.1641C2.16406 10.9219 2.22656 10.5547 2.27344 10.3516C2.31641 10.1484 2.42188 9.77734 2.50781 9.53125C2.59375 9.28516 2.74609 8.90625 2.84766 8.69141C2.94922 8.47656 3.13281 8.14062 3.25 7.94922C3.37109 7.75781 3.59766 7.42969 3.75391 7.22656C3.91016 7.02344 4.21484 6.67969 4.42969 6.46484C4.64844 6.25 5.07031 5.88672 5.37109 5.66406C5.67188 5.4375 6.03906 5.14844 6.19141 5.01953C6.33984 4.89062 6.58984 4.63672 6.75 4.45312C6.91016 4.26953 7.15234 3.95312 7.28516 3.75C7.42188 3.54688 7.62109 3.20312 7.72656 2.98828C7.83203 2.77344 7.96875 2.46484 8.02734 2.30469C8.08203 2.14453 8.17188 1.84375 8.22266 1.64062C8.27734 1.4375 8.34375 1.07812 8.37109 0.839844C8.40234 0.601562 8.44531 0.375 8.46484 0.332031Z"
+                            fill="#FFBF1F"
+                          />
+                        </svg>
+                        <svg
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="block sm:hidden shrink-0"
+                          style={{ width: '18px', height: '18px' }}
+                        >
+                          <path
+                            d="M8.46484 0.332031C8.48828 0.289062 8.57422 0.195312 8.65625 0.125C8.78125 0.0234375 8.83984 0 8.99609 0C9.15625 0 9.24219 0.0390625 9.64062 0.277344C9.89062 0.429688 10.2305 0.652344 10.3906 0.773438C10.5508 0.890625 10.9297 1.23828 11.2305 1.53906C11.5391 1.84766 11.8867 2.24609 12.0312 2.44922C12.1719 2.64844 12.3789 2.97266 12.4961 3.17188C12.6133 3.37109 12.793 3.73828 12.8984 3.98438C13.0078 4.23047 13.1523 4.64453 13.2266 4.90234C13.3047 5.16016 13.4023 5.57422 13.4453 5.82031C13.5156 6.1875 13.5312 6.42578 13.5312 7.15625C13.5352 7.90625 13.543 8.03516 13.5898 7.99609C13.6211 7.96875 13.7617 7.80078 13.9023 7.61719C14.043 7.4375 14.2773 7.09375 14.418 6.85547C14.582 6.58203 14.7227 6.39453 14.8086 6.33594C14.8984 6.27734 14.9961 6.25 15.1172 6.25C15.2148 6.25 15.3438 6.28125 15.4102 6.32031C15.4727 6.35938 15.6719 6.55469 15.8516 6.75C16.0273 6.94922 16.2656 7.23828 16.3789 7.39453C16.4922 7.54688 16.6563 7.78906 16.7461 7.92969C16.832 8.07031 16.9922 8.35938 17.0977 8.57422C17.207 8.78906 17.3555 9.13281 17.4336 9.33594C17.5078 9.53906 17.6172 9.89062 17.6719 10.1172C17.7266 10.3438 17.8086 10.7656 17.8516 11.0547C17.8945 11.3516 17.9297 11.7812 17.9297 12.0312C17.9297 12.2773 17.9141 12.6289 17.8906 12.8125C17.8672 12.9961 17.8242 13.3047 17.7891 13.4961C17.7539 13.6875 17.6758 14.0273 17.6133 14.25C17.5508 14.4687 17.4453 14.7852 17.3789 14.9531C17.3125 15.1172 17.1719 15.4297 17.0625 15.6445C16.9531 15.8594 16.7578 16.2031 16.625 16.4062C16.4922 16.6094 16.25 16.9375 16.0859 17.1289C15.9258 17.3203 15.6367 17.6289 15.4453 17.8125C15.2539 17.9961 14.9492 18.2617 14.7656 18.3984C14.582 18.5352 14.2305 18.7695 13.9844 18.9141C13.7383 19.0625 13.3516 19.2578 13.125 19.3516C12.8984 19.4453 12.5469 19.5781 12.3438 19.6406C12.1406 19.707 11.7812 19.7969 11.543 19.8398C11.3047 19.8867 11.0156 19.9375 10.8984 19.9609C10.7812 19.9805 10.3867 20 10.0195 20C9.65625 20 9.24219 19.9805 9.10156 19.957C8.96094 19.9336 8.66406 19.8789 8.4375 19.8359C8.21094 19.793 7.80078 19.6836 7.51953 19.5898C7.24219 19.5 6.80859 19.3281 6.5625 19.2109C6.31641 19.0898 5.92969 18.8711 5.70312 18.7227C5.47656 18.5742 5.16016 18.3438 5 18.2148C4.83984 18.082 4.53125 17.7969 4.31641 17.5742C4.10156 17.3516 3.84375 17.0625 3.74609 16.9336C3.64453 16.8047 3.47266 16.5586 3.35938 16.3867C3.25 16.2148 3.04297 15.8438 2.90625 15.5664C2.76562 15.2891 2.58594 14.8477 2.5 14.5898C2.41797 14.332 2.3125 13.9609 2.26953 13.7695C2.22656 13.5781 2.16406 13.2148 2.13281 12.9688C2.09766 12.7227 2.07031 12.3125 2.07031 12.0586C2.07031 11.8086 2.09766 11.4023 2.13281 11.1641C2.16406 10.9219 2.22656 10.5547 2.27344 10.3516C2.31641 10.1484 2.42188 9.77734 2.50781 9.53125C2.59375 9.28516 2.74609 8.90625 2.84766 8.69141C2.94922 8.47656 3.13281 8.14062 3.25 7.94922C3.37109 7.75781 3.59766 7.42969 3.75391 7.22656C3.91016 7.02344 4.21484 6.67969 4.42969 6.46484C4.64844 6.25 5.07031 5.88672 5.37109 5.66406C5.67188 5.4375 6.03906 5.14844 6.19141 5.01953C6.33984 4.89062 6.58984 4.63672 6.75 4.45312C6.91016 4.26953 7.15234 3.95312 7.28516 3.75C7.42188 3.54688 7.62109 3.20312 7.72656 2.98828C7.83203 2.77344 7.96875 2.46484 8.02734 2.30469C8.08203 2.14453 8.17188 1.84375 8.22266 1.64062C8.27734 1.4375 8.34375 1.07812 8.37109 0.839844C8.40234 0.601562 8.44531 0.375 8.46484 0.332031Z"
+                            fill="#FFBF1F"
+                          />
                         </svg>
                         <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em', textTransform: 'uppercase', color: '#FFFFFF' }}>
                           Popular Games
@@ -610,10 +590,9 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '20px', width: '808px', height: '150px', flexShrink: 0 }}>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '808px', height: '30px' }}>
                       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px' }}>
-                        {/* Game Provider Icon */}
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12 2C7.58 2 4 5.58 4 10C4 12.5 5.15 14.73 6.94 16.22C7.03 16.3 7.15 16.34 7.27 16.34H12.73C12.85 16.34 12.97 16.3 13.06 16.22C14.85 14.73 16 12.5 16 10C16 5.58 12.42 2 12 2ZM8.5 7.5C8.5 6.67 9.17 6 10 6C10.83 6 11.5 6.67 11.5 7.5C11.5 8.33 10.83 9 10 9C9.17 9 8.5 8.33 8.5 7.5Z" fill="#FFC83D"/>
-                        </svg>
+                        {/* Game Provider Icon: large for desktop, small for mobile */}
+                        <img src="/games/game-icons/game.svg" alt="Game Providers" className="hidden sm:block" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                        <img src="/games/side-icon/game-p.svg" alt="Game Providers" className="block sm:hidden" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
                         <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em', color: '#FFFFFF' }}>
                           GAME PROVIDERS
                         </span>
@@ -640,7 +619,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                           className="hover:bg-[#153896] active:scale-90 duration-100"
                         >
                           <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'rotate(180deg)' }}>
-                            <path d="M1 1L5 5L1 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M1 1L5 5L1 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </button>
                         <button
@@ -662,7 +641,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                           className="hover:bg-[#153896] active:scale-90 duration-100"
                         >
                           <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 1L5 5L1 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M1 1L5 5L1 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         </button>
                       </div>
@@ -747,11 +726,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                     height: '524px',
                   }}
                 >
-                  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '808px', height: '29px' }}>
-                    <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em', textTransform: 'uppercase', color: '#FFFFFF' }}>
-                      {search ? `Search results for "${search}"` : activeCategory}
-                    </span>
-                  </div>
+
 
                   <div
                     style={{
@@ -775,12 +750,12 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                         ))}
                       </div>
                     ) : (
-                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', height: '300px', gap: '12px', textAlign: 'center' }}>
-                        <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', color: '#FFFFFF' }}>
+                      <div style={{ flexDirection: 'column', justifyContent: 'center', width: '100%', height: '300px', gap: '12px', textAlign: 'center' }}>
+                        <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', color: '#FFFFFF' }}>
                           No Results found
                         </span>
-                        <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '13px', color: '#7795E8', maxWidth: '400px' }}>
-                          There are no results in this category matching your search. Please try another term or select a different category.
+                        <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '16px', color: '#7795E8', alignContent: 'center', maxWidth: '400px' }}>
+                          There are no results in this category for your search term, please select a different category or try searching for something else
                         </span>
                       </div>
                     )}
@@ -794,9 +769,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
 
       {/* ── MOBILE OVERLAY VIEW ── */}
       <div
-        className={`fixed top-[50px] left-0 right-0 bottom-[60px] z-[52] bg-[#0C1F56] flex md:hidden flex-col p-5 gap-5 overflow-y-auto transition-all duration-300 ease-in-out ${
-          isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
-        }`}
+        className={`fixed top-[50px] left-0 right-0 bottom-[60px] z-[52] bg-[#0C1F56] flex md:hidden flex-col p-5 gap-5 overflow-y-auto transition-all duration-300 ease-in-out ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
+          }`}
       >
         {/* Mobile Search input bar */}
         <div className="flex flex-row items-center gap-[12px] w-full h-[50px] bg-[#112F82] px-[20px] rounded-lg shrink-0 border border-white/5 focus-within:border-[#1463FF]/40">
@@ -828,9 +802,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
           <div className="flex flex-row items-start gap-2 w-[510px] h-[40px]">
             <button
               onClick={() => { setActiveCategory('All Games'); setSearch(''); }}
-              className={`flex flex-row items-center justify-center h-[40px] w-[107px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${
-                activeCategory === 'All Games' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
-              }`}
+              className={`flex flex-row items-center justify-center h-[40px] w-[107px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'All Games' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
+                }`}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                 <rect x="2" y="6" width="20" height="12" rx="3" />
@@ -844,9 +817,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
 
             <button
               onClick={() => { setActiveCategory('Recently Played'); setSearch(''); }}
-              className={`flex flex-row items-center justify-center h-[40px] w-[143px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${
-                activeCategory === 'Recently Played' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
-              }`}
+              className={`flex flex-row items-center justify-center h-[40px] w-[143px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'Recently Played' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
+                }`}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                 <circle cx="12" cy="12" r="10" />
@@ -857,9 +829,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
 
             <button
               onClick={() => { setActiveCategory('Favorites'); setSearch(''); }}
-              className={`flex flex-row items-center justify-center h-[40px] w-[103px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${
-                activeCategory === 'Favorites' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
-              }`}
+              className={`flex flex-row items-center justify-center h-[40px] w-[103px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'Favorites' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
+                }`}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -869,9 +840,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
 
             <button
               onClick={() => { setActiveCategory('New Releases'); setSearch(''); }}
-              className={`flex flex-row items-center justify-center h-[40px] w-[129.37px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${
-                activeCategory === 'New Releases' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
-              }`}
+              className={`flex flex-row items-center justify-center h-[40px] w-[129.37px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'New Releases' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
+                }`}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -925,9 +895,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
               <div className="flex flex-col gap-3 w-full shrink-0">
                 <div className="flex flex-row justify-between items-center w-full">
                   <div className="flex flex-row items-center gap-[7.2px]">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFBF1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 fill-[#FFBF1F]">
-                      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
-                    </svg>
+                    {/* Flame Icon (mobile): use small side-icon */}
+                    <img src="/games/side-icon/game-p.svg" alt="Popular Games" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
                     <h2 className="font-jost font-black text-[16px] leading-[23px] uppercase text-white tracking-[0.01em]">
                       Popular Games
                     </h2>

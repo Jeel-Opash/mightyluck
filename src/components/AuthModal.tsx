@@ -113,7 +113,7 @@ export default function AuthModal() {
             </svg>
           </button>
 
-          <form onSubmit={onSubmit} className="flex flex-col items-start gap-4 w-full z-10">
+          <form onSubmit={onSubmit} className="flex flex-col items-start gap-4 w-full z-9">
             {/* Logo */}
             <div className="flex items-center justify-center w-full">
               <div className="flex items-center gap-1.5">

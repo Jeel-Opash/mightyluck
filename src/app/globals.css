@@ -44,10 +44,7 @@ input:-webkit-autofill:active {
   transition: background-color 9999s ease-in-out 0s;
 }
 
-input {
-  background: transparent !important;
-  color-scheme: dark;
-}
+
 
 @keyframes spin {
   from { transform: rotate(0deg); }
@@ -132,7 +129,7 @@ input::placeholder {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.02em;
-  color: #FFBF1F;
+  color: #D2DcF7;
   cursor: pointer;
   user-select: none;
   transition: color 0.2s ease;
@@ -433,7 +430,7 @@ input::placeholder {
   .game-section-nav { display: none; }
 
   /* View all: yellow on mobile */
-  .game-section-view-all { color: #FFBF1F; }
+  .game-section-view-all { color: #D2DcF7; }
 
   /* Promotions: snap slider, ~1.5 cards visible */
   .promo-slider {

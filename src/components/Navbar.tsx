@@ -29,13 +29,16 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[60] w-full h-[50px] md:h-[60px] bg-[#0C1F56] border-b border-white/5 select-none isolate shrink-0">
-      
+
       {/* =========================================================================
           1. DESKTOP HEADER LAYOUT (md and up) - UNCHANGED
          ========================================================================= */}
       <div className="hidden md:flex w-full max-w-[1440px] mx-auto h-full flex-row justify-between items-center px-[24px] gap-4 relative">
-        {/* Ellipse 6: Glow behind the logo */}
-        <div className="absolute w-[143px] h-[143px] left-[114px] top-[37px] -translate-y-1/2 bg-[#1463FF]/35 rounded-full blur-[25px] pointer-events-none z-0" />
+        {/* Glow wrapper to prevent leaking below/above the navbar */}
+        <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
+          {/* Ellipse 6: Glow behind the logo */}
+          <div className="absolute w-[143px] h-[143px] left-[114px] top-[37px] -translate-y-1/2 bg-[#1463FF] rounded-full blur-[25px] pointer-events-none" />
+        </div>
 
         {/* Left Section: Menu, Logo, Search */}
         <div className="flex flex-row items-center gap-2 sm:gap-4 md:gap-[51px] h-[40px] z-10 order-1 relative">
@@ -79,7 +82,7 @@ export default function Navbar() {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="What are you looking for?"
-              className="w-full h-[19px] bg-transparent border-none outline-none text-white text-[14px] leading-[19px] font-semibold font-sans placeholder-[#BBCAF3] focus:ring-0 p-0"
+              className="w-full h-[19px] bg-transparent border-none outline-none text-white text-[14px] leading-[19px] font-semibold font-manrope placeholder-[#BBCAF3] focus:ring-0 p-0"
             />
           </div>
         </div>
@@ -187,13 +190,13 @@ export default function Navbar() {
             <div className="flex flex-row items-center gap-[10px] h-[30px] md:h-[40px]">
               <button
                 onClick={handleLoginClick}
-                className="w-[74px] h-[30px] md:w-[99px] md:h-[40px] bg-[#1463FF] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[10.5px] md:text-[14px] leading-[14px] md:leading-[19px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all duration-200 shrink-0"
+                className="w-[74px] h-[30px] md:w-[99px] md:h-[40px] bg-[#1463FF] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-manrope font-bold text-[10.5px] md:text-[14px] leading-[14px] md:leading-[19px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all duration-200 shrink-0"
               >
                 Login
               </button>
               <button
                 onClick={handleJoinClick}
-                className="w-[67px] h-[30px] md:w-[90px] md:h-[40px] bg-[#FFC83D] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[10.5px] md:text-[14px] leading-[14px] md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all duration-200 shrink-0"
+                className="w-[67px] h-[30px] md:w-[90px] md:h-[40px] bg-[#FFC83D] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-manrope font-bold text-[10.5px] md:text-[14px] leading-[14px] md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all duration-200 shrink-0"
               >
                 Join
               </button>
@@ -206,26 +209,28 @@ export default function Navbar() {
           2. MOBILE HEADER LAYOUT (md:hidden) - FIGMA SPECIFICATIONS
          ========================================================================= */}
       <div className="md:hidden w-full h-[50px] bg-[#0C1F56] px-[20px] flex items-center justify-between relative overflow-visible box-border">
-        
-        {/* Ellipse 6: Glow behind the logo */}
-        <div 
-          style={{
-            position: 'absolute',
-            width: '71.5px',
-            height: '71.5px',
-            left: '6px',
-            top: '32px',
-            background: '#1463FF',
-            filter: 'blur(12.5px)',
-            zIndex: 0,
-            borderRadius: '50%',
-            pointerEvents: 'none',
-          }} 
-        />
+
+        {/* Glow wrapper to prevent leaking below/above the navbar */}
+        <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
+          {/* Ellipse 6: Glow behind the logo */}
+          <div 
+            style={{
+              position: 'absolute',
+              width: '71.5px',
+              height: '71.5px',
+              left: '6px',
+              top: '32px',
+              transform: 'translateY(-50%)',
+              background: '#1463FF',
+              filter: 'blur(12.5px)',
+              borderRadius: '50%',
+            }} 
+          />
+        </div>
 
         {/* Inner Wrapper Frame 7: 374px x 30px */}
         <div className="w-[374px] max-w-full h-[30px] flex flex-row justify-between items-center gap-[2px] z-10 box-border">
-          
+
           {/* Logo Frame: 44px x 30px */}
           <div className="flex flex-row items-center gap-[8px] w-[44px] h-[30px] shrink-0 box-border">
             <img src="/images/logo.svg" className="w-[44px] h-[30px] object-contain shrink-0" alt="Mighty Luck" />
@@ -235,10 +240,10 @@ export default function Navbar() {
           {isAuthenticated && user ? (
             /* Logged-in mobile UI: width 238px x 30px */
             <div className="flex flex-row justify-end items-center gap-[16px] w-[238px] h-[30px] shrink-0 box-border">
-              
+
               {/* Balance & Deposit Frame: 116px x 30px */}
               <div className="flex flex-row items-center gap-[4px] w-[116px] h-[30px] shrink-0 box-border">
-                
+
                 {/* Balance container: 82px x 30px */}
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '8px 20px', gap: '7.5px', width: '82px', height: '30px', background: '#112F82', borderRadius: '6px', boxSizing: 'border-box' }}>
                   <span className="font-manrope font-bold text-[10.5px] leading-[14px] tracking-[0.02em] text-white whitespace-nowrap">
@@ -257,7 +262,7 @@ export default function Navbar() {
 
               {/* Action buttons (Notification, Gift, Avatar) Frame: 106px x 30px */}
               <div className="flex flex-row items-center gap-[8px] w-[106px] h-[30px] shrink-0 box-border">
-                
+
                 {/* Notification: 30px x 30px */}
                 <button className="flex flex-row justify-center items-center w-[30px] h-[30px] p-[7.5px_9px] bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer hover:bg-[#2051db] transition-colors shrink-0">
                   <img src="/mobile/navbar/bell.png" className="w-[12px] h-[12px] object-contain shrink-0" alt="Notifications" />
