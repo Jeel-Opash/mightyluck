@@ -344,7 +344,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             style={{
               position: 'absolute',
               width: '165px',
-              height: '80px',
+              height: '66px',
               left: '50%',
               top: '60px',
               transform: 'translate(-50%, -50%)',
@@ -1462,18 +1462,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         <div className="absolute inset-0 rounded-[16px] overflow-hidden pointer-events-none z-0">
           {/* Blue radial glow behind the Wallet title row */}
           <div
-            style={{
-              position: 'absolute',
-              width: '380px',
-              height: '80px',
-              left: '50%',
-              top: '49px',
-              transform: 'translate(-50%, -50%)',
-              background: '#1463FF',
-              filter: 'blur(40px)',
-              opacity: 0.5,
-              borderRadius: '50%',
-            }}
+            className="absolute w-[300px] h-[70px] left-[50%] top-[-10px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(20,99,255,0.7)_0%,rgba(0,122,255,0.8)_35%,transparent_100%)] blur-[20px] pointer-events-none"
           />
         </div>
 
