@@ -36,32 +36,92 @@ export default function Navbar() {
       <div className="hidden min-[580px]:flex w-full max-w-[1440px] mx-auto h-full flex-row justify-between items-center px-[24px] gap-4 relative">
         {/* Glow wrapper to prevent leaking below/above the navbar */}
         <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
-          {/* Ellipse 6: Glow behind the logo */}
-          <div className="absolute w-[250px] h-[70px] left-[165px] top-[60px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(20,99,255,0.8)_0%,rgba(0,122,255,0.35)_45%,transparent_75%)] blur-[10px] pointer-events-none" />
+          {/* Ellipse 6 */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '143px',
+              height: '143px',
+              left: '114px',
+              top: '37px',
+              background: '#1463FF',
+              filter: 'blur(25px)',
+              zIndex: 0,
+            }}
+          />
         </div>
 
         {/* Left Section: Menu, Logo, Search */}
-        <div className="flex flex-row items-center gap-2 sm:gap-4 md:gap-[51px] h-[40px] z-10 order-1 relative">
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            padding: '0px',
+            gap: '51px',
+            width: '596px',
+            height: '40px',
+            zIndex: 1,
+          }}
+          className="order-1 relative shrink-0"
+        >
           {/* Menu Toggler */}
           <button
             onClick={() => dispatch(toggleSidebar())}
-            className="flex w-[24px] h-[24px] items-center justify-center hover:opacity-80 transition-opacity cursor-pointer focus:outline-none shrink-0"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '24px',
+              height: '24px',
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0px',
+              flexShrink: 0,
+            }}
+            className="hover:opacity-80 transition-opacity focus:outline-none"
             aria-label="Toggle Navigation Sidebar"
           >
-            <img src="/images/Vector.png" className="w-[20.57px] h-[13.71px] object-contain" alt="Toggle Sidebar" />
+            <img src="/images/Vector.png" style={{ width: '20.57px', height: '13.71px', objectFit: 'contain' }} alt="Toggle Sidebar" />
           </button>
 
           {/* Horizontal logo */}
-          <div className="flex flex-row items-center gap-[10px] cursor-pointer w-auto md:w-[190px] h-[30px] md:h-[34.66px] shrink-0 relative">
-            <img src="/images/logo.svg" className="w-[34px] h-[25px] object-contain shrink-0 relative z-10" alt="Mighty Luck" />
-            <span className="hidden sm:inline font-jost font-black text-white tracking-[0.02em] text-[19px] leading-[26px] z-10 relative">
-              MIGHTY <span className="text-[#FFC83D]">LUCK</span>
+          <div
+            onClick={() => router.push('/')}
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '10px',
+              width: '190px',
+              height: '34.66px',
+              cursor: 'pointer',
+              flexShrink: 0,
+            }}
+          >
+            <img src="/images/logo.svg" style={{ width: '34px', height: '25px', objectFit: 'contain', flexShrink: 0 }} alt="Mighty Luck" />
+            <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 900, color: '#FFFFFF', fontSize: '19px', lineHeight: '26px', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
+              MIGHTY <span style={{ color: '#FFC83D' }}>LUCK</span>
             </span>
           </div>
 
           {/* Search Frame */}
-          <div className="hidden sm:flex flex-row items-center gap-[10px] w-full max-w-[280px] h-[40px] bg-[#112F82] px-[20px] py-[10px] rounded-lg border border-white/5 focus-within:border-brand-accent/40 focus-within:bg-[#153896] transition-all duration-200 shrink-0">
-            <svg width="16" height="15.99" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#BBCAF3] shrink-0">
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              padding: '10px 20px',
+              gap: '10px',
+              width: '280px',
+              height: '40px',
+              background: '#112F82',
+              borderRadius: '8px',
+              flexShrink: 0,
+            }}
+          >
+            <svg width="16" height="15.99" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: '#BBCAF3', flexShrink: 0 }}>
               <path
                 d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
                 stroke="currentColor"
@@ -82,7 +142,20 @@ export default function Navbar() {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="What are you looking for?"
-              className="w-full h-[19px] bg-transparent border-none outline-none text-white text-[14px] leading-[19px] font-semibold font-manrope placeholder-[#BBCAF3] focus:ring-0 p-0"
+              style={{
+                width: '100%',
+                height: '19px',
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
+                fontFamily: "'Manrope', sans-serif",
+                fontWeight: 600,
+                fontSize: '14px',
+                lineHeight: '19px',
+                color: '#BBCAF3',
+                padding: '0px',
+              }}
+              className="placeholder-[#BBCAF3] focus:ring-0"
             />
           </div>
         </div>
