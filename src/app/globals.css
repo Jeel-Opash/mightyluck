@@ -567,19 +567,19 @@ input::placeholder {
     color: #FFBF1F !important;
   }
 
-  /* Promotions: snap slider, ~1.5 cards visible */
+  /* Promotions: snap slider, ~1.1 cards visible */
   .promo-slider {
     overflow-x: auto !important;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    height: 263px !important;
+    height: 160px !important;
     gap: 12px !important;
   }
 
   .promo-card {
-    width: 278px !important;
-    min-width: 278px !important;
-    height: 263px !important;
+    width: 340px !important;
+    min-width: 340px !important;
+    height: 160px !important;
     border-radius: 10px !important;
     scroll-snap-align: start;
     flex-shrink: 0 !important;

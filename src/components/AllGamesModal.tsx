@@ -781,7 +781,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                         ))}
                       </div>
                     ) : (
-                      <div style={{  flexDirection: 'column', alignItems: 'center',  width: '100%', height: '350px', gap: '12px', textAlign: 'center' }}>
+                      <div style={{ flexDirection: 'column', alignItems: 'center', width: '100%', height: '350px', gap: '12px', textAlign: 'center' }}>
                         <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', color: '#FFFFFF' }}>
                           No Results for your Search
                         </span>
@@ -804,25 +804,26 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
           }`}
       >
         {/* Mobile Search input bar */}
-        <div className="flex flex-row items-center gap-[12px] w-full h-[50px] bg-[#112F82] px-[20px] rounded-lg shrink-0 border border-white/5 focus-within:border-[#1463FF]/40">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 text-[#BBCAF3]">
-            <circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" strokeWidth="1.8" />
-            <path d="M10.5 10.5L14.5 14.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-          </svg>
+        <div className="flex flex-row items-center gap-[16px] w-full h-[50px] bg-[#112F82] px-[20px] rounded-lg shrink-0 border border-white/5 focus-within:border-[#1463FF]/40">
+          {/* Game icon on left */}
+          <div className="flex flex-col items-start p-0 w-[16px] h-[16px] shrink-0">
+            <img src="/games/game-icons/game.svg" className="w-[16px] h-[16px] object-contain" alt="Search" />
+          </div>
 
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Start typing a game name"
+            placeholder="What are you looking for?"
             className="agm-search-placeholder flex-1 h-[22px] bg-transparent border-none outline-none text-white font-sans font-semibold text-[16px] leading-[22px] placeholder-[#BBCAF3] focus:ring-0 p-0"
           />
 
+          {/* X close button */}
           <button
             onClick={onClose}
             style={{
-              width: '24px',
-              height: '24px',
+              width: '20px',
+              height: '20px',
               background: 'transparent',
               border: 'none',
               cursor: 'pointer',
@@ -830,67 +831,74 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              flexShrink: 0,
             }}
-            className="opacity-80 hover:opacity-100 transition-opacity"
+            className="opacity-70 hover:opacity-100 transition-opacity"
           >
-            <img
-              src="/games/registeer/close.png"
-              style={{ width: '14.4px', height: '14.4px', objectFit: 'contain' }}
-              alt="Close"
-            />
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L11 11" stroke="#D2DCF7" strokeWidth="2" strokeLinecap="round" />
+              <path d="M11 1L1 11" stroke="#D2DCF7" strokeWidth="2" strokeLinecap="round" />
+            </svg>
           </button>
         </div>
 
         {/* Categories Row */}
         <div className="w-full overflow-x-auto agm-scrollbar-none shrink-0 select-none">
           <div className="flex flex-row items-start gap-2 w-[510px] h-[40px]">
+            {/* All Games */}
             <button
               onClick={() => { setActiveCategory('All Games'); setSearch(''); }}
-              className={`flex flex-row items-center justify-center h-[40px] w-[107px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'All Games' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
-                }`}
+              className={`flex flex-row items-center justify-center h-[40px] px-[10px] gap-2 rounded-[8px] cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'All Games' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'}`}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-                <rect x="2" y="6" width="20" height="12" rx="3" />
-                <line x1="6" y1="12" x2="10" y2="12" />
-                <line x1="8" y1="10" x2="8" y2="14" />
-                <line x1="15" y1="13" x2="15.01" y2="13" />
-                <line x1="18" y1="11" x2="18.01" y2="11" />
-              </svg>
-              <span className="font-sans font-semibold text-[12px] tracking-[0.02em]">All Games</span>
+              <img
+                src="/games/side-icon/all.svg"
+                className="w-[16px] h-[16px] object-contain shrink-0"
+                alt="All Games"
+                style={{ filter: activeCategory === 'All Games' && !search ? 'brightness(0) invert(1)' : 'none' }}
+              />
+              <span className="font-sans font-semibold text-[12px] tracking-[0.02em] whitespace-nowrap">All Games</span>
             </button>
 
+            {/* Recently Played */}
             <button
               onClick={() => { setActiveCategory('Recently Played'); setSearch(''); }}
-              className={`flex flex-row items-center justify-center h-[40px] w-[143px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'Recently Played' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
-                }`}
+              className={`flex flex-row items-center justify-center h-[40px] px-[10px] gap-2 rounded-[8px] cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'Recently Played' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'}`}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-              <span className="font-sans font-semibold text-[12px] tracking-[0.02em]">Recently Played</span>
+              <img
+                src="/games/side-icon/recent.svg"
+                className="w-[16px] h-[16px] object-contain shrink-0"
+                alt="Recently Played"
+                style={{ filter: activeCategory === 'Recently Played' && !search ? 'brightness(0) invert(1)' : 'brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(600%) hue-rotate(192deg) brightness(95%) contrast(90%)' }}
+              />
+              <span className="font-sans font-semibold text-[12px] tracking-[0.02em] whitespace-nowrap">Recently Played</span>
             </button>
 
+            {/* Favorites */}
             <button
               onClick={() => { setActiveCategory('Favorites'); setSearch(''); }}
-              className={`flex flex-row items-center justify-center h-[40px] w-[103px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'Favorites' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
-                }`}
+              className={`flex flex-row items-center justify-center h-[40px] px-[10px] gap-2 rounded-[8px] cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'Favorites' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'}`}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-              </svg>
-              <span className="font-sans font-semibold text-[12px] tracking-[0.02em]">Favorites</span>
+              <img
+                src="/games/side-icon/like.svg"
+                className="w-[16px] h-[16px] object-contain shrink-0"
+                alt="Favorites"
+                style={{ filter: activeCategory === 'Favorites' && !search ? 'brightness(0) invert(1)' : 'brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(600%) hue-rotate(192deg) brightness(95%) contrast(90%)' }}
+              />
+              <span className="font-sans font-semibold text-[12px] tracking-[0.02em] whitespace-nowrap">Favorites</span>
             </button>
 
+            {/* New Releases */}
             <button
               onClick={() => { setActiveCategory('New Releases'); setSearch(''); }}
-              className={`flex flex-row items-center justify-center h-[40px] w-[129.37px] rounded-lg gap-2 cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'New Releases' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'
-                }`}
+              className={`flex flex-row items-center justify-center h-[40px] px-[10px] gap-2 rounded-[8px] cursor-pointer transition-all border-0 shrink-0 ${activeCategory === 'New Releases' && !search ? 'bg-[#1463FF] text-white' : 'bg-[#112F82] text-[#A5B8EF]'}`}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-              <span className="font-sans font-semibold text-[12px] tracking-[0.02em]">New Releases</span>
+              <img
+                src="/games/side-icon/new.svg"
+                className="w-[16px] h-[16px] object-contain shrink-0"
+                alt="New Releases"
+                style={{ filter: activeCategory === 'New Releases' && !search ? 'brightness(0) invert(1)' : 'brightness(0) saturate(100%) invert(70%) sepia(10%) saturate(600%) hue-rotate(192deg) brightness(95%) contrast(90%)' }}
+              />
+              <span className="font-sans font-semibold text-[12px] tracking-[0.02em] whitespace-nowrap">New Releases</span>
             </button>
           </div>
         </div>
@@ -935,9 +943,9 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                   ))}
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center py-12 text-center">
+                <div className="flex flex-col items-center  py-3 text-center">
                   <span className="font-jost font-extrabold text-[16px] text-white">No Results for your Search</span>
-                  <span className="font-sans text-[12px] text-[#A5B8EF] mt-1">Try another keyword.</span>
+                  <span className="font-sans text-[16px] text-[#A5B8EF] mt-1">There are no results in this category for your search term, please select a different category or try searching for something else</span>
                 </div>
               )}
             </div>

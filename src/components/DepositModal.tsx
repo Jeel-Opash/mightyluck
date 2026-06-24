@@ -45,6 +45,62 @@ const SwapIcon = () => (
   </svg>
 );
 
+const MobileDollarCircleIcon = () => (
+  <img src="/images/doller.svg" className="w-4 h-4 object-contain shrink-0" alt="USD" />
+);
+
+const MobileBitcoinCircleIcon = () => (
+  <img src="/images/bitcoin.svg" className="w-4 h-4 object-contain shrink-0" alt="BTC" />
+);
+
+const MobileSwapIcon = () => (
+  <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+    <path d="M17 5H3.5M3.5 5L7 1.5M3.5 5L7 8.5" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M3 11H16.5M16.5 11L13 7.5M16.5 11L13 14.5" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const renderMobileBonusIcon = (iconType: string, isSelected: boolean, className = "w-[16px] h-[16px]") => {
+  switch (iconType) {
+    case 'gift':
+      return (
+        <img
+          src="/images/bonus-icon.svg"
+          className={`${className} object-contain shrink-0`}
+          alt="Bonus"
+          style={{ filter: isSelected ? 'brightness(0) invert(1)' : 'none' }}
+        />
+      );
+    case 'star':
+      return (
+        <img
+          src="/games/deposite-cashback/350.svg"
+          className={`${className} object-contain shrink-0`}
+          alt="Star"
+          style={{ filter: isSelected ? 'brightness(0) invert(1)' : 'none' }}
+        />
+      );
+    case 'coin':
+      return (
+        <img
+          src="/games/deposite-cashback/500.svg"
+          className={`${className} object-contain shrink-0`}
+          alt="Coin"
+          style={{ filter: isSelected ? 'brightness(0) invert(1)' : 'none' }}
+        />
+      );
+    case 'slash':
+      return (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className={`${className} shrink-0`}>
+          <circle cx="8" cy="8" r="7.25" stroke={isSelected ? '#FFFFFF' : '#A5B8EF'} strokeWidth="1.5" />
+          <path d="M3 13L13 3" stroke={isSelected ? '#FFFFFF' : '#A5B8EF'} strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+};
+
 interface DepositModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -337,7 +393,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         <div className="w-full h-[30px] bg-[#0C1F56] shrink-0" />
 
         {/* Main Wallet Panel (Figma specified: background: #091741, border-radius: 30px 30px 0px 0px) */}
-         <div className="flex-1 w-full bg-[#091741] rounded-t-[30px] flex flex-col items-center p-[16px_20px_40px] relative overflow-hidden select-none">
+         <div className="flex-1 w-full bg-[#091741] rounded-t-[30px] flex flex-col items-center p-[16px_20px_40px] relative overflow-hidden">
 
           {/* Blue radial glow behind the Wallet title row, safely contained inside overflow-hidden panel */}
           <div
@@ -503,7 +559,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           >
                             <div className="flex flex-row items-center gap-[8px] truncate flex-1">
                               <div className="text-[#FFC83D] flex items-center justify-center shrink-0">
-                                {renderBonusIcon(getSelectedBonusIcon(), 'w-[16px] h-[16px]')}
+                                {renderMobileBonusIcon(getSelectedBonusIcon(), false, 'w-[16px] h-[16px]')}
                               </div>
                               <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white truncate max-w-[245px]">
                                 {selectedBonus}
@@ -521,8 +577,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           </div>
 
                           {isBonusDropdownOpen && (
-                            <div className="absolute top-[49px] left-[-1px] right-[-1px] bg-[#0C1F56] rounded-b-[8px] border-x border-b border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col">
-                              <div className="px-[16px] py-[10px] border-b border-white/5 font-sans font-bold text-[12px] text-[#A5B8EF] bg-[#091741]">
+                            <div className="absolute top-[49px] left-[-1px] right-[-1px] bg-[#112f82] rounded-b-[8px] border-x border-b border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col">
+                              <div className="px-[16px] py-[10px] border-b border-white/5 font-sans font-bold text-[12px] text-[#A5B8EF] bg-[#112f82]">
                                 Choose one bonus on next deposits
                               </div>
                               <div className="flex flex-col max-h-[180px] overflow-y-auto">
@@ -539,7 +595,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                         }`}
                                     >
                                       <div className={`shrink-0 ${isSelected ? 'text-white' : 'text-[#A5B8EF]'}`}>
-                                        {renderBonusIcon(opt.icon, 'w-[16px] h-[16px]')}
+                                        {renderMobileBonusIcon(opt.icon, isSelected, 'w-[16px] h-[16px]')}
                                       </div>
                                       <div className="flex flex-col">
                                         <span className="font-sans font-bold text-[13px] text-white">
@@ -576,7 +632,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               {selectedPayment === 'Bitcoin' ? (
                                 <>
                                   <div className="flex flex-row items-center gap-[8px]">
-                                    <BitcoinCircleIcon />
+                                    <MobileBitcoinCircleIcon />
                                     <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
                                       Bitcoin
                                     </span>
@@ -636,7 +692,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
                               >
                                 <div className="flex flex-row items-center gap-[8px]">
-                                  <BitcoinCircleIcon />
+                                  <MobileBitcoinCircleIcon />
                                   <span>Bitcoin (Min. $10)</span>
                                 </div>
                               </div>
@@ -650,11 +706,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         <>
                           {/* WARNING NOTE */}
                           <div className="flex flex-row items-start gap-[8px] w-full shrink-0">
-                            <div className="w-[12px] h-[12px] mt-[2px] flex items-center justify-center shrink-0">
-                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
-                              </svg>
-                            </div>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7795E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-[1px]">
+                              <circle cx="12" cy="12" r="10" />
+                              <line x1="12" y1="8" x2="12" y2="12" />
+                              <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
                             <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
                               Only deposit BC via the Bitcoin network. Deposit of other assets or from other networks will be lost.
                             </span>
@@ -668,7 +724,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                             <div className="flex flex-row justify-center items-center gap-[8px] w-full h-[50px]">
                               <div className="flex flex-row items-center px-[16px] gap-[12px] flex-grow h-full bg-[#112F82] rounded-[8px] border border-white/5">
-                                <DollarCircleIcon />
+                                <MobileDollarCircleIcon />
                                 <input
                                   type="number"
                                   value={usdAmount}
@@ -682,11 +738,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 onClick={togglePrimaryCurrency}
                                 className="w-[50px] h-[50px] bg-[#1463FF] hover:bg-[#2c75ff] rounded-[8px] flex items-center justify-center text-white shrink-0 active:scale-90 transition-transform cursor-pointer border-none bg-transparent"
                               >
-                                <SwapIcon />
+                                <MobileSwapIcon />
                               </button>
 
                               <div className="flex flex-row items-center px-[16px] gap-[12px] flex-grow h-full bg-[#112F82] rounded-[8px] border border-white/5">
-                                <BitcoinCircleIcon />
+                                <MobileBitcoinCircleIcon />
                                 <input
                                   type="number"
                                   value={btcAmount}
@@ -720,7 +776,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                       Copied!
                                     </span>
                                   ) : null}
-                                  <img src="/images/paste.png" className="w-[16px] h-[16px] object-contain  bg-[#1463FF]" alt="Copy" />
+                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7795E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px] object-contain shrink-0">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                  </svg>
                                 </button>
 
                                 <button
@@ -728,7 +787,16 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   className="w-[16px] h-[16px] text-[#BBCAF3] hover:text-white transition-colors cursor-pointer border-none bg-transparent p-0 flex items-center justify-center"
                                   title="Show QR Code"
                                 >
-                                  <img src="/images/scan.png" className="w-[16px] h-[16px] object-contain" alt="Scan" />
+                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7795E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px] object-contain shrink-0">
+                                    <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+                                    <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+                                    <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+                                    <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+                                    <rect x="7" y="7" width="3" height="3" />
+                                    <rect x="14" y="7" width="3" height="3" />
+                                    <rect x="14" y="14" width="3" height="3" />
+                                    <rect x="7" y="14" width="3" height="3" />
+                                  </svg>
                                 </button>
                               </div>
                             </div>
@@ -938,13 +1006,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             {/* Card Number Input */}
                             <input
                               type="text"
+                              inputMode="numeric"
                               value={creditCardNumber}
                               onChange={(e) => {
                                 const val = e.target.value.replace(/\D/g, '').substring(0, 16);
                                 const match = val.match(/.{1,4}/g);
                                 setCreditCardNumber(match ? match.join(' ') : val);
                               }}
-                              className="w-full h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="w-full h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
                               placeholder="Credit Card Number"
                             />
 
@@ -952,6 +1021,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             <div className="flex flex-row gap-[8px] w-full">
                               <input
                                 type="text"
+                                inputMode="numeric"
                                 value={creditCardExp}
                                 onChange={(e) => {
                                   const val = e.target.value.replace(/\D/g, '').substring(0, 4);
@@ -961,14 +1031,15 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                     setCreditCardExp(val);
                                   }
                                 }}
-                                className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                                className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
                                 placeholder="Exp."
                               />
                               <input
                                 type="password"
+                                inputMode="numeric"
                                 value={creditCardCcv}
                                 onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
-                                className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                                className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
                                 placeholder="CCV"
                               />
                             </div>
@@ -1144,7 +1215,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               alignItems: 'flex-start',
                               padding: '20px',
                               gap: '12px',
-                              width: '280px',
+                              width: '300px',
                               height: '205px',
                               background: '#112F82',
                               borderRadius: '12px',
@@ -1170,7 +1241,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             >
                               <span
                                 style={{
-                                  width: '240px',
+                                  width: 'px',
                                   height: '20px',
                                   fontFamily: "'Jost', sans-serif",
                                   fontStyle: 'normal',

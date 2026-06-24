@@ -658,7 +658,7 @@ export default function UserHome() {
                     />
                     <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
 
-                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-[17.78px] md:bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
+                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
                       <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
                         150% RELOAD BONUS + 50 FREE SPINS
                       </h3>
@@ -679,7 +679,7 @@ export default function UserHome() {
                     />
                     <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
 
-                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-[17.78px] md:bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
+                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
                       <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
                         150% RELOAD BONUS + 50 FREE SPINS
                       </h3>
@@ -700,7 +700,7 @@ export default function UserHome() {
                     />
                     <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
 
-                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-[17.78px] md:bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
+                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
                       <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
                         150% RELOAD BONUS + 50 FREE SPINS
                       </h3>

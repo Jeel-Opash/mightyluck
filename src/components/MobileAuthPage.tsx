@@ -114,9 +114,22 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
         </div>
 
         {/* Tabs row 324px x 50px */}
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: 0, gap: '8px', flex: 1, height: '50px', width: '324px' }}>
-
-          {/* Join Now 158px x 50px */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            padding: 0,
+            flex: 1,
+            height: '50px',
+            background: '#112F82',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            border: '1px solid rgba(255, 255, 255, 0.05)',
+            boxSizing: 'border-box'
+          }}
+        >
+          {/* Join Now */}
           <button
             type="button"
             onClick={() => switchTab('join')}
@@ -125,12 +138,9 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: '10px 30px',
-              gap: '10px',
               flex: 1,
-              height: '50px',
-              background: '#FFC83D',
-              borderRadius: '8px',
+              height: '100%',
+              background: tab === 'join' ? '#1463FF' : 'transparent',
               border: 'none',
               cursor: 'pointer',
               fontFamily: "'Manrope', sans-serif",
@@ -138,15 +148,14 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
               fontSize: '14px',
               lineHeight: '19px',
               letterSpacing: '0.02em',
-              color: '#000000',
-              opacity: tab === 'join' ? 1 : 0.45,
-              transition: 'opacity 0.2s',
+              color: tab === 'join' ? '#FFFFFF' : '#A5B8EF',
+              transition: 'all 0.2s ease',
             }}
           >
             Join Now
           </button>
 
-          {/* Log In 158px x 50px */}
+          {/* Log In */}
           <button
             type="button"
             onClick={() => switchTab('login')}
@@ -155,12 +164,9 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: '10px 30px',
-              gap: '10px',
               flex: 1,
-              height: '50px',
-              background: '#1463FF',
-              borderRadius: '8px',
+              height: '100%',
+              background: tab === 'login' ? '#1463FF' : 'transparent',
               border: 'none',
               cursor: 'pointer',
               fontFamily: "'Manrope', sans-serif",
@@ -168,9 +174,8 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
               fontSize: '14px',
               lineHeight: '19px',
               letterSpacing: '0.02em',
-              color: '#FFFFFF',
-              opacity: tab === 'login' ? 1 : 0.45,
-              transition: 'opacity 0.2s',
+              color: tab === 'login' ? '#FFFFFF' : '#A5B8EF',
+              transition: 'all 0.2s ease',
             }}
           >
             Log In
