@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '@/redux/store';
 import { loginSuccess } from '@/redux/features/authSlice';
+import { openAuthModal } from '@/redux/features/uiSlice';
 
 const COUNTRY_CODES = [
   { code: '+380', flag: '🇺🇦', name: 'Ukraine', image: '/images/ukraine.svg' },
@@ -43,6 +44,19 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+
+  // Redirect to home page with desktop modal if screen size becomes desktop (>= 1024px)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        dispatch(openAuthModal(tab));
+        router.push('/');
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, [tab, router, dispatch]);
 
   const switchTab = (t: 'join' | 'login') => {
     setTab(t);
