@@ -81,27 +81,24 @@ export default function GamePage() {
 
   return (
     <div className="w-full min-h-screen bg-[#091741] text-white select-none overflow-x-hidden">
+
+      {/* Mobile Sidebar - fixed layout, rendered outside the flex layout to prevent gap offset on mobile */}
+      <div className="lg:hidden">
+        <Sidebar />
+      </div>
+
       <div className="flex flex-row items-start w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6 pt-0 pb-16 gap-3 lg:gap-6">
 
         {/* Sidebar */}
         <div className="hidden lg:block shrink-0"><Sidebar /></div>
-        <div className="lg:hidden"><Sidebar /></div>
 
         {/* Main content */}
         <div className="w-full min-w-0 flex-1 flex flex-col gap-[60px] pt-4">
 
           {/* Top content wrapper containing back button and game container */}
-          <div className="flex flex-col gap-[40px] w-full max-w-[1136px]">
+          <div >
             {/* Back button */}
-            <button
-              onClick={() => router.back()}
-              className="flex items-center gap-2 text-[#A5B8EF] hover:text-white transition-colors cursor-pointer bg-transparent border-0 w-fit"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 12H5M12 5l-7 7 7 7" />
-              </svg>
-              <span className="font-semibold text-[14px]">Back to Lobby</span>
-            </button>
+            
 
             {/* Game window + info bar */}
             <div className="flex flex-col gap-[20px] w-full">

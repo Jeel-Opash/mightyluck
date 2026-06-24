@@ -741,14 +741,23 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                   }}
                 >
                   {/* Category Header */}
-                  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px', flexShrink: 0 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px' }}>
-                      {renderCategoryIcon(activeCategory, true)}
+                  {!(search && visibleGames.length === 0) && (
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px', flexShrink: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px' }}>
+                        {search ? (
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: '#FFFFFF' }}>
+                            <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2.2" />
+                            <path d="M20 20L16 16" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                          </svg>
+                        ) : (
+                          renderCategoryIcon(activeCategory, true)
+                        )}
+                      </div>
+                      <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em', textTransform: 'uppercase', color: '#FFFFFF' }}>
+                        {search ? 'Search Results' : activeCategory}
+                      </span>
                     </div>
-                    <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', lineHeight: '29px', letterSpacing: '0.01em', textTransform: 'uppercase', color: '#FFFFFF' }}>
-                      {activeCategory}
-                    </span>
-                  </div>
+                  )}
 
                   <div
                     style={{
@@ -772,9 +781,9 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                         ))}
                       </div>
                     ) : (
-                      <div style={{ flexDirection: 'column', justifyContent: 'center', width: '100%', height: '300px', gap: '12px', textAlign: 'center' }}>
+                      <div style={{  flexDirection: 'column', alignItems: 'center',  width: '100%', height: '350px', gap: '12px', textAlign: 'center' }}>
                         <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Jost', sans-serif", fontWeight: 800, fontSize: '20px', color: '#FFFFFF' }}>
-                          No Results found
+                          No Results for your Search
                         </span>
                         <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '16px', color: '#7795E8', alignContent: 'center', maxWidth: '400px' }}>
                           There are no results in this category for your search term, please select a different category or try searching for something else
@@ -890,9 +899,17 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
         <div className="flex-1 w-full flex flex-col gap-6 overflow-y-auto agm-scrollbar-none">
           {search ? (
             <div className="w-full flex flex-col gap-3">
-              <span className="font-jost font-black text-[16px] tracking-wide uppercase text-white">
-                Search Results ({visibleGames.length})
-              </span>
+              {visibleGames.length > 0 && (
+                <div className="flex flex-row items-center gap-[7.2px]">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white shrink-0">
+                    <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2.2" />
+                    <path d="M20 20L16 16" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                  </svg>
+                  <h2 className="font-jost font-black text-[16px] leading-[23px] uppercase text-white tracking-[0.01em]">
+                    Search Results
+                  </h2>
+                </div>
+              )}
               {visibleGames.length > 0 ? (
                 <div className="grid grid-cols-3 gap-x-2 gap-y-3 pb-6">
                   {visibleGames.map((game) => (
@@ -919,7 +936,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <span className="font-jost font-extrabold text-[16px] text-white">No Results found</span>
+                  <span className="font-jost font-extrabold text-[16px] text-white">No Results for your Search</span>
                   <span className="font-sans text-[12px] text-[#A5B8EF] mt-1">Try another keyword.</span>
                 </div>
               )}

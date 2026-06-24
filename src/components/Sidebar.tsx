@@ -152,10 +152,10 @@ export default function Sidebar() {
                 <div className="flex flex-col gap-[20px] p-[20px_16px] w-[200px] h-[220px]">
                   {[
                     { icon: '/games/side-icon/all.svg', label: 'All Games', onClick: () => dispatch(openAllGamesModal()) },
-                    { icon: '/games/side-icon/new.svg', label: 'New Games', onClick: () => {} },
-                    { icon: '/games/side-icon/popular.svg', label: 'Popular Games', onClick: () => {} },
-                    { icon: '/games/side-icon/original.svg', label: 'Original Games', onClick: () => {} },
-                    { icon: '/games/side-icon/crash.svg', label: 'Crash Games', onClick: () => {} },
+                    { icon: '/games/side-icon/new.svg', label: 'New Games', onClick: () => { } },
+                    { icon: '/games/side-icon/popular.svg', label: 'Popular Games', onClick: () => { } },
+                    { icon: '/games/side-icon/original.svg', label: 'Original Games', onClick: () => { } },
+                    { icon: '/games/side-icon/crash.svg', label: 'Crash Games', onClick: () => { } },
                   ].map((item) => (
                     <div key={item.label} onClick={item.onClick} className="flex items-center gap-[12px] w-[160px] h-[20px] text-[#D2DCF7] hover:text-white transition-colors cursor-pointer">
                       <img src={item.icon} className="w-[20px] h-[20px] object-contain shrink-0" alt={item.label} />
@@ -193,7 +193,30 @@ export default function Sidebar() {
         <div className="flex lg:hidden flex-col w-full pt-[30px] pb-[80px] px-[20px] items-center justify-start">
           {/* Main Menu List Container */}
           <div className="w-full max-w-[374px] flex flex-col gap-[16px]">
-            
+
+            {/* Promo banners */}
+            <div className="flex flex-row gap-[10px] w-full">
+              <img
+                src="/games/side-btn/1.png"
+                alt="Refer a Friend"
+                onClick={() => {
+                  router.push('/referrals');
+                  dispatch(toggleSidebar());
+                }}
+                className="flex-1 cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[12px]"
+              />
+              <img
+                src="/games/side-btn/2.png"
+                alt="VIP Transfer"
+                className="flex-1 cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[12px]"
+              />
+            </div>
+            <img
+              src="/games/side-btn/3.png"
+              alt="Winter Rush"
+              className="w-full cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[12px]"
+            />
+
             {/* Promotions */}
             <button onClick={() => { dispatch(toggleSidebar()); }} className="flex items-center justify-between w-full h-[50px] bg-[#112F82] hover:bg-[#153896] px-[10px] rounded-[8px] transition-colors cursor-pointer text-left focus:outline-none shrink-0 group">
               <div className="flex items-center gap-[12px] w-[160px] h-[22px]">
