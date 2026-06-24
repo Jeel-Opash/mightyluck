@@ -316,7 +316,7 @@ export default function UserHome() {
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
             <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
-              <section className="relative w-full rounded-xl lg:rounded-2xl overflow-hidden border border-white/5" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '1136/356', minHeight: 160 }}>
+              <section className="relative w-full max-w-[1136px] h-[160px] md:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', transform: 'translateZ(0)' }}>
                 {/* Blurs inside banner */}
                 <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
                 <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
@@ -609,11 +609,8 @@ export default function UserHome() {
             <section className="flex flex-col gap-[20px] w-full">
               <div className="flex flex-row justify-between items-center w-full h-[30px]">
                 <div className="flex flex-row items-center gap-[12px] w-[186px] h-[30px]">
-                  <div className="flex items-center justify-center w-[30px] h-[30px] relative">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M15 0L18.09 4.12L23.09 3.09L24.12 8.09L29.12 9.12L27.06 13.71L30 17.78L26.31 21.23L26.78 26.31L21.72 25.84L19.24 30L15 27.25L10.76 30L8.28 25.84L3.22 26.31L3.69 21.23L0 17.78L2.94 13.71L0.88 9.12L5.88 8.09L6.91 3.09L11.91 4.12L15 0Z" fill="#FFC83D" />
-                      <path d="M12.5 10.5C11.3954 10.5 10.5 11.3954 10.5 12.5C10.5 13.6046 11.3954 14.5 12.5 14.5C13.6046 14.5 14.5 13.6046 14.5 12.5C14.5 11.3954 13.6046 10.5 12.5 10.5ZM17.5 15.5C16.3954 15.5 15.5 16.3954 15.5 17.5C15.5 18.6046 16.3954 19.5 17.5 19.5C18.6046 19.5 19.5 18.6046 19.5 17.5C19.5 16.3954 18.6046 15.5 17.5 15.5ZM18.5 10.5L11.5 19.5" stroke="#091741" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                  <div className="flex items-center justify-center w-[30px] h-[30px]">
+                    <img src="/games/game-icons/promotion.png" alt="Promotions" className="w-[30px] h-[30px] object-contain" />
                   </div>
                   <h2 className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] text-white uppercase select-none">
                     PROMOTIONS

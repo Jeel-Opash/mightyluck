@@ -92,28 +92,48 @@ export default function AuthModal() {
       {/* Backdrop */}
       <div onClick={close} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
 
-      {/* Modal 730×546 */}
-      <div className="relative bg-[#091741] z-10 flex flex-row shadow-2xl" style={{ width: '730px', height: '546px', borderRadius: '16px' }}>
+      {/* Relative wrapper for modal container & outside close button */}
+      <div className="relative">
+        {/* Close Button on the top-right outside the modal wrapper */}
+        <button
+          onClick={close}
+          aria-label="Close"
+          style={{
+            position: 'absolute',
+            width: '24px',
+            height: '24px',
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            padding: '0px',
+            zIndex: 100,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          className="absolute right-3 top-3 md:right-[-36px] md:top-0 opacity-80 hover:opacity-100 transition-opacity"
+        >
+          <img
+            src="/games/registeer/close.png"
+            style={{ width: '14.4px', height: '14.4px', objectFit: 'contain' }}
+            alt="Close"
+          />
+        </button>
 
-        {/* LEFT PANEL */}
-        <div style={{ width: '340px', height: '546px', borderRadius: '16px 0px 0px 16px', position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
-          <img src="/games/registeer/image.png" alt="" style={{ position: 'absolute', width: '343px', height: '546px', left: '-3px', top: '0px', objectFit: 'cover' }} />
-        </div>
+        {/* Modal 730×546 */}
+        <div className="bg-[#091741] flex flex-row shadow-2xl" style={{ width: '730px', height: '546px', borderRadius: '16px' }}>
 
-        {/* RIGHT PANEL */}
-        <div className="relative flex-shrink-0" style={{ width: '390px', height: '546px', background: '#091741', borderRadius: '0px 16px 16px 0px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '24px 20px', gap: '32px', isolation: 'isolate', overflow: 'hidden' }}>
-          {/* Top glow */}
-          <div className="absolute w-[173px] h-[173px] rounded-full bg-[#1463FF] top-[-145px] left-1/2 -translate-x-1/2 z-0" style={{ filter: 'blur(40px)' }} />
+          {/* LEFT PANEL */}
+          <div style={{ width: '340px', height: '546px', borderRadius: '16px 0px 0px 16px', position: 'relative', overflow: 'hidden', flexShrink: 0 }}>
+            <img src="/games/registeer/image.png" alt="" style={{ position: 'absolute', width: '343px', height: '546px', left: '-3px', top: '0px', objectFit: 'cover' }} />
+          </div>
 
-          {/* Close button */}
-          <button onClick={close} aria-label="Close"
-            className="absolute right-3 top-3 w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#A5B8EF] hover:text-white transition-colors z-30 cursor-pointer border-0">
-            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
+          {/* RIGHT PANEL */}
+          <div className="relative flex-shrink-0" style={{ width: '390px', height: '546px', background: '#091741', borderRadius: '0px 16px 16px 0px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '24px 20px', gap: '32px', isolation: 'isolate', overflow: 'hidden' }}>
+            {/* Top glow */}
+            <div className="absolute w-[173px] h-[173px] rounded-full bg-[#1463FF] top-[-145px] left-1/2 -translate-x-1/2 z-0" style={{ filter: 'blur(40px)' }} />
 
-          <form onSubmit={onSubmit} className="relative z-20 flex flex-col items-start gap-4 w-full">
+            <form onSubmit={onSubmit} className="relative z-20 flex flex-col items-start gap-4 w-full">
             {/* Logo */}
             <div className="flex items-center justify-center w-full">
               <div className="flex items-center gap-1.5">
@@ -247,6 +267,7 @@ export default function AuthModal() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

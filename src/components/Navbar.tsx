@@ -33,11 +33,11 @@ export default function Navbar() {
       {/* =========================================================================
           1. DESKTOP HEADER LAYOUT (md and up) - UNCHANGED
          ========================================================================= */}
-      <div className="hidden md:flex w-full max-w-[1440px] mx-auto h-full flex-row justify-between items-center px-[24px] gap-4 relative">
+      <div className="hidden min-[580px]:flex w-full max-w-[1440px] mx-auto h-full flex-row justify-between items-center px-[24px] gap-4 relative">
         {/* Glow wrapper to prevent leaking below/above the navbar */}
         <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
           {/* Ellipse 6: Glow behind the logo */}
-          <div className="absolute w-[143px] h-[143px] left-[114px] top-[37px] -translate-y-1/2 bg-[#1463FF] rounded-full blur-[25px] pointer-events-none" />
+          <div className="absolute w-[250px] h-[70px] left-[165px] top-[60px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(20,99,255,0.8)_0%,rgba(0,122,255,0.35)_45%,transparent_75%)] blur-[10px] pointer-events-none" />
         </div>
 
         {/* Left Section: Menu, Logo, Search */}
@@ -208,24 +208,12 @@ export default function Navbar() {
       {/* =========================================================================
           2. MOBILE HEADER LAYOUT (md:hidden) - FIGMA SPECIFICATIONS
          ========================================================================= */}
-      <div className="md:hidden w-full h-[50px] bg-[#0C1F56] px-[20px] flex items-center justify-between relative overflow-visible box-border">
+      <div className="min-[580px]:hidden w-full h-[50px] bg-[#0C1F56] px-[20px] flex items-center justify-between relative overflow-visible box-border">
 
         {/* Glow wrapper to prevent leaking below/above the navbar */}
         <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
           {/* Ellipse 6: Glow behind the logo */}
-          <div 
-            style={{
-              position: 'absolute',
-              width: '71.5px',
-              height: '71.5px',
-              left: '6px',
-              top: '32px',
-              transform: 'translateY(-50%)',
-              background: '#1463FF',
-              filter: 'blur(12.5px)',
-              borderRadius: '50%',
-            }} 
-          />
+          <div className="absolute w-[80px] h-[35px] left-[42px] top-[25px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(20,99,255,0.8)_0%,rgba(0,122,255,0.35)_45%,transparent_75%)] blur-[8px] pointer-events-none" />
         </div>
 
         {/* Inner Wrapper Frame 7: 374px x 30px */}

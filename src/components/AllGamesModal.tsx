@@ -254,7 +254,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
         @media (min-width: 1150px) {
           .agm-close-btn {
             position: absolute !important;
-            right: -48px !important;
+            right: -36px !important;
             top: 0px !important;
           }
         }
@@ -276,12 +276,26 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
           {/* Close button outside container right top corner */}
           <button
             onClick={onClose}
-            className="agm-close-btn w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all cursor-pointer border-none"
+            style={{
+              width: '24px',
+              height: '24px',
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0px',
+              zIndex: 100,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            className="agm-close-btn opacity-80 hover:opacity-100 transition-opacity"
             title="Close"
           >
-            <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
-              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <img
+              src="/games/registeer/close.png"
+              style={{ width: '14.4px', height: '14.4px', objectFit: 'contain' }}
+              alt="Close"
+            />
           </button>
 
           {/* Modal Container (1056px x 636px, background #091741, padding 24px) */}
@@ -797,11 +811,24 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
 
           <button
             onClick={onClose}
-            className="w-[20px] h-[20px] flex items-center justify-center text-[#A5B8EF] hover:text-white bg-transparent border-0 cursor-pointer p-0"
+            style={{
+              width: '24px',
+              height: '24px',
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            className="opacity-80 hover:opacity-100 transition-opacity"
           >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
+            <img
+              src="/games/registeer/close.png"
+              style={{ width: '14.4px', height: '14.4px', objectFit: 'contain' }}
+              alt="Close"
+            />
           </button>
         </div>
 

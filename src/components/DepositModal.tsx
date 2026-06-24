@@ -274,7 +274,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-0 md:p-4">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-0 min-[580px]:p-4">
       <style>{`
         .promo-input::placeholder {
           font-family: 'Manrope', sans-serif;
@@ -288,7 +288,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
       `}</style>
       <div className="absolute inset-0" onClick={onClose} />
 
-      <div className="md:hidden relative w-full h-full bg-[#0C1F56] overflow-hidden flex flex-col items-center gap-0 border border-white/10 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-200">
+      <div className="min-[580px]:hidden relative w-full h-full bg-[#0C1F56] overflow-hidden flex flex-col items-center gap-0 border border-white/10 shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-200">
 
         {/* Glow wrapper to prevent leaking below/above the header */}
         <div className="absolute top-0 left-0 right-0 h-[50px] overflow-hidden pointer-events-none z-0">
@@ -337,10 +337,25 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         <div className="w-full h-[30px] bg-[#0C1F56] shrink-0" />
 
         {/* Main Wallet Panel (Figma specified: background: #091741, border-radius: 30px 30px 0px 0px) */}
-        <div className="flex-1 w-full bg-[#091741] rounded-t-[30px] flex flex-col items-center p-[16px_20px_40px] relative overflow-hidden select-none">
+         <div className="flex-1 w-full bg-[#091741] rounded-t-[30px] flex flex-col items-center p-[16px_20px_40px] relative overflow-hidden select-none">
 
-          {/* Glowing Aura inside Modal Body (Ellipse 7) */}
-          <div className="absolute w-[174px] h-[176px] left-[calc(50%-174px/2-165px)] top-[-125px] bg-[#1463FF] filter blur-[40px] pointer-events-none z-0" />
+          {/* Blue radial glow behind the Wallet title row, safely contained inside overflow-hidden panel */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '165px',
+              height: '80px',
+              left: '50%',
+              top: '60px',
+              transform: 'translate(-50%, -50%)',
+              background: '#1463FF',
+              filter: 'blur(36px)',
+              opacity: 0.55,
+              borderRadius: '50%',
+              pointerEvents: 'none',
+              zIndex: 0,
+            }}
+          />
 
           {/* Drag handle/indicator (Rectangle 226) */}
           <div
@@ -353,19 +368,39 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           <div className="flex-1 w-full flex flex-col items-start gap-[24px] z-10 min-h-0 mt-[16px]">
 
             {/* Title Bar: Wallet title + Close button */}
-            <div className="flex flex-row justify-between items-center w-full h-[29px] shrink-0">
-              <div className="flex flex-row items-center gap-[12px] h-[29px]">
+            <div
+              className="relative flex flex-row justify-between items-center w-full shrink-0"
+              style={{
+                height: '50px',
+                borderRadius: '12px',
+                marginBottom: '-10px',
+              }}
+            >
+              <div className="flex flex-row items-center gap-[12px] h-[29px] relative z-10">
                 <YellowWalletIcon />
                 <span className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] text-white">Wallet</span>
               </div>
               {/* Dismiss X button */}
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-[#A5B8EF] hover:text-white transition-all cursor-pointer border-none bg-transparent"
+                style={{
+                  width: '24px',
+                  height: '24px',
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '0px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                className="opacity-80 hover:opacity-100 transition-opacity relative z-10"
               >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <img
+                  src="/games/registeer/close.png"
+                  style={{ width: '14.4px', height: '14.4px', objectFit: 'contain' }}
+                  alt="Close"
+                />
               </button>
             </div>
 
@@ -1393,7 +1428,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           borderRadius: '16px',
           isolation: 'isolate',
         }}
-        className="hidden md:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
+        className="hidden min-[580px]:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
       >
         {/* Close Button on the top-right outside the modal wrapper */}
         <button
@@ -1404,36 +1439,43 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             top: '0px',
             width: '24px',
             height: '24px',
-            border: 'none',
             background: 'transparent',
+            border: 'none',
             cursor: 'pointer',
+            padding: '0px',
+            zIndex: 100,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '0px',
-            zIndex: 100,
           }}
-          className="text-white hover:text-white/80 transition-colors"
+          className="opacity-80 hover:opacity-100 transition-opacity"
           title="Close Modal"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <img
+            src="/games/registeer/close.png"
+            style={{ width: '14.4px', height: '14.4px', objectFit: 'contain' }}
+            alt="Close"
+          />
         </button>
-        {/* Glowing Aura inside Modal Body (Ellipse 7) */}
-        <div
-          style={{
-            position: 'absolute',
-            width: '173px',
-            height: '173px',
-            left: 'calc(50% - 173px/2 + 0.5px)',
-            top: '-145px',
-            background: '#1463FF',
-            filter: 'blur(40px)',
-            zIndex: 0,
-          }}
-          className="pointer-events-none"
-        />
+
+        {/* Glow Containment Wrapper to prevent any blur/shadow bleeding outside the desktop modal container */}
+        <div className="absolute inset-0 rounded-[16px] overflow-hidden pointer-events-none z-0">
+          {/* Blue radial glow behind the Wallet title row */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '380px',
+              height: '80px',
+              left: '50%',
+              top: '49px',
+              transform: 'translate(-50%, -50%)',
+              background: '#1463FF',
+              filter: 'blur(40px)',
+              opacity: 0.5,
+              borderRadius: '50%',
+            }}
+          />
+        </div>
 
         {/* Inner layout frame (460px x 474px, order 1, z-index 1) */}
         <div
@@ -1449,17 +1491,18 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           }}
           className="select-none"
         >
-          {/* Title bar (460px x 29px, order 0) */}
+          {/* Title bar (460px x 50px, order 0) */}
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'center',
-              alignItems: 'flex-start',
+              alignItems: 'center',
               padding: '0px',
               gap: '12px',
               width: '460px',
-              height: '29px',
+              height: '50px',
+              borderRadius: '12px',
             }}
             className="relative"
           >
@@ -1473,6 +1516,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 gap: '12px',
                 width: '94px',
                 height: '29px',
+                position: 'relative',
+                zIndex: 1,
               }}
             >
               {/* Wallet Icon Frame (20px x 20px) */}

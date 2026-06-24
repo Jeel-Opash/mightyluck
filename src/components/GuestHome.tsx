@@ -307,7 +307,7 @@ export default function GuestHome() {
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
             <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
-              <section className="relative w-full rounded-xl lg:rounded-2xl overflow-hidden border border-white/5" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', aspectRatio: '1136/356', minHeight: 160 }}>
+              <section className="relative w-full max-w-[1136px] h-[160px] md:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', transform: 'translateZ(0)' }}>
                 {/* Blurs inside banner */}
                 <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/20 filter blur-[75px] pointer-events-none" />
                 <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
@@ -332,13 +332,6 @@ export default function GuestHome() {
                   </button>
                 </div>
               </section>
-
-              {/* Carousel Dots indicator */}
-              <div className="flex gap-[8px] z-10">
-                <span className="w-[12px] h-[6px] bg-white rounded-full transition-all" />
-                <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
-                <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
-              </div>
             </div>
 
             {/* DEPOSIT NOW RIBBON */}
