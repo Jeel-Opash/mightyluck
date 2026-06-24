@@ -14,14 +14,17 @@ export async function dbConnect(): Promise<void> {
   }
 
   try {
-    const uri = process.env.MONGODB_URI || "";
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+      throw new Error("MONGODB_URI environment variable is missing.");
+    }
     const db = await mongoose.connect(uri);
     connection.isConnected = db.connections[0].readyState;
     console.log("Database Connected Successfully");
     console.log(db.connections[0].readyState);
   } catch (error) {
-    console.log("Database Connection Failed", error);
-    process.exit(1);
+    console.error("Database Connection Failed:", error);
+    throw error;
   }
 }
 ;

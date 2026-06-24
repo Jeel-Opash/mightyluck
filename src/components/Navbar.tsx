@@ -187,16 +187,61 @@ export default function Navbar() {
               </div>
             </div>
           ) : (
-            <div className="flex flex-row items-center gap-[10px] h-[30px] md:h-[40px]">
+            /* Guest desktop: Login + Join buttons per Figma spec */
+            <div className="flex flex-row items-center gap-[10px] w-[199px] h-[40px]">
               <button
                 onClick={handleLoginClick}
-                className="w-[74px] h-[30px] md:w-[99px] md:h-[40px] bg-[#1463FF] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-manrope font-bold text-[10.5px] md:text-[14px] leading-[14px] md:leading-[19px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all duration-200 shrink-0"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '10px 30px',
+                  gap: '10px',
+                  width: '99px',
+                  height: '40px',
+                  background: '#1463FF',
+                  borderRadius: '8px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontFamily: "'Manrope', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  lineHeight: '19px',
+                  letterSpacing: '0.02em',
+                  color: '#FFFFFF',
+                  flexShrink: 0,
+                  boxSizing: 'border-box',
+                }}
+                className="hover:bg-[#2e74ff] active:scale-95 transition-all duration-200"
               >
                 Login
               </button>
               <button
                 onClick={handleJoinClick}
-                className="w-[67px] h-[30px] md:w-[90px] md:h-[40px] bg-[#FFC83D] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-manrope font-bold text-[10.5px] md:text-[14px] leading-[14px] md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all duration-200 shrink-0"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: '10px 30px',
+                  gap: '10px',
+                  width: '90px',
+                  height: '40px',
+                  background: '#FFC83D',
+                  borderRadius: '8px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontFamily: "'Manrope', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  lineHeight: '19px',
+                  letterSpacing: '0.02em',
+                  color: '#1A1404',
+                  flexShrink: 0,
+                  boxSizing: 'border-box',
+                }}
+                className="hover:bg-[#ffd362] active:scale-95 transition-all duration-200"
               >
                 Join
               </button>
