@@ -134,7 +134,7 @@ input::placeholder {
 }
 
 .game-section-title {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-jost), sans-serif;
   font-weight: 800;
   font-size: 16px;
   line-height: 100%;
@@ -281,7 +281,7 @@ input::placeholder {
   flex-direction: column;
   align-items: flex-start;
   padding: 0;
-  gap: 20px;
+  gap: 12px;
   width: 100%;
   max-width: 1136px;
   margin-top: 8px;
@@ -314,8 +314,14 @@ input::placeholder {
   justify-content: center;
 }
 
+.winners-header-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
 .winners-header-title {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-jost), sans-serif;
   font-weight: 800;
   font-size: 20px;
   line-height: 29px;
@@ -354,7 +360,7 @@ input::placeholder {
 }
 
 .winners-table-header-game {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-jost), sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -375,7 +381,7 @@ input::placeholder {
 
 .winners-table-header-username {
   width: 300px;
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-jost), sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -386,7 +392,7 @@ input::placeholder {
 
 .winners-table-header-time {
   width: 150px;
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-jost), sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -397,7 +403,7 @@ input::placeholder {
 
 .winners-table-header-payout {
   width: 150px;
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-jost), sans-serif;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -445,7 +451,7 @@ input::placeholder {
 }
 
 .winner-row-game-title {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
@@ -465,7 +471,7 @@ input::placeholder {
 
 .winner-row-username {
   width: 300px;
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
@@ -478,7 +484,7 @@ input::placeholder {
 
 .winner-row-time {
   width: 150px;
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
@@ -488,7 +494,7 @@ input::placeholder {
 
 .winner-row-payout {
   width: 150px;
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
@@ -547,7 +553,7 @@ input::placeholder {
     right: 0;
     padding: 22px 5px 6px 5px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.88) 0%, transparent 100%);
-    font-family: 'Jost', sans-serif;
+    font-family: var(--font-jost), sans-serif;
     font-weight: 800;
     font-size: 9px;
     line-height: 1.2;

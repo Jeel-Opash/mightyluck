@@ -971,11 +971,11 @@ export default function GuestHome() {
             {/* RECENT WINNERS SECTION */}
             <section className="winners-section-container">
               <div className="winners-header-wrapper">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
+                <div className="winners-header-title-wrapper">
+                  <div className="winners-header-icon">
                     <img src="/games/game-icons/recent.svg" alt="Recent Winners" className="object-contain" />
                   </div>
-                  <h2 className="game-section-title">
+                  <h2 className="winners-header-title">
                     RECENT WINNERS
                   </h2>
                 </div>
