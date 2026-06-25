@@ -385,16 +385,13 @@ export default function UserHome() {
                       alignItems: 'center',
                       padding: '10px',
                       gap: '6.4px',
-                      height: '50px',
-                      minWidth: '135px',
-                      flex: '1 0 auto',
                       background: isActive ? '#1463FF' : '#0C1F56',
                       borderRadius: '6px',
                       border: 'none',
                       cursor: 'pointer',
                       transition: 'background 0.15s',
                     }}
-                    className={`group active:scale-95 ${isActive ? '' : 'hover-nav-tab'}`}
+                    className={`group active:scale-95 w-[106.6px] min-w-[106.6px] sm:w-auto sm:min-w-[135px] h-[40px] sm:h-[50px] flex-none sm:flex-1 shrink-0 ${isActive ? '' : 'hover-nav-tab'}`}
                   >
                     <img
                       src={cat.icon}
@@ -451,8 +448,7 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/slot.svg" alt="Slots" className="hidden sm:block" />
-                    <img src="/games/side-icon/casino.svg" alt="Slots" className="block sm:hidden" />
+                    <img src="/games/game-icons/slot.svg" alt="Slots" className="object-contain" />
                   </div>
                   <h2 className="game-section-title">SLOTS (1,487)</h2>
                 </div>
@@ -524,8 +520,7 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/originals.svg" alt="Originals" className="hidden sm:block" />
-                    <img src="/games/side-icon/original.svg" alt="Originals" className="block sm:hidden" />
+                    <img src="/games/game-icons/originals.svg" alt="Originals" className="object-contain" />
                   </div>
                   <h2 className="game-section-title">ORIGINALS (14)</h2>
                 </div>
@@ -611,14 +606,12 @@ export default function UserHome() {
 
             {/* PROMOTIONS SECTION */}
             <section className="flex flex-col gap-[20px] w-full">
-              <div className="flex flex-row justify-between items-center w-full h-[30px]">
-                <div className="flex flex-row items-center gap-[12px] w-[186px] h-[30px]">
-                  <div className="flex items-center justify-center w-[30px] h-[30px]">
-                    <img src="/games/game-icons/promotion.png" alt="Promotions" className="w-[30px] h-[30px] object-contain" />
+              <div className="game-section-header">
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/promotion.png" alt="Promotions" className="object-contain" />
                   </div>
-                  <h2 className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] text-white uppercase select-none">
-                    PROMOTIONS
-                  </h2>
+                  <h2 className="game-section-title">PROMOTIONS</h2>
                 </div>
 
                 <div className="flex flex-row items-center gap-[12px] w-[68px] h-[30px]">
@@ -723,8 +716,7 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/crash.svg" alt="Crash Games" className="hidden sm:block" />
-                    <img src="/games/side-icon/crash.svg" alt="Crash Games" className="block sm:hidden" />
+                    <img src="/games/game-icons/crash.svg" alt="Crash Games" className="object-contain" />
                   </div>
                   <h2 className="game-section-title">CRASH GAMES (723)</h2>
                 </div>
@@ -811,8 +803,7 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/game.svg" alt="Game Providers" className="hidden sm:block" />
-                    <img src="/games/side-icon/game-p.svg" alt="Game Providers" className="block sm:hidden" />
+                    <img src="/games/game-icons/game.svg" alt="Game Providers" className="object-contain" />
                   </div>
                   <h2 className="game-section-title">GAME PROVIDERS (34)</h2>
                 </div>
@@ -878,8 +869,7 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/table.svg" alt="Table Games" className="hidden sm:block" />
-                    <img src="/games/side-icon/roulette.svg" alt="Table Games" className="block sm:hidden" />
+                    <img src="/games/game-icons/table.svg" alt="Table Games" className="object-contain" />
                   </div>
                   <h2 className="game-section-title">TABLE GAMES (51)</h2>
                 </div>
@@ -966,8 +956,7 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="hidden sm:block" />
-                    <img src="/games/side-icon/new.svg" alt="Bonus Buys" className="block sm:hidden" />
+                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="object-contain" />
                   </div>
                   <h2 className="game-section-title">BONUS BUYS (145)</h2>
                 </div>
@@ -1054,8 +1043,7 @@ export default function UserHome() {
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
-                    <img src="/games/game-icons/collections.svg" alt="Collections" className="hidden sm:block" />
-                    <img src="/games/side-icon/popular.svg" alt="Collections" className="block sm:hidden" />
+                    <img src="/games/game-icons/collections.svg" alt="Collections" className="object-contain" />
                   </div>
                   <h2 className="game-section-title">COLLECTIONS (17)</h2>
                 </div>
@@ -1118,11 +1106,11 @@ export default function UserHome() {
             {/* RECENT WINNERS SECTION */}
             <section className="winners-section-container">
               <div className="winners-header-wrapper">
-                <div className="winners-header-title-wrapper">
-                  <div className="winners-header-icon">
-                    <img src="/games/game-icons/recent.svg" alt="Recent Winners" className="w-[30px] h-[30px]" />
+                <div className="game-section-title-wrapper">
+                  <div className="game-section-icon">
+                    <img src="/games/game-icons/recent.svg" alt="Recent Winners" className="object-contain" />
                   </div>
-                  <h2 className="winners-header-title">
+                  <h2 className="game-section-title">
                     RECENT WINNERS
                   </h2>
                 </div>
