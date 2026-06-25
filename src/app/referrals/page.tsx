@@ -93,21 +93,21 @@ export default function ReferralsPage() {
       `}</style>
 
       {/* Mobile Sidebar - fixed layout, rendered outside the flex layout to prevent gap offset on mobile */}
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <Sidebar />
       </div>
 
       {/* Page Content Layout (Sidebar + Content Panel) */}
-      <div className="flex flex-row items-start w-full px-3 sm:px-4 lg:px-6 pt-0 pb-16 gap-3 lg:gap-6 relative">
+      <div className="flex flex-row items-start w-full px-3 sm:px-4 xl:px-6 pt-0 pb-16 gap-3 xl:gap-6 relative">
 
         {/* Left Sidebar */}
-        <div className="hidden lg:block shrink-0"><Sidebar /></div>
+        <div className="hidden xl:block shrink-0"><Sidebar /></div>
 
         {/* Right Main Content Column */}
-        <div className="w-full min-w-0 flex-1 flex flex-col gap-6 lg:gap-[40px]">
+        <div className="w-full min-w-0 flex-1 flex flex-col gap-6 xl:gap-[40px] pt-4">
 
           {/* =========================================================================
-              1. HERO BANNER - DESKTOP VIEW (lg and up)
+              1. HERO BANNER - DESKTOP VIEW (xl and up)
              ========================================================================= */}
           <div
             style={{
@@ -115,7 +115,7 @@ export default function ReferralsPage() {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
-            className="hidden lg:flex flex-col w-full h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px]"
+            className="hidden xl:flex flex-col w-full h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px]"
           >
             {/* Top Row: Title Text (Left) & Calculator Card (Right) */}
             <div className="flex flex-row items-center justify-between h-[345px] w-full shrink-0">
@@ -369,7 +369,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               1. HERO BANNER - MOBILE / TABLET VIEW (stacked components)
              ========================================================================= */}
-          <div className="flex lg:hidden flex-col gap-4 w-full">
+          <div className="flex xl:hidden flex-col gap-4 w-full">
             {/* Banner card */}
             <div
               style={{
@@ -588,7 +588,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               3. BENEFITS SECTIONS (WHAT YOU GET & WHAT YOUR FRIEND GETS)
              ========================================================================= */}
-          <div className="flex flex-col lg:flex-row gap-5 w-full select-none">
+          <div className="flex flex-col xl:flex-row gap-5 w-full select-none">
 
             {/* WHAT YOU GET */}
             <div
@@ -659,7 +659,7 @@ export default function ReferralsPage() {
               style={{
                 background: 'radial-gradient(circle at 50% 0%, rgba(20, 99, 255, 0.15) 0%, rgba(12, 31, 86, 0) 70%), #0C1F56',
               }}
-              className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
+              className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] xl:h-[391px] flex flex-col gap-6 shadow-xl text-left"
             >
               <div className="flex flex-row items-center gap-2">
 
@@ -754,53 +754,32 @@ export default function ReferralsPage() {
               {/* Step 1 */}
               <div
                 style={{
-                  backgroundImage: `linear-gradient(357.52deg, #06102B 0.07%, rgba(6, 16, 43, 0) 34.29%), linear-gradient(90.32deg, #001958 8.61%, rgba(0, 25, 88, 0) 58.87%), url(/games/refrels/r1.png)`,
+                  backgroundImage: `url(/games/refrels/r1.png)`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="flex-grow flex-shrink-0 md:w-[370px] h-[220px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group shadow-xl"
-              >
-                <div className="w-[40px] h-[40px] bg-[#1463FF] rounded-[8px] flex items-center justify-center font-jost font-extrabold text-[20px] leading-[120%] text-white">
-                  1
-                </div>
-                <span className="font-jost font-extrabold text-[16px] leading-[120%] text-white uppercase max-w-[220px] z-10">
-                  SHARE INVITATION LINK WITH YOUR FRIEND
-                </span>
-              </div>
+                className="w-full md:w-[370px] aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl shrink-0"
+              />
 
               {/* Step 2 */}
               <div
                 style={{
-                  backgroundImage: `linear-gradient(359.97deg, #06102B 0.03%, rgba(6, 16, 43, 0) 39.1%), linear-gradient(90.32deg, #001958 8.61%, rgba(0, 25, 88, 0) 58.87%), url(/games/refrels/r2.png)`,
+                  backgroundImage: `url(/games/refrels/r2.png)`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="flex-grow flex-shrink-0 md:w-[370px] h-[220px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group shadow-xl"
-              >
-                <div className="w-[40px] h-[40px] bg-[#1463FF] rounded-[8px] flex items-center justify-center font-jost font-extrabold text-[20px] leading-[120%] text-white">
-                  2
-                </div>
-                <span className="font-jost font-extrabold text-[16px] leading-[120%] text-white uppercase max-w-[220px] z-10">
-                  YOUR FRIEND JOINS & RECEIVES <span className="text-[#FFC83D]">50 FREE SPINS</span> TO GET STARTED
-                </span>
-              </div>
+                className="w-full md:w-[370px] aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl shrink-0"
+              />
 
               {/* Step 3 */}
               <div
                 style={{
-                  backgroundImage: `linear-gradient(358.76deg, #06102B 1.27%, rgba(6, 16, 43, 0) 36.65%), linear-gradient(90.32deg, #001958 8.61%, rgba(0, 25, 88, 0) 58.87%), url(/games/refrels/r3.png)`,
+                  backgroundImage: `url(/games/refrels/r3.png)`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-                className="flex-grow flex-shrink-0 md:w-[370px] h-[220px] rounded-2xl border border-white/5 p-6 flex flex-col justify-between items-start text-left relative overflow-hidden group shadow-xl"
-              >
-                <div className="w-[40px] h-[40px] bg-[#1463FF] rounded-[8px] flex items-center justify-center font-jost font-extrabold text-[20px] leading-[120%] text-white">
-                  3
-                </div>
-                <span className="font-jost font-extrabold text-[16px] leading-[120%] text-white uppercase max-w-[220px] z-10">
-                  NOW, YOU’LL GET PAID <span className="text-[#FFC83D]">EVERY TIME</span> YOUR FRIEND DEPOSITS & PLAY
-                </span>
-              </div>
+                className="w-full md:w-[370px] aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl shrink-0"
+              />
 
             </div>
           </div>

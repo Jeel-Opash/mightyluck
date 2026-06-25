@@ -15,9 +15,9 @@ export default function Sidebar() {
 
   // Lock body scroll when sidebar is open on mobile
   useEffect(() => {
-    // Only apply overflow lock if the screen is mobile size (lg is 1024px)
+    // Only apply overflow lock if the screen is mobile size (xl is 1280px)
     const handleResize = () => {
-      if (window.innerWidth < 1024 && sidebarOpen) {
+      if (window.innerWidth < 1280 && sidebarOpen) {
         document.body.style.overflow = 'hidden';
       } else {
         document.body.style.overflow = '';
@@ -36,7 +36,7 @@ export default function Sidebar() {
     <>
       {sidebarOpen && (
         <div
-          className="fixed top-[50px] md:top-[60px] left-0 right-0 bottom-0 bg-black/60 z-40 lg:hidden"
+          className="fixed top-[50px] md:top-[60px] left-0 right-0 bottom-0 bg-black/60 z-40 xl:hidden"
           onClick={() => dispatch(toggleSidebar())}
         />
       )}
@@ -45,19 +45,19 @@ export default function Sidebar() {
         shrink-0 select-none text-white font-sans flex flex-col
         transition-all duration-300 ease-in-out
         fixed top-[50px] md:top-[60px] left-0 h-[calc(100vh-50px)] md:h-[calc(100vh-60px)] z-45
-        bg-[#091741] border-r border-white/5 lg:border-none
+        bg-[#091741] border-r border-white/5 xl:border-none
         overflow-y-auto scrollbar-none p-0
-        lg:static lg:top-auto lg:h-auto lg:z-auto lg:bg-transparent lg:border-none lg:overflow-visible
+        xl:static xl:top-auto xl:h-auto xl:z-auto xl:bg-transparent xl:border-none xl:overflow-visible
         ${sidebarOpen
-          ? 'translate-x-0 w-full lg:w-[232px] opacity-100'
-          : '-translate-x-full lg:translate-x-0 w-full lg:w-[80px] opacity-100 pointer-events-none lg:pointer-events-auto'
+          ? 'translate-x-0 w-full xl:w-[232px] opacity-100'
+          : '-translate-x-full xl:translate-x-0 w-full xl:w-[80px] opacity-100 pointer-events-none xl:pointer-events-auto'
         }
       `}>
 
         {/* =========================================================================
-            DESKTOP VIEW (hidden lg:flex)
+            DESKTOP VIEW (hidden xl:flex)
            ========================================================================= */}
-        <div className={`hidden lg:flex flex-col gap-[10px] transition-all duration-300 ease-in-out ${sidebarOpen ? 'w-[232px]' : 'w-[80px] items-center'}`}>
+        <div className={`hidden xl:flex flex-col gap-[10px] transition-all duration-300 ease-in-out ${sidebarOpen ? 'w-[232px]' : 'w-[80px] items-center'}`}>
           {/* 1. TOP PROMO CARDS */}
           {sidebarOpen && (
             <div className="w-[232px] h-[134px] bg-[#0C1F56] rounded-[16px] p-[16px] flex flex-col gap-[10px] shrink-0">
@@ -238,9 +238,9 @@ export default function Sidebar() {
 
 
         {/* =========================================================================
-            MOBILE VIEW (flex lg:hidden)
+            MOBILE VIEW (flex xl:hidden)
            ========================================================================= */}
-        <div className="flex lg:hidden flex-col w-full pt-[30px] pb-[80px] px-[20px] items-center justify-start">
+        <div className="flex xl:hidden flex-col w-full pt-[30px] pb-[80px] px-[20px] items-center justify-start">
           {/* Main Menu List Container */}
           <div className="w-full max-w-[374px] flex flex-col gap-[16px]">
 

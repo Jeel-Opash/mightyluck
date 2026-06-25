@@ -803,29 +803,29 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
         className={`fixed top-[50px] left-0 right-0 bottom-[60px] z-[52] bg-[#0C1F56] flex md:hidden flex-col p-5 gap-5 overflow-y-auto transition-all duration-300 ease-in-out ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
           }`}
       >
-        {/* Mobile Search input bar */}
-        <div className="flex flex-row items-center gap-[16px] w-full h-[50px] bg-[#112F82] px-[20px] rounded-lg shrink-0 border border-white/5 focus-within:border-[#1463FF]/40">
-          {/* Game icon on left */}
-          <div className="flex flex-col items-start p-0 w-[16px] h-[16px] shrink-0">
-            <img src="/games/game-icons/game.svg" className="w-[16px] h-[16px] object-contain" alt="Search" />
+        {/* Mobile Search input bar with close button outside */}
+        <div className="flex flex-row items-center gap-[12px] w-full shrink-0">
+          <div className="flex flex-row items-center gap-[16px] flex-1 h-[50px] bg-[#112F82] px-[20px] rounded-lg border border-white/5 focus-within:border-[#1463FF]/40">
+            {/* Search icon on left */}
+            <div className="flex flex-col items-start p-0 w-[16px] h-[16px] shrink-0">
+              <img src="/mobile/sidebar/search.png" className="w-[16px] h-[16px] object-contain" alt="Search" style={{ filter: 'brightness(0) saturate(100%) invert(80%) sepia(20%) saturate(500%) hue-rotate(190deg)' }} />
+            </div>
+
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="What are you looking for?"
+              className="agm-search-placeholder flex-1 h-[22px] bg-transparent border-none outline-none text-white font-sans font-semibold text-[16px] leading-[22px] placeholder-[#BBCAF3] focus:ring-0 p-0"
+            />
           </div>
 
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="What are you looking for?"
-            className="agm-search-placeholder flex-1 h-[22px] bg-transparent border-none outline-none text-white font-sans font-semibold text-[16px] leading-[22px] placeholder-[#BBCAF3] focus:ring-0 p-0"
-          />
-
-          {/* X close button */}
+          {/* X close button outside the input box */}
           <button
             onClick={onClose}
             style={{
-              width: '20px',
-              height: '20px',
-              background: 'transparent',
-              border: 'none',
+              width: '32px',
+              height: '32px',
               cursor: 'pointer',
               padding: '0px',
               display: 'flex',
@@ -833,9 +833,10 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
               justifyContent: 'center',
               flexShrink: 0,
             }}
-            className="opacity-70 hover:opacity-100 transition-opacity"
+            className="active:scale-95 transition-all"
+            title="Close"
           >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 1L11 11" stroke="#D2DCF7" strokeWidth="2" strokeLinecap="round" />
               <path d="M11 1L1 11" stroke="#D2DCF7" strokeWidth="2" strokeLinecap="round" />
             </svg>
@@ -956,7 +957,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 <div className="flex flex-row justify-between items-center w-full">
                   <div className="flex flex-row items-center gap-[7.2px]">
                     {/* Flame Icon (mobile): use small side-icon */}
-                    <img src="/games/side-icon/game-p.svg" alt="Popular Games" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
+                    <img src="/games/game-icons/fire.png" alt="Popular Games" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
                     <h2 className="font-jost font-black text-[16px] leading-[23px] uppercase text-white tracking-[0.01em]">
                       Popular Games
                     </h2>
@@ -994,10 +995,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
               <div className="flex flex-col gap-3 w-full shrink-0 pb-6">
                 <div className="flex flex-row justify-between items-center w-full">
                   <div className="flex flex-row items-center gap-[7.2px]">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFC83D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 fill-[#FFC83D]">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                      <circle cx="12" cy="7" r="4" />
-                    </svg>
+                    <img src="/games/game-icons/game.svg" alt="Game Providers" className="w-[18px] h-[18px] object-contain shrink-0" />
                     <h2 className="font-jost font-black text-[16px] leading-[23px] uppercase text-white tracking-[0.01em]">
                       GAME PROVIDERS
                     </h2>

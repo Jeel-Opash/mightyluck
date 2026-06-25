@@ -303,18 +303,18 @@ export default function UserHome() {
     <div className="w-full max-w-[1440px] min-h-screen mx-auto bg-[#091741] text-white relative flex flex-col select-none overflow-x-hidden">
 
       {/* Mobile Sidebar - fixed layout, rendered outside the flex layout to prevent gap offset on mobile */}
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <Sidebar />
       </div>
 
       {/* 2. Page Content Layout (Sidebar + Content Panel) */}
-      <div className="flex flex-row items-start w-full px-3 sm:px-4 lg:px-6 pt-0 pb-16 gap-3 lg:gap-6 relative">
+      <div className="flex flex-row items-start w-full px-3 sm:px-4 xl:px-6 pt-0 pb-16 gap-3 xl:gap-6 relative">
 
         {/* Left Sidebar */}
-        <div className="hidden lg:block shrink-0"><Sidebar /></div>
+        <div className="hidden xl:block shrink-0"><Sidebar /></div>
 
         {/* Right Main Content Column */}
-        <div className="w-full min-w-0 flex-1 flex flex-col gap-8 lg:gap-[40px]">
+        <div className="w-full min-w-0 flex-1 flex flex-col gap-8 xl:gap-[40px] pt-4">
 
           {/* Child 1: Main Games Area */}
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
@@ -383,56 +383,80 @@ export default function UserHome() {
                       flexDirection: 'row',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      padding: '10px',
+                      padding: '8px 12.8px',
                       gap: '6.4px',
+                      width: '106.6px',
+                      height: '40px',
                       background: isActive ? '#1463FF' : '#0C1F56',
                       borderRadius: '6px',
                       border: 'none',
                       cursor: 'pointer',
                       transition: 'background 0.15s',
+                      flex: 'none',
+                      order: 1,
+                      flexGrow: 1,
                     }}
-                    className={`group active:scale-95 w-[106.6px] min-w-[106.6px] sm:w-auto sm:min-w-[135px] h-[40px] sm:h-[50px] flex-none sm:flex-1 shrink-0 ${isActive ? '' : 'hover-nav-tab'}`}
+                    className={`group active:scale-95 shrink-0 ${isActive ? '' : 'hover-nav-tab'}`}
                   >
-                    <img
-                      src={cat.icon}
-                      alt={cat.name}
+                    <div
                       style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '0px',
                         width: '16px',
                         height: '16px',
-                        objectFit: 'contain',
-                        flexShrink: 0,
-                        filter: isActive
-                          ? 'brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%)'
-                          : 'brightness(0) invert(1) opacity(0.75)',
-                        transition: 'filter 0.15s',
+                        flex: 'none',
+                        order: 0,
+                        flexGrow: 0,
                       }}
-                      className="hidden sm:block"
-                    />
-                    <img
-                      src={cat.mobileIcon}
-                      alt={cat.name}
-                      style={{
-                        width: '16px',
-                        height: '16px',
-                        objectFit: 'contain',
-                        flexShrink: 0,
-                        filter: isActive
-                          ? 'brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%)'
-                          : 'brightness(0) invert(1) opacity(0.75)',
-                        transition: 'filter 0.15s',
-                      }}
-                      className="block sm:hidden"
-                    />
+                    >
+                      <img
+                        src={cat.icon}
+                        alt={cat.name}
+                        style={{
+                          width: '15.94px',
+                          height: '16px',
+                          objectFit: 'contain',
+                          flexShrink: 0,
+                          filter: isActive
+                            ? 'brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%)'
+                            : 'brightness(0) invert(1) opacity(0.75)',
+                          transition: 'filter 0.15s',
+                        }}
+                        className="hidden sm:block"
+                      />
+                      <img
+                        src={cat.mobileIcon}
+                        alt={cat.name}
+                        style={{
+                          width: '15.94px',
+                          height: '16px',
+                          objectFit: 'contain',
+                          flexShrink: 0,
+                          filter: isActive
+                            ? 'brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%)'
+                            : 'brightness(0) invert(1) opacity(0.75)',
+                          transition: 'filter 0.15s',
+                        }}
+                        className="block sm:hidden"
+                      />
+                    </div>
                     <span
                       style={{
                         fontFamily: "'Manrope', sans-serif",
                         fontWeight: isActive ? 700 : 600,
-                        fontSize: '14px',
-                        lineHeight: '19px',
+                        fontSize: '12px',
+                        lineHeight: '16px',
                         letterSpacing: '0.02em',
                         color: isActive ? '#FFFFFF' : '#D2DCF7',
                         whiteSpace: 'nowrap',
                         transition: 'color 0.15s',
+                        height: '16px',
+                        flex: 'none',
+                        order: 1,
+                        flexGrow: 0,
                       }}
                       className={isActive ? '' : 'nav-tab-label'}
                     >
@@ -641,70 +665,40 @@ export default function UserHome() {
               <div className="relative w-full overflow-hidden">
                 <div
                   ref={promotionsRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[220px] select-none promo-slider"
+                  className="flex flex-row gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full select-none"
+                  style={{ scrollSnapType: 'x mandatory' }}
                 >
-                  {/* Card 1 */}
-                  <div className="relative w-[560px] h-[220px] flex-none rounded-[16px] overflow-hidden border border-white/5 shadow-lg select-none group promo-card">
+                  {[
+                    { bg: `linear-gradient(90deg, #091741 42%, rgba(9,23,65,0.6) 65%, rgba(9,23,65,0) 88%), url('/promotion 1.png')`, label: '150% RELOAD BONUS + 50 FREE SPINS', id: 1 },
+                    { bg: `linear-gradient(90deg, #060B4D 42%, rgba(6,11,77,0.6) 65%, rgba(6,11,77,0) 88%), url('/promotion 2.png')`, label: '250% WELCOME BONUS + 100 FREE SPINS', id: 2 },
+                    { bg: `linear-gradient(90deg, #091741 42%, rgba(9,23,65,0.6) 65%, rgba(9,23,65,0) 88%), url('/promotion 1.png')`, label: '150% RELOAD BONUS + 50 FREE SPINS', id: 3 },
+                  ].map((promo) => (
                     <div
-                      className="absolute inset-0 bg-cover bg-right md:bg-center transition-transform duration-500 ease-out group-hover:scale-105"
-                      style={{ backgroundImage: `linear-gradient(90deg, #091741 21.96%, rgba(9, 23, 65, 0) 60.27%), url('/promotion 1.png')` }}
-                    />
-                    <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
-
-                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
-                      <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
-                        150% RELOAD BONUS + 50 FREE SPINS
-                      </h3>
-                      <button
-                        onClick={() => alert('Promotion 1 claimed')}
-                        className="w-[90px] h-[30px] md:w-[110px] md:h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[11px] md:text-[14px] leading-none md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
-                      >
-                        Claim Now
-                      </button>
+                      key={promo.id}
+                      className="relative flex-none w-full sm:w-[560px] h-[200px] sm:h-[220px] rounded-[16px] overflow-hidden border border-white/5 shadow-lg group"
+                      style={{ scrollSnapAlign: 'start' }}
+                    >
+                      {/* Background image with gradient */}
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
+                        style={{ backgroundImage: promo.bg }}
+                      />
+                      {/* Blue glow */}
+                      <div className="absolute w-[140px] h-[140px] left-[-60px] top-[-60px] rounded-full bg-[#1463FF] filter blur-[45px] pointer-events-none z-10 opacity-60" />
+                      {/* Text + CTA */}
+                      <div className="absolute inset-0 z-20 flex flex-col justify-center items-start px-6 sm:px-8 gap-[14px] sm:gap-[18px]">
+                        <h3 className="font-jost font-extrabold text-[17px] sm:text-[22px] md:text-[26px] leading-[120%] tracking-[0.01em] text-white uppercase max-w-[200px] sm:max-w-[260px]">
+                          {promo.label}
+                        </h3>
+                        <button
+                          onClick={() => alert(`Promotion ${promo.id} claimed`)}
+                          className="h-[36px] sm:h-[40px] px-5 sm:px-6 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[13px] sm:text-[14px] leading-none text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0 whitespace-nowrap"
+                        >
+                          Claim Now
+                        </button>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Card 2 */}
-                  <div className="relative w-[560px] h-[220px] flex-none rounded-[16px] overflow-hidden border border-white/5 shadow-lg select-none group promo-card">
-                    <div
-                      className="absolute inset-0 bg-cover bg-right md:bg-center transition-transform duration-500 ease-out group-hover:scale-105"
-                      style={{ backgroundImage: `linear-gradient(90deg, #060B4D 39.55%, rgba(6, 11, 77, 0) 50%), url('/promotion 2.png')` }}
-                    />
-                    <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
-
-                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
-                      <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
-                        150% RELOAD BONUS + 50 FREE SPINS
-                      </h3>
-                      <button
-                        onClick={() => alert('Promotion 2 claimed')}
-                        className="w-[90px] h-[30px] md:w-[110px] md:h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[11px] md:text-[14px] leading-none md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
-                      >
-                        Claim Now
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Card 3 */}
-                  <div className="relative w-[560px] h-[220px] flex-none rounded-[16px] overflow-hidden border border-white/5 shadow-lg select-none group promo-card">
-                    <div
-                      className="absolute inset-0 bg-cover bg-right md:bg-center transition-transform duration-500 ease-out group-hover:scale-105"
-                      style={{ backgroundImage: `linear-gradient(90deg, #091741 21.96%, rgba(9, 23, 65, 0) 60.27%), url('/promotion 1.png')` }}
-                    />
-                    <div className="absolute w-[160px] h-[160px] left-[-75px] top-[-77.6px] rounded-full bg-[#1463FF] filter blur-[50px] pointer-events-none z-10" />
-
-                    <div className="absolute z-20 flex flex-col items-start justify-between left-[17.78px] md:left-[24px] top-[17.78px] md:top-[calc(50%-57px)] bottom-auto w-[130px] md:w-[290px] h-auto md:h-[114px] gap-[10px] md:gap-[16px]">
-                      <h3 className="font-jost font-extrabold text-[13px] md:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase">
-                        150% RELOAD BONUS + 50 FREE SPINS
-                      </h3>
-                      <button
-                        onClick={() => alert('Promotion 3 claimed')}
-                        className="w-[90px] h-[30px] md:w-[110px] md:h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-[8px] flex items-center justify-center font-sans font-bold text-[11px] md:text-[14px] leading-none md:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0"
-                      >
-                        Claim Now
-                      </button>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </section>

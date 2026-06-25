@@ -737,7 +737,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                               <button
                                 onClick={togglePrimaryCurrency}
-                                className="w-[50px] h-[50px] bg-[#1463FF] hover:bg-[#2c75ff] rounded-[8px] flex items-center justify-center text-white shrink-0 active:scale-90 transition-transform cursor-pointer border-none bg-transparent"
+                                className="w-[50px] h-[50px] bg-[#1463FF] hover:bg-[#2c75ff] rounded-[8px] flex items-center justify-center text-white shrink-0 active:scale-90 transition-transform cursor-pointer border-none"
                               >
                                 <MobileSwapIcon />
                               </button>
@@ -766,38 +766,36 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 {btcAddress}
                               </span>
 
-                              <div className="flex flex-row items-center gap-[12px] shrink-0">
+                              <div className="flex flex-row items-center gap-[8px] shrink-0">
                                 <button
                                   onClick={copyAddress}
-                                  className="w-[16px] h-[16px] text-[#BBCAF3] hover:text-white transition-colors cursor-pointer relative border-none bg-transparent p-0 flex items-center justify-center"
+                                  className="w-[32px] h-[32px]  hover:bg-[#1f4fd4] active:scale-90 transition-all rounded-[6px] flex items-center justify-center cursor-pointer border-none p-0 relative"
                                   title="Copy Address"
                                 >
                                   {copied ? (
-                                    <span className="absolute bottom-[24px] right-[-10px] bg-[#1463FF] text-white text-[10px] px-1.5 py-0.5 rounded shadow-lg font-sans font-bold">
+                                    <span className="absolute bottom-[36px] right-[-10px] bg-[#1463FF] text-white text-[10px] px-1.5 py-0.5 rounded shadow-lg font-sans font-bold whitespace-nowrap z-10">
                                       Copied!
                                     </span>
                                   ) : null}
-                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7795E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px] object-contain shrink-0">
-                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                                  </svg>
+                                  <img
+                                    src="/images/paste.png"
+                                    alt="Copy"
+                                    className="w-[18px] h-[18px] object-contain"
+                                    style={{ filter: 'brightness(0) invert(1)' }}
+                                  />
                                 </button>
 
                                 <button
                                   onClick={() => setShowQrCode(!showQrCode)}
-                                  className="w-[16px] h-[16px] text-[#BBCAF3] hover:text-white transition-colors cursor-pointer border-none bg-transparent p-0 flex items-center justify-center"
+                                  className="w-[32px] h-[32px]  hover:bg-[#1f4fd4] active:scale-90 transition-all rounded-[6px] flex items-center justify-center cursor-pointer border-none p-0"
                                   title="Show QR Code"
                                 >
-                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7795E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-[16px] h-[16px] object-contain shrink-0">
-                                    <path d="M3 7V5a2 2 0 0 1 2-2h2" />
-                                    <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-                                    <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
-                                    <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
-                                    <rect x="7" y="7" width="3" height="3" />
-                                    <rect x="14" y="7" width="3" height="3" />
-                                    <rect x="14" y="14" width="3" height="3" />
-                                    <rect x="7" y="14" width="3" height="3" />
-                                  </svg>
+                                  <img
+                                    src="/images/scan.png"
+                                    alt="QR Code"
+                                    className="w-[18px] h-[18px] object-contain"
+                                    style={{ filter: 'brightness(0) invert(1)' }}
+                                  />
                                 </button>
                               </div>
                             </div>
@@ -873,7 +871,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               type="text"
                               value={state}
                               onChange={(e) => setState(e.target.value)}
-                              className="flex-1 min-w-0 h-[50px] px-[0px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                               placeholder="State"
                             />
 
@@ -1019,7 +1017,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             />
 
                             {/* Exp. and CCV */}
-                            <div className="flex flex-row gap-[8px] w-full">
+                            <div className="flex flex-row gap-[8px] w-full overflow-hidden">
                               <input
                                 type="text"
                                 inputMode="numeric"
@@ -1032,7 +1030,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                     setCreditCardExp(val);
                                   }
                                 }}
-                                className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
+                                className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
                                 placeholder="Exp."
                               />
                               <input
@@ -1040,7 +1038,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 inputMode="numeric"
                                 value={creditCardCcv}
                                 onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
-                                className="flex-1 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
+                                className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
                                 placeholder="CCV"
                               />
                             </div>
@@ -1125,8 +1123,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 (e.currentTarget.parentElement?.parentElement as HTMLElement).style.boxShadow = 'none';
                               }}
                             />
-                          </div>
-                          {/* Info Button */}
+                             {/* Info Button */}
                           {isPromoApplied && (
                             <button
                               type="button"
@@ -1146,6 +1143,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               <img src="/games/game-icons/i.png" alt="Info" className="w-[18.29px] h-[18px] object-contain" />
                             </button>
                           )}
+                          </div>
+                         
                           {/* Apply / Cancel — height: 50px, Manrope 700 14px, r-8 */}
                           <button
                             type="button"
