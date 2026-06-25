@@ -320,7 +320,7 @@ export default function UserHome() {
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
             <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
-              <section className="relative w-full max-w-[1136px] h-[160px] md:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', transform: 'translateZ(0)' }}>
+              <section className="relative w-full h-[160px] md:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate" style={{ backgroundImage: `url('/images/hero.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', transform: 'translateZ(0)' }}>
                 {/* Blurs inside banner */}
                 <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
                 <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
@@ -486,9 +486,9 @@ export default function UserHome() {
                   ref={slotsRef}
                   className="game-cards-slider scrollbar-none"
                 >
-                  {filteredSlots.map((game) => (
+                  {[...filteredSlots, ...filteredSlots, ...filteredSlots].map((game, index) => (
                     <div
-                      key={game.id}
+                      key={`${game.id}-${index}`}
                       onClick={() => router.push(`/game/${game.id}`)}
                       className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer game-card"
                     >
@@ -558,9 +558,9 @@ export default function UserHome() {
                   ref={originalsRef}
                   className="game-cards-slider scrollbar-none"
                 >
-                  {filteredOriginals.map((game) => (
+                  {[...filteredOriginals, ...filteredOriginals, ...filteredOriginals].map((game, index) => (
                     <div
-                      key={game.id}
+                      key={`${game.id}-${index}`}
                       onClick={() => router.push(`/game/${game.id}`)}
                       className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer game-card"
                     >
@@ -754,9 +754,9 @@ export default function UserHome() {
                   ref={crashRef}
                   className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[200px] select-none"
                 >
-                  {filteredCrash.map((game) => (
+                  {[...filteredCrash, ...filteredCrash, ...filteredCrash].map((game, index) => (
                     <div
-                      key={game.id}
+                      key={`${game.id}-${index}`}
                       onClick={() => router.push(`/game/${game.id}`)}
                       className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer game-card"
                     >
@@ -841,9 +841,9 @@ export default function UserHome() {
                   ref={providersRef}
                   className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[76px] md:h-[110px] select-none mobile-providers-grid"
                 >
-                  {providerList.map((provider) => (
+                  {[...providerList, ...providerList, ...providerList].map((provider, index) => (
                     <div
-                      key={provider.id}
+                      key={`${provider.id}-${index}`}
                       className="w-[88px] h-[60px] md:w-[152px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-col justify-center items-center py-[7.2px] px-[14.4px] md:p-[12px] gap-[4.8px] md:gap-[8px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
                     >
                       <div className="w-full h-[24px] md:w-[80px] md:h-[40px] flex items-center justify-center">
@@ -907,9 +907,9 @@ export default function UserHome() {
                   ref={tableRef}
                   className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[200px] select-none"
                 >
-                  {filteredTable.map((game) => (
+                  {[...filteredTable, ...filteredTable, ...filteredTable].map((game, index) => (
                     <div
-                      key={game.id}
+                      key={`${game.id}-${index}`}
                       onClick={() => router.push(`/game/${game.id}`)}
                       className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer game-card"
                     >
@@ -994,9 +994,9 @@ export default function UserHome() {
                   ref={bonusRef}
                   className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[200px] select-none"
                 >
-                  {filteredBonus.map((game) => (
+                  {[...filteredBonus, ...filteredBonus, ...filteredBonus].map((game, index) => (
                     <div
-                      key={game.id}
+                      key={`${game.id}-${index}`}
                       onClick={() => router.push(`/game/${game.id}`)}
                       className="w-[152px] h-[200px] flex-none rounded-[12px] relative overflow-hidden bg-[#CDCDCD] transition-all duration-300 hover:shadow-[0_10px_20px_rgba(0,0,0,0.5)] group cursor-pointer game-card"
                     >
@@ -1081,9 +1081,9 @@ export default function UserHome() {
                   ref={collectionsRef}
                   className="flex flex-row items-center gap-[7.2px] md:gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full py-[4px] h-[68px] md:h-[108px] select-none"
                 >
-                  {filteredCollections.map((col) => (
+                  {[...filteredCollections, ...filteredCollections, ...filteredCollections].map((col, index) => (
                     <div
-                      key={col.id}
+                      key={`${col.id}-${index}`}
                       className="w-[183px] md:w-[316px] h-[60px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#1463FF] flex flex-row items-center pt-[7.2px] pr-[14.4px] pb-[7.2px] pl-[7.2px] md:p-[12px] md:pr-[24px] md:pl-[12px] gap-[7.2px] md:gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
                     >
                       <div className="w-[45.6px] md:w-[76px] h-[45.6px] md:h-[76px] flex-none bg-[#0E1B3D] rounded-[5px] md:rounded-[8px] relative overflow-hidden">

@@ -123,6 +123,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   const [showQrCode, setShowQrCode] = useState(false);
   const [depositConfirmed, setDepositConfirmed] = useState(false);
   const [promoCode, setPromoCode] = useState('');
+  const [isPromoApplied, setIsPromoApplied] = useState(false);
   const [activeBonusCard, setActiveBonusCard] = useState(0);
   const bonusScrollRef = useRef<HTMLDivElement>(null);
 
@@ -1125,13 +1126,37 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               }}
                             />
                           </div>
-                          {/* Apply — height: 50px, Manrope 700 14px, r-8 */}
+                          {/* Info Button */}
+                          {isPromoApplied && (
+                            <button
+                              type="button"
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '50px',
+                                height: '50px',
+                                background: '#112F82',
+                                borderRadius: '8px',
+                                border: 'none',
+                                flexShrink: 0,
+                                cursor: 'pointer',
+                              }}
+                            >
+                              <img src="/games/game-icons/i.png" alt="Info" className="w-[18.29px] h-[18px] object-contain" />
+                            </button>
+                          )}
+                          {/* Apply / Cancel — height: 50px, Manrope 700 14px, r-8 */}
                           <button
                             type="button"
                             onClick={() => {
-                              if (!promoCode.trim()) return;
-                              alert(`Promo code "${promoCode}" applied!`);
-                              setPromoCode('');
+                              if (isPromoApplied) {
+                                setIsPromoApplied(false);
+                                setPromoCode('');
+                              } else {
+                                if (!promoCode.trim()) return;
+                                setIsPromoApplied(true);
+                              }
                             }}
                             style={{
                               display: 'flex',
@@ -1161,7 +1186,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.95)')}
                             onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                           >
-                            Apply
+                            {isPromoApplied ? 'Cancel' : 'Apply'}
                           </button>
                         </div>
                       </div>
@@ -2640,7 +2665,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     alignItems: 'flex-start',
                     padding: '0px',
                     gap: '16px',
-                    width: '460px',
+                    width: '428px',
                     height: '331px',
                   }}
                   className="select-none shrink-0"
@@ -2691,11 +2716,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           alignItems: 'center',
                           padding: '10px 16px',
                           gap: '12px',
-                          width: '320px',
+                          flex: 1,
                           height: '40px',
                           background: '#112F82',
                           borderRadius: '8px',
                           boxSizing: 'border-box',
+                          minWidth: 0,
                         }}
                       >
                         <input
@@ -2704,7 +2730,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           onChange={(e) => setPromoCode(e.target.value)}
                           placeholder="Promo Code"
                           style={{
-                            width: '288px',
+                            width: '100%',
                             height: '19px',
                             fontFamily: "'Manrope', sans-serif",
                             fontStyle: 'normal',
@@ -2719,13 +2745,38 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           }}
                           className="placeholder-[#7795E8]"
                         />
+                         {/* Info Button */}
+                      {isPromoApplied && (
+                        <button
+                          type="button"
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '40px',
+                            height: '40px',
+                            background: '#112F82',
+                            borderRadius: '8px',
+                            border: 'none',
+                            flexShrink: 0,
+                            cursor: 'pointer',
+                          }}
+                        >
+                          <img src="/games/game-icons/i.png" alt="Info" className="w-[17.29px] h-[18px] object-contain" />
+                        </button>
+                      )}
                       </div>
+                     
                       <button
                         type="button"
                         onClick={() => {
-                          if (!promoCode.trim()) return;
-                          alert(`Promo code "${promoCode}" applied!`);
-                          setPromoCode('');
+                          if (isPromoApplied) {
+                            setIsPromoApplied(false);
+                            setPromoCode('');
+                          } else {
+                            if (!promoCode.trim()) return;
+                            setIsPromoApplied(true);
+                          }
                         }}
                         style={{
                           display: 'flex',
@@ -2740,12 +2791,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           borderRadius: '8px',
                           border: 'none',
                           cursor: 'pointer',
+                          flexShrink: 0,
                         }}
                         className="hover:bg-[#ffd362] active:scale-95 duration-100"
                       >
                         <span
                           style={{
-                            width: '40px',
+                            width: 'auto',
                             height: '19px',
                             fontFamily: "'Manrope', sans-serif",
                             fontStyle: 'normal',
@@ -2756,7 +2808,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             color: '#1A1404',
                           }}
                         >
-                          Apply
+                          {isPromoApplied ? 'Cancel' : 'Apply'}
                         </span>
                       </button>
                     </div>
@@ -3133,7 +3185,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 color: '#1A1404',
                               }}
                             >
-                              Apply
+                              Activate
                             </span>
                           </button>
                         </div>

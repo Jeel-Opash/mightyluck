@@ -98,7 +98,7 @@ export default function ReferralsPage() {
       </div>
 
       {/* Page Content Layout (Sidebar + Content Panel) */}
-      <div className="flex flex-row items-start w-full max-w-[1440px] mx-auto px-4 lg:px-6 pt-0 pb-16 gap-3 lg:gap-6 relative">
+      <div className="flex flex-row items-start w-full px-3 sm:px-4 lg:px-6 pt-0 pb-16 gap-3 lg:gap-6 relative">
 
         {/* Left Sidebar */}
         <div className="hidden lg:block shrink-0"><Sidebar /></div>
@@ -115,7 +115,7 @@ export default function ReferralsPage() {
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
-            className="hidden lg:flex flex-col w-full max-w-[1136px] h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px]"
+            className="hidden lg:flex flex-col w-full h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px]"
           >
             {/* Top Row: Title Text (Left) & Calculator Card (Right) */}
             <div className="flex flex-row items-center justify-between h-[345px] w-full shrink-0">
@@ -553,7 +553,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               2. STATS SUMMARY CARD DECK (3 Cards row on desktop, stacked on mobile)
              ========================================================================= */}
-          <div className="flex flex-col md:flex-row gap-[16px] w-full max-w-[1136px] mx-auto select-none">
+          <div className="flex flex-col md:flex-row gap-[16px] w-full select-none">
             {/* Card 1: $2.5 K */}
             <div className="flex-1 min-w-0 bg-[#0C1F56] border border-white/5 rounded-[16px] p-6 text-center flex flex-col justify-center items-center gap-[8px] h-[136px] shadow-lg">
               <span className="font-jost font-extrabold text-[40px] leading-[58px] text-white">
@@ -588,7 +588,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               3. BENEFITS SECTIONS (WHAT YOU GET & WHAT YOUR FRIEND GETS)
              ========================================================================= */}
-          <div className="flex flex-col lg:flex-row gap-5 w-full max-w-[1136px] mx-auto select-none">
+          <div className="flex flex-col lg:flex-row gap-5 w-full select-none">
 
             {/* WHAT YOU GET */}
             <div
@@ -723,7 +723,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               4. HOW REFERRAL PROGRAM WORKS (3 Cards in a row on desktop)
              ========================================================================= */}
-          <div className="flex flex-col gap-4 w-full max-w-[1136px] mx-auto text-left select-none">
+          <div className="flex flex-col gap-4 w-full text-left select-none">
 
             {/* Header Title */}
             <div className="flex flex-row items-center gap-2">
@@ -808,7 +808,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               5. FAQS
              ========================================================================= */}
-          <div className="flex flex-col gap-4 w-full max-w-[1136px] mx-auto text-left">
+          <div className="flex flex-col gap-4 w-full text-left">
             <h2 className="font-jost font-extrabold text-[20px] leading-[29px] text-white tracking-[0.01em] select-none">
               FAQs
             </h2>
