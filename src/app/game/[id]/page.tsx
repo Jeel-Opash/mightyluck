@@ -80,20 +80,20 @@ export default function GamePage() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-[#091741] text-white select-none overflow-x-hidden">
+    <div className="w-full relative flex flex-col select-none">
 
       {/* Mobile Sidebar - fixed layout, rendered outside the flex layout to prevent gap offset on mobile */}
       <div className="xl:hidden">
         <Sidebar />
       </div>
 
-      <div className="flex flex-row items-start w-full max-w-[1440px] mx-auto px-3 sm:px-4 xl:px-6 pt-0 pb-16 gap-3 xl:gap-6">
+      <div className="flex flex-row items-start w-full gap-6">
 
         {/* Sidebar */}
         <div className="hidden xl:block shrink-0"><Sidebar /></div>
 
         {/* Main content */}
-        <div className="w-full min-w-0 flex-1 flex flex-col gap-[60px] pt-4">
+        <div className="w-full min-w-0 flex-1 flex flex-col gap-[60px]">
 
           {/* Top content wrapper containing back button and game container */}
           <div >
