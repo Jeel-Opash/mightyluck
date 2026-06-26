@@ -109,16 +109,23 @@ export default function ReferralsPage() {
           {/* =========================================================================
               1. HERO BANNER - DESKTOP VIEW (xl and up)
              ========================================================================= */}
-          <div
-            style={{
-              background: 'linear-gradient(95.59deg, #06102B 13.87%, rgba(6, 16, 43, 0) 35.34%), url(/games/refrels/refer.png), #2A0B3E',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-            className="hidden xl:flex flex-col w-full h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px]"
-          >
-            {/* Top Row: Title Text (Left) & Calculator Card (Right) */}
-            <div className="flex flex-row items-center justify-between h-[345px] w-full shrink-0">
+           <div
+             className="hidden xl:flex flex-col w-full h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px] bg-[#2A0B3E]"
+           >
+             <img
+               src="/games/refrels/refer.png"
+               alt="Refer Banner"
+               className="absolute inset-0 w-full h-full object-cover scale-[1.02] pointer-events-none z-0"
+             />
+             <div
+               className="absolute inset-0 pointer-events-none z-10"
+               style={{
+                 background: 'linear-gradient(95.59deg, #06102B 13.87%, rgba(6, 16, 43, 0) 35.34%)',
+               }}
+             />
+
+             {/* Top Row: Title Text (Left) & Calculator Card (Right) */}
+             <div className="flex flex-row items-center justify-between h-[345px] w-full shrink-0 z-20 relative">
 
               {/* Title Text Frame */}
               <div className="flex flex-col gap-1 w-[457px] h-[140px] text-left justify-center">
@@ -292,7 +299,7 @@ export default function ReferralsPage() {
                 boxSizing: 'border-box',
                 gap: '10px',
               }}
-              className="shrink-0"
+              className="shrink-0 z-20 relative"
             >
               {/* Stat 1: Total Referrals */}
               <div className="flex flex-col gap-2 text-left flex-1 h-[64px]">
@@ -372,14 +379,20 @@ export default function ReferralsPage() {
           <div className="flex xl:hidden flex-col gap-4 w-full">
             {/* Banner card */}
             <div
-              style={{
-                background: 'linear-gradient(95.59deg, #06102B 13.87%, rgba(6, 16, 43, 0) 35.34%), url(/games/refrels/refer.png), #2A0B3E',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-              className="w-full min-h-[160px] rounded-[16px] border border-white/5 p-6 flex flex-col justify-center relative overflow-hidden"
+              className="w-full min-h-[160px] rounded-[16px] border border-white/5 p-6 flex flex-col justify-center relative overflow-hidden bg-[#2A0B3E]"
             >
-              <div className="flex flex-col gap-1 max-w-[320px] z-10 text-left">
+              <img
+                src="/games/refrels/refer.png"
+                alt="Refer Banner"
+                className="absolute inset-0 w-full h-full object-cover scale-[1.02] pointer-events-none z-0"
+              />
+              <div
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                  background: 'linear-gradient(95.59deg, #06102B 13.87%, rgba(6, 16, 43, 0) 35.34%)',
+                }}
+              />
+              <div className="flex flex-col gap-1 max-w-[320px] z-20 relative text-left">
                 <span className="font-sans font-bold text-[12px] text-[#A5B8EF] tracking-[0.05em]">
                   Get <span className="text-[#FFC83D]">PAID</span> every time
                 </span>
@@ -590,12 +603,12 @@ export default function ReferralsPage() {
              ========================================================================= */}
           <div className="flex flex-col xl:flex-row gap-5 w-full select-none">
 
-            {/* WHAT YOU GET */}
-            <div
-              style={{
-                background: 'radial-gradient(circle at 50% 0%, rgba(87, 255, 61, 0.15) 0%, rgba(12, 31, 86, 0) 70%), #0C1F56',
-              }}
-              className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
+             {/* WHAT YOU GET */}
+             <div
+               style={{
+                 background: 'radial-gradient(circle at 0% 0%, rgba(87, 255, 61, 1) 0%, rgba(87, 255, 61, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
+               }}
+               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
             >
               <div className="flex flex-row items-center gap-2">
 
@@ -654,12 +667,12 @@ export default function ReferralsPage() {
               </div>
             </div>
 
-            {/* WHAT YOUR FRIEND GETS */}
-            <div
-              style={{
-                background: 'radial-gradient(circle at 50% 0%, rgba(20, 99, 255, 0.15) 0%, rgba(12, 31, 86, 0) 70%), #0C1F56',
-              }}
-              className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] xl:h-[391px] flex flex-col gap-6 shadow-xl text-left"
+             {/* WHAT YOUR FRIEND GETS */}
+             <div
+               style={{
+                 background: 'radial-gradient(circle at 0% 0%, rgba(20, 99, 255, 1) 0%, rgba(20, 99, 255, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
+               }}
+               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] xl:h-[391px] flex flex-col gap-6 shadow-xl text-left"
             >
               <div className="flex flex-row items-center gap-2">
 
@@ -752,34 +765,31 @@ export default function ReferralsPage() {
             <div className="flex flex-col md:flex-row gap-4 w-full">
 
               {/* Step 1 */}
-              <div
-                style={{
-                  backgroundImage: `url(/games/refrels/r1.png)`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-                className="w-full md:w-[370px] aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl shrink-0"
-              />
+              <div className="flex-1 w-full aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl">
+                <img
+                  src="/games/refrels/r1.png"
+                  alt="Step 1"
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.02] transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
 
               {/* Step 2 */}
-              <div
-                style={{
-                  backgroundImage: `url(/games/refrels/r2.png)`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-                className="w-full md:w-[370px] aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl shrink-0"
-              />
+              <div className="flex-1 w-full aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl">
+                <img
+                  src="/games/refrels/r2.png"
+                  alt="Step 2"
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.02] transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
 
               {/* Step 3 */}
-              <div
-                style={{
-                  backgroundImage: `url(/games/refrels/r3.png)`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
-                className="w-full md:w-[370px] aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl shrink-0"
-              />
+              <div className="flex-1 w-full aspect-[370/220] rounded-2xl border border-white/5 relative overflow-hidden group shadow-xl">
+                <img
+                  src="/games/refrels/r3.png"
+                  alt="Step 3"
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.02] transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
 
             </div>
           </div>
