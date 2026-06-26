@@ -20,7 +20,7 @@ const inputStyle: React.CSSProperties = {
   fontSize: '14px',
   lineHeight: '19px',
   letterSpacing: '0.02em',
-  color: '#A5B8EF',
+  color: '#FFFFFF',
   background: 'transparent',
   border: 'none',
   outline: 'none',

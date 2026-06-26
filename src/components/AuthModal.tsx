@@ -27,7 +27,7 @@ function FlagIcon({ c, size = 20 }: { c: typeof COUNTRY_CODES[0]; size?: number 
 const inputStyle: React.CSSProperties = {
   fontFamily: "'Manrope', sans-serif", fontWeight: 600,
   fontSize: '14px', lineHeight: '19px', letterSpacing: '0.02em',
-  color: '#A5B8EF', background: 'transparent',
+  color: '#FFFFFF', background: 'transparent',
   border: 'none', outline: 'none', flexGrow: 1, width: '100%',
 };
 

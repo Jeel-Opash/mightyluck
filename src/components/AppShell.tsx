@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import DepositModal from '@/components/DepositModal';
@@ -13,6 +14,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const isAuthPage = pathname.startsWith('/auth/');
   const depositModalOpen = useAppSelector((state) => state.ui.depositModalOpen);
   const allGamesOpen = useAppSelector((state) => state.ui.allGamesOpen);
+  const authModalOpen = useAppSelector((state) => state.ui.authModalOpen);
+
+  useEffect(() => {
+    if (depositModalOpen || allGamesOpen || authModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [depositModalOpen, allGamesOpen, authModalOpen]);
 
   if (isAuthPage) return <>{children}</>;
 

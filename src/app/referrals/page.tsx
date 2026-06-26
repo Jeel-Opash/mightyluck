@@ -607,6 +607,7 @@ export default function ReferralsPage() {
              <div
                style={{
                  background: 'radial-gradient(circle at 0% 0%, rgba(87, 255, 61, 1) 0%, rgba(87, 255, 61, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
+                 backgroundRepeat: 'no-repeat',
                }}
                className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
             >
@@ -671,6 +672,7 @@ export default function ReferralsPage() {
              <div
                style={{
                  background: 'radial-gradient(circle at 0% 0%, rgba(20, 99, 255, 1) 0%, rgba(20, 99, 255, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
+                 backgroundRepeat: 'no-repeat',
                }}
                className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] xl:h-[391px] flex flex-col gap-6 shadow-xl text-left"
             >

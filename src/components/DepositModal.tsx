@@ -1437,8 +1437,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               </div>
             </div>
 
-            {/* Bottom CTA Button — hidden on bonuses tab */}
-            {activeTab !== 'bonuses' && (depositConfirmed ? (
+            {/* Bottom CTA Button — only visible on deposit tab */}
+            {activeTab === 'deposit' && (depositConfirmed ? (
               /* ── Confirmed state CTA ── */
               <div className="flex flex-col items-center gap-[12px] w-full z-10 shrink-0 pb-4">
                 <button
@@ -3274,7 +3274,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         </div>
 
         {/* Join CTA Frame (300px x 50px, background: #FFC83D, border-radius: 8px, order 2, z-index 2) */}
-        {activeTab !== 'bonuses' && (
+        {activeTab === 'deposit' && (
           depositConfirmed ? (
             <div
               style={{
