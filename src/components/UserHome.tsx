@@ -79,11 +79,18 @@ export default function UserHome() {
   };
 
   // Scroll function for carousels
-  const scrollCarousel = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right', customCardWidth?: number) => {
+  const scrollCarousel = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right', scrollByContainer?: boolean) => {
     if (ref.current) {
-      const cardWidth = customCardWidth || 152;
-      const gap = 12;
-      const scrollAmount = (cardWidth + gap) * (customCardWidth ? 1 : 3); // Scroll 1 card for large promos, 3 cards for games
+      let scrollAmount: number;
+      if (scrollByContainer) {
+        // For promotion cards (w-full snap): scroll exactly one card width = container clientWidth + gap
+        const gap = 12;
+        scrollAmount = ref.current.clientWidth + gap;
+      } else {
+        const cardWidth = 152;
+        const gap = 12;
+        scrollAmount = (cardWidth + gap) * 2; // Scroll 2 cards at a time
+      }
       ref.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth',
@@ -781,7 +788,7 @@ export default function UserHome() {
                     <div className="flex flex-row items-center gap-[12px] w-[68px] h-[30px]">
                       <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
                         <button
-                          onClick={() => scrollCarousel(promotionsRef, 'left', 560)}
+                          onClick={() => scrollCarousel(promotionsRef, 'left', true)}
                           disabled={!canScrollPromotionsLeft}
                           className="w-[30px] h-[30px] bg-[#112F82] hover:bg-[#1463FF] disabled:opacity-40 disabled:hover:bg-[#112F82] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed text-white"
                         >
@@ -790,7 +797,7 @@ export default function UserHome() {
                           </svg>
                         </button>
                         <button
-                          onClick={() => scrollCarousel(promotionsRef, 'right', 560)}
+                          onClick={() => scrollCarousel(promotionsRef, 'right', true)}
                           disabled={!canScrollPromotionsRight}
                           className="w-[30px] h-[30px] bg-[#112F82] hover:bg-[#1463FF] disabled:opacity-40 disabled:hover:bg-[#112F82] rounded-[4px] flex items-center justify-center transition-all cursor-pointer disabled:cursor-not-allowed text-white"
                         >
@@ -815,7 +822,7 @@ export default function UserHome() {
                       ].map((promo) => (
                         <div
                           key={promo.id}
-                          className="relative flex-none w-full sm:w-[560px] h-[200px] sm:h-[220px] rounded-[16px] overflow-hidden border border-white/5 shadow-lg group"
+                          className="relative flex-none w-full sm:w-[560px] h-[170px] xs:h-[185px] sm:h-[220px] rounded-[16px] overflow-hidden border border-white/5 shadow-lg group"
                           style={{ scrollSnapAlign: 'start' }}
                         >
                           {/* Background image with gradient */}
@@ -826,13 +833,13 @@ export default function UserHome() {
                           {/* Blue glow */}
                           <div className="absolute w-[140px] h-[140px] left-[-60px] top-[-60px] rounded-full bg-[#1463FF] filter blur-[45px] pointer-events-none z-10 opacity-60" />
                           {/* Text + CTA */}
-                          <div className="absolute inset-0 z-20 flex flex-col justify-center items-start px-6 sm:px-8 gap-[14px] sm:gap-[18px]">
-                            <h3 className="font-jost font-extrabold text-[17px] sm:text-[22px] md:text-[26px] leading-[120%] tracking-[0.01em] text-white uppercase max-w-[200px] sm:max-w-[260px]">
+                          <div className="absolute inset-0 z-20 flex flex-col justify-center items-start px-4 sm:px-6 md:px-8 gap-[10px] sm:gap-[14px] md:gap-[18px]">
+                            <h3 className="font-jost font-extrabold text-[14px] xs:text-[16px] sm:text-[22px] md:text-[26px] leading-[120%] tracking-[0.01em] text-white uppercase max-w-[150px] xs:max-w-[180px] sm:max-w-[260px]">
                               {promo.label}
                             </h3>
                             <button
                               onClick={() => alert(`Promotion ${promo.id} claimed`)}
-                              className="h-[36px] sm:h-[40px] px-5 sm:px-6 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[13px] sm:text-[14px] leading-none text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0 whitespace-nowrap"
+                              className="h-[30px] xs:h-[34px] sm:h-[40px] px-3 xs:px-4 sm:px-6 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[11px] xs:text-[12px] sm:text-[14px] leading-none text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0 whitespace-nowrap"
                             >
                               Claim Now
                             </button>
