@@ -1123,28 +1123,28 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 (e.currentTarget.parentElement?.parentElement as HTMLElement).style.boxShadow = 'none';
                               }}
                             />
-                             {/* Info Button */}
-                          {isPromoApplied && (
-                            <button
-                              type="button"
-                              style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '50px',
-                                height: '50px',
-                                background: '#112F82',
-                                borderRadius: '8px',
-                                border: 'none',
-                                flexShrink: 0,
-                                cursor: 'pointer',
-                              }}
-                            >
-                              <img src="/games/game-icons/i.png" alt="Info" className="w-[18.29px] h-[18px] object-contain" />
-                            </button>
-                          )}
+                            {/* Info Button */}
+                            {isPromoApplied && (
+                              <button
+                                type="button"
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: '50px',
+                                  height: '50px',
+                                  background: '#112F82',
+                                  borderRadius: '8px',
+                                  border: 'none',
+                                  flexShrink: 0,
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                <img src="/games/game-icons/i.png" alt="Info" className="w-[18.29px] h-[18px] object-contain" />
+                              </button>
+                            )}
                           </div>
-                         
+
                           {/* Apply / Cancel — height: 50px, Manrope 700 14px, r-8 */}
                           <button
                             type="button"
@@ -2744,28 +2744,28 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           }}
                           className="placeholder-[#7795E8]"
                         />
-                         {/* Info Button */}
-                      {isPromoApplied && (
-                        <button
-                          type="button"
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: '40px',
-                            height: '40px',
-                            background: '#112F82',
-                            borderRadius: '8px',
-                            border: 'none',
-                            flexShrink: 0,
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <img src="/games/game-icons/i.png" alt="Info" className="w-[17.29px] h-[18px] object-contain" />
-                        </button>
-                      )}
+                        {/* Info Button */}
+                        {isPromoApplied && (
+                          <button
+                            type="button"
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: '40px',
+                              height: '40px',
+                              background: '#112F82',
+                              borderRadius: '8px',
+                              border: 'none',
+                              flexShrink: 0,
+                              cursor: 'pointer',
+                            }}
+                          >
+                            <img src="/games/game-icons/i.png" alt="Info" className="w-[17.29px] h-[18px] object-contain" />
+                          </button>
+                        )}
                       </div>
-                     
+
                       <button
                         type="button"
                         onClick={() => {
