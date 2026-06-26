@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useAppSelector } from '@/redux/store';
 import CrownIcon from './CrownIcon';
 import Navbar from '@/components/Navbar';
+import WithdrawTab from './deposit/WithdrawTab';
+import TransactionsTab from './deposit/TransactionsTab';
 
 
 const YellowWalletIcon = () => (
@@ -159,12 +161,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   const isDeposit = activeTab === 'deposit';
   const showDepositCTA = isDeposit && !depositConfirmed;
 
-  const tabCardFrameHeight = isDeposit ? '500px' : '419px';
-  const contentCardHeight = isDeposit ? '454px' : '373px';
-  const innerFrameHeight = isDeposit ? 553 : 472;
-  const mainLayoutFrameHeight = showDepositCTA ? '637px' : `${innerFrameHeight}px`;
-  const bodyHeight = showDepositCTA ? '715px' : (isDeposit ? '631px' : '550px');
-  const modalHeight = showDepositCTA ? '795px' : (isDeposit ? '711px' : '630px');
+  const tabCardFrameHeight = depositConfirmed ? '427px' : (isDeposit ? '500px' : '419px');
+  const contentCardHeight = depositConfirmed ? '381.16px' : (isDeposit ? '454px' : '373px');
+  const innerFrameHeight = depositConfirmed ? 480.16 : (isDeposit ? 553 : 472);
+  const mainLayoutFrameHeight = depositConfirmed ? '592.16px' : (showDepositCTA ? '637px' : `${innerFrameHeight}px`);
+  const bodyHeight = depositConfirmed ? '670.16px' : (showDepositCTA ? '715px' : (isDeposit ? '631px' : '550px'));
+  const modalHeight = depositConfirmed ? '750.16px' : (showDepositCTA ? '795px' : (isDeposit ? '711px' : '630px'));
   const countryDropdownRefDesktop = useRef<HTMLDivElement>(null);
 
   // Mock BTC to USD rate: 1 BTC = $65,000 USD
@@ -496,17 +498,21 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 style={{
                   height: contentCardHeight,
                 }}
-                className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] gap-[16px] flex flex-col items-start border border-white/5 shadow-md shrink-0 overflow-y-auto scrollbar-none ${
-                  activeTab === 'bonuses' ? 'py-[12px]' : 'py-[16px]'
+                className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] flex flex-col border border-white/5 shadow-md shrink-0 overflow-y-auto scrollbar-none ${
+                  activeTab === 'deposit' && depositConfirmed
+                    ? 'py-[20px] gap-[24px] items-center'
+                    : activeTab === 'bonuses'
+                    ? 'py-[12px] gap-[16px] items-start'
+                    : 'py-[16px] gap-[16px] items-start'
                 }`}
               >
                   {activeTab === 'deposit' && depositConfirmed ? (
-                    <div className="flex flex-col items-center justify-center w-full h-full gap-[20px] text-center select-none py-4">
-                      <p className="font-manrope font-semibold text-[14px] leading-[22px] tracking-[0.01em] text-white max-w-[320px]">
+                    <div className="flex flex-col items-center justify-between w-full h-full text-center select-none">
+                      <p className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#A5B8EF] w-full">
                         Your transaction in progress and pending confirmation from the blockchain.
                       </p>
 
-                      <div className="relative w-[150px] h-[150px] flex items-center justify-center my-[16px] select-none">
+                      <div className="relative w-[160px] h-[160px] flex items-center justify-center select-none">
                         <svg className="absolute inset-0 w-full h-full animate-spin [animation-duration:3.5s]" viewBox="0 0 100 100">
                           {/* Inner dark blue background circle */}
                           <circle
@@ -536,47 +542,22 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </div>
                       </div>
 
-                      <p className="font-manrope font-medium text-[13px] leading-[21px] tracking-[0.01em] text-[#BBCAF3] max-w-[320px] mb-4">
-                        1 confirmation is required for deposits to be credited.{' '}
-                        <br className="hidden md:block" />
-                        Want to know how many confirmations this transaction has?{' '}
+                      <p className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#A5B8EF] w-full">
+                        1 confirmation is required for deposits to be credited.
+                        <br />
+                        Want to know how many confirmations this transaction has?
                         <br />
                         Please{' '}
                         <a
                           href="https://www.blockchain.com/explorer"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[#FFC83D] hover:text-[#ffd362] underline underline-offset-2 transition-colors font-semibold"
+                          className="text-[#FFC83D] hover:text-[#ffd362] underline underline-offset-2 transition-colors font-bold"
                         >
                           click here
                         </a>
                         .
                       </p>
-
-                      {/* Go to games button inside card */}
-                      <button
-                        onClick={onClose}
-                        className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[16px] flex items-center justify-center font-manrope font-bold text-[15px] leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shadow-[0_4px_16px_rgba(255,200,61,0.35)] border-none"
-                      >
-                        Go to games
-                      </button>
-                      <div className="flex flex-row items-center gap-[6px] mt-2">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <circle cx="7" cy="7" r="6" stroke="#A5B8EF" strokeWidth="1.5" />
-                          <path d="M7 4V7.5" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" />
-                          <circle cx="7" cy="10" r="0.75" fill="#A5B8EF" />
-                        </svg>
-                        <span className="font-manrope font-medium text-[12px] leading-[16px] tracking-[0.01em] text-[#A5B8EF]">
-                          Having problems?{' '}
-                          <button
-                            type="button"
-                            onClick={() => alert('Opening live support...')}
-                            className="text-[#FFC83D] hover:text-[#ffd362] font-semibold transition-colors cursor-pointer bg-transparent border-0 p-0"
-                          >
-                            Contact support
-                          </button>
-                        </span>
-                      </div>
                     </div>
                   ) : activeTab === 'deposit' ? (
                     <>
@@ -1453,33 +1434,41 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   )}
 
                   {activeTab === 'withdraw' && (
-                    <div className="flex flex-col items-center justify-center w-full h-auto gap-4 text-center select-none py-8 shrink-0">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 12V16H11V12H8L12 8L16 12H13Z" fill="#A5B8EF" />
-                      </svg>
-                      <h4 className="font-jost font-bold text-white text-[16px]">Fast Withdrawals</h4>
-                      <p className="font-sans text-[12px] text-[#A5B8EF] max-w-[280px]">
-                        To request a withdrawal, please verify your email and complete your active bonus wagering requirements.
-                      </p>
-                    </div>
+                    <WithdrawTab isMobile={true} />
                   )}
 
                   {activeTab === 'transactions' && (
-                    <div className="flex flex-col items-center justify-center w-full h-auto gap-4 text-center select-none py-8 shrink-0">
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H17V12H7V10ZM7 14H14V16H7V14ZM7 6H17V8H7V6Z" fill="#A5B8EF" />
-                      </svg>
-                      <h4 className="font-jost font-bold text-white text-[16px]">Transaction Ledger</h4>
-                      <p className="font-sans text-[12px] text-[#A5B8EF] max-w-[280px]">
-                        No recent transactions found. All verified deposits and withdrawals will show here.
-                      </p>
-                    </div>
+                    <TransactionsTab isMobile={true} />
                   )}
                 </div>
             </div>
 
             {/* Yellow CTA Button (Figma specified: height: 60px, border-radius: 8px) */}
-            {showDepositCTA && (
+            {activeTab === 'deposit' && depositConfirmed ? (
+              <div className="w-full flex flex-col items-center gap-[12px] h-[88px] shrink-0">
+                <button
+                  onClick={onClose}
+                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0"
+                >
+                  Go to games
+                </button>
+                <div className="flex flex-row items-center justify-center gap-[8px] h-[16px] shrink-0">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6.5 8.5H5.5V5.5H6.5V8.5ZM6.5 4.5H5.5V3.5H6.5V4.5Z" fill="#7795E8" />
+                  </svg>
+                  <span className="font-manrope font-medium text-[12px] leading-[16px] tracking-[0.02em] text-[#7795E8] select-none">
+                    Having problems?{' '}
+                    <button
+                      type="button"
+                      onClick={() => alert('Opening live support...')}
+                      className="text-[#FFC83D] hover:text-[#ffd362] font-semibold transition-colors cursor-pointer bg-transparent border-0 p-0"
+                    >
+                      Contact support
+                    </button>
+                  </span>
+                </div>
+              </div>
+            ) : showDepositCTA && (
               selectedPayment === 'Bitcoin' ? (
                 <button
                   onClick={() => setDepositConfirmed(true)}
@@ -3260,27 +3249,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               )}
 
               {activeTab === 'withdraw' && (
-                <div className="flex flex-col items-center justify-center w-full h-full gap-3 text-center py-4 shrink-0 select-none">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 12V16H11V12H8L12 8L16 12H13Z" fill="#A5B8EF" />
-                  </svg>
-                  <h4 className="font-jost font-bold text-white text-[15px]">Fast Withdrawals</h4>
-                  <p className="font-sans text-[11px] text-[#A5B8EF] max-w-[260px]">
-                    To request a withdrawal, please verify your email and complete your active bonus wagering requirements.
-                  </p>
-                </div>
+                <WithdrawTab isMobile={false} />
               )}
 
               {activeTab === 'transactions' && (
-                <div className="flex flex-col items-center justify-center w-full h-full gap-3 text-center py-4 shrink-0 select-none">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H17V12H7V10ZM7 14H14V16H7V14ZM7 6H17V8H7V6Z" fill="#A5B8EF" />
-                  </svg>
-                  <h4 className="font-jost font-bold text-white text-[15px]">Transaction Ledger</h4>
-                  <p className="font-sans text-[11px] text-[#A5B8EF] max-w-[260px]">
-                    No recent transactions found. All verified deposits and withdrawals will show here.
-                  </p>
-                </div>
+                <TransactionsTab isMobile={false} />
               )}
             </div>
           </div>
