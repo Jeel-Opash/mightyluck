@@ -53,14 +53,13 @@ export default function Footer({ className }: FooterProps = {}) {
 
   return (
     <div className={className || "w-full flex flex-col gap-[40px] md:gap-[100px] mt-[40px] md:mt-[100px]"}>
-      
+
       {/* Child 1: SEO Text Area */}
       <div className="flex flex-col items-start p-0 w-full max-w-[1136px] mx-auto select-none px-4 md:px-0">
         <div className="flex flex-col items-center p-0 w-full isolate relative">
           <div
-            className={`w-full max-w-[800px] flex flex-col gap-[24px] md:gap-[32px] overflow-hidden transition-all duration-500 ease-in-out ${
-              isSeoExpanded ? 'max-h-[2500px]' : 'max-h-[590px] md:max-h-[660px]'
-            }`}
+            className={`w-full max-w-[800px] flex flex-col gap-[24px] md:gap-[32px] overflow-hidden transition-all duration-500 ease-in-out ${isSeoExpanded ? 'max-h-[2500px]' : 'max-h-[590px] md:max-h-[660px]'
+              }`}
           >
             {/* Play the Best Crypto Casino Games... */}
             <div className="flex flex-col items-start p-0 gap-[16px] md:gap-[24px] w-full">
@@ -159,10 +158,10 @@ export default function Footer({ className }: FooterProps = {}) {
 
       {/* Child 3: MAIN WEBSITE FOOTER */}
       <footer className="w-full flex flex-col gap-[40px] md:gap-[48px] select-none text-white pb-[100px] md:pb-[40px] px-4 md:px-0">
-        
+
         {/* Top Row: logo + menus */}
         <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start gap-[40px] md:gap-[49px]">
-          
+
           {/* Logo + copyright */}
           <div className="flex flex-col items-center md:items-start gap-[16px] w-[213px] shrink-0 text-center md:text-left">
             <div className="w-[132px] h-[50px] relative">
@@ -189,7 +188,7 @@ export default function Footer({ className }: FooterProps = {}) {
           <div className="flex flex-col md:flex-row items-stretch md:items-start gap-[20px] md:gap-[32px] w-full md:w-[728px]">
             {columns.map((col) => (
               <div key={col.id} className="flex flex-col border-b border-white/5 md:border-b-0 pb-3 md:pb-0 w-full md:w-[120px] shrink-0">
-                
+
                 {/* Accordion Header (Mobile) / Column Header (Desktop) */}
                 <div
                   onClick={() => toggleAccordion(col.id)}
@@ -214,9 +213,8 @@ export default function Footer({ className }: FooterProps = {}) {
 
                 {/* Sub-links List */}
                 <div
-                  className={`flex-col gap-[12px] md:gap-[8px] mt-[12px] md:mt-[12px] transition-all duration-300 md:flex ${
-                    openAccordions[col.id] ? 'flex' : 'hidden md:flex'
-                  }`}
+                  className={`flex-col gap-[12px] md:gap-[8px] mt-[12px] md:mt-[12px] transition-all duration-300 md:flex ${openAccordions[col.id] ? 'flex' : 'hidden md:flex'
+                    }`}
                 >
                   {col.items.map((item) => (
                     <span
