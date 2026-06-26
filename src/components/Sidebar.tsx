@@ -245,7 +245,7 @@ export default function Sidebar() {
           <div className="w-full max-w-[374px] flex flex-col gap-[16px]">
 
             {/* Promo banners */}
-            <div className="flex flex-row gap-[10px] w-full">
+            <div className="flex flex-row gap-[4px] w-full justify-center">
               <img
                 src="/games/side-btn/1.png"
                 alt="Refer a Friend"
@@ -253,18 +253,19 @@ export default function Sidebar() {
                   router.push('/referrals');
                   dispatch(toggleSidebar());
                 }}
-                className="flex-1 cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[12px]"
+                className="flex-1 max-w-[183px] h-[80px] cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[10px]"
               />
               <img
                 src="/games/side-btn/2.png"
                 alt="VIP Transfer"
-                className="flex-1 cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[12px]"
+                className="flex-1 max-w-[183px] h-[80px] cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[10px]"
               />
             </div>
             <img
               src="/games/side-btn/3.png"
               alt="Winter Rush"
               className="w-full cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[12px]"
+              style={{ aspectRatio: '4 / 1' }}
             />
 
             {/* Promotions */}

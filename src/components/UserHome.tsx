@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Sidebar from '@/components/Sidebar';
 import Footer from '@/components/Footer';
 import { useAppSelector, useAppDispatch } from '@/redux/store';
-import { openDepositModal, toggleSidebar, openAllGamesModal } from '@/redux/features/uiSlice';
+import { openDepositModal, closeDepositModal, toggleSidebar, openAllGamesModal, closeAllGamesModal, setSidebarOpen } from '@/redux/features/uiSlice';
 
 // Interface for casino game cards
 interface GameCard {
@@ -27,6 +27,9 @@ export default function UserHome() {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const searchQuery = useAppSelector((state) => state.ui.searchQuery);
+  const sidebarOpen = useAppSelector((state) => state.ui.sidebarOpen);
+  const allGamesOpen = useAppSelector((state) => state.ui.allGamesOpen);
+  const depositModalOpen = useAppSelector((state) => state.ui.depositModalOpen);
 
   const [favorites, setFavorites] = useState<string[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>('lobby');
@@ -1310,23 +1313,83 @@ export default function UserHome() {
 
       {/* Mobile Bottom Nav */}
       <nav className="fixed bottom-0 left-0 right-0 z-[55] flex md:hidden flex-row items-center justify-around bg-[#0C1F56] border-t border-white/5 h-[60px] px-2">
-        <button onClick={() => dispatch(toggleSidebar())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/menu.png" alt="Menu" className="w-5 h-5 object-contain" />
+        <button
+          onClick={() => {
+            dispatch(toggleSidebar());
+            dispatch(closeAllGamesModal());
+            dispatch(closeDepositModal());
+          }}
+          className={`flex flex-col items-center gap-1 cursor-pointer bg-transparent border-0 flex-1 transition-colors ${sidebarOpen ? 'text-[#FFC83D]' : 'text-[#D2DCF7] hover:text-white'}`}
+        >
+          <img
+            src="/mobile/sidebar/menu.png"
+            alt="Menu"
+            className="w-5 h-5 object-contain transition-all"
+            style={{
+              filter: sidebarOpen
+                ? 'brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%)'
+                : 'none'
+            }}
+          />
           <span className="text-[10px] font-semibold font-sans">Menu</span>
         </button>
-        <button onClick={() => dispatch(openAllGamesModal())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/mobile/sidebar/search.png" alt="Search" className="w-5 h-5 object-contain" />
+        <button
+          onClick={() => {
+            if (allGamesOpen) {
+              dispatch(closeAllGamesModal());
+            } else {
+              dispatch(openAllGamesModal());
+              dispatch(setSidebarOpen(false));
+            }
+          }}
+          className={`flex flex-col items-center gap-1 cursor-pointer bg-transparent border-0 flex-1 transition-colors ${allGamesOpen ? 'text-[#FFC83D]' : 'text-[#D2DCF7] hover:text-white'}`}
+        >
+          <img
+            src="/mobile/sidebar/search.png"
+            alt="Search"
+            className="w-5 h-5 object-contain transition-all"
+            style={{
+              filter: allGamesOpen
+                ? 'brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%)'
+                : 'none'
+            }}
+          />
           <span className="text-[10px] font-semibold font-sans">Search</span>
         </button>
-        <button onClick={() => dispatch(openDepositModal())} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
-          <img src="/games/side-icon/pro.svg" alt="Offers" className="w-5 h-5 object-contain" />
+        <button
+          onClick={() => {
+            if (depositModalOpen) {
+              dispatch(closeDepositModal());
+            } else {
+              dispatch(openDepositModal());
+              dispatch(setSidebarOpen(false));
+            }
+          }}
+          className={`flex flex-col items-center gap-1 cursor-pointer bg-transparent border-0 flex-1 transition-colors ${depositModalOpen ? 'text-[#FFC83D]' : 'text-[#D2DCF7] hover:text-white'}`}
+        >
+          <img
+            src="/games/side-icon/pro.svg"
+            alt="Offers"
+            className="w-5 h-5 object-contain transition-all"
+            style={{
+              filter: depositModalOpen
+                ? 'brightness(0) saturate(100%) invert(77%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%)'
+                : 'none'
+            }}
+          />
           <span className="text-[10px] font-semibold font-sans">Offers</span>
         </button>
-        <button onClick={() => { }} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
+        <button
+          onClick={() => { }}
+          className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1"
+        >
           <img src="/games/side-icon/vip.svg" alt="VIP" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">VIP</span>
         </button>
-        <button onClick={() => { }} className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1">
+        <button
+          onClick={() => { }}
+          className="flex flex-col items-center gap-1 text-[#D2DCF7] hover:text-white cursor-pointer bg-transparent border-0 flex-1"
+        >
           <img src="/games/side-icon/tour.svg" alt="Tourneys" className="w-5 h-5 object-contain" />
           <span className="text-[10px] font-semibold font-sans">Tourneys</span>
         </button>

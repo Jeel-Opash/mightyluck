@@ -338,7 +338,7 @@ export default function Navbar() {
         <div className="w-full h-[30px] flex flex-row justify-between items-center gap-[2px] z-10 box-border">
 
           {/* Logo Frame: 44px x 30px */}
-          <div 
+          <div
             onClick={() => router.push('/')}
             className="flex flex-row items-center gap-[8px] w-[44px] h-[30px] shrink-0 box-border cursor-pointer"
           >

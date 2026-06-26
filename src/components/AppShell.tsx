@@ -33,7 +33,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <>
       <Navbar />
       <div className="pt-[50px] md:pt-[60px] pb-[60px] md:pb-0 bg-[#091741] min-h-screen text-white select-none">
-        <div 
+        <div
           style={{
             opacity: 1,
             paddingTop: '24px',
