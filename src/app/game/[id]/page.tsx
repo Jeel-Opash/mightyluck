@@ -58,6 +58,7 @@ export default function GamePage() {
   const id = params?.id as string;
 
   const dispatch = useAppDispatch();
+  const sidebarOpen = useAppSelector((state) => state.ui.sidebarOpen);
 
   const game = ALL_GAMES.find((g) => g.id === id) ?? ALL_GAMES[0];
   const otherGames = ALL_GAMES.filter((g) => g.id !== game.id);
@@ -83,17 +84,19 @@ export default function GamePage() {
     <div className="w-full relative flex flex-col select-none">
 
       {/* Mobile Sidebar - fixed layout, rendered outside the flex layout to prevent gap offset on mobile */}
-      <div className="xl:hidden">
+      <div className="lg:hidden">
         <Sidebar />
       </div>
 
       <div className="flex flex-row items-start w-full gap-6">
 
         {/* Sidebar */}
-        <div className="hidden xl:block shrink-0"><Sidebar /></div>
+        <div className={`hidden lg:block shrink-0 transition-all duration-300 ease-in-out ${sidebarOpen ? 'w-[232px]' : 'w-[80px]'}`}>
+          <Sidebar />
+        </div>
 
         {/* Main content */}
-        <div className="w-full min-w-0 flex-1 flex flex-col gap-[60px]">
+        <div className="min-w-0 flex-1 flex flex-col gap-[60px]">
 
           {/* Top content wrapper containing back button and game container */}
           <div >

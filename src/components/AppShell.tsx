@@ -32,7 +32,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
-      <div className="pt-[50px] md:pt-[60px] pb-[60px] md:pb-0 bg-[#091741] min-h-screen text-white select-none">
+      <div className="pt-[50px] md:pt-[60px] pb-[60px] md:pb-0 bg-[#091741] min-h-screen text-white select-none overflow-x-hidden">
         <div
           style={{
             opacity: 1,
@@ -41,7 +41,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             paddingLeft: '24px',
             paddingRight: '24px'
           }}
-          className="w-full max-w-[1440px] mx-auto box-border relative flex flex-col min-h-[calc(100vh-60px)]"
+          className="w-full max-w-[1440px] mx-auto box-border relative flex flex-col min-h-[calc(100vh-60px)] overflow-x-hidden"
         >
           {children}
         </div>

@@ -353,7 +353,7 @@ export default function UserHome() {
     <div className="w-full relative flex flex-col select-none">
 
       {/* Mobile Sidebar - fixed layout, rendered outside the flex layout to prevent gap offset on mobile */}
-      <div className="xl:hidden">
+      <div className="lg:hidden">
         <Sidebar />
       </div>
 
@@ -361,10 +361,12 @@ export default function UserHome() {
       <div className="flex flex-row items-start w-full gap-6 relative">
 
         {/* Left Sidebar */}
-        <div className="hidden xl:block shrink-0"><Sidebar /></div>
+        <div className={`hidden lg:block shrink-0 transition-all duration-300 ease-in-out ${sidebarOpen ? 'w-[232px]' : 'w-[80px]'}`}>
+          <Sidebar />
+        </div>
 
         {/* Right Main Content Column */}
-        <div className="w-full min-w-0 flex-1 flex flex-col gap-8 xl:gap-[40px]">
+        <div className="min-w-0 flex-1 flex flex-col gap-8 lg:gap-[40px]">
 
           {/* Child 1: Main Games Area */}
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">

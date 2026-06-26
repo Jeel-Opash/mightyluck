@@ -33,7 +33,7 @@ export default function Navbar() {
       {/* =========================================================================
           1. DESKTOP HEADER LAYOUT (md and up) - UNCHANGED
          ========================================================================= */}
-      <div className="hidden md:flex w-full max-w-[1440px] mx-auto h-full flex-row justify-between items-center px-[24px] gap-4 relative">
+      <div className="hidden md:flex w-full max-w-[1440px] mx-auto h-full flex-row justify-between items-center px-[24px] gap-2 lg:gap-4 relative">
         {/* Glow wrapper to prevent leaking below/above the navbar */}
         <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
           {/* Ellipse 6 */}
@@ -58,12 +58,13 @@ export default function Navbar() {
             flexDirection: 'row',
             alignItems: 'center',
             padding: '0px',
-            gap: '51px',
-            width: '596px',
+            gap: '20px',
             height: '40px',
             zIndex: 1,
+            minWidth: 0,
+            flex: '1 1 auto',
           }}
-          className="order-1 relative shrink-0"
+          className="order-1 relative"
         >
           {/* Menu Toggler */}
           <button
@@ -115,10 +116,12 @@ export default function Navbar() {
               padding: '10px 20px',
               gap: '10px',
               width: '280px',
+              maxWidth: '280px',
+              minWidth: '120px',
               height: '40px',
               background: '#112F82',
               borderRadius: '8px',
-              flexShrink: 0,
+              flex: '1 1 auto',
             }}
           >
             <svg width="16" height="15.99" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: '#BBCAF3', flexShrink: 0 }}>
@@ -161,7 +164,7 @@ export default function Navbar() {
         </div>
 
         {/* Right Section: Auth Action Buttons or Logged-in UI */}
-        <div className="flex flex-row items-center gap-[10px] w-auto h-[30px] md:h-[40px] z-10 order-2 relative shrink-0">
+        <div className="flex flex-row items-center gap-[10px] w-auto h-[30px] md:h-[40px] z-10 order-2 relative shrink-0 min-w-0">
           {isAuthenticated && user ? (
             <div className="flex flex-row justify-end items-center p-0 gap-[4px] md:gap-[16px] h-[30px] md:h-[40px] z-10">
               <div className="flex flex-row items-center p-0 gap-[4px] h-[30px] md:h-[40px]">

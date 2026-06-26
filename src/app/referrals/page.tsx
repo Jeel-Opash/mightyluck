@@ -14,6 +14,7 @@ export default function ReferralsPage() {
 
   // Auth protection check
   const { isAuthenticated } = useAppSelector((state) => state.auth);
+  const sidebarOpen = useAppSelector((state) => state.ui.sidebarOpen);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -93,7 +94,7 @@ export default function ReferralsPage() {
       `}</style>
 
       {/* Mobile Sidebar - fixed layout, rendered outside the flex layout to prevent gap offset on mobile */}
-      <div className="xl:hidden">
+      <div className="lg:hidden">
         <Sidebar />
       </div>
 
@@ -101,16 +102,18 @@ export default function ReferralsPage() {
       <div className="flex flex-row items-start w-full gap-6 relative">
 
         {/* Left Sidebar */}
-        <div className="hidden xl:block shrink-0"><Sidebar /></div>
+        <div className={`hidden lg:block shrink-0 transition-all duration-300 ease-in-out ${sidebarOpen ? 'w-[232px]' : 'w-[80px]'}`}>
+          <Sidebar />
+        </div>
 
         {/* Right Main Content Column */}
-        <div className="w-full min-w-0 flex-1 flex flex-col gap-6 xl:gap-[40px]">
+        <div className="min-w-0 flex-1 flex flex-col gap-6 lg:gap-[40px]">
 
           {/* =========================================================================
-              1. HERO BANNER - DESKTOP VIEW (xl and up)
+              1. HERO BANNER - DESKTOP VIEW (lg and up)
              ========================================================================= */}
            <div
-             className="hidden xl:flex flex-col w-full h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px] bg-[#2A0B3E]"
+             className="hidden lg:flex flex-col w-full h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px] bg-[#2A0B3E]"
            >
              <img
                src="/games/refrels/refer.png"
@@ -376,7 +379,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               1. HERO BANNER - MOBILE / TABLET VIEW (stacked components)
              ========================================================================= */}
-          <div className="flex xl:hidden flex-col gap-4 w-full">
+          <div className="flex lg:hidden flex-col gap-4 w-full">
             {/* Banner card */}
             <div
               className="w-full min-h-[160px] rounded-[16px] border border-white/5 p-6 flex flex-col justify-center relative overflow-hidden bg-[#2A0B3E]"
@@ -601,7 +604,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               3. BENEFITS SECTIONS (WHAT YOU GET & WHAT YOUR FRIEND GETS)
              ========================================================================= */}
-          <div className="flex flex-col xl:flex-row gap-5 w-full select-none">
+          <div className="flex flex-col lg:flex-row gap-5 w-full select-none">
 
              {/* WHAT YOU GET */}
              <div
@@ -674,7 +677,7 @@ export default function ReferralsPage() {
                  background: 'radial-gradient(circle at 0% 0%, rgba(20, 99, 255, 1) 0%, rgba(20, 99, 255, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
                  backgroundRepeat: 'no-repeat',
                }}
-               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] xl:h-[391px] flex flex-col gap-6 shadow-xl text-left"
+               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
             >
               <div className="flex flex-row items-center gap-2">
 
