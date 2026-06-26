@@ -1516,7 +1516,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
       <div
         style={{
           width: '500px',
-          height: activeTab === 'bonuses' ? '518px' : (activeTab === 'deposit' && depositConfirmed ? '532px' : '604px'),
+          height: '604px',
           padding: '24px 20px 32px',
           gap: '24px',
           background: '#091741',
@@ -1565,13 +1565,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         <div
           style={{
             width: '460px',
-            height: activeTab === 'bonuses' ? '462px' : (activeTab === 'deposit' && depositConfirmed ? '386px' : '474px'),
+            flex: 1,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
             padding: '0px',
             gap: '24px',
             zIndex: 1,
+            minHeight: 0,
           }}
           className="select-none"
         >
@@ -1588,7 +1589,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               height: '50px',
               borderRadius: '12px',
             }}
-            className="relative"
+            className="relative shrink-0"
           >
             {/* Wallet Group (94px x 29px) */}
             <div
@@ -1637,7 +1638,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               padding: '0px',
               gap: '16px',
               width: '460px',
-              height: activeTab === 'bonuses' ? '409px' : (activeTab === 'deposit' && depositConfirmed ? '333px' : '421px'),
+              flex: 1,
+              minHeight: 0,
             }}
           >
             {/* Tab Buttons (460px x 30px, order 0) */}
@@ -1651,6 +1653,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 width: '460px',
                 height: '30px',
               }}
+              className="shrink-0"
             >
               {[
                 { id: 'deposit', label: 'Deposit' },
@@ -1701,10 +1704,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 padding: activeTab === 'deposit' && depositConfirmed ? '20px 16px' : '16px',
                 gap: '16px',
                 width: '460px',
-                height: activeTab === 'bonuses' ? '363px' : (activeTab === 'deposit' && depositConfirmed ? '287px' : '375px'),
+                flex: 1,
                 background: '#0C1F56',
                 borderRadius: '16px',
                 boxSizing: 'border-box',
+                minHeight: 0,
               }}
               className="overflow-y-auto scrollbar-none"
             >

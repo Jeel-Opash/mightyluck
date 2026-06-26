@@ -311,12 +311,12 @@ export default function UserHome() {
           </div>
         </div>
 
-        <div className="flex flex-row flex-wrap gap-[12.8px] md:gap-[16px] w-full justify-start items-start mt-4">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(148px,1fr))] gap-[12.8px] md:gap-[16px] w-full mt-4">
           {games.map((game) => (
             <div
               key={game.id}
               onClick={() => router.push(`/game/${game.id}`)}
-              className="game-card group cursor-pointer relative"
+              className="game-card !w-full !h-auto aspect-[148/200] group cursor-pointer relative"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
@@ -325,7 +325,7 @@ export default function UserHome() {
               <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                 <button
                   onClick={(e) => toggleFavorite(e, game.id)}
-                  className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                  className="absolute right-3 top-3 w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
                 >
                   <svg
                     width="24"
@@ -381,11 +381,11 @@ export default function UserHome() {
               </div>
             </div>
 
-            <div className="flex flex-row flex-wrap gap-[12.8px] md:gap-[16px] w-full justify-start items-start mt-4">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(316px,1fr))] gap-[12.8px] md:gap-[16px] w-full mt-4">
               {filteredCollections.map((col) => (
                 <div
                   key={col.id}
-                  className="w-[183px] md:w-[316px] h-[60px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#1463FF] flex flex-row items-center pt-[7.2px] pr-[14.4px] pb-[7.2px] pl-[7.2px] md:p-[12px] md:pr-[24px] md:pl-[12px] gap-[7.2px] md:gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
+                  className="!w-full h-[60px] md:h-[100px] rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#1463FF] flex flex-row items-center pt-[7.2px] pr-[14.4px] pb-[7.2px] pl-[7.2px] md:p-[12px] md:pr-[24px] md:pl-[12px] gap-[7.2px] md:gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
                 >
                   <div className="w-[45.6px] md:w-[76px] h-[45.6px] md:h-[76px] flex-none bg-[#0E1B3D] rounded-[5px] md:rounded-[8px] relative overflow-hidden">
                     <div className="absolute w-[42px] md:w-[70px] h-[42px] md:h-[70px] left-[calc(50%-21px)] md:left-[calc(50%-35px)] top-[calc(50%-21px)] md:top-[calc(50%-35px)] bg-[#1463FF]/60 rounded-full filter blur-[9px] md:blur-[15px] group-hover:scale-125 transition-transform duration-300 pointer-events-none" />
@@ -415,11 +415,11 @@ export default function UserHome() {
               </div>
             </div>
 
-            <div className="flex flex-row flex-wrap gap-[12.8px] md:gap-[16px] w-full justify-start items-start mt-4">
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(142.4px,1fr))] gap-[12.8px] md:gap-[16px] w-full mt-4">
               {providerList.map((provider) => (
                 <div
                   key={provider.id}
-                  className="w-[142.4px] h-[78.36px] bg-[#0C1F56] border border-white/5 rounded-[8.9px] flex flex-col justify-center items-center gap-[4.45px] hover:bg-[#112F82] transition-colors cursor-pointer shrink-0"
+                  className="!w-full h-[78.36px] bg-[#0C1F56] border border-white/5 rounded-[8.9px] flex flex-col justify-center items-center gap-[4.45px] hover:bg-[#112F82] transition-colors cursor-pointer"
                 >
                   <img src={provider.logo} className="w-[106.8px] h-[35.6px] object-contain" alt={provider.name} />
                   <span className="font-manrope font-semibold text-[8.9px] leading-[12.46px] tracking-[0.02em] text-[#A5B8EF]">{provider.gamesCount} Games</span>
@@ -660,7 +660,7 @@ export default function UserHome() {
                           <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <button
                               onClick={(e) => toggleFavorite(e, game.id)}
-                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                              className="absolute right-3 top-3 w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
                             >
                               <svg width="24" height="24" viewBox="0 0 24 24" fill={favorites.includes(game.id) ? "#FF4B4B" : "none"} stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-all duration-200">
                                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -732,7 +732,7 @@ export default function UserHome() {
                           <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <button
                               onClick={(e) => toggleFavorite(e, game.id)}
-                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                              className="absolute right-3 top-3 w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
                             >
                               <svg
                                 width="24"
@@ -898,7 +898,7 @@ export default function UserHome() {
                           <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <button
                               onClick={(e) => toggleFavorite(e, game.id)}
-                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                              className="absolute right-3 top-3 w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
                             >
                               <svg
                                 width="24"
@@ -1051,7 +1051,7 @@ export default function UserHome() {
                           <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <button
                               onClick={(e) => toggleFavorite(e, game.id)}
-                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                              className="absolute right-3 top-3 w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
                             >
                               <svg
                                 width="24"
@@ -1138,7 +1138,7 @@ export default function UserHome() {
                           <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                             <button
                               onClick={(e) => toggleFavorite(e, game.id)}
-                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                              className="absolute right-3 top-3 w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
                             >
                               <svg
                                 width="24"
