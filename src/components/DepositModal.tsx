@@ -491,10 +491,15 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               {/* Scrollable Content Card Wrapper */}
               <div className="flex-1 w-full overflow-y-auto scrollbar-none pr-[1px] min-h-0 pb-[40px]">
                 {/* Inner Content Card (bg-[#0C1F56], rounded-[16px]) */}
-                <div className="w-full bg-[#0C1F56] rounded-[16px] p-[16px] gap-[16px] flex flex-col border border-white/5 shadow-md">
+                <div
+                  style={{
+                    height: '396px',
+                  }}
+                  className="w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] p-[16px] gap-[16px] flex flex-col items-start border border-white/5 shadow-md overflow-y-auto scrollbar-none shrink-0"
+                >
                   {activeTab === 'deposit' && depositConfirmed ? (
                     <div className="flex flex-col items-center justify-center w-full h-full gap-[20px] text-center select-none py-4">
-                      <p className="font-sans font-semibold text-[14px] leading-[22px] tracking-[0.01em] text-white max-w-[320px]">
+                      <p className="font-manrope font-semibold text-[14px] leading-[22px] tracking-[0.01em] text-white max-w-[320px]">
                         Your transaction in progress and pending confirmation from the blockchain.
                       </p>
 
@@ -528,7 +533,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </div>
                       </div>
 
-                      <p className="font-sans font-medium text-[13px] leading-[21px] tracking-[0.01em] text-[#BBCAF3] max-w-[320px]">
+                      <p className="font-manrope font-medium text-[13px] leading-[21px] tracking-[0.01em] text-[#BBCAF3] max-w-[320px] mb-4">
                         1 confirmation is required for deposits to be credited.{' '}
                         <br className="hidden md:block" />
                         Want to know how many confirmations this transaction has?{' '}
@@ -544,12 +549,37 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </a>
                         .
                       </p>
+
+                      {/* Go to games button inside card */}
+                      <button
+                        onClick={onClose}
+                        className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[16px] flex items-center justify-center font-manrope font-bold text-[15px] leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shadow-[0_4px_16px_rgba(255,200,61,0.35)] border-none"
+                      >
+                        Go to games
+                      </button>
+                      <div className="flex flex-row items-center gap-[6px] mt-2">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="7" cy="7" r="6" stroke="#A5B8EF" strokeWidth="1.5" />
+                          <path d="M7 4V7.5" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" />
+                          <circle cx="7" cy="10" r="0.75" fill="#A5B8EF" />
+                        </svg>
+                        <span className="font-manrope font-medium text-[12px] leading-[16px] tracking-[0.01em] text-[#A5B8EF]">
+                          Having problems?{' '}
+                          <button
+                            type="button"
+                            onClick={() => alert('Opening live support...')}
+                            className="text-[#FFC83D] hover:text-[#ffd362] font-semibold transition-colors cursor-pointer bg-transparent border-0 p-0"
+                          >
+                            Contact support
+                          </button>
+                        </span>
+                      </div>
                     </div>
                   ) : activeTab === 'deposit' ? (
                     <>
                       {/* Select a Bonus */}
                       <div className="flex flex-col items-start gap-[8px] w-full relative shrink-0" ref={bonusDropdownRefMobile}>
-                        <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                        <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                           {selectedPayment === 'Bitcoin' ? '1.Select a Bonus' : 'Select a Bonus'}
                         </span>
 
@@ -558,11 +588,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             onClick={() => setIsBonusDropdownOpen(!isBonusDropdownOpen)}
                             className={`flex flex-row items-center justify-between px-[16px] w-full h-[50px] bg-[#112F82] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 ${isBonusDropdownOpen ? 'rounded-t-[8px]' : 'rounded-[8px]'}`}
                           >
-                            <div className="flex flex-row items-center gap-[8px] truncate flex-1">
+                            <div className="flex flex-row items-center gap-[12px] truncate flex-1">
                               <div className="text-[#FFC83D] flex items-center justify-center shrink-0">
                                 {renderMobileBonusIcon(getSelectedBonusIcon(), false, 'w-[16px] h-[16px]')}
                               </div>
-                              <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white truncate max-w-[245px]">
+                              <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white truncate max-w-[245px]">
                                 {selectedBonus}
                               </span>
                             </div>
@@ -573,13 +603,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               fill="none"
                               className={`transform transition-transform duration-200 ${isBonusDropdownOpen ? 'rotate-180' : ''}`}
                             >
-                              <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                              <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </div>
 
                           {isBonusDropdownOpen && (
                             <div className="absolute top-[49px] left-[-1px] right-[-1px] bg-[#112f82] rounded-b-[8px] border-x border-b border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col">
-                              <div className="px-[16px] py-[10px] border-b border-white/5 font-sans font-bold text-[12px] text-[#A5B8EF] bg-[#112f82]">
+                              <div className="px-[16px] py-[10px] border-b border-white/5 font-manrope font-bold text-[12px] text-[#A5B8EF] bg-[#112f82]">
                                 Choose one bonus on next deposits
                               </div>
                               <div className="flex flex-col max-h-[180px] overflow-y-auto">
@@ -599,11 +629,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                         {renderMobileBonusIcon(opt.icon, isSelected, 'w-[16px] h-[16px]')}
                                       </div>
                                       <div className="flex flex-col">
-                                        <span className="font-sans font-bold text-[13px] text-white">
+                                        <span className="font-manrope font-bold text-[13px] text-white">
                                           {opt.title}
                                         </span>
                                         {opt.subtext && (
-                                          <span className={`font-sans font-semibold text-[10px] ${isSelected ? 'text-white/80' : 'text-[#7795E8]'
+                                          <span className={`font-manrope font-semibold text-[10px] ${isSelected ? 'text-white/80' : 'text-[#7795E8]'
                                             }`}>
                                             {opt.subtext}
                                           </span>
@@ -620,7 +650,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                       {/* Select a Payment Method */}
                       <div className="flex flex-col items-start gap-[8px] w-full relative shrink-0" ref={paymentDropdownRefMobile}>
-                        <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                        <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                           {selectedPayment === 'Bitcoin' ? '2.Select a payment method' : 'Select a payment method'}
                         </span>
 
@@ -629,32 +659,33 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             onClick={() => setIsPaymentDropdownOpen(!isPaymentDropdownOpen)}
                             className={`flex flex-row items-center justify-between px-[16px] w-full min-h-[50px] py-[8px] bg-[#112F82] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 ${isPaymentDropdownOpen ? 'rounded-t-[8px]' : 'rounded-[8px]'}`}
                           >
-                            <div className="flex flex-col items-start gap-[2px] flex-1">
+                            <div className="flex flex-row items-center gap-[12px] flex-1">
                               {selectedPayment === 'Bitcoin' ? (
-                                <>
+                                <div className="flex flex-row items-center gap-[8px] flex-1">
+                                  <div className="w-[16px] h-[16px] rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0">
+                                    <span className="text-[#1A1404] font-extrabold text-[11px] font-manrope">₿</span>
+                                  </div>
                                   <div className="flex flex-row items-center gap-[8px]">
-                                    <MobileBitcoinCircleIcon />
-                                    <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                                    <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
                                       Bitcoin
                                     </span>
-                                  </div>
-                                  <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
-                                    (Min. Deposit $10)
-                                  </span>
-                                </>
-                              ) : (
-                                <>
-                                  <div className="flex flex-row items-center gap-[8px]">
-                                    <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain" alt="Visa" />
-
-                                    <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
-                                      Credit Card
+                                    <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
+                                      (Min. Deposit $10)
                                     </span>
                                   </div>
-                                  <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
-                                    (Min. Deposit $30 - Max. Deposit $2,500)
-                                  </span>
-                                </>
+                                </div>
+                              ) : (
+                                <div className="flex flex-row items-center gap-[8px] flex-1">
+                                  <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain shrink-0" alt="Visa" />
+                                  <div className="flex flex-row items-center gap-[8px]">
+                                    <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                                      Credit Card
+                                    </span>
+                                    <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
+                                      (Min. $30 - Max. $2,500)
+                                    </span>
+                                  </div>
+                                </div>
                               )}
                             </div>
                             <svg
@@ -664,7 +695,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               fill="none"
                               className={`transform transition-transform duration-200 ${isPaymentDropdownOpen ? 'rotate-180' : ''}`}
                             >
-                              <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                              <path d="M1 1L5 5L9 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           </div>
 
@@ -676,7 +707,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   setSelectedPayment('Credit Card');
                                   setIsPaymentDropdownOpen(false);
                                 }}
-                                className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
+                                className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-manrope text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
                               >
                                 <div className="flex flex-row items-center gap-[8px]">
                                   <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain" alt="Visa" />
@@ -690,10 +721,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   setSelectedPayment('Bitcoin');
                                   setIsPaymentDropdownOpen(false);
                                 }}
-                                className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
+                                className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-manrope text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
                               >
                                 <div className="flex flex-row items-center gap-[8px]">
-                                  <MobileBitcoinCircleIcon />
+                                  <div className="w-[16px] h-[16px] rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0">
+                                    <span className="text-[#1A1404] font-extrabold text-[11px] font-manrope">₿</span>
+                                  </div>
                                   <span>Bitcoin (Min. $10)</span>
                                 </div>
                               </div>
@@ -706,31 +739,31 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       {selectedPayment === 'Bitcoin' ? (
                         <>
                           {/* WARNING NOTE */}
-                          <div className="flex flex-row items-start gap-[8px] w-full shrink-0">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7795E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-[1px]">
-                              <circle cx="12" cy="12" r="10" />
-                              <line x1="12" y1="8" x2="12" y2="12" />
-                              <line x1="12" y1="16" x2="12.01" y2="16" />
-                            </svg>
-                            <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
+                          <div className="flex flex-row items-center gap-[8px] w-full shrink-0">
+                            <div className="w-[12px] h-[12px] rounded-full border border-[#7795E8] flex items-center justify-center shrink-0 mt-[1px]">
+                              <span className="text-[#7795E8] font-bold text-[8px] font-manrope leading-none">i</span>
+                            </div>
+                            <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
                               Only deposit BC via the Bitcoin network. Deposit of other assets or from other networks will be lost.
                             </span>
                           </div>
 
                           {/* Calculate amount */}
                           <div className="flex flex-col items-start gap-[8px] w-full shrink-0">
-                            <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                            <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                               3.Calculate the amount you want to deposit
                             </span>
 
                             <div className="flex flex-row justify-center items-center gap-[8px] w-full h-[50px]">
                               <div className="flex flex-row items-center px-[16px] gap-[12px] flex-grow h-full bg-[#112F82] rounded-[8px] border border-white/5">
-                                <MobileDollarCircleIcon />
+                                <div className="w-[16px] h-[16px] rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0">
+                                  <span className="text-[#1A1404] font-extrabold text-[11px] font-manrope">$</span>
+                                </div>
                                 <input
                                   type="number"
                                   value={usdAmount}
                                   onChange={(e) => handleUsdChange(e.target.value)}
-                                  className="w-full bg-transparent border-none outline-none font-sans font-bold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-white/30"
+                                  className="w-full bg-transparent border-none outline-none font-manrope font-bold text-[14px] leading-[19px] text-white placeholder-white/30"
                                   placeholder="0.00"
                                 />
                               </div>
@@ -739,16 +772,21 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 onClick={togglePrimaryCurrency}
                                 className="w-[50px] h-[50px] bg-[#1463FF] hover:bg-[#2c75ff] rounded-[8px] flex items-center justify-center text-white shrink-0 active:scale-90 transition-transform cursor-pointer border-none"
                               >
-                                <MobileSwapIcon />
+                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 text-white">
+                                  <path d="M16 5H4M4 5L8 1.5M4 5L8 8.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                  <path d="M4 11H16M16 11L12 7.5M16 11L12 14.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
                               </button>
 
                               <div className="flex flex-row items-center px-[16px] gap-[12px] flex-grow h-full bg-[#112F82] rounded-[8px] border border-white/5">
-                                <MobileBitcoinCircleIcon />
+                                <div className="w-[16px] h-[16px] rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0">
+                                  <span className="text-[#1A1404] font-extrabold text-[11px] font-manrope">₿</span>
+                                </div>
                                 <input
                                   type="number"
                                   value={btcAmount}
                                   onChange={(e) => handleBtcChange(e.target.value)}
-                                  className="w-full bg-transparent border-none outline-none font-sans font-bold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-white/30"
+                                  className="w-full bg-transparent border-none outline-none font-manrope font-bold text-[14px] leading-[19px] text-white placeholder-white/30"
                                   placeholder="0.000000"
                                 />
                               </div>
@@ -757,43 +795,43 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                           {/* BTC Deposit Address */}
                           <div className="flex flex-col items-start gap-[8px] w-full shrink-0 relative">
-                            <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                            <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                               4.BTC Deposit Address
                             </span>
 
                             <div className="flex flex-row items-center justify-between px-[16px] w-full h-[50px] bg-[#112F82] rounded-[8px] border border-white/5">
-                              <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#7795E8] truncate max-w-[200px] md:max-w-[250px] select-all">
+                              <span className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#7795E8] truncate max-w-[200px] md:max-w-[250px] select-all">
                                 {btcAddress}
                               </span>
 
-                              <div className="flex flex-row items-center gap-[8px] shrink-0">
+                              <div className="flex flex-row items-center gap-[12px] shrink-0">
                                 <button
                                   onClick={copyAddress}
-                                  className="w-[32px] h-[32px]  hover:bg-[#1f4fd4] active:scale-90 transition-all rounded-[6px] flex items-center justify-center cursor-pointer border-none p-0 relative"
+                                  className="w-[16px] h-[16px] hover:scale-105 active:scale-95 transition-all flex items-center justify-center cursor-pointer border-none p-0 relative bg-transparent"
                                   title="Copy Address"
                                 >
                                   {copied ? (
-                                    <span className="absolute bottom-[36px] right-[-10px] bg-[#1463FF] text-white text-[10px] px-1.5 py-0.5 rounded shadow-lg font-sans font-bold whitespace-nowrap z-10">
+                                    <span className="absolute bottom-[24px] right-[-10px] bg-[#1463FF] text-white text-[10px] px-1.5 py-0.5 rounded shadow-lg font-manrope font-bold whitespace-nowrap z-10">
                                       Copied!
                                     </span>
                                   ) : null}
                                   <img
                                     src="/images/paste.png"
                                     alt="Copy"
-                                    className="w-[18px] h-[18px] object-contain"
+                                    className="w-[16px] h-[16px] object-contain"
                                     style={{ filter: 'brightness(0) invert(1)' }}
                                   />
                                 </button>
 
                                 <button
                                   onClick={() => setShowQrCode(!showQrCode)}
-                                  className="w-[32px] h-[32px]  hover:bg-[#1f4fd4] active:scale-90 transition-all rounded-[6px] flex items-center justify-center cursor-pointer border-none p-0"
+                                  className="w-[16px] h-[16px] hover:scale-105 active:scale-95 transition-all flex items-center justify-center cursor-pointer border-none p-0 bg-transparent"
                                   title="Show QR Code"
                                 >
                                   <img
                                     src="/images/scan.png"
                                     alt="QR Code"
-                                    className="w-[18px] h-[18px] object-contain"
+                                    className="w-[16px] h-[16px] object-contain"
                                     style={{ filter: 'brightness(0) invert(1)' }}
                                   />
                                 </button>
@@ -814,7 +852,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                     );
                                   })}
                                 </div>
-                                <span className="font-sans text-[10px] text-[#BBCAF3]">Scan with crypto wallet</span>
+                                <span className="font-manrope text-[10px] text-[#BBCAF3]">Scan with crypto wallet</span>
                               </div>
                             )}
                           </div>
@@ -823,7 +861,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         /* Credit Card Address Fields (Step 1) */
                         <div className="flex flex-col items-start gap-[12px] w-full shrink-0">
                           <div className="flex flex-col gap-[2px] w-full">
-                            <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                            <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
                               Enter your address
                             </span>
                             <div className="flex flex-row items-start gap-[8px] w-full mt-[2px]">
@@ -832,7 +870,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
                                 </svg>
                               </div>
-                              <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
+                              <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
                                 Please fill up your address details before completing your deposit. This information is required for credit card deposits.
                               </span>
                             </div>
@@ -843,7 +881,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             type="text"
                             value={street}
                             onChange={(e) => setStreet(e.target.value)}
-                            className="w-full h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                            className="w-full h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                             placeholder="Street"
                           />
 
@@ -853,14 +891,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               type="text"
                               value={city}
                               onChange={(e) => setCity(e.target.value)}
-                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                               placeholder="City"
                             />
                             <input
                               type="text"
                               value={postalCode}
                               onChange={(e) => setPostalCode(e.target.value)}
-                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                               placeholder="Postal Code"
                             />
                           </div>
@@ -871,7 +909,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               type="text"
                               value={state}
                               onChange={(e) => setState(e.target.value)}
-                              className="w-[calc(50%-4px)] shrink-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="w-[calc(50%-4px)] shrink-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                               placeholder="State"
                             />
 
@@ -935,13 +973,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           {/* Select an amount */}
                           <div className="flex flex-col items-start gap-[8px] w-full">
                             <div className="flex flex-row items-center justify-between w-full">
-                              <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                              <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                                 Select an amount
                               </span>
                               {creditCardStep === 'payment' && (
                                 <button
                                   onClick={() => setCreditCardStep('address')}
-                                  className="font-sans font-semibold text-[10px] text-[#7795E8] hover:text-white transition-colors cursor-pointer flex items-center gap-1 border-none bg-transparent p-0"
+                                  className="font-manrope font-semibold text-[10px] text-[#7795E8] hover:text-white transition-colors cursor-pointer flex items-center gap-1 border-none bg-transparent p-0"
                                 >
                                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6 8L3 5L6 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -959,7 +997,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                     key={amount}
                                     type="button"
                                     onClick={() => setCcAmountOption(amount as any)}
-                                    className={`flex-1 h-full rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] transition-all cursor-pointer border-none ${isActive
+                                    className={`flex-1 h-full rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] leading-[19px] transition-all cursor-pointer border-none ${isActive
                                       ? 'bg-[#1463FF] text-white'
                                       : 'bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e]'
                                       }`}
@@ -973,12 +1011,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               <div className="flex-1 h-full relative">
                                 {ccAmountOption === 'custom' ? (
                                   <div className="flex flex-row items-center px-[12px] w-full h-full bg-[#112F82] border border-[#1463FF] rounded-[8px]">
-                                    <span className="font-sans font-bold text-[14px] text-white mr-1">$</span>
+                                    <span className="font-manrope font-bold text-[14px] text-white mr-1">$</span>
                                     <input
                                       type="number"
                                       value={ccCustomAmount}
                                       onChange={(e) => setCcCustomAmount(e.target.value)}
-                                      className="w-full bg-transparent border-none outline-none font-sans font-bold text-[14px] text-[#A5B8EF] placeholder-white/30"
+                                      className="w-full bg-transparent border-none outline-none font-manrope font-bold text-[14px] text-[#A5B8EF] placeholder-white/30"
                                       placeholder="0"
                                       autoFocus
                                     />
@@ -987,7 +1025,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   <button
                                     type="button"
                                     onClick={() => setCcAmountOption('custom')}
-                                    className="w-full h-full rounded-[8px] bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e] flex items-center justify-center font-sans font-bold text-[14px] leading-[19px] cursor-pointer border-none"
+                                    className="w-full h-full rounded-[8px] bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e] flex items-center justify-center font-manrope font-bold text-[14px] leading-[19px] cursor-pointer border-none"
                                   >
                                     Custom...
                                   </button>
@@ -998,7 +1036,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                           {/* Enter your payment details */}
                           <div className="flex flex-col items-start gap-[8px] w-full">
-                            <span className="font-sans font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                            <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
                               Enter your payment details
                             </span>
 
@@ -1012,7 +1050,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 const match = val.match(/.{1,4}/g);
                                 setCreditCardNumber(match ? match.join(' ') : val);
                               }}
-                              className="w-full h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
+                              className="w-full h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
                               placeholder="Credit Card Number"
                             />
 
@@ -1030,7 +1068,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                     setCreditCardExp(val);
                                   }
                                 }}
-                                className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
+                                className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
                                 placeholder="Exp."
                               />
                               <input
@@ -1038,7 +1076,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 inputMode="numeric"
                                 value={creditCardCcv}
                                 onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
-                                className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
+                                className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
                                 placeholder="CCV"
                               />
                             </div>
@@ -1051,10 +1089,59 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
                               </svg>
                             </div>
-                            <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
+                            <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
                               Warning message about fees or anything else relevant at this stage.
                             </span>
                           </div>
+                        </div>
+                      )}
+
+                      {/* CTA Buttons inside the Content Card container */}
+                      {selectedPayment === 'Bitcoin' ? (
+                        <div className="w-full flex justify-center shrink-0 mt-4">
+                          <button
+                            onClick={() => {
+                              setDepositConfirmed(true);
+                            }}
+                            className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[16px] flex items-center px-4 relative shrink-0 active:scale-95 transition-all duration-150 border-none cursor-pointer"
+                          >
+                            <div className="absolute left-4 w-[36px] h-[36px] rounded-full bg-[#1A1404] flex items-center justify-center font-manrope font-bold text-[16px] text-white">
+                              N
+                            </div>
+                            <span className="w-full text-center font-manrope font-extrabold text-[16px] text-[#1A1404] tracking-[0.02em]">
+                              I&apos;ve completed my deposit
+                            </span>
+                          </button>
+                        </div>
+                      ) : creditCardStep === 'address' ? (
+                        <div className="w-full flex justify-center shrink-0 mt-4">
+                          <button
+                            onClick={() => {
+                              if (!street || !city || !postalCode || !state) {
+                                alert('Please fill out all address details.');
+                                return;
+                              }
+                              setCreditCardStep('payment');
+                            }}
+                            className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[16px] flex items-center justify-center font-manrope font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
+                          >
+                            Continue
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="w-full flex justify-center shrink-0 mt-4">
+                          <button
+                            onClick={() => {
+                              if (!creditCardNumber || !creditCardExp || !creditCardCcv) {
+                                alert('Please fill out all credit card details.');
+                                return;
+                              }
+                              setDepositConfirmed(true);
+                            }}
+                            className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[16px] flex items-center justify-center font-manrope font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
+                          >
+                            Deposit ${getDepositAmount()}
+                          </button>
                         </div>
                       )}
                     </>
@@ -1436,78 +1523,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 </div>
               </div>
             </div>
-
-            {/* Bottom CTA Button — only visible on deposit tab */}
-            {activeTab === 'deposit' && (depositConfirmed ? (
-              /* ── Confirmed state CTA ── */
-              <div className="flex flex-col items-center gap-[12px] w-full z-10 shrink-0 pb-4">
-                <button
-                  onClick={onClose}
-                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[15px] leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shadow-[0_4px_16px_rgba(255,200,61,0.35)] border-none"
-                >
-                  Go to games
-                </button>
-                <div className="flex flex-row items-center gap-[6px]">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="7" cy="7" r="6" stroke="#A5B8EF" strokeWidth="1.5" />
-                    <path d="M7 4V7.5" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" />
-                    <circle cx="7" cy="10" r="0.75" fill="#A5B8EF" />
-                  </svg>
-                  <span className="font-sans font-medium text-[12px] leading-[16px] tracking-[0.01em] text-[#A5B8EF]">
-                    Having problems?{' '}
-                    <button
-                      type="button"
-                      onClick={() => alert('Opening live support...')}
-                      className="text-[#FFC83D] hover:text-[#ffd362] font-semibold transition-colors cursor-pointer bg-transparent border-0 p-0"
-                    >
-                      Contact support
-                    </button>
-                  </span>
-                </div>
-              </div>
-            ) : selectedPayment === 'Bitcoin' ? (
-              <div className="w-full flex justify-center shrink-0 z-10 pb-4">
-                <button
-                  onClick={() => {
-                    setDepositConfirmed(true);
-                  }}
-                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
-                >
-                  I&apos;ve completed my deposit
-                </button>
-              </div>
-            ) : creditCardStep === 'address' ? (
-              <div className="w-full flex justify-center shrink-0 z-10 pb-4">
-                <button
-                  onClick={() => {
-                    if (!street || !city || !postalCode || !state) {
-                      alert('Please fill out all address details.');
-                      return;
-                    }
-                    setCreditCardStep('payment');
-                  }}
-                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
-                >
-                  Continue
-                </button>
-              </div>
-            ) : (
-              <div className="w-full flex justify-center shrink-0 z-10 pb-4">
-                <button
-                  onClick={() => {
-                    if (!creditCardNumber || !creditCardExp || !creditCardCcv) {
-                      alert('Please fill out all credit card details.');
-                      return;
-                    }
-                    setDepositConfirmed(true);
-                  }}
-                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
-                >
-                  Deposit ${getDepositAmount()}
-                </button>
-              </div>
-            ))}
-          </div>        </div>
+            {/* CTA Button moved inside card */}
+          </div>
+        </div>
       </div>
 
       {/* ──────────────────────────────────────────────────────── */}
@@ -2265,12 +2283,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               gap: '2px',
                               width: '40px',
                               height: '40px',
-                              background: '#112F82',
+                              background: '#1463FF',
                               borderRadius: '8px',
                               border: 'none',
                               cursor: 'pointer',
                             }}
-                            className="hover:bg-[#153a9e] transition-colors shrink-0 active:scale-95 duration-100 border border-white/5"
+                            className="hover:bg-[#2c75ff] transition-colors shrink-0 active:scale-95 duration-100 border border-white/5"
                           >
                             <div style={{ width: '14px', height: '8px', position: 'relative' }}>
                               <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
