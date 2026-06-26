@@ -299,6 +299,140 @@ export default function UserHome() {
   const filteredCollections = collectionList.filter((c) => c.name.toLowerCase().includes(searchQuery.toLowerCase()));
   const filteredWinners = recentWinners.filter((w) => w.gameTitle.toLowerCase().includes(searchQuery.toLowerCase()));
 
+  const renderGameGrid = (games: GameCard[], title: string, icon: string) => {
+    return (
+      <section className="game-section-container w-full">
+        <div className="game-section-header">
+          <div className="game-section-title-wrapper">
+            <div className="game-section-icon">
+              <img src={icon} alt={title} className="object-contain" />
+            </div>
+            <h2 className="game-section-title">{title.toUpperCase()} ({games.length})</h2>
+          </div>
+        </div>
+
+        <div className="flex flex-row flex-wrap gap-[12.8px] md:gap-[16px] w-full justify-start items-start mt-4">
+          {games.map((game) => (
+            <div
+              key={game.id}
+              onClick={() => router.push(`/game/${game.id}`)}
+              className="game-card group cursor-pointer relative"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
+                style={{ backgroundImage: `url(${game.image})` }}
+              />
+              <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                <button
+                  onClick={(e) => toggleFavorite(e, game.id)}
+                  className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
+                    stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="transition-all duration-200"
+                  >
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  </svg>
+                </button>
+                <div
+                  onClick={() => router.push(`/game/${game.id}`)}
+                  className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
+                >
+                  <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
+                    <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  };
+
+  const renderCategoryContent = () => {
+    switch (activeCategory) {
+      case 'slots':
+        return renderGameGrid(filteredSlots, 'Slots', '/games/game-icons/slot.svg');
+      case 'originals':
+        return renderGameGrid(filteredOriginals, 'Originals', '/games/game-icons/originals.svg');
+      case 'crash':
+        return renderGameGrid(filteredCrash, 'Crash Games', '/games/game-icons/crash.svg');
+      case 'table':
+        return renderGameGrid(filteredTable, 'Table Games', '/games/game-icons/table.svg');
+      case 'bonus':
+        return renderGameGrid(filteredBonus, 'Bonus Buys', '/games/game-icons/bonus.svg');
+      case 'collections':
+        return (
+          <section className="game-section-container w-full">
+            <div className="game-section-header">
+              <div className="game-section-title-wrapper">
+                <div className="game-section-icon">
+                  <img src="/games/game-icons/collections.svg" alt="Collections" className="object-contain" />
+                </div>
+                <h2 className="game-section-title">COLLECTION ({filteredCollections.length})</h2>
+              </div>
+            </div>
+
+            <div className="flex flex-row flex-wrap gap-[12.8px] md:gap-[16px] w-full justify-start items-start mt-4">
+              {filteredCollections.map((col) => (
+                <div
+                  key={col.id}
+                  className="w-[183px] md:w-[316px] h-[60px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#1463FF] flex flex-row items-center pt-[7.2px] pr-[14.4px] pb-[7.2px] pl-[7.2px] md:p-[12px] md:pr-[24px] md:pl-[12px] gap-[7.2px] md:gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
+                >
+                  <div className="w-[45.6px] md:w-[76px] h-[45.6px] md:h-[76px] flex-none bg-[#0E1B3D] rounded-[5px] md:rounded-[8px] relative overflow-hidden">
+                    <div className="absolute w-[42px] md:w-[70px] h-[42px] md:h-[70px] left-[calc(50%-21px)] md:left-[calc(50%-35px)] top-[calc(50%-21px)] md:top-[calc(50%-35px)] bg-[#1463FF]/60 rounded-full filter blur-[9px] md:blur-[15px] group-hover:scale-125 transition-transform duration-300 pointer-events-none" />
+                    <img
+                      src={col.image}
+                      alt={col.name}
+                      className="absolute w-[42.6px] md:w-[71px] h-[40.2px] md:h-[67px] left-[calc(50%-21.3px)] md:left-[calc(50%-35.5px)] top-[calc(50%-20.1px)] md:top-[calc(50%-33.5px)] object-contain transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                  <span className="font-jost font-extrabold text-[14px] md:text-[22px] leading-tight md:leading-[32px] tracking-[0.01em] text-white uppercase text-center flex-grow select-none">
+                    {col.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      case 'providers':
+        return (
+          <section className="game-section-container w-full">
+            <div className="game-section-header">
+              <div className="game-section-title-wrapper">
+                <div className="game-section-icon">
+                  <img src="/games/game-icons/game.svg" alt="Providers" className="object-contain" />
+                </div>
+                <h2 className="game-section-title">PROVIDERS ({providerList.length})</h2>
+              </div>
+            </div>
+
+            <div className="flex flex-row flex-wrap gap-[12.8px] md:gap-[16px] w-full justify-start items-start mt-4">
+              {providerList.map((provider) => (
+                <div
+                  key={provider.id}
+                  className="w-[142.4px] h-[78.36px] bg-[#0C1F56] border border-white/5 rounded-[8.9px] flex flex-col justify-center items-center gap-[4.45px] hover:bg-[#112F82] transition-colors cursor-pointer shrink-0"
+                >
+                  <img src={provider.logo} className="w-[106.8px] h-[35.6px] object-contain" alt={provider.name} />
+                  <span className="font-manrope font-semibold text-[8.9px] leading-[12.46px] tracking-[0.02em] text-[#A5B8EF]">{provider.gamesCount} Games</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="w-full relative flex flex-col select-none">
 
@@ -372,11 +506,7 @@ export default function UserHome() {
                     key={cat.id}
                     onClick={() => {
                       setActiveCategory(cat.id);
-                      if (cat.ref && cat.ref.current) {
-                        cat.ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      } else if (cat.id === 'lobby') {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     style={{
                       display: 'flex',
@@ -445,7 +575,7 @@ export default function UserHome() {
                     </div>
                     <span
                       style={{
-                        fontFamily: "'Manrope', sans-serif",
+                        fontFamily: "var(--font-manrope), sans-serif",
                         fontWeight: isActive ? 700 : 600,
                         fontSize: '12px',
                         lineHeight: '16px',
@@ -467,8 +597,10 @@ export default function UserHome() {
               })}
             </nav>
 
-            {/* SLOTS SECTION */}
-            <section className="game-section-container">
+            {activeCategory === 'lobby' ? (
+              <>
+                {/* SLOTS SECTION */}
+                <section className="game-section-container">
               <div className="game-section-header">
                 <div className="game-section-title-wrapper">
                   <div className="game-section-icon">
@@ -1096,6 +1228,10 @@ export default function UserHome() {
                 </div>
               </div>
             </section>
+              </>
+            ) : (
+              renderCategoryContent()
+            )}
 
             {/* RECENT WINNERS SECTION */}
             <section className="winners-section-container">
