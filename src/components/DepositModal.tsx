@@ -496,7 +496,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 style={{
                   height: contentCardHeight,
                 }}
-                className="w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] p-[16px] gap-[16px] flex flex-col items-start border border-white/5 shadow-md shrink-0 overflow-y-auto scrollbar-none"
+                className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] gap-[16px] flex flex-col items-start border border-white/5 shadow-md shrink-0 overflow-y-auto scrollbar-none ${
+                  activeTab === 'bonuses' ? 'py-[12px]' : 'py-[16px]'
+                }`}
               >
                   {activeTab === 'deposit' && depositConfirmed ? (
                     <div className="flex flex-col items-center justify-center w-full h-full gap-[20px] text-center select-none py-4">
@@ -1101,9 +1103,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   ) : null}
 
                   {activeTab === 'bonuses' && (
-                    <div className="flex flex-col gap-[16px] w-full h-auto select-none shrink-0">
+                    <div className="flex flex-col gap-[10px] w-full h-auto select-none shrink-0">
                       {/* Promo Code Row */}
-                      <div className="flex flex-col gap-[8px] w-full">
+                      <div className="flex flex-col gap-[6px] w-full">
                         <span className="font-sans font-medium text-[13px] leading-[18px] tracking-[0.01em] text-white">
                           If you have a Bonus Code &ndash; enter it here
                         </span>
