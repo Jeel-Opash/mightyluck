@@ -615,602 +615,602 @@ export default function GuestHome() {
               <>
                 {/* SLOTS SECTION */}
                 <section className="game-section-container">
-              <div className="game-section-header">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
-                    <img src="/games/game-icons/slot.svg" alt="Slots" className="object-contain" />
-                  </div>
-                  <h2 className="game-section-title">SLOTS (1,487)</h2>
-                </div>
-
-                <div className="game-section-actions-wrapper">
-                  <span className="game-section-view-all">
-                    View all
-                  </span>
-
-                  <div className="game-section-nav">
-                    <button
-                      onClick={() => scrollCarousel(slotsRef, 'left')}
-                      disabled={!canScrollSlotsLeft}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => scrollCarousel(slotsRef, 'right')}
-                      disabled={!canScrollSlotsRight}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <div
-                  ref={slotsRef}
-                  className="game-cards-slider scrollbar-none"
-                >
-                  {[...filteredSlots, ...filteredSlots, ...filteredSlots].map((game, index) => (
-                    <div
-                      key={`${game.id}-${index}`}
-                      onClick={() => router.push(`/game/${game.id}`)}
-                      className="game-card group cursor-pointer"
-                    >
-                      <div
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
-                        style={{ backgroundImage: `url(${game.image})` }}
-                      />
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                        <button
-                          onClick={(e) => toggleFavorite(e, game.id)}
-                          className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
-                        >
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
-                            stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="transition-all duration-200"
-                          >
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                          </svg>
-                        </button>
-                        <div
-                          onClick={() => router.push(`/game/${game.id}`)}
-                          className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
-                        >
-                          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
-                            <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
-                          </svg>
-                        </div>
+                  <div className="game-section-header">
+                    <div className="game-section-title-wrapper">
+                      <div className="game-section-icon">
+                        <img src="/games/game-icons/slot.svg" alt="Slots" className="object-contain" />
                       </div>
+                      <h2 className="game-section-title">SLOTS (1,487)</h2>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </section>
 
-            {/* ORIGINALS SECTION */}
-            <section className="game-section-container">
-              <div className="game-section-header">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
-                    <img src="/games/game-icons/originals.svg" alt="Originals" className="object-contain" />
-                  </div>
-                  <h2 className="game-section-title">ORIGINALS (14)</h2>
-                </div>
-
-                <div className="game-section-actions-wrapper">
-                  <span className="game-section-view-all">
-                    View all
-                  </span>
-
-                  <div className="game-section-nav">
-                    <button
-                      onClick={() => scrollCarousel(originalsRef, 'left')}
-                      disabled={!canScrollOriginalsLeft}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => scrollCarousel(originalsRef, 'right')}
-                      disabled={!canScrollOriginalsRight}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <div
-                  ref={originalsRef}
-                  className="game-cards-slider scrollbar-none"
-                >
-                  {[...filteredOriginals, ...filteredOriginals, ...filteredOriginals].map((game, index) => (
-                    <div
-                      key={`${game.id}-${index}`}
-                      onClick={() => router.push(`/game/${game.id}`)}
-                      className="game-card group cursor-pointer"
-                    >
-                      <div
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
-                        style={{ backgroundImage: `url(${game.image})` }}
-                      />
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                        <button
-                          onClick={(e) => toggleFavorite(e, game.id)}
-                          className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
-                        >
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
-                            stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="transition-all duration-200"
-                          >
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                          </svg>
-                        </button>
-                        <div
-                          onClick={() => router.push(`/game/${game.id}`)}
-                          className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
-                        >
-                          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
-                            <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* WHY JOIN MIGHTY LUCK? SECTION */}
-            <section className="game-section-container mt-4">
-              <div className="game-section-header">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
-                    <img src="/games/game-icons/why.svg" alt="Why Join" />
-                  </div>
-                  <h2 className="game-section-title">WHY JOIN MIGHTY LUCK?</h2>
-                </div>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <div className="flex flex-row items-center gap-[12px] w-full overflow-x-auto scrollbar-none snap-x snap-mandatory touch-pan-x">
-                  <img
-                    src="/games/join/clock.png"
-                    alt="Fast Withdrawals"
-                    draggable={false}
-                    className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
-                  />
-                  <img
-                    src="/games/join/trophy.png"
-                    alt="Big Winners Welcome"
-                    draggable={false}
-                    className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
-                  />
-                  <img
-                    src="/games/join/10.png"
-                    alt="Weekly 10% Cashback"
-                    draggable={false}
-                    className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* CRASH GAMES SECTION */}
-            <section className="game-section-container">
-              <div className="game-section-header">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
-                    <img src="/games/game-icons/crash.svg" alt="Crash Games" className="object-contain" />
-                  </div>
-                  <h2 className="game-section-title">CRASH GAMES (723)</h2>
-                </div>
-
-                <div className="game-section-actions-wrapper">
-                  <span className="game-section-view-all">
-                    View all
-                  </span>
-
-                  <div className="game-section-nav">
-                    <button
-                      onClick={() => scrollCarousel(crashRef, 'left')}
-                      disabled={!canScrollCrashLeft}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => scrollCarousel(crashRef, 'right')}
-                      disabled={!canScrollCrashRight}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <div
-                  ref={crashRef}
-                  className="game-cards-slider scrollbar-none"
-                >
-                  {[...filteredCrash, ...filteredCrash, ...filteredCrash].map((game, index) => (
-                    <div
-                      key={`${game.id}-${index}`}
-                      onClick={() => router.push(`/game/${game.id}`)}
-                      className="game-card group cursor-pointer"
-                    >
-                      <div
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
-                        style={{ backgroundImage: `url(${game.image})` }}
-                      />
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                        <button
-                          onClick={(e) => toggleFavorite(e, game.id)}
-                          className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
-                        >
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
-                            stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="transition-all duration-200"
-                          >
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                          </svg>
-                        </button>
-                        <div
-                          onClick={() => router.push(`/game/${game.id}`)}
-                          className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
-                        >
-                          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
-                            <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            <section className="game-section-container">
-              <div className="game-section-header">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
-                    <img src="/games/game-icons/game.svg" alt="Game Providers" className="object-contain" />
-                  </div>
-                  <h2 className="game-section-title">GAME PROVIDERS (34)</h2>
-                </div>
-
-                <div className="game-section-actions-wrapper">
-                  <span className="game-section-view-all">
-                    View all
-                  </span>
-
-                  <div className="game-section-nav">
-                    <button
-                      onClick={() => scrollCarousel(providersRef, 'left')}
-                      disabled={!canScrollProvidersLeft}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => scrollCarousel(providersRef, 'right')}
-                      disabled={!canScrollProvidersRight}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <div
-                  ref={providersRef}
-                  className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[76px] md:h-[110px] select-none mobile-providers-grid"
-                >
-                  {[...providerList, ...providerList, ...providerList].map((provider, index) => (
-                    <div
-                      key={`${provider.id}-${index}`}
-                      className="w-[88px] h-[60px] md:w-[152px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-col justify-center items-center py-[7.2px] px-[14.4px] md:p-[12px] gap-[4.8px] md:gap-[8px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
-                    >
-                      <div className="w-full h-[24px] md:w-[80px] md:h-[40px] flex items-center justify-center">
-                        <img
-                          src={provider.logo}
-                          alt={provider.name}
-                          className="max-w-full max-h-full object-contain filter brightness-100 transition-all duration-300"
-                        />
-                      </div>
-                      <div className="flex flex-row justify-center items-center w-full h-[10px] md:h-[14px]">
-                        <span className="font-sans font-semibold text-[8px] md:text-[10px] leading-[10px] md:leading-[14px] text-center text-[#FFC83D] whitespace-nowrap">
-                          {provider.gamesCount} Games
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            <section className="game-section-container">
-              <div className="game-section-header">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
-                    <img src="/games/game-icons/table.svg" alt="Table Games" className="object-contain" />
-                  </div>
-                  <h2 className="game-section-title">TABLE GAMES (51)</h2>
-                </div>
-
-                <div className="game-section-actions-wrapper">
-                  <span className="game-section-view-all">
-                    View all
-                  </span>
-
-                  <div className="game-section-nav">
-                    <button
-                      onClick={() => scrollCarousel(tableRef, 'left')}
-                      disabled={!canScrollTableLeft}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => scrollCarousel(tableRef, 'right')}
-                      disabled={!canScrollTableRight}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <div
-                  ref={tableRef}
-                  className="game-cards-slider scrollbar-none"
-                >
-                  {[...filteredTable, ...filteredTable, ...filteredTable].map((game, index) => (
-                    <div
-                      key={`${game.id}-${index}`}
-                      onClick={() => router.push(`/game/${game.id}`)}
-                      className="game-card group cursor-pointer"
-                    >
-                      <div
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
-                        style={{ backgroundImage: `url(${game.image})` }}
-                      />
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                        <button
-                          onClick={(e) => toggleFavorite(e, game.id)}
-                          className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
-                        >
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
-                            stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="transition-all duration-200"
-                          >
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                          </svg>
-                        </button>
-                        <div
-                          onClick={() => router.push(`/game/${game.id}`)}
-                          className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
-                        >
-                          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
-                            <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* BONUS BUYS SECTION */}
-            <section className="game-section-container">
-              <div className="game-section-header">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
-                    <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="object-contain" />
-                  </div>
-                  <h2 className="game-section-title">BONUS BUYS (145)</h2>
-                </div>
-
-                <div className="game-section-actions-wrapper">
-                  <span className="game-section-view-all">
-                    View all
-                  </span>
-
-                  <div className="game-section-nav">
-                    <button
-                      onClick={() => scrollCarousel(bonusRef, 'left')}
-                      disabled={!canScrollBonusLeft}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => scrollCarousel(bonusRef, 'right')}
-                      disabled={!canScrollBonusRight}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <div
-                  ref={bonusRef}
-                  className="game-cards-slider scrollbar-none"
-                >
-                  {[...filteredBonus, ...filteredBonus, ...filteredBonus].map((game, index) => (
-                    <div
-                      key={`${game.id}-${index}`}
-                      onClick={() => router.push(`/game/${game.id}`)}
-                      className="game-card group cursor-pointer"
-                    >
-                      <div
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
-                        style={{ backgroundImage: `url(${game.image})` }}
-                      />
-                      <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                        <button
-                          onClick={(e) => toggleFavorite(e, game.id)}
-                          className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
-                        >
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
-                            stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="transition-all duration-200"
-                          >
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                          </svg>
-                        </button>
-                        <div
-                          onClick={() => router.push(`/game/${game.id}`)}
-                          className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
-                        >
-                          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
-                            <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* COLLECTIONS SECTION */}
-            <section className="game-section-container">
-              <div className="game-section-header">
-                <div className="game-section-title-wrapper">
-                  <div className="game-section-icon">
-                    <img src="/games/game-icons/collections.svg" alt="Collections" className="object-contain" />
-                  </div>
-                  <h2 className="game-section-title">COLLECTIONS (17)</h2>
-                </div>
-
-                <div className="game-section-actions-wrapper">
-                  <span className="game-section-view-all">
-                    View all
-                  </span>
-
-                  <div className="game-section-nav">
-                    <button
-                      onClick={() => scrollCarousel(collectionsRef, 'left')}
-                      disabled={!canScrollCollectionsLeft}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => scrollCarousel(collectionsRef, 'right')}
-                      disabled={!canScrollCollectionsRight}
-                      className="game-section-btn"
-                    >
-                      <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-full overflow-hidden">
-                <div
-                  ref={collectionsRef}
-                  className="flex flex-row items-center gap-[7.2px] md:gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full py-[4px] h-[68px] md:h-[108px] select-none"
-                >
-                  {[...filteredCollections, ...filteredCollections, ...filteredCollections].map((col, index) => (
-                    <div
-                      key={`${col.id}-${index}`}
-                      className="w-[183px] md:w-[316px] h-[60px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#1463FF] flex flex-row items-center pt-[7.2px] pr-[14.4px] pb-[7.2px] pl-[7.2px] md:p-[12px] md:pr-[24px] md:pl-[12px] gap-[7.2px] md:gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
-                    >
-                      <div className="w-[45.6px] md:w-[76px] h-[45.6px] md:h-[76px] flex-none bg-[#0E1B3D] rounded-[5px] md:rounded-[8px] relative overflow-hidden">
-                        <div className="absolute w-[42px] md:w-[70px] h-[42px] md:h-[70px] left-[calc(50%-21px)] md:left-[calc(50%-35px)] top-[calc(50%-21px)] md:top-[calc(50%-35px)] bg-[#1463FF]/60 rounded-full filter blur-[9px] md:blur-[15px] group-hover:scale-125 transition-transform duration-300 pointer-events-none" />
-                        <img
-                          src={col.image}
-                          alt={col.name}
-                          className="absolute w-[42.6px] md:w-[71px] h-[40.2px] md:h-[67px] left-[calc(50%-21.3px)] md:left-[calc(50%-35.5px)] top-[calc(50%-20.1px)] md:top-[calc(50%-33.5px)] object-contain transition-transform duration-300 group-hover:scale-110"
-                        />
-                      </div>
-                      <span className="font-jost font-extrabold text-[14px] md:text-[22px] leading-tight md:leading-[32px] tracking-[0.01em] text-white uppercase text-center flex-grow select-none">
-                        {col.name}
+                    <div className="game-section-actions-wrapper">
+                      <span className="game-section-view-all">
+                        View all
                       </span>
+
+                      <div className="game-section-nav">
+                        <button
+                          onClick={() => scrollCarousel(slotsRef, 'left')}
+                          disabled={!canScrollSlotsLeft}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => scrollCarousel(slotsRef, 'right')}
+                          disabled={!canScrollSlotsRight}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </section>
+                  </div>
+
+                  <div className="relative w-full overflow-hidden">
+                    <div
+                      ref={slotsRef}
+                      className="game-cards-slider scrollbar-none"
+                    >
+                      {[...filteredSlots, ...filteredSlots, ...filteredSlots].map((game, index) => (
+                        <div
+                          key={`${game.id}-${index}`}
+                          onClick={() => router.push(`/game/${game.id}`)}
+                          className="game-card group cursor-pointer"
+                        >
+                          <div
+                            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
+                            style={{ backgroundImage: `url(${game.image})` }}
+                          />
+                          <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <button
+                              onClick={(e) => toggleFavorite(e, game.id)}
+                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                            >
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
+                                stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-200"
+                              >
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                              </svg>
+                            </button>
+                            <div
+                              onClick={() => router.push(`/game/${game.id}`)}
+                              className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
+                            >
+                              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
+                                <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                {/* ORIGINALS SECTION */}
+                <section className="game-section-container">
+                  <div className="game-section-header">
+                    <div className="game-section-title-wrapper">
+                      <div className="game-section-icon">
+                        <img src="/games/game-icons/originals.svg" alt="Originals" className="object-contain" />
+                      </div>
+                      <h2 className="game-section-title">ORIGINALS (14)</h2>
+                    </div>
+
+                    <div className="game-section-actions-wrapper">
+                      <span className="game-section-view-all">
+                        View all
+                      </span>
+
+                      <div className="game-section-nav">
+                        <button
+                          onClick={() => scrollCarousel(originalsRef, 'left')}
+                          disabled={!canScrollOriginalsLeft}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => scrollCarousel(originalsRef, 'right')}
+                          disabled={!canScrollOriginalsRight}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative w-full overflow-hidden">
+                    <div
+                      ref={originalsRef}
+                      className="game-cards-slider scrollbar-none"
+                    >
+                      {[...filteredOriginals, ...filteredOriginals, ...filteredOriginals].map((game, index) => (
+                        <div
+                          key={`${game.id}-${index}`}
+                          onClick={() => router.push(`/game/${game.id}`)}
+                          className="game-card group cursor-pointer"
+                        >
+                          <div
+                            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
+                            style={{ backgroundImage: `url(${game.image})` }}
+                          />
+                          <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <button
+                              onClick={(e) => toggleFavorite(e, game.id)}
+                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                            >
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
+                                stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-200"
+                              >
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                              </svg>
+                            </button>
+                            <div
+                              onClick={() => router.push(`/game/${game.id}`)}
+                              className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
+                            >
+                              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
+                                <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                {/* WHY JOIN MIGHTY LUCK? SECTION */}
+                <section className="game-section-container mt-4">
+                  <div className="game-section-header">
+                    <div className="game-section-title-wrapper">
+                      <div className="game-section-icon">
+                        <img src="/games/game-icons/why.svg" alt="Why Join" />
+                      </div>
+                      <h2 className="game-section-title">WHY JOIN MIGHTY LUCK?</h2>
+                    </div>
+                  </div>
+
+                  <div className="relative w-full overflow-hidden">
+                    <div className="flex flex-row items-center gap-[12px] w-full overflow-x-auto scrollbar-none snap-x snap-mandatory touch-pan-x">
+                      <img
+                        src="/games/join/clock.png"
+                        alt="Fast Withdrawals"
+                        draggable={false}
+                        className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
+                      />
+                      <img
+                        src="/games/join/trophy.png"
+                        alt="Big Winners Welcome"
+                        draggable={false}
+                        className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
+                      />
+                      <img
+                        src="/games/join/10.png"
+                        alt="Weekly 10% Cashback"
+                        draggable={false}
+                        className="w-[279px] h-[158px] md:w-auto md:flex-1 md:h-[220px] rounded-[10px] md:rounded-[12px] object-cover snap-start shrink-0 pointer-events-none select-none"
+                      />
+                    </div>
+                  </div>
+                </section>
+
+                {/* CRASH GAMES SECTION */}
+                <section className="game-section-container">
+                  <div className="game-section-header">
+                    <div className="game-section-title-wrapper">
+                      <div className="game-section-icon">
+                        <img src="/games/game-icons/crash.svg" alt="Crash Games" className="object-contain" />
+                      </div>
+                      <h2 className="game-section-title">CRASH GAMES (723)</h2>
+                    </div>
+
+                    <div className="game-section-actions-wrapper">
+                      <span className="game-section-view-all">
+                        View all
+                      </span>
+
+                      <div className="game-section-nav">
+                        <button
+                          onClick={() => scrollCarousel(crashRef, 'left')}
+                          disabled={!canScrollCrashLeft}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => scrollCarousel(crashRef, 'right')}
+                          disabled={!canScrollCrashRight}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative w-full overflow-hidden">
+                    <div
+                      ref={crashRef}
+                      className="game-cards-slider scrollbar-none"
+                    >
+                      {[...filteredCrash, ...filteredCrash, ...filteredCrash].map((game, index) => (
+                        <div
+                          key={`${game.id}-${index}`}
+                          onClick={() => router.push(`/game/${game.id}`)}
+                          className="game-card group cursor-pointer"
+                        >
+                          <div
+                            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
+                            style={{ backgroundImage: `url(${game.image})` }}
+                          />
+                          <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <button
+                              onClick={(e) => toggleFavorite(e, game.id)}
+                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                            >
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
+                                stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-200"
+                              >
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                              </svg>
+                            </button>
+                            <div
+                              onClick={() => router.push(`/game/${game.id}`)}
+                              className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
+                            >
+                              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
+                                <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                <section className="game-section-container">
+                  <div className="game-section-header">
+                    <div className="game-section-title-wrapper">
+                      <div className="game-section-icon">
+                        <img src="/games/game-icons/game.svg" alt="Game Providers" className="object-contain" />
+                      </div>
+                      <h2 className="game-section-title">GAME PROVIDERS (34)</h2>
+                    </div>
+
+                    <div className="game-section-actions-wrapper">
+                      <span className="game-section-view-all">
+                        View all
+                      </span>
+
+                      <div className="game-section-nav">
+                        <button
+                          onClick={() => scrollCarousel(providersRef, 'left')}
+                          disabled={!canScrollProvidersLeft}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => scrollCarousel(providersRef, 'right')}
+                          disabled={!canScrollProvidersRight}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative w-full overflow-hidden">
+                    <div
+                      ref={providersRef}
+                      className="flex flex-row items-center gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full h-[76px] md:h-[110px] select-none mobile-providers-grid"
+                    >
+                      {[...providerList, ...providerList, ...providerList].map((provider, index) => (
+                        <div
+                          key={`${provider.id}-${index}`}
+                          className="w-[88px] h-[60px] md:w-[152px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#173EAD] flex flex-col justify-center items-center py-[7.2px] px-[14.4px] md:p-[12px] gap-[4.8px] md:gap-[8px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
+                        >
+                          <div className="w-full h-[24px] md:w-[80px] md:h-[40px] flex items-center justify-center">
+                            <img
+                              src={provider.logo}
+                              alt={provider.name}
+                              className="max-w-full max-h-full object-contain filter brightness-100 transition-all duration-300"
+                            />
+                          </div>
+                          <div className="flex flex-row justify-center items-center w-full h-[10px] md:h-[14px]">
+                            <span className="font-sans font-semibold text-[8px] md:text-[10px] leading-[10px] md:leading-[14px] text-center text-[#FFC83D] whitespace-nowrap">
+                              {provider.gamesCount} Games
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                <section className="game-section-container">
+                  <div className="game-section-header">
+                    <div className="game-section-title-wrapper">
+                      <div className="game-section-icon">
+                        <img src="/games/game-icons/table.svg" alt="Table Games" className="object-contain" />
+                      </div>
+                      <h2 className="game-section-title">TABLE GAMES (51)</h2>
+                    </div>
+
+                    <div className="game-section-actions-wrapper">
+                      <span className="game-section-view-all">
+                        View all
+                      </span>
+
+                      <div className="game-section-nav">
+                        <button
+                          onClick={() => scrollCarousel(tableRef, 'left')}
+                          disabled={!canScrollTableLeft}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => scrollCarousel(tableRef, 'right')}
+                          disabled={!canScrollTableRight}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative w-full overflow-hidden">
+                    <div
+                      ref={tableRef}
+                      className="game-cards-slider scrollbar-none"
+                    >
+                      {[...filteredTable, ...filteredTable, ...filteredTable].map((game, index) => (
+                        <div
+                          key={`${game.id}-${index}`}
+                          onClick={() => router.push(`/game/${game.id}`)}
+                          className="game-card group cursor-pointer"
+                        >
+                          <div
+                            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
+                            style={{ backgroundImage: `url(${game.image})` }}
+                          />
+                          <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <button
+                              onClick={(e) => toggleFavorite(e, game.id)}
+                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                            >
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
+                                stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-200"
+                              >
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                              </svg>
+                            </button>
+                            <div
+                              onClick={() => router.push(`/game/${game.id}`)}
+                              className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
+                            >
+                              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
+                                <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                {/* BONUS BUYS SECTION */}
+                <section className="game-section-container">
+                  <div className="game-section-header">
+                    <div className="game-section-title-wrapper">
+                      <div className="game-section-icon">
+                        <img src="/games/game-icons/bonus.svg" alt="Bonus Buys" className="object-contain" />
+                      </div>
+                      <h2 className="game-section-title">BONUS BUYS (145)</h2>
+                    </div>
+
+                    <div className="game-section-actions-wrapper">
+                      <span className="game-section-view-all">
+                        View all
+                      </span>
+
+                      <div className="game-section-nav">
+                        <button
+                          onClick={() => scrollCarousel(bonusRef, 'left')}
+                          disabled={!canScrollBonusLeft}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => scrollCarousel(bonusRef, 'right')}
+                          disabled={!canScrollBonusRight}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative w-full overflow-hidden">
+                    <div
+                      ref={bonusRef}
+                      className="game-cards-slider scrollbar-none"
+                    >
+                      {[...filteredBonus, ...filteredBonus, ...filteredBonus].map((game, index) => (
+                        <div
+                          key={`${game.id}-${index}`}
+                          onClick={() => router.push(`/game/${game.id}`)}
+                          className="game-card group cursor-pointer"
+                        >
+                          <div
+                            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
+                            style={{ backgroundImage: `url(${game.image})` }}
+                          />
+                          <div className="absolute inset-0 bg-black/50 backdrop-blur-[5px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                            <button
+                              onClick={(e) => toggleFavorite(e, game.id)}
+                              className="absolute left-[114px] top-[12px] w-[24px] h-[24px] text-white hover:text-red-500 focus:outline-none transition-colors duration-200 z-20 cursor-pointer flex items-center justify-center"
+                            >
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill={favorites.includes(game.id) ? "#FF4B4B" : "none"}
+                                stroke={favorites.includes(game.id) ? "#FF4B4B" : "#FFFFFF"}
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="transition-all duration-200"
+                              >
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                              </svg>
+                            </button>
+                            <div
+                              onClick={() => router.push(`/game/${game.id}`)}
+                              className="absolute w-[48px] h-[48px] left-[calc(50%-24px)] top-[calc(50%-24px)] rounded-full bg-[#FFC83D] flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-[0_4px_12px_rgba(255,200,61,0.4)] cursor-pointer"
+                            >
+                              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" className="ml-[2px] mt-[1px]">
+                                <path d="M1.5 1.58579C1.5 0.771239 2.42253 0.29749 3.0827 0.778703L10.5113 6.19291C11.0772 6.60527 11.0772 7.39473 10.5113 7.80709L3.0827 13.2213C2.42253 13.7025 1.5 13.2288 1.5 12.4142V1.58579Z" fill="#0C1F56" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
+                {/* COLLECTIONS SECTION */}
+                <section className="game-section-container">
+                  <div className="game-section-header">
+                    <div className="game-section-title-wrapper">
+                      <div className="game-section-icon">
+                        <img src="/games/game-icons/collections.svg" alt="Collections" className="object-contain" />
+                      </div>
+                      <h2 className="game-section-title">COLLECTIONS (17)</h2>
+                    </div>
+
+                    <div className="game-section-actions-wrapper">
+                      <span className="game-section-view-all">
+                        View all
+                      </span>
+
+                      <div className="game-section-nav">
+                        <button
+                          onClick={() => scrollCarousel(collectionsRef, 'left')}
+                          disabled={!canScrollCollectionsLeft}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 9L1 5L5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => scrollCarousel(collectionsRef, 'right')}
+                          disabled={!canScrollCollectionsRight}
+                          className="game-section-btn"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative w-full overflow-hidden">
+                    <div
+                      ref={collectionsRef}
+                      className="flex flex-row items-center gap-[7.2px] md:gap-[12px] overflow-x-auto scrollbar-none scroll-smooth w-full py-[4px] h-[68px] md:h-[108px] select-none"
+                    >
+                      {[...filteredCollections, ...filteredCollections, ...filteredCollections].map((col, index) => (
+                        <div
+                          key={`${col.id}-${index}`}
+                          className="w-[183px] md:w-[316px] h-[60px] md:h-[100px] flex-none rounded-[8px] md:rounded-[12px] bg-[#0C1F56] hover:bg-[#1463FF] flex flex-row items-center pt-[7.2px] pr-[14.4px] pb-[7.2px] pl-[7.2px] md:p-[12px] md:pr-[24px] md:pl-[12px] gap-[7.2px] md:gap-[12px] border border-white/5 shadow-md transition-all duration-300 group cursor-pointer"
+                        >
+                          <div className="w-[45.6px] md:w-[76px] h-[45.6px] md:h-[76px] flex-none bg-[#0E1B3D] rounded-[5px] md:rounded-[8px] relative overflow-hidden">
+                            <div className="absolute w-[42px] md:w-[70px] h-[42px] md:h-[70px] left-[calc(50%-21px)] md:left-[calc(50%-35px)] top-[calc(50%-21px)] md:top-[calc(50%-35px)] bg-[#1463FF]/60 rounded-full filter blur-[9px] md:blur-[15px] group-hover:scale-125 transition-transform duration-300 pointer-events-none" />
+                            <img
+                              src={col.image}
+                              alt={col.name}
+                              className="absolute w-[42.6px] md:w-[71px] h-[40.2px] md:h-[67px] left-[calc(50%-21.3px)] md:left-[calc(50%-35.5px)] top-[calc(50%-20.1px)] md:top-[calc(50%-33.5px)] object-contain transition-transform duration-300 group-hover:scale-110"
+                            />
+                          </div>
+                          <span className="font-jost font-extrabold text-[14px] md:text-[22px] leading-tight md:leading-[32px] tracking-[0.01em] text-white uppercase text-center flex-grow select-none">
+                            {col.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
               </>
             ) : (
               renderCategoryContent()

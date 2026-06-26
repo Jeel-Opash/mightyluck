@@ -98,7 +98,7 @@ export default function GamePage() {
           {/* Top content wrapper containing back button and game container */}
           <div >
             {/* Back button */}
-            
+
 
             {/* Game window + info bar */}
             <div className="flex flex-col gap-[20px] w-full">
