@@ -394,7 +394,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         <div className="w-full h-[30px] bg-[#0C1F56] shrink-0" />
 
         {/* Main Wallet Panel (Figma specified: background: #091741, border-radius: 30px 30px 0px 0px) */}
-         <div className="flex-1 w-full bg-[#091741] rounded-t-[30px] flex flex-col items-center p-[16px_20px_40px] relative overflow-hidden">
+        <div className="flex-1 w-full bg-[#091741] rounded-t-[30px] flex flex-col items-center px-[20px] pt-[16px] pb-0 relative overflow-hidden min-h-0">
 
           {/* Blue radial glow behind the Wallet title row, safely contained inside overflow-hidden panel */}
           <div
@@ -489,7 +489,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               </div>
 
               {/* Scrollable Content Card Wrapper */}
-              <div className="flex-1 w-full overflow-y-auto scrollbar-none pr-[1px] min-h-0">
+              <div className="flex-1 w-full overflow-y-auto scrollbar-none pr-[1px] min-h-0 pb-[40px]">
                 {/* Inner Content Card (bg-[#0C1F56], rounded-[16px]) */}
                 <div className="w-full bg-[#0C1F56] rounded-[16px] p-[16px] gap-[16px] flex flex-col border border-white/5 shadow-md">
                   {activeTab === 'deposit' && depositConfirmed ? (
@@ -871,12 +871,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               type="text"
                               value={state}
                               onChange={(e) => setState(e.target.value)}
-                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                              className="w-[calc(50%-4px)] shrink-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
                               placeholder="State"
                             />
 
                             {/* Country dropdown */}
-                            <div className="flex-1 min-w-0 relative" ref={countryDropdownRefMobile}>
+                            <div className="w-[calc(50%-4px)] shrink-0 relative" ref={countryDropdownRefMobile}>
                               <div
                                 onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
                                 className="flex flex-row items-center justify-between px-[16px] h-[50px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
