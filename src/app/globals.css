@@ -595,3 +595,9 @@ input::placeholder {
     flex-shrink: 0 !important;
   }
 }
+
+/* Hide Next.js dev indicator portal */
+nextjs-portal,
+#__next-feedback-launcher {
+  display: none !important;
+}

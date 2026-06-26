@@ -331,7 +331,19 @@ export default function Navbar() {
         {/* Glow wrapper to prevent leaking below/above the navbar */}
         <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
           {/* Ellipse 6: Glow behind the logo */}
-          <div className="absolute w-[80px] h-[35px] left-[42px] top-[25px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(20,99,255,0.8)_0%,rgba(0,122,255,0.35)_45%,transparent_75%)] blur-[8px] pointer-events-none" />
+          <div
+            style={{
+              position: 'absolute',
+              width: '71.5px',
+              height: '71.5px',
+              left: '6px',
+              top: '32px',
+              background: '#1463FF',
+              filter: 'blur(12.5px)',
+              zIndex: 0,
+            }}
+            className="rounded-full pointer-events-none"
+          />
         </div>
 
         {/* Inner Wrapper Frame 7: Responsive width */}
@@ -340,9 +352,17 @@ export default function Navbar() {
           {/* Logo Frame: 44px x 30px */}
           <div
             onClick={() => router.push('/')}
-            className="flex flex-row items-center gap-[8px] w-[44px] h-[30px] shrink-0 box-border cursor-pointer"
+            className="flex flex-row items-center justify-center w-[44px] h-[30px] shrink-0 box-border cursor-pointer z-10"
           >
-            <img src="/images/logo.svg" className="w-[44px] h-[30px] object-contain shrink-0" alt="Mighty Luck" />
+            <img
+              src="/images/logo.svg"
+              style={{
+                width: '33.94px',
+                height: '24.75px',
+              }}
+              className="object-contain shrink-0"
+              alt="Mighty Luck"
+            />
           </div>
 
           {/* Right Section Wrapper */}
@@ -354,7 +374,22 @@ export default function Navbar() {
               <div className="flex flex-row items-center gap-[4px] w-[116px] h-[30px] shrink-0 box-border">
 
                 {/* Balance container: 82px x 30px */}
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '8px 20px', gap: '7.5px', width: '82px', height: '30px', background: '#112F82', borderRadius: '6px', boxSizing: 'border-box' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '8px 20px',
+                    gap: '7.5px',
+                    width: '82px',
+                    height: '30px',
+                    background: '#112F82',
+                    borderRadius: '6px',
+                    boxSizing: 'border-box',
+                  }}
+                  className="shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)] border border-white/5"
+                >
                   <span className="font-manrope font-bold text-[10.5px] leading-[14px] tracking-[0.02em] text-white whitespace-nowrap">
                     ${user.balance.toLocaleString('en-US', { minimumFractionDigits: 2 }).replace('.', ',')}
                   </span>
@@ -363,9 +398,30 @@ export default function Navbar() {
                 {/* Deposit button: 30px x 30px */}
                 <button
                   onClick={() => dispatch(openDepositModal())}
-                  style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '8px', width: '30px', height: '30px', background: '#FFC83D', borderRadius: '6px', border: 'none', cursor: 'pointer', boxSizing: 'border-box' }}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '8px',
+                    width: '30px',
+                    height: '30px',
+                    background: '#FFC83D',
+                    borderRadius: '6px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    boxSizing: 'border-box',
+                  }}
+                  className="hover:bg-[#ffd362] active:scale-95 transition-all shadow-[0_2px_8px_rgba(255,200,61,0.35)] flex items-center justify-center shrink-0"
                 >
-                  <img src="/mobile/navbar/wallet.svg" className="w-[12px] h-[12px] object-contain shrink-0" alt="Deposit" />
+                  <img
+                    src="/mobile/navbar/wallet.svg"
+                    className="w-[12px] h-[12px] object-contain shrink-0"
+                    style={{
+                      filter: 'brightness(0) saturate(100%) invert(8%) sepia(8%) saturate(5436%) hue-rotate(204deg) brightness(91%) contrast(96%)'
+                    }}
+                    alt="Deposit"
+                  />
                 </button>
               </div>
 
@@ -373,24 +429,105 @@ export default function Navbar() {
               <div className="flex flex-row items-center gap-[8px] w-[106px] h-[30px] shrink-0 box-border">
 
                 {/* Notification: 30px x 30px */}
-                <button className="flex flex-row justify-center items-center w-[30px] h-[30px] p-[7.5px_9px] bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer hover:bg-[#2051db] transition-colors shrink-0">
-                  <img src="/mobile/navbar/bell.png" className="w-[12px] h-[12px] object-contain shrink-0" alt="Notifications" />
+                <button
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '7.5px 9px',
+                    gap: '7.5px',
+                    width: '30px',
+                    height: '30px',
+                    background: '#173EAD',
+                    borderRadius: '6px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    boxSizing: 'border-box',
+                  }}
+                  className="hover:bg-[#2051db] active:scale-95 transition-colors shadow-[0_2px_8px_rgba(23,62,173,0.35)] border border-white/5 shrink-0"
+                >
+                  <img
+                    src="/mobile/navbar/bell.png"
+                    className="w-[12px] h-[12px] object-contain shrink-0"
+                    style={{
+                      filter: 'brightness(0) saturate(100%) invert(91%) sepia(5%) saturate(1282%) hue-rotate(188deg) brightness(101%) contrast(94%)'
+                    }}
+                    alt="Notifications"
+                  />
                   {/* Red dot badge */}
-                  <div className="absolute w-[8px] h-[8px] left-[22px] top-0 bg-[#FF0E0E] rounded-[50px]" />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      width: '8px',
+                      height: '8px',
+                      left: '22px',
+                      top: '0px',
+                      background: '#FF0E0E',
+                      borderRadius: '50px',
+                      zIndex: 1,
+                    }}
+                  />
                 </button>
 
                 {/* Gift: 30px x 30px */}
-                <button className="flex flex-row justify-center items-center w-[30px] h-[30px] p-[7.5px_9px] bg-[#173EAD] rounded-[6px] border-none relative cursor-pointer hover:bg-[#2051db] transition-colors shrink-0">
-                  <img src="/mobile/navbar/gift.png" className="w-[12px] h-[12px] object-contain shrink-0" alt="Gift" />
+                <button
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '7.5px 9px',
+                    gap: '7.5px',
+                    width: '30px',
+                    height: '30px',
+                    background: '#173EAD',
+                    borderRadius: '6px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    boxSizing: 'border-box',
+                  }}
+                  className="hover:bg-[#2051db] active:scale-95 transition-colors shadow-[0_2px_8px_rgba(23,62,173,0.35)] border border-white/5 shrink-0"
+                >
+                  <img
+                    src="/mobile/navbar/gift.png"
+                    className="w-[12px] h-[12px] object-contain shrink-0"
+                    style={{
+                      filter: 'brightness(0) saturate(100%) invert(91%) sepia(5%) saturate(1282%) hue-rotate(188deg) brightness(101%) contrast(94%)'
+                    }}
+                    alt="Gift"
+                  />
                   {/* Red dot badge */}
-                  <div className="absolute w-[8px] h-[8px] left-[22px] top-0 bg-[#FF0E0E] rounded-[50px]" />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      width: '8px',
+                      height: '8px',
+                      left: '22px',
+                      top: '0px',
+                      background: '#FF0E0E',
+                      borderRadius: '50px',
+                      zIndex: 1,
+                    }}
+                  />
                 </button>
 
                 {/* Avatar: 30px x 30px */}
                 <div className="relative w-[30px] h-[30px] shrink-0">
                   <button
                     onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                    className="w-[30px] h-[30px] rounded-full border-none cursor-pointer p-0 bg-none overflow-hidden flex items-center justify-center"
+                    style={{
+                      width: '30px',
+                      height: '30px',
+                      borderRadius: '50%',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0,
+                      boxSizing: 'border-box',
+                    }}
+                    className="overflow-hidden flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.35)] border border-white/10 active:scale-95 transition-transform"
                   >
                     <img
                       src="/image.png"
@@ -447,13 +584,13 @@ export default function Navbar() {
             <div className="flex flex-row items-center gap-[10px] h-[30px]">
               <button
                 onClick={handleLoginClick}
-                className="w-[74px] h-[30px] bg-[#1463FF] rounded-[6px] flex items-center justify-center font-sans font-bold text-[10.5px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all"
+                className="w-[74px] h-[30px] bg-[#1463FF] rounded-[6px] flex items-center justify-center font-sans font-bold text-[10.5px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all shadow-[0_2px_8px_rgba(20,99,255,0.35)] border border-white/5"
               >
                 Login
               </button>
               <button
                 onClick={handleJoinClick}
-                className="w-[67px] h-[30px] bg-[#FFC83D] rounded-[6px] flex items-center justify-center font-sans font-bold text-[10.5px] text-[#1A1404] tracking-[0.02em] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all"
+                className="w-[67px] h-[30px] bg-[#FFC83D] rounded-[6px] flex items-center justify-center font-sans font-bold text-[10.5px] text-[#1A1404] tracking-[0.02em] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all shadow-[0_2px_8px_rgba(255,200,61,0.35)] border border-white/5"
               >
                 Join
               </button>
