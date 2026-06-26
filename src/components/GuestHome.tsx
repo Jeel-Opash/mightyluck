@@ -353,7 +353,7 @@ export default function GuestHome() {
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
             <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
-              <section className="relative w-full h-[160px] md:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate">
+              <section className="relative w-full h-[170px] min-[375px]:h-[200px] min-[480px]:h-[240px] md:h-[300px] lg:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate">
                 <img
                   src="/images/hero.jpg"
                   alt="Welcome Banner"
@@ -364,12 +364,12 @@ export default function GuestHome() {
                 <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
                 <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
 
-                <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 lg:gap-[20px] justify-between items-start z-10">
+                <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 min-[375px]:gap-3 lg:gap-[20px] justify-between items-start z-10">
                   <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
-                    <span className="font-jost font-medium text-[12px] sm:text-[18px] lg:text-[28px] leading-tight text-white">
+                    <span className="font-jost font-medium text-[11px] min-[375px]:text-[13px] min-[480px]:text-[16px] md:text-[22px] lg:text-[28px] leading-tight text-white select-none">
                       Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
                     </span>
-                    <span className="font-jost font-black text-[20px] sm:text-[30px] lg:text-[48px] leading-[110%] text-white tracking-wide">
+                    <span className="font-jost font-black text-[18px] min-[375px]:text-[22px] min-[480px]:text-[28px] md:text-[38px] lg:text-[48px] leading-[110%] text-white tracking-wide select-none">
                       250% WELCOME<br />BONUS!
                     </span>
                   </div>
@@ -377,7 +377,7 @@ export default function GuestHome() {
                   {/* Join Now Button */}
                   <button
                     onClick={() => dispatch(openAuthModal('join'))}
-                    className="w-[96px] h-[32px] md:w-[110px] md:h-10 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[12px] md:text-sm text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150"
+                    className="w-[96px] h-[32px] min-[375px]:w-[108px] min-[375px]:h-[36px] md:w-[130px] md:h-[42px] lg:w-[146px] lg:h-[48px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[11px] min-[375px]:text-[12px] md:text-[14px] lg:text-[16px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shadow-[0_4px_12px_rgba(255,200,61,0.2)]"
                   >
                     Join Now
                   </button>
