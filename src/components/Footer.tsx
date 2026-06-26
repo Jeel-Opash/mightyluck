@@ -9,7 +9,7 @@ interface FooterProps {
 export default function Footer({ className }: FooterProps = {}) {
   const [isSeoExpanded, setIsSeoExpanded] = useState(false);
   const [openAccordions, setOpenAccordions] = useState<{ [key: string]: boolean }>({
-    'slot-games': false,
+    'slot-games': true,
     'live-casino': false,
     'casino': false,
     'legal': false,
@@ -55,7 +55,7 @@ export default function Footer({ className }: FooterProps = {}) {
     <div className={className || "w-full flex flex-col gap-[40px] md:gap-[100px] mt-[40px] md:mt-[100px]"}>
 
       {/* Child 1: SEO Text Area */}
-      <div className="flex flex-col items-start p-0 w-full max-w-[1136px] mx-auto select-none px-4 md:px-0">
+      <div className="flex flex-col items-start p-0 w-full max-w-[1136px] mx-auto select-none px-0">
         <div className="flex flex-col items-center p-0 w-full isolate relative">
           <div
             className={`w-full max-w-[800px] flex flex-col gap-[24px] md:gap-[32px] overflow-hidden transition-all duration-500 ease-in-out ${isSeoExpanded ? 'max-h-[2500px]' : 'max-h-[590px] md:max-h-[660px]'
@@ -157,7 +157,7 @@ export default function Footer({ className }: FooterProps = {}) {
       </section>
 
       {/* Child 3: MAIN WEBSITE FOOTER */}
-      <footer className="w-full flex flex-col gap-[40px] md:gap-[48px] select-none text-white pb-[100px] md:pb-[40px] px-4 md:px-0">
+      <footer className="w-full flex flex-col gap-[40px] md:gap-[48px] select-none text-white pb-[100px] md:pb-[40px] px-0">
 
         {/* Top Row: logo + menus */}
         <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start gap-[40px] md:gap-[49px]">
@@ -187,39 +187,40 @@ export default function Footer({ className }: FooterProps = {}) {
           {/* Mobile Accordions / Desktop Menu Columns */}
           <div className="flex flex-col md:flex-row items-stretch md:items-start gap-[20px] md:gap-[32px] w-full md:w-[728px]">
             {columns.map((col) => (
-              <div key={col.id} className="flex flex-col border-b border-white/5 md:border-b-0 pb-3 md:pb-0 w-full md:w-[120px] shrink-0">
+              <div key={col.id} className="flex flex-col w-full md:w-[120px] shrink-0">
 
-                {/* Accordion Header (Mobile) / Column Header (Desktop) */}
+                {/* Accordion Header row — exactly 374px × 24px on mobile per Figma */}
                 <div
                   onClick={() => toggleAccordion(col.id)}
-                  className="flex flex-row justify-between items-center md:pointer-events-none md:cursor-default cursor-pointer py-2 md:py-0 w-full"
+                  className="flex flex-row items-center md:pointer-events-none md:cursor-default cursor-pointer w-full h-[24px] p-0"
                 >
-                  <h3 className="font-jost font-bold text-[16px] md:text-[12px] leading-[23px] md:leading-[17px] tracking-[0.02em] uppercase text-white">
+                  {/* Title — flex-grow */}
+                  <h3 className="flex-1 font-jost font-bold text-[16px] md:text-[12px] leading-[23px] md:leading-[17px] tracking-[0.02em] uppercase text-white select-none">
                     {col.title}
                   </h3>
-                  {/* Chevron only on mobile */}
-                  <div className="block md:hidden w-[24px] h-[24px] flex items-center justify-center">
+                  {/* Chevron container 24×24px — mobile only */}
+                  <div className="flex md:hidden w-[24px] h-[24px] items-center justify-center flex-shrink-0">
                     <svg
                       width="10"
                       height="5"
                       viewBox="0 0 10 5"
                       fill="none"
-                      className={`transition-transform duration-300 ${openAccordions[col.id] ? 'rotate-180' : ''}`}
+                      xmlns="http://www.w3.org/2000/svg"
+                      className={`transition-transform duration-300 ${openAccordions[col.id] ? 'rotate-180' : 'rotate-0'}`}
                     >
                       <path d="M1 1L5 4L9 1" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                 </div>
 
-                {/* Sub-links List */}
+                {/* Sub-links List — gap 8px between items, 12px top margin when open */}
                 <div
-                  className={`flex-col gap-[12px] md:gap-[8px] mt-[12px] md:mt-[12px] transition-all duration-300 md:flex ${openAccordions[col.id] ? 'flex' : 'hidden md:flex'
-                    }`}
+                  className={`flex-col gap-[8px] mt-[12px] transition-all duration-300 overflow-hidden md:flex ${openAccordions[col.id] ? 'flex' : 'hidden md:flex'}`}
                 >
                   {col.items.map((item) => (
                     <span
                       key={item}
-                      className="font-manrope font-semibold text-[14px] md:text-[11px] leading-[19px] md:leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors"
+                      className="font-manrope font-semibold text-[14px] md:text-[11px] leading-[19px] md:leading-[15px] tracking-[0.01em] text-[#D2DCF7] cursor-pointer hover:text-white transition-colors select-none"
                     >
                       {item}
                     </span>
