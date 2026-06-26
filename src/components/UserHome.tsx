@@ -816,34 +816,21 @@ export default function UserHome() {
                       style={{ scrollSnapType: 'x mandatory' }}
                     >
                       {[
-                        { bg: `linear-gradient(90deg, #091741 42%, rgba(9,23,65,0.6) 65%, rgba(9,23,65,0) 88%), url('/promotion 1.png')`, label: '150% RELOAD BONUS + 50 FREE SPINS', id: 1 },
-                        { bg: `linear-gradient(90deg, #060B4D 42%, rgba(6,11,77,0.6) 65%, rgba(6,11,77,0) 88%), url('/promotion 2.png')`, label: '250% WELCOME BONUS + 100 FREE SPINS', id: 2 },
-                        { bg: `linear-gradient(90deg, #091741 42%, rgba(9,23,65,0.6) 65%, rgba(9,23,65,0) 88%), url('/promotion 1.png')`, label: '150% RELOAD BONUS + 50 FREE SPINS', id: 3 },
+                        { img: '/promotion 1.png', label: '150% Reload Bonus', id: 1 },
+                        { img: '/promotion 2.png', label: '250% Welcome Bonus', id: 2 },
+                        { img: '/promotion 1.png', label: '150% Reload Bonus', id: 3 },
                       ].map((promo) => (
                         <div
                           key={promo.id}
-                          className="relative flex-none w-full sm:w-[560px] h-[170px] xs:h-[185px] sm:h-[220px] rounded-[16px] overflow-hidden border border-white/5 shadow-lg group"
+                          onClick={() => alert(`Promotion ${promo.id} claimed`)}
+                          className="relative flex-none w-full sm:w-[560px] aspect-[560/220] sm:aspect-auto h-auto sm:h-[220px] rounded-[16px] overflow-hidden border border-white/5 shadow-lg group cursor-pointer"
                           style={{ scrollSnapAlign: 'start' }}
                         >
-                          {/* Background image with gradient */}
-                          <div
-                            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
-                            style={{ backgroundImage: promo.bg }}
+                          <img
+                            src={promo.img}
+                            alt={promo.label}
+                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 pointer-events-none"
                           />
-                          {/* Blue glow */}
-                          <div className="absolute w-[140px] h-[140px] left-[-60px] top-[-60px] rounded-full bg-[#1463FF] filter blur-[45px] pointer-events-none z-10 opacity-60" />
-                          {/* Text + CTA */}
-                          <div className="absolute inset-0 z-20 flex flex-col justify-center items-start px-4 sm:px-6 md:px-8 gap-[10px] sm:gap-[14px] md:gap-[18px]">
-                            <h3 className="font-jost font-extrabold text-[14px] xs:text-[16px] sm:text-[22px] md:text-[26px] leading-[120%] tracking-[0.01em] text-white uppercase max-w-[150px] xs:max-w-[180px] sm:max-w-[260px]">
-                              {promo.label}
-                            </h3>
-                            <button
-                              onClick={() => alert(`Promotion ${promo.id} claimed`)}
-                              className="h-[30px] xs:h-[34px] sm:h-[40px] px-3 xs:px-4 sm:px-6 bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[11px] xs:text-[12px] sm:text-[14px] leading-none text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 shrink-0 whitespace-nowrap"
-                            >
-                              Claim Now
-                            </button>
-                          </div>
                         </div>
                       ))}
                     </div>
