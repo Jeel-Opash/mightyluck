@@ -329,7 +329,7 @@ export default function Navbar() {
       {/* =========================================================================
           2. MOBILE HEADER LAYOUT (md:hidden) - FIGMA SPECIFICATIONS
          ========================================================================= */}
-      <div className="md:hidden w-full h-[50px] bg-[#0C1F56] px-[20px] flex items-center justify-between relative overflow-visible box-border">
+      <div className="md:hidden w-full h-[50px] bg-[#0C1F56] px-[16px] flex items-center justify-between relative overflow-visible box-border">
 
         {/* Glow wrapper to prevent leaking below/above the navbar */}
         <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
@@ -382,22 +382,23 @@ export default function Navbar() {
 
           {/* Right Section Wrapper */}
           {isAuthenticated && user ? (
-            /* Logged-in mobile UI: width 238px x 30px */
-            <div className="flex flex-row justify-end items-center gap-[16px] w-[238px] h-[30px] shrink-0 box-border">
+            /* Logged-in mobile UI: width auto x 30px */
+            <div className="flex flex-row justify-end items-center gap-[8px] sm:gap-[16px] w-auto h-[30px] shrink-0 box-border">
 
-              {/* Balance & Deposit Frame: 116px x 30px */}
-              <div className="flex flex-row items-center gap-[4px] w-[116px] h-[30px] shrink-0 box-border">
+              {/* Balance & Deposit Frame: auto width x 30px */}
+              <div className="flex flex-row items-center gap-[4px] w-auto h-[30px] shrink-0 box-border">
 
-                {/* Balance container: 82px x 30px */}
+                {/* Balance container: auto x 30px */}
                 <div
                   style={{
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    padding: '8px 20px',
-                    gap: '7.5px',
-                    width: '85px',
+                    padding: '8px 10px',
+                    gap: '6px',
+                    width: 'auto',
+                    minWidth: '65px',
                     height: '30px',
                     background: '#112F82',
                     borderRadius: '6px',

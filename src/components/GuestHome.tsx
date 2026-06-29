@@ -384,7 +384,7 @@ export default function GuestHome() {
                 </div>
               </section>
             </div>            {/* DEPOSIT NOW RIBBON */}
-            <section className="relative w-full max-w-[374px] h-[165.05px] min-[768px]:max-w-none min-[768px]:w-full min-[768px]:h-auto min-[768px]:py-[18px] xl:h-[100px] xl:py-0 bg-[#0C1F56] rounded-[10px] min-[768px]:rounded-[16px] flex flex-col min-[768px]:flex-row justify-center min-[768px]:justify-between items-center p-5 min-[768px]:px-[20px] xl:px-[40px] gap-5 min-[768px]:gap-4 xl:gap-[40px] overflow-hidden border border-white/5 select-none isolate mx-auto min-[768px]:mx-0">
+            <section className="relative w-full max-w-[374px] h-auto py-6 min-[768px]:max-w-none min-[768px]:w-full min-[768px]:h-auto min-[768px]:py-[18px] xl:h-[100px] xl:py-0 bg-[#0C1F56] rounded-[10px] min-[768px]:rounded-[16px] flex flex-col min-[768px]:flex-row justify-center min-[768px]:justify-between items-center p-5 min-[768px]:px-[20px] xl:px-[40px] gap-5 min-[768px]:gap-4 xl:gap-[40px] overflow-hidden border border-white/5 select-none isolate mx-auto min-[768px]:mx-0">
               {/* Background Glow (Ellipse 6) */}
               <div className="absolute w-[416px] h-[416px] left-[calc(50%-208px)] top-[95px] min-[768px]:w-[534px] min-[768px]:h-[534px] min-[768px]:left-[calc(50%-267px)] min-[768px]:top-[60px] rounded-full bg-[#1463FF] filter blur-[38.95px] min-[768px]:blur-[50px] pointer-events-none z-0 opacity-40" />
 

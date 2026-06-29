@@ -119,10 +119,10 @@ export default function GamePage() {
               />
 
               {/* Info / Control Bar */}
-              <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-[1136px] min-h-[72px] sm:h-[80px] bg-[#0C1F56] rounded-[16px] py-4 sm:py-0 px-[20px] sm:px-[30px] gap-4 sm:gap-[12px]">
+              <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-[1136px] min-h-[72px] sm:h-[80px] bg-[#0C1F56] rounded-[16px] py-4 sm:py-0 px-[12px] sm:px-[30px] gap-4 sm:gap-[12px]">
 
                 {/* Left: provider logo + separator line + title */}
-                <div className="flex flex-row items-center gap-4 sm:gap-[32px] w-full sm:w-auto h-[40px] justify-start">
+                <div className="flex flex-row items-center gap-3 sm:gap-[32px] w-full sm:w-auto h-[40px] justify-start">
                   {/* Provider Logo */}
                   <div className="w-[80px] h-[40px] flex items-center justify-center shrink-0">
                     <img
@@ -134,7 +134,7 @@ export default function GamePage() {
                   {/* Vertical Separator Line */}
                   <div className="w-[1px] h-[33px] bg-white/60 shrink-0" />
                   {/* Game Title */}
-                  <div className="flex flex-row justify-start items-center shrink-0 w-auto max-w-[150px] h-[29px]">
+                  <div className="flex flex-row justify-start items-center shrink-0 w-auto max-w-[110px] sm:max-w-[150px] h-[29px]">
                     <span className="font-jost font-bold text-[18px] sm:text-[20px] leading-[29px] text-white truncate">
                       {game.title}
                     </span>

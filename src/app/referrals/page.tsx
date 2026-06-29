@@ -803,7 +803,7 @@ export default function ReferralsPage() {
                       onClick={() => setExpandedFaq(isOpen ? null : idx)}
                       className="w-full px-5 py-4 flex items-center justify-between gap-4 text-left font-jost font-extrabold text-[15px] text-white hover:bg-[#112a75] transition-colors cursor-pointer border-none outline-none"
                     >
-                      <span>How do I invite a friend?</span>
+                      <span>{faq.question}</span>
                       {isOpen ? (
                         <span className="text-[18px] text-[#A5B8EF] font-bold leading-none shrink-0">&#8722;</span>
                       ) : (
