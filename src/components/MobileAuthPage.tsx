@@ -44,13 +44,18 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [isTablet, setIsTablet] = useState(false);
 
   // Redirect to home page with desktop modal if screen size becomes desktop (>= 1024px)
+  // Show tablet layout for 640px–1023px
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      const w = window.innerWidth;
+      if (w >= 1024) {
         dispatch(openAuthModal(tab));
         router.push('/');
+      } else {
+        setIsTablet(w >= 640);
       }
     };
     window.addEventListener('resize', handleResize);
@@ -97,20 +102,193 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
     }
   };
 
+  const sharedStyle = `
+    .auth-input { color: #FFFFFF !important; }
+    .auth-input::placeholder { color: #7795E8; opacity: 1; }
+    .auth-input:-webkit-autofill,
+    .auth-input:-webkit-autofill:hover,
+    .auth-input:-webkit-autofill:focus {
+      -webkit-text-fill-color: #FFFFFF !important;
+      -webkit-box-shadow: 0 0 0px 1000px #112F82 inset !important;
+      transition: background-color 5000s ease-in-out 0s;
+      caret-color: #FFFFFF;
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  `;
+
+  /* ─── TABLET FULL-SCREEN TWO-PANEL LAYOUT ─── */
+  if (isTablet) {
+    return (
+      <div style={{ minHeight: '100svh', width: '100%', background: '#091741', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+        <style>{sharedStyle}</style>
+
+        {/* Back button top-left */}
+        <button
+          onClick={() => router.push('/')}
+          style={{ position: 'absolute', top: '20px', left: '20px', width: '36px', height: '36px', background: 'rgba(255,255,255,0.08)', border: 'none', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          <svg width="18" height="14" viewBox="0 0 20 16" fill="none">
+            <path d="M19 8H1M8 1L1 8L8 15" stroke="#D2DCF7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+
+        {/* Two-panel card — full screen */}
+        <div style={{ width: '100%', height: '100svh', display: 'flex', flexDirection: 'row', background: '#091741' }}>
+
+          {/* LEFT PANEL — image */}
+          <div style={{ flex: '0 0 50%', position: 'relative', overflow: 'hidden' }}>
+            <img src="/games/registeer/image.png" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+          </div>
+
+          {/* RIGHT PANEL — form */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '24px 40px', background: '#091741', position: 'relative', overflow: 'hidden' }}>
+            {/* Top glow */}
+            <div style={{ position: 'absolute', width: '260px', height: '260px', borderRadius: '50%', background: '#1463FF', top: '-160px', left: '50%', transform: 'translateX(-50%)', filter: 'blur(60px)', zIndex: 0 }} />
+
+            <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: '400px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+
+              {/* Logo */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <img src="/images/logo.svg" style={{ width: '24px', height: '18px', objectFit: 'contain' }} alt="Logo" />
+                <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 900, fontSize: '16px', color: '#fff', letterSpacing: '0.02em' }}>
+                  MIGHTY <span style={{ color: '#FFC83D' }}>LUCK</span>
+                </span>
+              </div>
+
+              {/* Tabs */}
+              <div style={{ display: 'flex', flexDirection: 'row', gap: '8px', width: '100%', height: '48px' }}>
+                <button type="button" onClick={() => { setTab('join'); setError(null); setSuccess(null); router.push('/auth/register'); }}
+                  style={{ flex: 1, height: '48px', background: tab === 'join' ? '#FFC83D' : '#112F82', color: tab === 'join' ? '#000' : '#A5B8EF', border: 'none', borderRadius: '8px', fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: '15px', cursor: 'pointer' }}>
+                  Join Now
+                </button>
+                <button type="button" onClick={() => { setTab('login'); setError(null); setSuccess(null); router.push('/auth/login'); }}
+                  style={{ flex: 1, height: '48px', background: tab === 'login' ? '#1463FF' : '#112F82', color: tab === 'login' ? '#FFFFFF' : '#A5B8EF', border: 'none', borderRadius: '8px', fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: '15px', cursor: 'pointer' }}>
+                  Log In
+                </button>
+              </div>
+
+              {/* Fields */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
+                {tab === 'join' ? (
+                  <>
+                    <div style={{ display: 'flex', alignItems: 'center', padding: '0 16px', gap: '12px', width: '100%', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
+                      <input className="auth-input" placeholder="User name" value={username} onChange={e => setUsername(e.target.value)} style={inputStyle} />
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row', gap: '8px', width: '100%' }}>
+                      <div style={{ flex: 1, display: 'flex', alignItems: 'center', padding: '0 16px', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
+                        <input className="auth-input" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} style={inputStyle} />
+                      </div>
+                      <div style={{ flex: 1, display: 'flex', alignItems: 'center', padding: '0 16px', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
+                        <input className="auth-input" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} style={inputStyle} />
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', padding: '0 16px', width: '100%', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
+                      <input className="auth-input" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
+                    </div>
+                  </>
+                ) : (
+                  <div style={{ display: 'flex', alignItems: 'center', padding: '0 16px', width: '100%', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
+                    <input className="auth-input" placeholder="User name or Email" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
+                  </div>
+                )}
+
+                {/* Password */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', gap: '10px', width: '100%', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
+                  <input className="auth-input" type={showPwd ? 'text' : 'password'} placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} style={{ ...inputStyle, width: 'auto', flexGrow: 1 }} />
+                  <button type="button" onClick={() => setShowPwd(!showPwd)} style={{ width: '20px', height: '20px', background: 'transparent', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', flexShrink: 0, color: '#A5B8EF' }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      {showPwd
+                        ? <><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" /><line x1="1" y1="1" x2="23" y2="23" /></>
+                        : <><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></>}
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Phone (join only) */}
+                {tab === 'join' && (
+                  <div style={{ position: 'relative', zIndex: 30, display: 'flex', flexDirection: 'row', gap: '8px', width: '100%', height: '50px' }}>
+                    <div style={{ position: 'relative', flexShrink: 0 }}>
+                      <button type="button" onClick={() => setDropOpen(!dropOpen)}
+                        style={{ display: 'flex', alignItems: 'center', padding: '10px 16px', gap: '10px', height: '50px', background: '#112F82', borderRadius: '8px', border: 'none', cursor: 'pointer', minWidth: '110px' }}>
+                        <img src={country.image} alt={country.name} width="20" height="20" style={{ width: '20px', height: '20px', objectFit: 'cover', borderRadius: '50%' }} />
+                        <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: '14px', color: '#fff' }}>{country.code}</span>
+                        <svg width="7" height="4" viewBox="0 0 7 4" fill="none" style={{ transform: dropOpen ? 'rotate(180deg)' : 'none', transition: '.2s' }}>
+                          <path d="M1 1L3.5 3.5L6 1" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                      {dropOpen && (
+                        <>
+                          <div onClick={() => setDropOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 20 }} />
+                          <div style={{ position: 'absolute', left: 0, top: '54px', width: '176px', background: '#0C1F56', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', padding: '6px', zIndex: 30, display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                            {COUNTRY_CODES.map(c => (
+                              <button key={c.code} type="button" onClick={() => { setCountry(c); setDropOpen(false); }}
+                                style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px', background: 'transparent', border: 'none', borderRadius: '6px', cursor: 'pointer', color: '#fff', fontSize: '12px', fontFamily: "'Manrope', sans-serif" }}>
+                                <img src={c.image} alt={c.name} width="16" height="16" style={{ width: '16px', height: '16px', objectFit: 'cover', borderRadius: '50%', flexShrink: 0 }} />
+                                <span style={{ fontWeight: 700 }}>{c.code}</span>
+                                <span style={{ color: '#A5B8EF' }}>{c.name}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                    <div style={{ flex: 1, display: 'flex', alignItems: 'center', padding: '0 16px', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
+                      <input className="auth-input" type="tel" placeholder="Phone Number" value={phone} onChange={e => setPhone(e.target.value)} style={inputStyle} />
+                    </div>
+                  </div>
+                )}
+
+                {tab === 'join' && (
+                  <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '11px', lineHeight: '15px', textAlign: 'center', letterSpacing: '0.01em', color: '#BBCAF3', margin: 0 }}>
+                    By clicking &quot;Join Now&quot; I confirm that I&apos;m over 18 years old and agree to Mighty Luck&apos; T&amp;C along with the Privacy Policy
+                  </p>
+                )}
+              </div>
+
+              {/* Error / Success */}
+              {error && (
+                <div style={{ width: '100%', padding: '8px 14px', borderRadius: '8px', background: 'rgba(237,76,92,0.15)', border: '1px solid rgba(237,76,92,0.4)', display: 'flex', alignItems: 'center', gap: '8px', boxSizing: 'border-box' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ED4C5C" strokeWidth="2.5" strokeLinecap="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+                  <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: '11px', fontWeight: 600, color: '#ED4C5C' }}>{error}</span>
+                </div>
+              )}
+              {success && (
+                <div style={{ width: '100%', padding: '8px 14px', borderRadius: '8px', background: 'rgba(43,234,81,0.12)', border: '1px solid rgba(43,234,81,0.35)', display: 'flex', alignItems: 'center', gap: '8px', boxSizing: 'border-box' }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2BEA51" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12" /></svg>
+                  <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: '11px', fontWeight: 600, color: '#2BEA51' }}>{success}</span>
+                </div>
+              )}
+
+              {/* CTA */}
+              <button onClick={onSubmit as React.MouseEventHandler} disabled={loading}
+                style={{ width: '100%', height: '56px', background: loading ? 'rgba(255,200,61,0.6)' : '#FFC83D', borderRadius: '8px', border: 'none', cursor: loading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: '16px', color: '#1A1404' }}>
+                {loading
+                  ? <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A1404" strokeWidth="2.5" strokeLinecap="round" style={{ animation: 'spin 0.8s linear infinite' }}><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" /></svg>
+                  : <span>{tab === 'join' ? 'Join with a 350% Bonus' : 'Log In to Mighty Luck'}</span>
+                }
+              </button>
+
+              {/* Support */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7795E8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '12px', color: '#7795E8' }}>
+                  Having problems? <span style={{ color: '#FFBF1F', fontWeight: 600, cursor: 'pointer' }}>Contact support</span>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ─── MOBILE LAYOUT ─── */
   return (
     <div style={{ minHeight: '100svh', background: '#091741', display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '414px', margin: '0 auto', boxSizing: 'border-box' }}>
-      <style>{`
-        .auth-input { color: #FFFFFF !important; }
-        .auth-input::placeholder { color: #7795E8; opacity: 1; }
-        .auth-input:-webkit-autofill,
-        .auth-input:-webkit-autofill:hover,
-        .auth-input:-webkit-autofill:focus {
-          -webkit-text-fill-color: #FFFFFF !important;
-          -webkit-box-shadow: 0 0 0px 1000px #112F82 inset !important;
-          transition: background-color 5000s ease-in-out 0s;
-          caret-color: #FFFFFF;
-        }
-      `}</style>
+      <style>{sharedStyle}</style>
 
       {/* ── Row 1: Back + Tabs (414px x 92px) ── */}
       <div

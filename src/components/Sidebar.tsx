@@ -242,31 +242,32 @@ export default function Sidebar() {
            ========================================================================= */}
         <div className="flex lg:hidden flex-col w-full pt-[30px] pb-[80px] px-[20px] items-center justify-start">
           {/* Main Menu List Container */}
-          <div className="w-full max-w-[374px] flex flex-col gap-[16px]">
+          <div className="w-full flex flex-col gap-[16px]">
 
-            {/* Promo banners */}
-            <div className="flex flex-row gap-[4px] w-full justify-center">
-              <img
-                src="/games/side-btn/1.png"
-                alt="Refer a Friend"
-                onClick={() => {
-                  router.push('/referrals');
-                  dispatch(toggleSidebar());
-                }}
-                className="flex-1 max-w-[183px] h-[80px] cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[10px]"
-              />
-              <img
-                src="/games/side-btn/2.png"
-                alt="VIP Transfer"
-                className="flex-1 max-w-[183px] h-[80px] cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[10px]"
-              />
+            {/* Promo banners box */}
+            <div className="w-full bg-[#0C1F56] rounded-[16px] overflow-hidden flex flex-col shrink-0">
+              <div className="flex flex-row gap-[6px] sm:gap-[8px] w-full h-[54px] sm:h-[76px] md:h-[86px] items-center">
+                <img
+                  src="/games/side-btn/1.png"
+                  alt="Refer a Friend"
+                  onClick={() => {
+                    router.push('/referrals');
+                    dispatch(toggleSidebar());
+                  }}
+                  className="flex-[1] w-full h-full cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover"
+                />
+                <img
+                  src="/games/side-btn/2.png"
+                  alt="VIP Transfer"
+                  className="flex-[1] w-full h-full cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover"
+                />
+                <img
+                  src="/games/side-btn/3.png"
+                  alt="Winter Rush"
+                  className="flex-[2] w-full h-full cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover"
+                />
+              </div>
             </div>
-            <img
-              src="/games/side-btn/3.png"
-              alt="Winter Rush"
-              className="w-full cursor-pointer hover:brightness-110 active:scale-95 transition-all duration-200 select-none object-cover rounded-[12px]"
-              style={{ aspectRatio: '4 / 1' }}
-            />
 
             {/* Promotions */}
             <button onClick={() => { dispatch(toggleSidebar()); }} className="flex items-center justify-between w-full h-[50px] bg-[#112F82] hover:bg-[#153896] px-[10px] rounded-[8px] transition-colors cursor-pointer text-left focus:outline-none shrink-0 group">
