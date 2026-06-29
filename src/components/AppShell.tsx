@@ -19,11 +19,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (depositModalOpen || allGamesOpen || authModalOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.style.height = '100%';
+      document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.height = '100%';
     } else {
       document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.height = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.body.style.height = '';
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.height = '';
     };
   }, [depositModalOpen, allGamesOpen, authModalOpen]);
 
