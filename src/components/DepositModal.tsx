@@ -1835,20 +1835,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         }}
         className="hidden min-[580px]:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
       >
-        {/* Ellipse 6 Accent Glow */}
-        <div
-          style={{
-            position: 'absolute',
-            width: '173px',
-            height: '173px',
-            left: 'calc(50% - 173px/2 + 0.5px)',
-            top: '-126px',
-            background: '#1463FF',
-            filter: 'blur(40px)',
-            zIndex: 0,
-          }}
-          className="pointer-events-none"
-        />
+       
 
         {/* Close Button on the top-right outside the modal wrapper */}
         <button
