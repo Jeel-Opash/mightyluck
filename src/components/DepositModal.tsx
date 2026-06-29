@@ -1514,7 +1514,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
       <div
         style={{
           width: '500px',
-          height: '604px',
+          minHeight: '604px',
+          height: 'auto',
           padding: '24px 20px 32px',
           gap: '24px',
           background: '#091741',
@@ -1864,7 +1865,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           height: '19px',
                         }}
                       >
-                        <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0">
+                        <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0" style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(42%) saturate(800%) hue-rotate(350deg) brightness(101%) contrast(101%)' }}>
                           {renderBonusIcon(getSelectedBonusIcon(), 'w-[16px] h-[16px]')}
                         </div>
                         <span
@@ -2470,14 +2471,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           type="text"
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
-                          className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                          className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="City"
                         />
                         <input
                           type="text"
                           value={postalCode}
                           onChange={(e) => setPostalCode(e.target.value)}
-                          className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                          className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="Postal Code"
                         />
                       </div>
@@ -2487,11 +2488,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           type="text"
                           value={state}
                           onChange={(e) => setState(e.target.value)}
-                          className="flex-1 min-w-0 h-[40px] px-[0px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                          className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
                           placeholder="State"
                         />
 
-                        <div className="flex-1 min-w-0 relative" ref={countryDropdownRefDesktop}>
+                        <div className="w-[calc(50%-4px)] min-w-0 relative" ref={countryDropdownRefDesktop}>
                           <div
                             onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
                             className="flex flex-row items-center justify-between px-[16px] h-[40px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
@@ -2667,7 +2668,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     padding: '0px',
                     gap: '16px',
                     width: '428px',
-                    height: '331px',
+                    height: 'auto',
                   }}
                   className="select-none shrink-0"
                 >
@@ -2824,7 +2825,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       padding: '0px',
                       gap: '12px',
                       width: '428px',
-                      height: '251px',
+                      height: 'auto',
                     }}
                   >
                     <span

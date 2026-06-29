@@ -58,7 +58,7 @@ export default function Navbar() {
             flexDirection: 'row',
             alignItems: 'center',
             padding: '0px',
-            gap: '20px',
+            gap: '51px',
             height: '40px',
             zIndex: 1,
             minWidth: 0,
