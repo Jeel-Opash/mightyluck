@@ -150,7 +150,7 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
               {/* Logo */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                 <img src="/images/logo.svg" style={{ width: '24px', height: '18px', objectFit: 'contain' }} alt="Logo" />
-                <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 900, fontSize: '16px', color: '#fff', letterSpacing: '0.02em' }}>
+                <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 900, fontSize: '16px', color: '#fff', letterSpacing: '0.02em' }}>
                   MIGHTY <span style={{ color: '#FFC83D' }}>LUCK</span>
                 </span>
               </div>

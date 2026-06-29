@@ -101,8 +101,8 @@ export default function Navbar() {
               flexShrink: 0,
             }}
           >
-            <img src="/images/logo.svg" style={{ width: '34px', height: '25px', objectFit: 'contain', flexShrink: 0 }} alt="Mighty Luck" />
-            <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 800, color: '#FFFFFF', fontSize: '19px', lineHeight: '26px', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
+            <img src="/images/logo.svg" style={{ width: '34px', height: '25px', objectFit: 'contain', flexShrink: 0, display: 'block' }} alt="Mighty Luck" />
+            <span style={{ fontFamily: "var(--font-jost), sans-serif", fontWeight: 900, color: '#FFFFFF', fontSize: '21px', lineHeight: '1', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
               MIGHTY <span style={{ color: '#FFC83D' }}>LUCK</span>
             </span>
           </div>
@@ -368,8 +368,8 @@ export default function Navbar() {
             />
             <span
               style={{
-                fontFamily: "'Manrope', sans-serif",
-                fontWeight: 700,
+                fontFamily: "var(--font-jost), sans-serif",
+                fontWeight: 900,
                 fontSize: '10.5px',
                 lineHeight: '100%',
                 letterSpacing: '0.02em',

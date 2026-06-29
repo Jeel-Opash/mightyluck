@@ -8,18 +8,18 @@ import AuthModal from '@/components/AuthModal';
 import Footer from '@/components/Footer';
 import { useAppDispatch, useAppSelector } from '@/redux/store';
 import { openAuthModal, closeAuthModal, toggleSidebar, openAllGamesModal, closeAllGamesModal, setSidebarOpen } from '@/redux/features/uiSlice';
-import { 
-  GameCard, 
-  ProviderCard, 
+import {
+  GameCard,
+  ProviderCard,
   WinnerRecord,
-  slotGames, 
-  originalGames, 
-  crashGames, 
-  providerList, 
-  tableGames, 
-  bonusGames, 
-  collectionList, 
-  recentWinners 
+  slotGames,
+  originalGames,
+  crashGames,
+  providerList,
+  tableGames,
+  bonusGames,
+  collectionList,
+  recentWinners
 } from '@/data/mockGames';
 
 export default function GuestHome() {
@@ -357,7 +357,7 @@ export default function GuestHome() {
                 <img
                   src="/images/hero.jpg"
                   alt="Welcome Banner"
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.02] pointer-events-none z-0"
+                  className="absolute inset-y-0 left-0 w-[140%] min-[480px]:w-[130%] lg:w-[125%] max-w-none h-full object-cover object-left pointer-events-none z-0"
                 />
                 {/* Blurs inside banner */}
                 <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/20 filter blur-[75px] pointer-events-none" />

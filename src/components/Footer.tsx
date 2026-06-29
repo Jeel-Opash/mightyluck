@@ -175,8 +175,8 @@ export default function Footer({ className }: FooterProps = {}) {
                 <g transform="translate(49, 0) scale(1.09)">
                   <image href="/images/logo.svg" width="34" height="25" />
                 </g>
-                <text x="18" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="#FFFFFF">MIGHTY</text>
-                <text x="78" y="47" fontFamily="Jost, sans-serif" fontWeight="800" fontSize="12" letterSpacing="1.2" fill="url(#gLogoU)">LUCK</text>
+                <text x="18" y="47" fontFamily="var(--font-jost), sans-serif" fontWeight="900" fontSize="12" letterSpacing="1.2" fill="#FFFFFF">MIGHTY</text>
+                <text x="78" y="47" fontFamily="var(--font-jost), sans-serif" fontWeight="900" fontSize="12" letterSpacing="1.2" fill="url(#gLogoU)">LUCK</text>
               </svg>
             </div>
             <span className="font-manrope font-semibold text-[11px] leading-[15px] tracking-[0.01em] text-[#D2DCF7] w-[213px]">

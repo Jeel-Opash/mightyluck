@@ -365,10 +365,8 @@ export default function UserHome() {
           <Sidebar />
         </div>
 
-        {/* Right Main Content Column */}
         <div className="min-w-0 flex-1 flex flex-col gap-8 lg:gap-[40px]">
 
-          {/* Child 1: Main Games Area */}
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
             <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
@@ -376,9 +374,8 @@ export default function UserHome() {
                 <img
                   src="/images/hero.jpg"
                   alt="Welcome Banner"
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.02] pointer-events-none z-0"
+                  className="absolute inset-y-0 left-0 w-[140%] min-[480px]:w-[130%] lg:w-[125%] max-w-none h-full object-cover object-left pointer-events-none z-0"
                 />
-                {/* Blurs inside banner */}
                 <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
                 <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
                 <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
@@ -593,7 +590,6 @@ export default function UserHome() {
                   </div>
                 </section>
 
-                {/* ORIGINALS SECTION */}
                 <section className="game-section-container">
                   <div className="game-section-header">
                     <div className="game-section-title-wrapper">
@@ -732,7 +728,7 @@ export default function UserHome() {
                           onClick={() => alert(`Promotion ${promo.id} claimed`)}
                           className="relative flex-none w-full sm:w-[560px] aspect-[560/220] sm:aspect-auto h-auto sm:h-[220px] rounded-[16px] overflow-hidden border border-white/5 shadow-lg group cursor-pointer"
                           style={{ scrollSnapAlign: 'start' }}
-                          >
+                        >
                           <img
                             src={promo.img}
                             alt={promo.label}
