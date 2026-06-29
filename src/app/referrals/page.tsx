@@ -379,10 +379,10 @@ export default function ReferralsPage() {
           {/* =========================================================================
               1. HERO BANNER - MOBILE / TABLET VIEW (stacked components)
              ========================================================================= */}
-          <div className="flex lg:hidden flex-col gap-4 w-full">
+          <div className="flex lg:hidden flex-col md:grid md:grid-cols-2 gap-4 w-full">
             {/* Banner card */}
             <div
-              className="w-full min-h-[160px] rounded-[16px] border border-white/5 p-6 flex flex-col justify-center relative overflow-hidden bg-[#2A0B3E]"
+              className="w-full min-h-[220px] sm:min-h-[280px] md:min-h-0 md:h-full rounded-[16px] border border-white/5 p-6 flex flex-col justify-center relative overflow-hidden bg-[#2A0B3E]"
             >
               <img
                 src="/games/refrels/refer.png"
@@ -395,11 +395,11 @@ export default function ReferralsPage() {
                   background: 'linear-gradient(95.59deg, #06102B 13.87%, rgba(6, 16, 43, 0) 35.34%)',
                 }}
               />
-              <div className="flex flex-col gap-1 max-w-[320px] z-20 relative text-left">
-                <span className="font-sans font-bold text-[12px] text-[#A5B8EF] tracking-[0.05em]">
+              <div className="flex flex-col gap-1 max-w-[320px] md:max-w-none z-20 relative text-left">
+                <span className="font-sans font-bold text-[12px] md:text-[14px] text-[#A5B8EF] tracking-[0.05em]">
                   Get <span className="text-[#FFC83D]">PAID</span> every time
                 </span>
-                <h1 className="font-jost font-black text-[24px] leading-[110%] text-white tracking-wide uppercase">
+                <h1 className="font-jost font-black text-[24px] md:text-[32px] md:leading-[110%] text-white tracking-wide uppercase">
                   YOUR FRIEND<br />PLAYS!
                 </h1>
               </div>
@@ -464,7 +464,7 @@ export default function ReferralsPage() {
                   </span>
                 </div>
 
-                <p className="font-manrope font-semibold text-[10px] leading-[14px] text-[#7795E8] tracking-[0.02em]  max-w-[340px] mx-auto">
+                <p className="font-manrope font-semibold text-[10px] sm:text-[12px] leading-[14px] sm:leading-[16px] text-[#7795E8] tracking-[0.02em] text-center w-full mx-auto">
                   * Calculations are based on average player activity and may vary in individual cases
                 </p>
 
@@ -493,8 +493,8 @@ export default function ReferralsPage() {
               </div>
             </div>
 
-            {/* Mobile Stats Box */}
-            <div className="w-full bg-[#091741] rounded-[16px] p-5 flex flex-col gap-4 border border-white/10 shadow-2xl">
+            {/* Mobile/Tablet Stats Box */}
+            <div className="w-full bg-[#091741] rounded-[16px] p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 border border-white/10 shadow-2xl col-span-1 md:col-span-2">
               {/* Total Referrals */}
               <div className="flex flex-col gap-1.5 text-left w-full">
                 <span className="font-manrope font-semibold text-[12px] text-[#BBCAF3] tracking-[0.02em]">
@@ -604,7 +604,7 @@ export default function ReferralsPage() {
           {/* =========================================================================
               3. BENEFITS SECTIONS (WHAT YOU GET & WHAT YOUR FRIEND GETS)
              ========================================================================= */}
-          <div className="flex flex-col lg:flex-row gap-5 w-full select-none">
+          <div className="flex flex-col md:flex-row gap-5 w-full select-none">
 
              {/* WHAT YOU GET */}
              <div
@@ -612,7 +612,7 @@ export default function ReferralsPage() {
                  background: 'radial-gradient(circle at 0% 0%, rgba(87, 255, 61, 1) 0%, rgba(87, 255, 61, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
                  backgroundRepeat: 'no-repeat',
                }}
-               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
+               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] h-auto lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
             >
               <div className="flex flex-row items-center gap-2">
 
@@ -677,7 +677,7 @@ export default function ReferralsPage() {
                  background: 'radial-gradient(circle at 0% 0%, rgba(20, 99, 255, 1) 0%, rgba(20, 99, 255, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
                  backgroundRepeat: 'no-repeat',
                }}
-               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
+               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] h-auto lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
             >
               <div className="flex flex-row items-center gap-2">
 

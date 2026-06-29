@@ -965,8 +965,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 </div>
 
                 <div className="w-full overflow-x-auto agm-scrollbar-none">
-                  <div className="flex flex-row items-center gap-2 w-[512px]">
-                    {ALL_GAMES.slice(0, 4).map((game) => (
+                  <div className="flex flex-row items-center gap-2 w-max">
+                    {ALL_GAMES.slice(0, 10).map((game) => (
                       <div
                         key={game.id}
                         onClick={() => {
@@ -1003,16 +1003,23 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 </div>
 
                 <div className="w-full overflow-x-auto agm-scrollbar-none">
-                  <div className="flex flex-row items-center gap-2 w-[472px] h-[60px]">
+                  <div className="flex flex-row items-center gap-2 w-max h-[60px]">
                     {[
                       { name: 'BELATRA', logo: '/games/providers/g1.png', count: '226 Games' },
                       { name: 'BGAMING', logo: '/games/providers/g2.png', count: '226 Games' },
                       { name: 'TaDa GAMING', logo: '/games/providers/g3.png', count: '226 Games' },
                       { name: 'ENDORPHINA', logo: '/games/providers/g4.png', count: '226 Games' },
                       { name: 'NOLIMIT CITY', logo: '/games/providers/g5.png', count: '226 Games' },
-                    ].map((provider) => (
+                      { name: 'HACKSAW', logo: '/games/providers/g6.png', count: '226 Games' },
+                      { name: 'BOOMING', logo: '/games/providers/g7.png', count: '226 Games' },
+                      { name: 'BELATRA', logo: '/games/providers/g1.png', count: '226 Games' },
+                      { name: 'BGAMING', logo: '/games/providers/g2.png', count: '226 Games' },
+                      { name: 'TaDa GAMING', logo: '/games/providers/g3.png', count: '226 Games' },
+                      { name: 'ENDORPHINA', logo: '/games/providers/g4.png', count: '226 Games' },
+                      { name: 'NOLIMIT CITY', logo: '/games/providers/g5.png', count: '226 Games' },
+                    ].map((provider, idx) => (
                       <div
-                        key={provider.name}
+                        key={`${provider.name}-${idx}`}
                         onClick={() => setSearch(provider.name)}
                         className="flex flex-col justify-center items-center p-[7.2px_14.4px] gap-[4.8px] w-[88px] h-[60px] bg-[#112F82] rounded-[8px] shrink-0 cursor-pointer active:scale-95 transition-transform"
                       >
