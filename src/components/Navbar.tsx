@@ -102,7 +102,7 @@ export default function Navbar() {
             }}
           >
             <img src="/images/logo.svg" style={{ width: '34px', height: '25px', objectFit: 'contain', flexShrink: 0 }} alt="Mighty Luck" />
-            <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 900, color: '#FFFFFF', fontSize: '19px', lineHeight: '26px', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
+            <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 800, color: '#FFFFFF', fontSize: '19px', lineHeight: '26px', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
               MIGHTY <span style={{ color: '#FFC83D' }}>LUCK</span>
             </span>
           </div>
@@ -352,10 +352,10 @@ export default function Navbar() {
         {/* Inner Wrapper Frame 7: Responsive width */}
         <div className="w-full h-[30px] flex flex-row justify-between items-center gap-[2px] z-10 box-border">
 
-          {/* Logo Frame: 44px x 30px */}
+          {/* Logo Frame */}
           <div
             onClick={() => router.push('/')}
-            className="flex flex-row items-center justify-center w-[44px] h-[30px] shrink-0 box-border cursor-pointer z-10"
+            className="flex flex-row items-center gap-[8px] w-auto h-[30px] shrink-0 box-border cursor-pointer z-10"
           >
             <img
               src="/images/logo.svg"
@@ -366,6 +366,18 @@ export default function Navbar() {
               className="object-contain shrink-0"
               alt="Mighty Luck"
             />
+            <span
+              style={{
+                fontFamily: "'Manrope', sans-serif",
+                fontWeight: 700,
+                fontSize: '10.5px',
+                lineHeight: '100%',
+                letterSpacing: '0.02em',
+              }}
+              className="hidden min-[768px]:inline text-white whitespace-nowrap"
+            >
+              MIGHTY <span style={{ color: '#FFC83D' }}>LUCK</span>
+            </span>
           </div>
 
           {/* Right Section Wrapper */}
@@ -587,13 +599,27 @@ export default function Navbar() {
             <div className="flex flex-row items-center gap-[10px] h-[30px]">
               <button
                 onClick={handleLoginClick}
-                className="w-[74px] h-[30px] bg-[#1463FF] rounded-[6px] flex items-center justify-center font-sans font-bold text-[10.5px] text-white tracking-[0.02em] cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all shadow-[0_2px_8px_rgba(20,99,255,0.35)] border border-white/5"
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '10.5px',
+                  lineHeight: '100%',
+                  letterSpacing: '0.02em',
+                }}
+                className="w-[74px] h-[30px] bg-[#1463FF] rounded-[6px] flex items-center justify-center text-white cursor-pointer hover:bg-[#2e74ff] active:scale-95 transition-all shadow-[0_2px_8px_rgba(20,99,255,0.35)] border border-white/5"
               >
                 Login
               </button>
               <button
                 onClick={handleJoinClick}
-                className="w-[67px] h-[30px] bg-[#FFC83D] rounded-[6px] flex items-center justify-center font-sans font-bold text-[10.5px] text-[#1A1404] tracking-[0.02em] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all shadow-[0_2px_8px_rgba(255,200,61,0.35)] border border-white/5"
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '10.5px',
+                  lineHeight: '100%',
+                  letterSpacing: '0.02em',
+                }}
+                className="w-[67px] h-[30px] bg-[#FFC83D] rounded-[6px] flex items-center justify-center text-[#1A1404] cursor-pointer hover:bg-[#ffd362] active:scale-95 transition-all shadow-[0_2px_8px_rgba(255,200,61,0.35)] border border-white/5"
               >
                 Join
               </button>

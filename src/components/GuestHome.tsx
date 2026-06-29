@@ -353,7 +353,7 @@ export default function GuestHome() {
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
             <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
-              <section className="relative w-full h-[170px] min-[375px]:h-[200px] min-[480px]:h-[240px] md:h-[300px] lg:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate">
+              <section className="relative w-full h-[170px] min-[375px]:h-[200px] min-[480px]:h-[240px] min-[768px]:h-[300px] lg:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate">
                 <img
                   src="/images/hero.jpg"
                   alt="Welcome Banner"
@@ -366,10 +366,10 @@ export default function GuestHome() {
 
                 <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 min-[375px]:gap-3 lg:gap-[20px] justify-between items-start z-10">
                   <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
-                    <span className="font-jost font-medium text-[11px] min-[375px]:text-[13px] min-[480px]:text-[16px] md:text-[22px] lg:text-[28px] leading-tight text-white select-none">
+                    <span className="font-jost font-medium text-[11px] min-[375px]:text-[13px] min-[480px]:text-[16px] min-[768px]:text-[22px] lg:text-[28px] leading-tight text-white select-none">
                       Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
                     </span>
-                    <span className="font-jost font-black text-[18px] min-[375px]:text-[22px] min-[480px]:text-[28px] md:text-[38px] lg:text-[48px] leading-[110%] text-white tracking-wide select-none">
+                    <span className="font-jost font-black text-[18px] min-[375px]:text-[22px] min-[480px]:text-[28px] min-[768px]:text-[38px] lg:text-[48px] leading-[110%] text-white tracking-wide select-none">
                       250% WELCOME<br />BONUS!
                     </span>
                   </div>
@@ -377,24 +377,24 @@ export default function GuestHome() {
                   {/* Join Now Button */}
                   <button
                     onClick={() => dispatch(openAuthModal('join'))}
-                    className="w-[96px] h-[32px] min-[375px]:w-[108px] min-[375px]:h-[36px] md:w-[130px] md:h-[42px] lg:w-[146px] lg:h-[48px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[11px] min-[375px]:text-[12px] md:text-[14px] lg:text-[16px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shadow-[0_4px_12px_rgba(255,200,61,0.2)]"
+                    className="w-[96px] h-[32px] min-[375px]:w-[108px] min-[375px]:h-[36px] min-[768px]:w-[130px] min-[768px]:h-[42px] lg:w-[146px] lg:h-[48px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] min-[768px]:rounded-lg flex items-center justify-center font-sans font-bold text-[11px] min-[375px]:text-[12px] min-[768px]:text-[14px] lg:text-[16px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shadow-[0_4px_12px_rgba(255,200,61,0.2)]"
                   >
                     Join Now
                   </button>
                 </div>
               </section>
             </div>            {/* DEPOSIT NOW RIBBON */}
-            <section className="relative w-full max-w-[374px] h-[165.05px] lg:max-w-none lg:w-full lg:h-[100px] bg-[#0C1F56] rounded-[10px] lg:rounded-[16px] flex flex-col lg:flex-row justify-center lg:justify-between items-center p-5 lg:py-0 lg:px-[40px] gap-5 lg:gap-[40px] overflow-hidden border border-white/5 select-none isolate mx-auto lg:mx-0">
+            <section className="relative w-full max-w-[374px] h-[165.05px] min-[768px]:max-w-none min-[768px]:w-full min-[768px]:h-auto min-[768px]:py-[18px] xl:h-[100px] xl:py-0 bg-[#0C1F56] rounded-[10px] min-[768px]:rounded-[16px] flex flex-col min-[768px]:flex-row justify-center min-[768px]:justify-between items-center p-5 min-[768px]:px-[20px] xl:px-[40px] gap-5 min-[768px]:gap-4 xl:gap-[40px] overflow-hidden border border-white/5 select-none isolate mx-auto min-[768px]:mx-0">
               {/* Background Glow (Ellipse 6) */}
-              <div className="absolute w-[416px] h-[416px] left-[calc(50%-208px)] top-[95px] lg:w-[534px] lg:h-[534px] lg:left-[calc(50%-267px)] lg:top-[60px] rounded-full bg-[#1463FF] filter blur-[38.95px] lg:blur-[50px] pointer-events-none z-0 opacity-40" />
+              <div className="absolute w-[416px] h-[416px] left-[calc(50%-208px)] top-[95px] min-[768px]:w-[534px] min-[768px]:h-[534px] min-[768px]:left-[calc(50%-267px)] min-[768px]:top-[60px] rounded-full bg-[#1463FF] filter blur-[38.95px] min-[768px]:blur-[50px] pointer-events-none z-0 opacity-40" />
 
               {/* Want to play? Text (z-index 1) */}
-              <span className="font-jost font-extrabold text-[16px] min-[360px]:text-[18px] lg:text-[20px] leading-[24px] min-[360px]:leading-[26px] lg:leading-[29px] text-white tracking-wide text-center shrink-0 z-10 w-full max-w-[280px] lg:max-w-none lg:w-auto">
+              <span className="font-jost font-extrabold text-[16px] min-[360px]:text-[18px] min-[768px]:text-[16px] xl:text-[20px] leading-[24px] min-[360px]:leading-[26px] min-[768px]:leading-normal xl:leading-[29px] text-white tracking-wide text-center shrink-0 z-10 w-full max-w-[280px] min-[768px]:max-w-none min-[768px]:w-auto">
                 Want to play? Deposit Now
               </span>
 
               {/* Payment Cryptos SVGs (z-index 2) */}
-              <div className="flex flex-row flex-wrap items-center justify-between lg:justify-center w-full max-w-[334px] lg:max-w-none lg:w-auto h-[19.05px] lg:h-auto gap-y-[20px] gap-x-[7px] min-[360px]:gap-x-[12px] lg:gap-[28px] z-10 shrink-0">
+              <div className="flex flex-row flex-wrap items-center justify-between min-[768px]:justify-center w-full max-w-[334px] min-[768px]:max-w-none min-[768px]:w-auto h-[19.05px] min-[768px]:h-auto gap-y-[20px] gap-x-[7px] min-[360px]:gap-x-[12px] min-[768px]:gap-[10px] xl:gap-[28px] z-10 shrink">
                 <img src="/games/deposite-icon/d1.svg" className="w-[13.38px] h-[18.39px] object-contain" alt="Crypto 1" />
                 <img src="/games/deposite-icon/d2.svg" className="w-[11.3px] h-[18.09px] object-contain" alt="Crypto 2" />
                 <img src="/games/deposite-icon/d3.svg" className="w-[19.09px] h-[17.73px] object-contain" alt="Crypto 3" />
@@ -411,7 +411,7 @@ export default function GuestHome() {
               {/* Deposit Now Button (Join) (z-index 3) */}
               <button
                 onClick={() => dispatch(openAuthModal('join'))}
-                className="w-[148px] h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer z-10 active:scale-95 transition-all duration-150 shrink-0"
+                className="w-[148px] h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-sans font-bold text-[10.5px] min-[768px]:text-[14px] leading-none min-[768px]:leading-[19px] text-[#1A1404] tracking-[0.02em] cursor-pointer z-10 active:scale-95 transition-all duration-150 shrink-0"
               >
                 Deposit Now
               </button>

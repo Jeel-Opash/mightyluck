@@ -372,7 +372,7 @@ export default function UserHome() {
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
             <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
-              <section className="relative w-full h-[170px] min-[375px]:h-[200px] min-[480px]:h-[240px] md:h-[300px] lg:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate">
+              <section className="relative w-full h-[170px] min-[375px]:h-[200px] min-[480px]:h-[240px] min-[768px]:h-[300px] lg:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate">
                 <img
                   src="/images/hero.jpg"
                   alt="Welcome Banner"
@@ -385,17 +385,17 @@ export default function UserHome() {
 
                 <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 min-[375px]:gap-3 lg:gap-[20px] justify-between items-start z-10">
                   <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
-                    <span className="font-jost font-medium text-[11px] min-[375px]:text-[13px] min-[480px]:text-[16px] md:text-[22px] lg:text-[28px] leading-tight text-white select-none">
+                    <span className="font-jost font-medium text-[11px] min-[375px]:text-[13px] min-[480px]:text-[16px] min-[768px]:text-[22px] lg:text-[28px] leading-tight text-white select-none">
                       Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
                     </span>
-                    <span className="font-jost font-black text-[18px] min-[375px]:text-[22px] min-[480px]:text-[28px] md:text-[38px] lg:text-[48px] leading-[110%] text-white tracking-wide select-none">
+                    <span className="font-jost font-black text-[18px] min-[375px]:text-[22px] min-[480px]:text-[28px] min-[768px]:text-[38px] lg:text-[48px] leading-[110%] text-white tracking-wide select-none">
                       250% WELCOME<br />BONUS!
                     </span>
                   </div>
 
                   <button
                     onClick={() => dispatch(openDepositModal())}
-                    className="w-[96px] h-[32px] min-[375px]:w-[108px] min-[375px]:h-[36px] md:w-[130px] md:h-[42px] lg:w-[146px] lg:h-[48px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] md:rounded-lg flex items-center justify-center font-sans font-bold text-[11px] min-[375px]:text-[12px] md:text-[14px] lg:text-[16px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shadow-[0_4px_12px_rgba(255,200,61,0.2)]"
+                    className="w-[96px] h-[32px] min-[375px]:w-[108px] min-[375px]:h-[36px] min-[768px]:w-[130px] min-[768px]:h-[42px] lg:w-[146px] lg:h-[48px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] min-[768px]:rounded-lg flex items-center justify-center font-sans font-bold text-[11px] min-[375px]:text-[12px] min-[768px]:text-[14px] lg:text-[16px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shadow-[0_4px_12px_rgba(255,200,61,0.2)]"
                   >
                     Join Now
                   </button>
