@@ -28,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className={`${manrope.variable} ${jost.variable} h-full antialiased bg-[#03081e]`}>
+    <html lang="en">
+      <body className={`${manrope.variable} ${jost.variable} antialiased bg-[#03081e]`}>
         <ReduxProvider>
           <AppShell>{children}</AppShell>
         </ReduxProvider>
