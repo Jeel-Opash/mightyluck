@@ -7,18 +7,18 @@ import Sidebar from '@/components/Sidebar';
 import Footer from '@/components/Footer';
 import { useAppSelector, useAppDispatch } from '@/redux/store';
 import { openDepositModal, closeDepositModal, toggleSidebar, openAllGamesModal, closeAllGamesModal, setSidebarOpen } from '@/redux/features/uiSlice';
-import { 
-  GameCard, 
-  ProviderCard, 
+import {
+  GameCard,
+  ProviderCard,
   WinnerRecord,
-  slotGames, 
-  originalGames, 
-  crashGames, 
-  providerList, 
-  tableGames, 
-  bonusGames, 
-  collectionList, 
-  recentWinners 
+  slotGames,
+  originalGames,
+  crashGames,
+  providerList,
+  tableGames,
+  bonusGames,
+  collectionList,
+  recentWinners
 } from '@/data/mockGames';
 
 export default function UserHome() {

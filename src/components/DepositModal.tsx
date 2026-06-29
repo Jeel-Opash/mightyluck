@@ -1514,7 +1514,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
       <div
         style={{
           width: '500px',
-          minHeight: '604px',
+          minHeight: '518px',
           height: 'auto',
           padding: '24px 20px 32px',
           gap: '24px',
@@ -1703,7 +1703,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 padding: activeTab === 'deposit' && depositConfirmed ? '20px 16px' : '16px',
                 gap: '16px',
                 width: '460px',
-                flex: 1,
+                flex: activeTab === 'deposit' ? 1 : '0 0 auto',
                 background: '#0C1F56',
                 borderRadius: '16px',
                 boxSizing: 'border-box',

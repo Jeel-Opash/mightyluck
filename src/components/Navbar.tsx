@@ -385,7 +385,7 @@ export default function Navbar() {
                     alignItems: 'center',
                     padding: '8px 20px',
                     gap: '7.5px',
-                    width: '82px',
+                    width: '85px',
                     height: '30px',
                     background: '#112F82',
                     borderRadius: '6px',

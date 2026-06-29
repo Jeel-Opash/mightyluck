@@ -99,6 +99,18 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
 
   return (
     <div style={{ minHeight: '100svh', background: '#091741', display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '414px', margin: '0 auto', boxSizing: 'border-box' }}>
+      <style>{`
+        .auth-input { color: #FFFFFF !important; }
+        .auth-input::placeholder { color: #7795E8; opacity: 1; }
+        .auth-input:-webkit-autofill,
+        .auth-input:-webkit-autofill:hover,
+        .auth-input:-webkit-autofill:focus {
+          -webkit-text-fill-color: #FFFFFF !important;
+          -webkit-box-shadow: 0 0 0px 1000px #112F82 inset !important;
+          transition: background-color 5000s ease-in-out 0s;
+          caret-color: #FFFFFF;
+        }
+      `}</style>
 
       {/* ── Row 1: Back + Tabs (414px x 92px) ── */}
       <div
@@ -228,28 +240,28 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
               <>
                 {/* Username */}
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '10px 16px', gap: '12px', width: '374px', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
-                  <input placeholder="User name" value={username} onChange={e => setUsername(e.target.value)} style={inputStyle} />
+                  <input className="auth-input" placeholder="User name" value={username} onChange={e => setUsername(e.target.value)} style={inputStyle} />
                 </div>
 
                 {/* First + Last row */}
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', padding: 0, gap: '8px', width: '100%', height: '50px', boxSizing: 'border-box' }}>
                   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '10px 16px', gap: '12px', flex: 1, height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
-                    <input placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} style={inputStyle} />
+                    <input className="auth-input" placeholder="First Name" value={firstName} onChange={e => setFirstName(e.target.value)} style={inputStyle} />
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '10px 16px', gap: '12px', flex: 1, height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
-                    <input placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} style={inputStyle} />
+                    <input className="auth-input" placeholder="Last Name" value={lastName} onChange={e => setLastName(e.target.value)} style={inputStyle} />
                   </div>
                 </div>
 
                 {/* Email */}
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '10px 16px', gap: '12px', width: '100%', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
-                  <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
+                  <input className="auth-input" type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
                 </div>
               </>
             ) : (
               /* Login: email/username field */
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '10px 16px', gap: '12px', width: '100%', height: '50px', background: '#112F82', borderRadius: '8px', boxSizing: 'border-box' }}>
-                <input placeholder="User name or Email" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
+                <input className="auth-input" placeholder="User name or Email" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
               </div>
             )}
 
@@ -261,6 +273,7 @@ export default function MobileAuthPage({ defaultTab }: { defaultTab: 'join' | 'l
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 style={{ ...inputStyle, width: 'auto', flexGrow: 1 }}
+                className="auth-input"
               />
               <button
                 type="button"
