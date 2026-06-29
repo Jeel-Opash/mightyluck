@@ -338,7 +338,7 @@ input::placeholder {
 .winners-table-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   padding: 0;
   gap: 12px;
   width: 100%;
@@ -348,11 +348,17 @@ input::placeholder {
 .winners-table-inner {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   padding: 0;
   gap: 8px;
   width: 100%;
-  min-width: 1136px;
+  min-width: 600px;
+}
+
+@media (min-width: 768px) {
+  .winners-table-inner {
+    min-width: 100%;
+  }
 }
 
 .winners-table-header-row {
@@ -381,12 +387,15 @@ input::placeholder {
   align-items: center;
   padding: 0;
   gap: 12px;
-  width: 624px;
+  width: 55%;
+  max-width: 600px;
+  min-width: 320px;
   height: 20px;
 }
 
 .winners-table-header-username {
-  width: 300px;
+  flex: 2;
+  min-width: 0;
   font-family: var(--font-jost), sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -394,10 +403,14 @@ input::placeholder {
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .winners-table-header-time {
-  width: 150px;
+  flex: 1;
+  min-width: 0;
   font-family: var(--font-jost), sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -405,10 +418,14 @@ input::placeholder {
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .winners-table-header-payout {
-  width: 150px;
+  flex: 1.2;
+  min-width: 0;
   font-family: var(--font-jost), sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -417,6 +434,9 @@ input::placeholder {
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .winner-row-container {
@@ -443,6 +463,8 @@ input::placeholder {
   padding: 0;
   gap: 12px;
   height: 30px;
+  flex: 1;
+  min-width: 0;
 }
 
 .winner-row-game-image-rect {
@@ -463,6 +485,9 @@ input::placeholder {
   line-height: 19px;
   letter-spacing: 0.02em;
   color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .winner-row-right-frame {
@@ -471,12 +496,15 @@ input::placeholder {
   align-items: center;
   padding: 0;
   gap: 12px;
-  width: 624px;
+  width: 55%;
+  max-width: 600px;
+  min-width: 320px;
   height: 19px;
 }
 
 .winner-row-username {
-  width: 300px;
+  flex: 2;
+  min-width: 0;
   font-family: var(--font-manrope), sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -489,23 +517,31 @@ input::placeholder {
 }
 
 .winner-row-time {
-  width: 150px;
+  flex: 1;
+  min-width: 0;
   font-family: var(--font-manrope), sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
   letter-spacing: 0.02em;
   color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .winner-row-payout {
-  width: 150px;
+  flex: 1.2;
+  min-width: 0;
   font-family: var(--font-manrope), sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
   text-align: right;
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .winner-row-payout.win {

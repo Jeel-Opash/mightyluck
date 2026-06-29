@@ -402,7 +402,6 @@ export default function UserHome() {
                 </div>
               </section>
 
-              {/* Carousel Dots indicator */}
               <div className="flex gap-[8px] z-10">
                 <span className="w-[12px] h-[6px] bg-white rounded-full transition-all" />
                 <span className="w-[6px] h-[6px] bg-[#D2DCF7]/50 rounded-full transition-all" />
