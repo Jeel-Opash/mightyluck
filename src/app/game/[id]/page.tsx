@@ -104,21 +104,22 @@ export default function GamePage() {
 
 
             {/* Game window + info bar */}
-            <div className="flex flex-col gap-[20px] w-full">
+            <div className="flex flex-col gap-[20px] w-full max-w-[1136px]">
 
               {/* Game window */}
               <div
-                className="relative w-full h-[220px] xs:h-[280px] sm:h-[380px] md:h-[480px] lg:h-[657px] rounded-[16px] overflow-hidden"
+                className="relative w-full rounded-[16px] overflow-hidden"
                 style={{
                   backgroundImage: "url('/game-1.png')",
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundRepeat: 'no-repeat',
+                  aspectRatio: '1136 / 657'
                 }}
               />
 
               {/* Info / Control Bar */}
-              <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-[1136px] min-h-[80px] sm:h-[100px] bg-[#0C1F56] rounded-[16px] py-[16px] sm:py-[12px] px-[20px] sm:px-[30px] gap-4 sm:gap-[12px]">
+              <div className="flex flex-col sm:flex-row justify-between items-center w-full max-w-[1136px] min-h-[72px] sm:h-[80px] bg-[#0C1F56] rounded-[16px] py-4 sm:py-0 px-[20px] sm:px-[30px] gap-4 sm:gap-[12px]">
 
                 {/* Left: provider logo + separator line + title */}
                 <div className="flex flex-row items-center gap-4 sm:gap-[32px] w-full sm:w-auto h-[40px] justify-start">

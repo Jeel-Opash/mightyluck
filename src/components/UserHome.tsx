@@ -733,7 +733,7 @@ export default function UserHome() {
                           onClick={() => alert(`Promotion ${promo.id} claimed`)}
                           className="relative flex-none w-full sm:w-[560px] aspect-[560/220] sm:aspect-auto h-auto sm:h-[220px] rounded-[16px] overflow-hidden border border-white/5 shadow-lg group cursor-pointer"
                           style={{ scrollSnapAlign: 'start' }}
-                        >
+                          >
                           <img
                             src={promo.img}
                             alt={promo.label}

@@ -117,15 +117,14 @@ function GameCard({ game, onClick }: { game: typeof ALL_GAMES[0]; onClick: () =>
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
       style={{
-        width: '152px',
-        height: '200px',
+        width: '100%',
+        aspectRatio: '152 / 200',
         borderRadius: '12px',
         overflow: 'hidden',
         position: 'relative',
         cursor: 'pointer',
         background: '#CDCDCD',
         boxSizing: 'border-box',
-        flexShrink: 0,
       }}
       className="transition-transform duration-200 hover:scale-[1.03] select-none"
     >
@@ -182,6 +181,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
   const [search, setSearch] = useState('');
   const router = useRouter();
   const providersScrollRef = useRef<HTMLDivElement>(null);
+  const popularScrollRef = useRef<HTMLDivElement>(null);
 
   /* Escape key to close */
   useEffect(() => {
@@ -239,6 +239,13 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
     }
   };
 
+  const scrollPopular = (direction: 'left' | 'right') => {
+    if (popularScrollRef.current) {
+      const scrollAmt = direction === 'left' ? -164 : 164;
+      popularScrollRef.current.scrollBy({ left: scrollAmt, behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <style>{`
@@ -251,19 +258,10 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
           color: #BBCAF3;
           opacity: 1;
         }
-        @media (min-width: 1150px) {
-          .agm-close-btn {
-            position: absolute !important;
-            right: -36px !important;
-            top: 0px !important;
-          }
-        }
-        @media (max-width: 1149px) {
-          .agm-close-btn {
-            position: absolute !important;
-            right: 16px !important;
-            top: 16px !important;
-          }
+        .agm-close-btn {
+          position: absolute !important;
+          right: -36px !important;
+          top: 0px !important;
         }
       `}</style>
 
@@ -277,8 +275,8 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
           <button
             onClick={onClose}
             style={{
-              width: '24px',
-              height: '24px',
+              width: '32px',
+              height: '32px',
               background: 'transparent',
               border: 'none',
               cursor: 'pointer',
@@ -293,12 +291,12 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
           >
             <img
               src="/games/registeer/close.png"
-              style={{ width: '14.4px', height: '14.4px', objectFit: 'contain' }}
+              style={{ width: '18px', height: '18px', objectFit: 'contain' }}
               alt="Close"
             />
           </button>
 
-          {/* Modal Container (1056px x 636px, background #091741, padding 24px) */}
+          {/* Modal Container (Responsive width up to 1056px, height up to 636px) */}
           <div
             onClick={(e) => e.stopPropagation()}
             style={{
@@ -307,8 +305,10 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
               alignItems: 'flex-start',
               padding: '24px',
               gap: '20px',
-              width: '1056px',
-              height: '636px',
+              width: 'calc(100vw - 120px)',
+              maxWidth: '1056px',
+              height: '90vh',
+              maxHeight: '636px',
               background: '#091741',
               borderRadius: '20px',
               boxSizing: 'border-box',
@@ -458,7 +458,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
               </div>
             </div>
 
-            {/* ── RIGHT CONTENT (808px x 588px) ── */}
+            {/* ── RIGHT CONTENT (Responsive flex layout) ── */}
             <div
               style={{
                 display: 'flex',
@@ -466,11 +466,13 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 alignItems: 'flex-start',
                 padding: '0px',
                 gap: '24px',
-                width: '808px',
-                height: '588px',
+                flex: 1,
+                minWidth: 0,
+                width: '100%',
+                height: '100%',
               }}
             >
-              {/* Search input field container (808px x 40px, background #112F82) */}
+              {/* Search input field container (Responsive width, background #112F82) */}
               <div
                 style={{
                   display: 'flex',
@@ -478,7 +480,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                   alignItems: 'center',
                   padding: '10px 20px',
                   gap: '10px',
-                  width: '808px',
+                  width: '100%',
                   height: '40px',
                   background: '#112F82',
                   borderRadius: '8px',
@@ -545,15 +547,16 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                     alignItems: 'flex-start',
                     padding: '0px',
                     gap: '32px',
-                    width: '808px',
-                    height: '524px',
+                    width: '100%',
+                    flex: 1,
+                    minHeight: 0,
                     overflowY: 'auto',
                   }}
                   className="agm-scrollbar-none"
                 >
                   {/* Popular Games Section */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '20px', width: '808px', height: '249px', flexShrink: 0 }}>
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '808px', height: '29px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '20px', width: '100%', height: 'auto', flexShrink: 0 }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: '30px' }}>
                       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px' }}>
                         {/* Flame Icon: large for desktop, small for mobile */}
                         <svg
@@ -584,25 +587,87 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                           Popular Games
                         </span>
                       </div>
+
+                      {/* Slider controls for Popular Games */}
+                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '12px', width: '68px', height: '30px' }}>
+                        <button
+                          onClick={() => scrollPopular('left')}
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            padding: '0px',
+                            width: '30px',
+                            height: '30px',
+                            background: '#112F82',
+                            borderRadius: '4px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            color: '#FFFFFF'
+                          }}
+                          className="hover:bg-[#153896] active:scale-90 duration-100"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'rotate(180deg)' }}>
+                            <path d="M1 1L5 5L1 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                        <button
+                          onClick={() => scrollPopular('right')}
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            padding: '0px',
+                            width: '30px',
+                            height: '30px',
+                            background: '#112F82',
+                            borderRadius: '4px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            color: '#FFFFFF'
+                          }}
+                          className="hover:bg-[#153896] active:scale-90 duration-100"
+                        >
+                          <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L5 5L1 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '12px', width: '808px', height: '200px' }}>
-                      {ALL_GAMES.slice(0, 5).map((game) => (
-                        <GameCard
-                          key={game.id}
-                          game={game}
-                          onClick={() => {
-                            router.push(`/game/${game.id}`);
-                            onClose();
-                          }}
-                        />
+                    <div
+                      ref={popularScrollRef}
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        padding: '0px',
+                        gap: '12px',
+                        width: '100%',
+                        height: '200px',
+                        overflowX: 'auto',
+                      }}
+                      className="agm-scrollbar-none"
+                    >
+                      {ALL_GAMES.slice(0, 10).map((game) => (
+                        <div key={game.id} style={{ width: '152px', flexShrink: 0 }}>
+                          <GameCard
+                            game={game}
+                            onClick={() => {
+                              router.push(`/game/${game.id}`);
+                              onClose();
+                            }}
+                          />
+                        </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Game Providers Section */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '20px', width: '808px', height: '150px', flexShrink: 0 }}>
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '808px', height: '30px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '20px', width: '100%', height: 'auto', flexShrink: 0 }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: '30px' }}>
                       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px' }}>
                         {/* Game Provider Icon: large for desktop, small for mobile */}
                         <img src="/games/game-icons/game.svg" alt="Game Providers" className="hidden sm:block" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
@@ -670,7 +735,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                         alignItems: 'center',
                         padding: '0px',
                         gap: '12px',
-                        width: '808px',
+                        width: '100%',
                         height: '100px',
                         overflowX: 'auto',
                       }}
@@ -736,8 +801,9 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                     alignItems: 'flex-start',
                     padding: '0px',
                     gap: '20px',
-                    width: '808px',
-                    height: '524px',
+                    width: '100%',
+                    flex: 1,
+                    minHeight: 0,
                   }}
                 >
                   {/* Category Header */}
@@ -761,7 +827,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
 
                   <div
                     style={{
-                      width: '808px',
+                      width: '100%',
                       flex: 1,
                       overflowY: 'auto',
                     }}

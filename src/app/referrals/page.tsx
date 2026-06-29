@@ -112,33 +112,33 @@ export default function ReferralsPage() {
           {/* =========================================================================
               1. HERO BANNER - DESKTOP VIEW (lg and up)
              ========================================================================= */}
-           <div
-             className="hidden lg:flex flex-col w-full h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[32px_40px] gap-[20px] bg-[#2A0B3E]"
-           >
-             <img
-               src="/games/refrels/refer.png"
-               alt="Refer Banner"
-               className="absolute inset-0 w-full h-full object-cover scale-[1.02] pointer-events-none z-0"
-             />
-             <div
-               className="absolute inset-0 pointer-events-none z-10"
-               style={{
-                 background: 'linear-gradient(95.59deg, #06102B 13.87%, rgba(6, 16, 43, 0) 35.34%)',
-               }}
-             />
+            <div
+              className="hidden lg:flex flex-col w-full lg:h-[440px] xl:h-[480px] 2xl:h-[533px] rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[24px_40px] xl:p-[32px_40px] gap-[20px] bg-[#2A0B3E]"
+            >
+              <img
+                src="/games/refrels/refer.png"
+                alt="Refer Banner"
+                className="absolute inset-0 w-full h-full object-cover object-[30%_center] scale-[1.02] pointer-events-none z-0"
+              />
+              <div
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                  background: 'linear-gradient(95.59deg, #06102B 13.87%, rgba(6, 16, 43, 0) 35.34%)',
+                }}
+              />
 
-             {/* Top Row: Title Text (Left) & Calculator Card (Right) */}
-             <div className="flex flex-row items-center justify-between h-[345px] w-full shrink-0 z-20 relative">
+              {/* Top Row: Title Text (Left) & Calculator Card (Right) */}
+              <div className="flex flex-row items-center justify-between h-full w-full shrink-0 z-20 relative">
 
-              {/* Title Text Frame */}
-              <div className="flex flex-col gap-1 w-[457px] h-[140px] text-left justify-center">
-                <span className="font-jost font-medium text-[28px] leading-[40px] text-white">
-                  Get <span className="text-[#FFC83D]">PAID</span> every time
-                </span>
-                <h1 className="font-jost font-black text-[48px] leading-[100%] text-white uppercase">
-                  YOUR FRIEND<br />PLAYS!
-                </h1>
-              </div>
+               {/* Title Text Frame */}
+               <div className="flex flex-col gap-1 flex-1 max-w-[457px] h-[140px] text-left justify-center min-w-0 pr-4">
+                 <span className="font-jost font-medium text-[20px] xl:text-[28px] leading-[120%] text-white">
+                   Get <span className="text-[#FFC83D]">PAID</span> every time
+                 </span>
+                 <h1 className="font-jost font-black text-[32px] xl:text-[48px] leading-[100%] text-white uppercase break-words">
+                   YOUR FRIEND<br />PLAYS!
+                 </h1>
+               </div>
 
               {/* Calculator Card Box */}
               <div
@@ -612,7 +612,7 @@ export default function ReferralsPage() {
                  background: 'radial-gradient(circle at 0% 0%, rgba(87, 255, 61, 1) 0%, rgba(87, 255, 61, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
                  backgroundRepeat: 'no-repeat',
                }}
-               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] h-auto lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
+               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] h-auto lg:min-h-[391px] lg:h-auto flex flex-col gap-6 shadow-xl text-left"
             >
               <div className="flex flex-row items-center gap-2">
 
@@ -677,7 +677,7 @@ export default function ReferralsPage() {
                  background: 'radial-gradient(circle at 0% 0%, rgba(20, 99, 255, 1) 0%, rgba(20, 99, 255, 0.1) 23%, rgba(12, 31, 86, 0) 70%), #0C1F56',
                  backgroundRepeat: 'no-repeat',
                }}
-               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] h-auto lg:h-[391px] flex flex-col gap-6 shadow-xl text-left"
+               className="flex-1 border border-white/10 rounded-[16px] p-[32px_40px] h-auto lg:min-h-[391px] lg:h-auto flex flex-col gap-6 shadow-xl text-left"
             >
               <div className="flex flex-row items-center gap-2">
 

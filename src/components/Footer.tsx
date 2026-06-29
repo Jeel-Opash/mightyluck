@@ -160,10 +160,10 @@ export default function Footer({ className }: FooterProps = {}) {
       <footer className="w-full flex flex-col gap-[40px] md:gap-[48px] select-none text-white pb-[100px] md:pb-[40px] px-0">
 
         {/* Top Row: logo + menus */}
-        <div className="w-full flex flex-col md:flex-row justify-between items-center md:items-start gap-[40px] md:gap-[49px]">
+        <div className="w-full flex flex-col xl:flex-row justify-between items-center xl:items-start gap-[40px] xl:gap-[49px]">
 
           {/* Logo + copyright */}
-          <div className="flex flex-col items-center md:items-start gap-[16px] w-[213px] shrink-0 text-center md:text-left">
+          <div className="flex flex-col items-center xl:items-start gap-[16px] w-[213px] shrink-0 text-center xl:text-left">
             <div className="w-[132px] h-[50px] relative">
               <svg width="132" height="50" viewBox="0 0 132 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -185,9 +185,9 @@ export default function Footer({ className }: FooterProps = {}) {
           </div>
 
           {/* Mobile Accordions / Desktop Menu Columns */}
-          <div className="flex flex-col md:flex-row items-stretch md:items-start gap-[20px] md:gap-[32px] w-full md:w-[728px]">
+          <div className="flex flex-col md:flex-row items-stretch md:items-start justify-between gap-[20px] md:gap-[24px] w-full xl:w-[728px]">
             {columns.map((col) => (
-              <div key={col.id} className="flex flex-col w-full md:w-[120px] shrink-0">
+              <div key={col.id} className="flex flex-col w-full md:w-auto md:flex-1 md:min-w-[100px] shrink-0">
 
                 {/* Accordion Header row — exactly 374px × 24px on mobile per Figma */}
                 <div
@@ -235,10 +235,10 @@ export default function Footer({ className }: FooterProps = {}) {
 
         {/* Bottom strip — border-top, legal + badges */}
         <div className="w-full border-t border-[#112F82] pt-[60px] md:pt-[48px] flex flex-col md:flex-row justify-between items-center md:items-start gap-[40px] md:gap-6">
-          <p className="font-manrope font-semibold text-[10px] leading-[14px] text-center md:text-justify tracking-[0.01em] text-[#D2DCF7] w-full md:w-[445px]">
+          <p className="font-manrope font-semibold text-[10px] leading-[14px] text-center md:text-justify tracking-[0.01em] text-[#D2DCF7] w-full md:flex-1 md:max-w-[480px]">
             MightyLuck.com is owned and operated by Company Name B.V. a company that is incorporated under the laws of Curacao with company registration number XXXXXX, having its registered address at Street 3XX9, City, Curaçao. MightyLuck.com is licensed and holds a valid Certificate of Operation (ABC/XXXX/XXX/XXXX).
           </p>
-          <div className="flex flex-row items-center justify-center md:justify-end gap-[30px] md:gap-[32px] w-full md:w-[288.5px] h-[38px] shrink-0">
+          <div className="flex flex-row items-center justify-center md:justify-end gap-[30px] md:gap-[32px] w-full md:w-auto h-[38px] shrink-0">
             <img src="/games/footer/18.svg" className="w-[38px] h-[38px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="18+" />
             <img src="/games/footer/gamble-aware.svg" className="w-[120px] h-[24px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="Gamble Aware" />
             <img src="/games/footer/gaming-license.svg" className="w-[66.5px] h-[38px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity" alt="GCB License Curacao" />
