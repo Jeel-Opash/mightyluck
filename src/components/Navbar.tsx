@@ -326,9 +326,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* =========================================================================
-          2. MOBILE HEADER LAYOUT (md:hidden) - FIGMA SPECIFICATIONS
-         ========================================================================= */}
+   
       <div className="md:hidden w-full h-[50px] bg-[#0C1F56] px-[16px] flex items-center justify-between relative overflow-visible box-border">
 
         {/* Glow wrapper to prevent leaking below/above the navbar */}

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useAppSelector } from '@/redux/store';
+import { useAppSelector, useAppDispatch } from '@/redux/store';
+import { updateBalance } from '@/redux/features/authSlice';
 import CrownIcon from './CrownIcon';
 import Navbar from '@/components/Navbar';
 import WithdrawTab from './deposit/WithdrawTab';
@@ -111,6 +112,7 @@ interface DepositModalProps {
 
 export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   const { user } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
   const [activeTab, setActiveTab] = useState<'deposit' | 'bonuses' | 'withdraw' | 'transactions'>('deposit');
   const [selectedBonus, setSelectedBonus] = useState('150% Reload Bonus + 30 Free Spins');
   const [isBonusDropdownOpen, setIsBonusDropdownOpen] = useState(false);
@@ -161,12 +163,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   const isDeposit = activeTab === 'deposit';
   const showDepositCTA = isDeposit && !depositConfirmed;
 
-  const tabCardFrameHeight = depositConfirmed ? '427px' : (isDeposit ? '500px' : '419px');
-  const contentCardHeight = depositConfirmed ? '381.16px' : (isDeposit ? '454px' : '373px');
-  const innerFrameHeight = depositConfirmed ? 480.16 : (isDeposit ? 553 : 472);
-  const mainLayoutFrameHeight = depositConfirmed ? '592.16px' : (showDepositCTA ? '637px' : `${innerFrameHeight}px`);
-  const bodyHeight = depositConfirmed ? '670.16px' : (showDepositCTA ? '715px' : (isDeposit ? '631px' : '550px'));
-  const modalHeight = depositConfirmed ? '750.16px' : (showDepositCTA ? '795px' : (isDeposit ? '711px' : '630px'));
+  const isCcSuccess = depositConfirmed && selectedPayment === 'Credit Card';
+  const tabCardFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '427px' : (isDeposit ? '500px' : '419px'));
+  const contentCardHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '381.16px' : (isDeposit ? '454px' : '373px'));
+  const innerFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? 480.16 : (isDeposit ? 553 : 472));
+  const mainLayoutFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '592.16px' : (showDepositCTA ? '637px' : `${innerFrameHeight}px`));
+  const bodyHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '670.16px' : (showDepositCTA ? '715px' : (isDeposit ? '631px' : '550px')));
+  const modalHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '750.16px' : (showDepositCTA ? '795px' : (isDeposit ? '711px' : '630px')));
   const countryDropdownRefDesktop = useRef<HTMLDivElement>(null);
 
   // Mock BTC to USD rate: 1 BTC = $65,000 USD
@@ -354,6 +357,308 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
     return 'slash';
   };
 
+  const renderDepositSuccess = (isMobileLayout = false) => {
+    const activeBonusTitle = isPromoApplied
+      ? ([
+        { code: 'PROMO2026', title: '150% Reload Bonus + 30 Free Spins' },
+        { code: 'WELCOME350', title: '350% Welcome Bonus' },
+        { code: 'CRYPTO500', title: '500% Crypto Bonus' },
+      ].find(b => b.code === promoCode.toUpperCase())?.title || '150% Reload Bonus + 30 Free Spins')
+      : '150% Reload Bonus + 30 Free Spins';
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: '0px',
+          gap: '16px',
+          width: isMobileLayout ? '100%' : '428px',
+          height: isMobileLayout ? 'auto' : '394px',
+        }}
+        className="select-none box-border animate-in fade-in zoom-in-95"
+      >
+        {/* Double-Ring Checkmark Icon (428px x 120px) */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '0px',
+            gap: '10px',
+            width: isMobileLayout ? '100%' : '428px',
+            height: '120px',
+          }}
+          className="shrink-0"
+        >
+          <div style={{ width: '120px', height: '120px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+            {/* Outer circle vector (Stroke) */}
+            <div style={{ position: 'absolute', width: '120px', height: '120px', border: '1.5px solid #1463FF', borderRadius: '50%', opacity: 0.8 }} />
+            {/* Inner circle (Ellipse) */}
+            <div style={{ position: 'absolute', width: '70px', height: '70px', background: '#1463FF', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1, boxShadow: '0 0 15px rgba(20,99,255,0.4)' }}>
+              <svg width="24.25" height="18.4" viewBox="0 0 24.25 18.4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.125 9.2L8.925 16L22.125 2.8" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Text Block Frame (428px x 67px, gap: 8px) */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            padding: '0px',
+            gap: '8px',
+            width: isMobileLayout ? '100%' : '428px',
+            height: '67px',
+          }}
+          className="shrink-0"
+        >
+          {/* Title */}
+          <div
+            style={{
+              width: '100%',
+              height: '27px',
+              fontFamily: "'Manrope', sans-serif",
+              fontWeight: 700,
+              fontSize: '20px',
+              lineHeight: '27px',
+              textAlign: 'center',
+              letterSpacing: '0.02em',
+              color: '#FFFFFF',
+            }}
+          >
+            Deposit successful
+          </div>
+
+          {/* Subtitle */}
+          <div
+            style={{
+              width: '100%',
+              height: '32px',
+              fontFamily: "'Manrope', sans-serif",
+              fontWeight: 500,
+              fontSize: '12px',
+              lineHeight: '16px',
+              textAlign: 'center',
+              letterSpacing: '0.02em',
+              color: '#A5B8EF',
+            }}
+          >
+            Your credit card deposit was approved and your balance has been updated.
+          </div>
+        </div>
+
+        {/* Details Table Frame (428px x 175px, gap: 12px) */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            padding: '0px',
+            gap: '12px',
+            width: isMobileLayout ? '100%' : '428px',
+            height: '175px',
+          }}
+          className="shrink-0"
+        >
+          {/* Details Box (428px x 100px) */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              padding: '10px 16px',
+              gap: '8px',
+              width: '100%',
+              height: '100px',
+              background: '#112F82',
+              borderRadius: '8px',
+              boxSizing: 'border-box',
+            }}
+          >
+            {/* Row 1: Amount */}
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#A5B8EF' }}>
+                Amount
+              </span>
+              <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: '12px', lineHeight: '16px', letterSpacing: '0.02em', color: '#FFFFFF' }}>
+                ${getDepositAmount().toFixed(2)}
+              </span>
+            </div>
+
+            {/* dashed border */}
+            <div style={{ width: '100%', borderTop: '1px dashed #193EA5', height: '0px' }} />
+
+            {/* Row 2: Payment Method */}
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#A5B8EF' }}>
+                Payment Method
+              </span>
+              <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: '12px', lineHeight: '16px', letterSpacing: '0.02em', color: '#FFFFFF' }}>
+                Credit Card
+              </span>
+            </div>
+
+            {/* dashed border */}
+            <div style={{ width: '100%', borderTop: '1px dashed #193EA5', height: '0px' }} />
+
+            {/* Row 3: Status */}
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+              <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#A5B8EF' }}>
+                Status
+              </span>
+              <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: '12px', lineHeight: '16px', letterSpacing: '0.02em', color: '#FFFFFF' }}>
+                Completed
+              </span>
+            </div>
+          </div>
+
+          {/* Active Bonus Frame (428px x 63px) */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              padding: '10px 16px',
+              gap: '8px',
+              width: '100%',
+              height: '63px',
+              background: '#112F82',
+              borderRadius: '8px',
+              boxSizing: 'border-box',
+            }}
+          >
+            <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '12px', lineHeight: '16px', letterSpacing: '0.02em', color: '#BBCAF3' }}>
+              Active Bonus
+            </span>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8px', width: '100%' }}>
+              {/* Gift icon using /images/bonus-icon.svg */}
+              <img src="/images/bonus-icon.svg" style={{ width: '16px', height: '16px' }} className="shrink-0" alt="Bonus Icon" />
+              <span
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  lineHeight: '19px',
+                  letterSpacing: '0.02em',
+                  color: '#FFFFFF',
+                }}
+                className="truncate block"
+              >
+                {activeBonusTitle}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderCouponApplied = () => {
+    const currentCode = promoCode.trim() ? promoCode.toUpperCase() : 'PROMO2026';
+
+    const bonusDetails = [
+      { code: 'PROMO2026', title: '150% Reload Bonus + 30 Free Spins', minDeposit: '$30', maxCashout: '40x', wager: '10x' },
+      { code: 'WELCOME350', title: '350% Welcome Bonus', minDeposit: '$20', maxCashout: '45x', wager: '45x' },
+      { code: 'CRYPTO500', title: '500% Crypto Bonus', minDeposit: '$20', maxCashout: '50x', wager: '45x' },
+    ].find(b => b.code === currentCode) || {
+      code: currentCode,
+      title: '150% Reload Bonus + 30 Free Spins',
+      minDeposit: '$30',
+      maxCashout: '40x',
+      wager: '10x'
+    };
+
+    return (
+      <div className="flex flex-col items-center w-full select-none gap-4 animate-in fade-in zoom-in-95">
+        {/* Blue Banner */}
+        <div className="flex flex-row items-center gap-3 w-full bg-[#112F82]/40 border border-[#1463FF]/30 rounded-xl p-3 box-border">
+          {/* Check Circle Badge */}
+          <div className="flex items-center justify-center w-[36px] h-[36px] rounded-full bg-[#1463FF] shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6L9 17L4 12" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <div className="flex flex-col text-left">
+            <span className="font-manrope font-bold text-[14px] text-white">Coupon applied</span>
+            <span className="font-manrope font-medium text-[11px] text-[#A5B8EF]">
+              Your bonus is now attached to your next deposit
+            </span>
+          </div>
+        </div>
+
+        {/* Bonus Details Card */}
+        <div className="flex flex-col items-start gap-4 w-full bg-[#112F82] border border-white/5 rounded-xl p-4 box-border relative overflow-hidden">
+          {/* Top Active Title + Info Row */}
+          <div className="flex flex-row justify-between items-start w-full gap-2">
+            <div className="flex flex-col items-start gap-1">
+              <span className="font-manrope font-medium text-[11px] text-[#A5B8EF]">Active Bonus</span>
+              <span className="font-jost font-extrabold text-[15px] text-white leading-tight text-left">
+                {bonusDetails.title}
+              </span>
+            </div>
+            <button type="button" className="w-[18px] h-[18px] bg-transparent border-none outline-none cursor-pointer flex items-center justify-center shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#A5B8EF" strokeWidth="2" />
+                <path d="M12 16V12M12 8H12.01" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Promo Code Text */}
+          <span className="font-jost font-black text-[18px] tracking-wider text-[#FFC83D]">
+            {bonusDetails.code}
+          </span>
+
+          {/* Separator line */}
+          <div className="border-t border-dashed border-white/10 w-full" />
+
+          {/* Stats Grid Table */}
+          <div className="flex flex-col gap-2 w-full text-[12px] font-manrope font-medium text-[#A5B8EF]">
+            <div className="flex flex-row justify-between items-center w-full">
+              <span>Min. Deposit</span>
+              <span className="font-jost font-bold text-white text-[13px]">{bonusDetails.minDeposit}</span>
+            </div>
+            <div className="flex flex-row justify-between items-center w-full">
+              <span>Max. Cashout</span>
+              <span className="font-jost font-bold text-white text-[13px]">{bonusDetails.maxCashout}</span>
+            </div>
+            <div className="flex flex-row justify-between items-center w-full">
+              <span>Wager</span>
+              <span className="font-jost font-bold text-white text-[13px]">{bonusDetails.wager}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-col gap-3 w-full mt-2">
+          <button
+            onClick={() => setActiveTab('deposit')}
+            className="w-full h-[50px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-lg flex items-center justify-center font-sans font-bold text-[14px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
+          >
+            Continue to deposit
+          </button>
+          <button
+            onClick={() => {
+              setIsPromoApplied(false);
+              setPromoCode('');
+            }}
+            className="w-full h-[50px] bg-[#112F82] hover:bg-[#1a44bb] rounded-lg flex items-center justify-center font-sans font-bold text-[14px] text-white tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
+          >
+            Change coupon
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -499,65 +804,69 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   height: contentCardHeight,
                 }}
                 className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] flex flex-col border border-white/5 shadow-md shrink-0 overflow-y-auto scrollbar-none ${activeTab === 'deposit' && depositConfirmed
-                    ? 'py-[20px] gap-[24px] items-center'
-                    : activeTab === 'bonuses'
-                      ? 'py-[12px] gap-[16px] items-start'
-                      : 'py-[16px] gap-[16px] items-start'
+                  ? 'py-[20px] gap-[24px] items-center'
+                  : activeTab === 'bonuses'
+                    ? 'py-[12px] gap-[16px] items-start'
+                    : 'py-[16px] gap-[16px] items-start'
                   }`}
               >
                 {activeTab === 'deposit' && depositConfirmed ? (
-                  <div className="flex flex-col items-center justify-between w-full h-full text-center select-none">
-                    <p className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#A5B8EF] w-full">
-                      Your transaction in progress and pending confirmation from the blockchain.
-                    </p>
+                  selectedPayment === 'Credit Card' ? (
+                    renderDepositSuccess(true)
+                  ) : (
+                    <div className="flex flex-col items-center justify-between w-full h-full text-center select-none">
+                      <p className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#A5B8EF] w-full">
+                        Your transaction in progress and pending confirmation from the blockchain.
+                      </p>
 
-                    <div className="relative w-[160px] h-[160px] flex items-center justify-center select-none">
-                      <svg className="absolute inset-0 w-full h-full animate-spin [animation-duration:3.5s]" viewBox="0 0 100 100">
-                        {/* Inner dark blue background circle */}
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="44"
-                          stroke="#112F82"
-                          strokeWidth="3.5"
-                          fill="transparent"
-                        />
-                        {/* Outer yellow progress arc */}
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="44"
-                          stroke="#FFC83D"
-                          strokeWidth="3.5"
-                          fill="transparent"
-                          strokeDasharray="276"
-                          strokeDashoffset="65"
-                          strokeLinecap="round"
-                          transform="rotate(-90 50 50)"
-                        />
-                      </svg>
-                      <div className="w-[122px] h-[122px] rounded-full bg-[#112F82] flex items-center justify-center z-10 shadow-[0_0_15px_rgba(20,99,255,0.1)]">
-                        <img src="/images/logo.svg" className="w-[60px] h-[40px] object-contain" alt="Mighty Luck" />
+                      <div className="relative w-[160px] h-[160px] flex items-center justify-center select-none">
+                        <svg className="absolute inset-0 w-full h-full animate-spin [animation-duration:3.5s]" viewBox="0 0 100 100">
+                          {/* Inner dark blue background circle */}
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="44"
+                            stroke="#112F82"
+                            strokeWidth="3.5"
+                            fill="transparent"
+                          />
+                          {/* Outer yellow progress arc */}
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="44"
+                            stroke="#FFC83D"
+                            strokeWidth="3.5"
+                            fill="transparent"
+                            strokeDasharray="276"
+                            strokeDashoffset="65"
+                            strokeLinecap="round"
+                            transform="rotate(-90 50 50)"
+                          />
+                        </svg>
+                        <div className="w-[122px] h-[122px] rounded-full bg-[#112F82] flex items-center justify-center z-10 shadow-[0_0_15px_rgba(20,99,255,0.1)]">
+                          <img src="/images/logo.svg" className="w-[60px] h-[40px] object-contain" alt="Mighty Luck" />
+                        </div>
                       </div>
-                    </div>
 
-                    <p className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#A5B8EF] w-full">
-                      1 confirmation is required for deposits to be credited.
-                      <br />
-                      Want to know how many confirmations this transaction has?
-                      <br />
-                      Please{' '}
-                      <a
-                        href="https://www.blockchain.com/explorer"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#FFC83D] hover:text-[#ffd362] underline underline-offset-2 transition-colors font-bold"
-                      >
-                        click here
-                      </a>
-                      .
-                    </p>
-                  </div>
+                      <p className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#A5B8EF] w-full">
+                        1 confirmation is required for deposits to be credited.
+                        <br />
+                        Want to know how many confirmations this transaction has?
+                        <br />
+                        Please{' '}
+                        <a
+                          href="https://www.blockchain.com/explorer"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#FFC83D] hover:text-[#ffd362] underline underline-offset-2 transition-colors font-bold"
+                        >
+                          click here
+                        </a>
+                        .
+                      </p>
+                    </div>
+                  )
                 ) : activeTab === 'deposit' ? (
                   <>
                     {/* Select a Bonus */}
@@ -1083,353 +1392,361 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 ) : null}
 
                 {activeTab === 'bonuses' && (
-                  <div className="flex flex-col gap-[10px] w-full h-auto select-none shrink-0">
-                    {/* Promo Code Row */}
-                    <div className="flex flex-col gap-[6px] w-full">
-                      <span className="font-sans font-medium text-[13px] leading-[18px] tracking-[0.01em] text-white">
-                        If you have a Bonus Code &ndash; enter it here
-                      </span>
-                      {/* Input + Apply row */}
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          padding: '0px',
-                          gap: '8px',
-                          width: '100%',
-                          height: '50px',
-                        }}
-                      >
-                        {/* Input — height: 50px, bg: #112F82 */}
+                  isPromoApplied ? (
+                    renderCouponApplied()
+                  ) : (
+                    <div className="flex flex-col gap-[10px] w-full h-auto select-none shrink-0">
+                      {/* Promo Code Row */}
+                      <div className="flex flex-col gap-[6px] w-full">
+                        <span className="font-sans font-medium text-[13px] leading-[18px] tracking-[0.01em] text-white">
+                          If you have a Bonus Code &ndash; enter it here
+                        </span>
+                        {/* Input + Apply row */}
                         <div
                           style={{
                             display: 'flex',
                             flexDirection: 'row',
                             alignItems: 'center',
-                            padding: '10px 16px',
-                            gap: '12px',
+                            padding: '0px',
+                            gap: '8px',
+                            width: '100%',
                             height: '50px',
-                            flexGrow: 1,
-                            background: '#112F82',
-                            borderRadius: '8px',
-                            boxSizing: 'border-box',
-                            minWidth: 0,
                           }}
                         >
-                          <input
-                            type="text"
-                            value={promoCode}
-                            onChange={(e) => setPromoCode(e.target.value)}
-                            placeholder="Promo Code"
-                            className="promo-input"
-                            style={{
-                              width: '100%',
-                              height: '24px',
-                              fontFamily: "'Manrope', sans-serif",
-                              fontStyle: 'normal',
-                              fontWeight: 600,
-                              fontSize: '14px',
-                              lineHeight: '24px',
-                              letterSpacing: '0.02em',
-                              color: '#FFFFFF',
-                              background: 'transparent',
-                              border: 'none',
-                              outline: 'none',
-                              flexGrow: 1,
-                            }}
-                            onFocus={(e) => {
-                              (e.currentTarget.parentElement?.parentElement as HTMLElement).style.boxShadow = '0 0 0 1.5px rgba(20,99,255,0.6)';
-                            }}
-                            onBlur={(e) => {
-                              (e.currentTarget.parentElement?.parentElement as HTMLElement).style.boxShadow = 'none';
-                            }}
-                          />
-                          {/* Info Button */}
-                          {isPromoApplied && (
-                            <button
-                              type="button"
-                              style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '50px',
-                                height: '50px',
-                                background: '#112F82',
-                                borderRadius: '8px',
-                                border: 'none',
-                                flexShrink: 0,
-                                cursor: 'pointer',
-                              }}
-                            >
-                              <img src="/games/game-icons/i.png" alt="Info" className="w-[18.29px] h-[18px] object-contain" />
-                            </button>
-                          )}
-                        </div>
-
-                        {/* Apply / Cancel — height: 50px, Manrope 700 14px, r-8 */}
-                        <button
-                          type="button"
-                          onClick={() => {
-                            if (isPromoApplied) {
-                              setIsPromoApplied(false);
-                              setPromoCode('');
-                            } else {
-                              if (!promoCode.trim()) return;
-                              setIsPromoApplied(true);
-                            }
-                          }}
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            padding: '10px 30px',
-                            gap: '10px',
-                            width: '100px',
-                            height: '50px',
-                            background: '#FFC83D',
-                            borderRadius: '8px',
-                            border: 'none',
-                            flexShrink: 0,
-                            cursor: 'pointer',
-                            transition: 'background 0.15s',
-                            fontFamily: 'Manrope, sans-serif',
-                            fontStyle: 'normal',
-                            fontWeight: 700,
-                            fontSize: '14px',
-                            lineHeight: '19px',
-                            letterSpacing: '0.02em',
-                            color: '#1A1404',
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = '#ffd362')}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = '#FFC83D')}
-                          onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.95)')}
-                          onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                        >
-                          {isPromoApplied ? 'Cancel' : 'Apply'}
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Available Bonuses label */}
-                    <span className="font-sans font-medium text-[13px] leading-[18px] tracking-[0.01em] text-white">
-                      Available bonuses for you
-                    </span>
-
-                    {/* Horizontally scrollable bonus cards */}
-                    <div
-                      ref={bonusScrollRef}
-                      onScroll={() => {
-                        if (!bonusScrollRef.current) return;
-                        const { scrollLeft, scrollWidth, clientWidth } = bonusScrollRef.current;
-                        const idx = Math.round((scrollLeft / (scrollWidth - clientWidth)) * 2);
-                        setActiveBonusCard(Math.min(2, Math.max(0, idx)));
-                      }}
-                      className="flex flex-row gap-[10px] overflow-x-auto scrollbar-none scroll-smooth snap-x snap-mandatory w-full"
-                      style={{ scrollSnapType: 'x mandatory' }}
-                    >
-                      {[
-                        {
-                          title: '150% Reload Bonus + 30 Free Spins',
-                          minDeposit: '$30',
-                          maxCashout: '40x',
-                          maxAmount: '$30',
-                          wager: '10x',
-                        },
-                        {
-                          title: '350% Welcome Bonus',
-                          minDeposit: '$20',
-                          maxCashout: '45x',
-                          maxAmount: '$50',
-                          wager: '45x',
-                        },
-                        {
-                          title: '500% Crypto Bonus',
-                          minDeposit: '$20',
-                          maxCashout: '50x',
-                          maxAmount: '$100',
-                          wager: '45x',
-                        },
-                      ].map((bonus, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'flex-start',
-                            padding: '20px',
-                            gap: '12px',
-                            width: '300px',
-                            height: '205px',
-                            background: '#112F82',
-                            borderRadius: '12px',
-                            flexShrink: 0,
-                            alignSelf: 'stretch',
-                            scrollSnapAlign: 'start',
-                            boxSizing: 'border-box',
-                          }}
-                        >
+                          {/* Input — height: 50px, bg: #112F82 */}
                           <div
                             style={{
                               display: 'flex',
                               flexDirection: 'row',
-                              justifyContent: 'center',
                               alignItems: 'center',
-                              padding: '0px',
-                              gap: '10px',
-                              width: '240px',
-                              height: '20px',
-                              alignSelf: 'stretch',
-                              flexShrink: 0,
+                              padding: '10px 16px',
+                              gap: '12px',
+                              height: '50px',
+                              flexGrow: 1,
+                              background: '#112F82',
+                              borderRadius: '8px',
+                              boxSizing: 'border-box',
+                              minWidth: 0,
                             }}
                           >
-                            <span
+                            <input
+                              type="text"
+                              value={promoCode}
+                              onChange={(e) => setPromoCode(e.target.value)}
+                              placeholder="Promo Code"
+                              className="promo-input"
                               style={{
-                                width: 'px',
-                                height: '20px',
-                                fontFamily: "'Jost', sans-serif",
+                                width: '100%',
+                                height: '24px',
+                                fontFamily: "'Manrope', sans-serif",
                                 fontStyle: 'normal',
-                                fontWeight: 700,
+                                fontWeight: 600,
                                 fontSize: '14px',
-                                lineHeight: '20px',
+                                lineHeight: '24px',
                                 letterSpacing: '0.02em',
                                 color: '#FFFFFF',
+                                background: 'transparent',
+                                border: 'none',
+                                outline: 'none',
                                 flexGrow: 1,
-                                flexShrink: 0,
-                                whiteSpace: 'nowrap',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
                               }}
-                            >
-                              {bonus.title}
-                            </span>
+                              onFocus={(e) => {
+                                (e.currentTarget.parentElement?.parentElement as HTMLElement).style.boxShadow = '0 0 0 1.5px rgba(20,99,255,0.6)';
+                              }}
+                              onBlur={(e) => {
+                                (e.currentTarget.parentElement?.parentElement as HTMLElement).style.boxShadow = 'none';
+                              }}
+                            />
+                            {/* Info Button */}
+                            {isPromoApplied && (
+                              <button
+                                type="button"
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: '50px',
+                                  height: '50px',
+                                  background: '#112F82',
+                                  borderRadius: '8px',
+                                  border: 'none',
+                                  flexShrink: 0,
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                <img src="/games/game-icons/i.png" alt="Info" className="w-[18.29px] h-[18px] object-contain" />
+                              </button>
+                            )}
                           </div>
 
-                          <div
-                            style={{
-                              display: 'flex',
-                              flexDirection: 'column',
-                              alignItems: 'flex-start',
-                              padding: '0px',
-                              gap: '9px',
-                              width: '240px',
-                              height: '81px',
-                              alignSelf: 'stretch',
-                              flexShrink: 0,
-                            }}
-                          >
-                            {/* Stats Row 1 */}
-                            <div
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'flex-start',
-                                padding: '0px',
-                                gap: '12px',
-                                width: '240px',
-                                height: '36px',
-                                alignSelf: 'stretch',
-                                flexShrink: 0,
-                              }}
-                            >
-                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '2px', width: '114px', flexGrow: 1 }}>
-                                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '10px', lineHeight: '14px', color: '#BBCAF3' }}>Min. Deposit</span>
-                                <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: '14px', lineHeight: '20px', color: '#FFFFFF' }}>{bonus.minDeposit}</span>
-                              </div>
-                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '2px', width: '114px', flexGrow: 1 }}>
-                                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '10px', lineHeight: '14px', color: '#BBCAF3' }}>Max. Cashout</span>
-                                <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: '14px', lineHeight: '20px', color: '#FFFFFF' }}>{bonus.maxCashout}</span>
-                              </div>
-                            </div>
-
-                            {/* Stats Row 2 */}
-                            <div
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'flex-start',
-                                padding: '0px',
-                                gap: '12px',
-                                width: '240px',
-                                height: '36px',
-                                alignSelf: 'stretch',
-                                flexShrink: 0,
-                              }}
-                            >
-                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '2px', width: '114px', flexGrow: 1 }}>
-                                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '10px', lineHeight: '14px', color: '#BBCAF3' }}>Max. Amount</span>
-                                <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: '14px', lineHeight: '20px', color: '#FFFFFF' }}>{bonus.maxAmount}</span>
-                              </div>
-                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '2px', width: '114px', flexGrow: 1 }}>
-                                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '10px', lineHeight: '14px', color: '#BBCAF3' }}>Wager (dep.+bonus)</span>
-                                <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: '14px', lineHeight: '20px', color: '#FFFFFF' }}>{bonus.wager}</span>
-                              </div>
-                            </div>
-                          </div>
-
+                          {/* Apply / Cancel — height: 50px, Manrope 700 14px, r-8 */}
                           <button
                             type="button"
-                            onClick={() => alert(`"${bonus.title}" activated!`)}
+                            onClick={() => {
+                              if (isPromoApplied) {
+                                setIsPromoApplied(false);
+                                setPromoCode('');
+                              } else {
+                                if (!promoCode.trim()) return;
+                                setIsPromoApplied(true);
+                              }
+                            }}
                             style={{
                               display: 'flex',
                               flexDirection: 'row',
                               justifyContent: 'center',
                               alignItems: 'center',
-                              padding: '10px 20px',
+                              padding: '10px 30px',
                               gap: '10px',
-                              width: '240px',
-                              height: '40px',
+                              width: '100px',
+                              height: '50px',
                               background: '#FFC83D',
-                              borderRadius: '6px',
+                              borderRadius: '8px',
                               border: 'none',
                               flexShrink: 0,
-                              alignSelf: 'stretch',
                               cursor: 'pointer',
-                              transition: 'background 0.15s, transform 0.1s',
-                              fontFamily: "'Manrope', sans-serif",
+                              transition: 'background 0.15s',
+                              fontFamily: 'Manrope, sans-serif',
+                              fontStyle: 'normal',
                               fontWeight: 700,
-                              fontSize: '12px',
+                              fontSize: '14px',
+                              lineHeight: '19px',
+                              letterSpacing: '0.02em',
                               color: '#1A1404',
                             }}
                             onMouseEnter={(e) => (e.currentTarget.style.background = '#ffd362')}
                             onMouseLeave={(e) => (e.currentTarget.style.background = '#FFC83D')}
-                            onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.98)')}
+                            onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.95)')}
                             onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                           >
-                            Activate
+                            {isPromoApplied ? 'Cancel' : 'Apply'}
                           </button>
                         </div>
-                      ))}
-                    </div>
+                      </div>
 
-                    {/* Dot pagination indicators */}
-                    <div className="flex flex-row items-center justify-center gap-[6px] mt-auto pt-[4px]">
-                      {[0, 1, 2].map((i) => (
-                        <button
-                          key={i}
-                          type="button"
-                          onClick={() => {
-                            if (!bonusScrollRef.current) return;
-                            const cardWidth = bonusScrollRef.current.scrollWidth / 3;
-                            bonusScrollRef.current.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
-                            setActiveBonusCard(i);
-                          }}
-                          style={{
-                            width: activeBonusCard === i ? '20px' : '8px',
-                            height: '8px',
-                            borderRadius: '4px',
-                            background: activeBonusCard === i ? '#FFFFFF' : 'rgba(255,255,255,0.35)',
-                            transition: 'all 0.3s ease',
-                            border: 'none',
-                            padding: 0,
-                            cursor: 'pointer',
-                          }}
-                        />
-                      ))}
+                      {/* Available Bonuses label */}
+                      <span className="font-sans font-medium text-[13px] leading-[18px] tracking-[0.01em] text-white">
+                        Available bonuses for you
+                      </span>
+
+                      {/* Horizontally scrollable bonus cards */}
+                      <div
+                        ref={bonusScrollRef}
+                        onScroll={() => {
+                          if (!bonusScrollRef.current) return;
+                          const { scrollLeft, scrollWidth, clientWidth } = bonusScrollRef.current;
+                          const idx = Math.round((scrollLeft / (scrollWidth - clientWidth)) * 2);
+                          setActiveBonusCard(Math.min(2, Math.max(0, idx)));
+                        }}
+                        className="flex flex-row gap-[10px] overflow-x-auto scrollbar-none scroll-smooth snap-x snap-mandatory w-full"
+                        style={{ scrollSnapType: 'x mandatory' }}
+                      >
+                        {[
+                          {
+                            title: '150% Reload Bonus + 30 Free Spins',
+                            minDeposit: '$30',
+                            maxCashout: '40x',
+                            maxAmount: '$30',
+                            wager: '10x',
+                          },
+                          {
+                            title: '350% Welcome Bonus',
+                            minDeposit: '$20',
+                            maxCashout: '45x',
+                            maxAmount: '$50',
+                            wager: '45x',
+                          },
+                          {
+                            title: '500% Crypto Bonus',
+                            minDeposit: '$20',
+                            maxCashout: '50x',
+                            maxAmount: '$100',
+                            wager: '45x',
+                          },
+                        ].map((bonus, i) => (
+                          <div
+                            key={i}
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'center',
+                              alignItems: 'flex-start',
+                              padding: '20px',
+                              gap: '12px',
+                              width: '300px',
+                              height: '205px',
+                              background: '#112F82',
+                              borderRadius: '12px',
+                              flexShrink: 0,
+                              alignSelf: 'stretch',
+                              scrollSnapAlign: 'start',
+                              boxSizing: 'border-box',
+                            }}
+                          >
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                padding: '0px',
+                                gap: '10px',
+                                width: '240px',
+                                height: '20px',
+                                alignSelf: 'stretch',
+                                flexShrink: 0,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  width: 'px',
+                                  height: '20px',
+                                  fontFamily: "'Jost', sans-serif",
+                                  fontStyle: 'normal',
+                                  fontWeight: 700,
+                                  fontSize: '14px',
+                                  lineHeight: '20px',
+                                  letterSpacing: '0.02em',
+                                  color: '#FFFFFF',
+                                  flexGrow: 1,
+                                  flexShrink: 0,
+                                  whiteSpace: 'nowrap',
+                                  overflow: 'hidden',
+                                  textOverflow: 'ellipsis',
+                                }}
+                              >
+                                {bonus.title}
+                              </span>
+                            </div>
+
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'flex-start',
+                                padding: '0px',
+                                gap: '9px',
+                                width: '240px',
+                                height: '81px',
+                                alignSelf: 'stretch',
+                                flexShrink: 0,
+                              }}
+                            >
+                              {/* Stats Row 1 */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '12px',
+                                  width: '240px',
+                                  height: '36px',
+                                  alignSelf: 'stretch',
+                                  flexShrink: 0,
+                                }}
+                              >
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '2px', width: '114px', flexGrow: 1 }}>
+                                  <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '10px', lineHeight: '14px', color: '#BBCAF3' }}>Min. Deposit</span>
+                                  <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: '14px', lineHeight: '20px', color: '#FFFFFF' }}>{bonus.minDeposit}</span>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '2px', width: '114px', flexGrow: 1 }}>
+                                  <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '10px', lineHeight: '14px', color: '#BBCAF3' }}>Max. Cashout</span>
+                                  <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: '14px', lineHeight: '20px', color: '#FFFFFF' }}>{bonus.maxCashout}</span>
+                                </div>
+                              </div>
+
+                              {/* Stats Row 2 */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '12px',
+                                  width: '240px',
+                                  height: '36px',
+                                  alignSelf: 'stretch',
+                                  flexShrink: 0,
+                                }}
+                              >
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '2px', width: '114px', flexGrow: 1 }}>
+                                  <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '10px', lineHeight: '14px', color: '#BBCAF3' }}>Max. Amount</span>
+                                  <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: '14px', lineHeight: '20px', color: '#FFFFFF' }}>{bonus.maxAmount}</span>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '2px', width: '114px', flexGrow: 1 }}>
+                                  <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: '10px', lineHeight: '14px', color: '#BBCAF3' }}>Wager (dep.+bonus)</span>
+                                  <span style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, fontSize: '14px', lineHeight: '20px', color: '#FFFFFF' }}>{bonus.wager}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const codes = ['PROMO2026', 'WELCOME350', 'CRYPTO500'];
+                                setPromoCode(codes[i]);
+                                setIsPromoApplied(true);
+                              }}
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                padding: '10px 20px',
+                                gap: '10px',
+                                width: '240px',
+                                height: '40px',
+                                background: '#FFC83D',
+                                borderRadius: '6px',
+                                border: 'none',
+                                flexShrink: 0,
+                                alignSelf: 'stretch',
+                                cursor: 'pointer',
+                                transition: 'background 0.15s, transform 0.1s',
+                                fontFamily: "'Manrope', sans-serif",
+                                fontWeight: 700,
+                                fontSize: '12px',
+                                color: '#1A1404',
+                              }}
+                              onMouseEnter={(e) => (e.currentTarget.style.background = '#ffd362')}
+                              onMouseLeave={(e) => (e.currentTarget.style.background = '#FFC83D')}
+                              onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.98)')}
+                              onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                            >
+                              Activate
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Dot pagination indicators */}
+                      <div className="flex flex-row items-center justify-center gap-[6px] mt-auto pt-[4px]">
+                        {[0, 1, 2].map((i) => (
+                          <button
+                            key={i}
+                            type="button"
+                            onClick={() => {
+                              if (!bonusScrollRef.current) return;
+                              const cardWidth = bonusScrollRef.current.scrollWidth / 3;
+                              bonusScrollRef.current.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+                              setActiveBonusCard(i);
+                            }}
+                            style={{
+                              width: activeBonusCard === i ? '20px' : '8px',
+                              height: '8px',
+                              borderRadius: '4px',
+                              background: activeBonusCard === i ? '#FFFFFF' : 'rgba(255,255,255,0.35)',
+                              transition: 'all 0.3s ease',
+                              border: 'none',
+                              padding: 0,
+                              cursor: 'pointer',
+                            }}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )
                 )}
 
                 {activeTab === 'withdraw' && (
@@ -1442,30 +1759,23 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               </div>
             </div>
 
-            {/* Yellow CTA Button (Figma specified: height: 60px, border-radius: 8px) */}
+            {/* Yellow CTA Button */}
             {activeTab === 'deposit' && depositConfirmed ? (
-              <div className="w-full flex flex-col items-center gap-[12px] h-[88px] shrink-0">
+              <div className="w-full flex flex-col items-center justify-center h-[50px] shrink-0 mt-auto">
                 <button
                   onClick={onClose}
-                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0"
+                  style={{
+                    fontFamily: "'Manrope', sans-serif",
+                    fontWeight: 700,
+                    fontSize: '16px',
+                    lineHeight: '22px',
+                    letterSpacing: '0.02em',
+                    color: '#1A1404',
+                  }}
+                  className="w-full h-[50px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0"
                 >
-                  Go to games
+                  {selectedPayment === 'Credit Card' ? 'Play Now' : 'Go to games'}
                 </button>
-                <div className="flex flex-row items-center justify-center gap-[8px] h-[16px] shrink-0">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6.5 8.5H5.5V5.5H6.5V8.5ZM6.5 4.5H5.5V3.5H6.5V4.5Z" fill="#7795E8" />
-                  </svg>
-                  <span className="font-manrope font-medium text-[12px] leading-[16px] tracking-[0.02em] text-[#7795E8] select-none">
-                    Having problems?{' '}
-                    <button
-                      type="button"
-                      onClick={() => alert('Opening live support...')}
-                      className="text-[#FFC83D] hover:text-[#ffd362] font-semibold transition-colors cursor-pointer bg-transparent border-0 p-0"
-                    >
-                      Contact support
-                    </button>
-                  </span>
-                </div>
               </div>
             ) : showDepositCTA && (
               selectedPayment === 'Bitcoin' ? (
@@ -1495,6 +1805,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       alert('Please fill out all credit card details.');
                       return;
                     }
+                    const currentBalance = user?.balance || 0;
+                    dispatch(updateBalance(currentBalance + getDepositAmount()));
                     setDepositConfirmed(true);
                   }}
                   className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0"
@@ -1514,7 +1826,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         style={{
           width: '500px',
           minHeight: '518px',
-          height: 'auto',
+          height: activeTab === 'deposit' && depositConfirmed ? '655px' : 'auto',
           padding: '24px 20px 32px',
           gap: '24px',
           background: '#091741',
@@ -1523,6 +1835,21 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         }}
         className="hidden min-[580px]:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
       >
+        {/* Ellipse 6 Accent Glow */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '173px',
+            height: '173px',
+            left: 'calc(50% - 173px/2 + 0.5px)',
+            top: '-126px',
+            background: '#1463FF',
+            filter: 'blur(40px)',
+            zIndex: 0,
+          }}
+          className="pointer-events-none"
+        />
+
         {/* Close Button on the top-right outside the modal wrapper */}
         <button
           onClick={onClose}
@@ -1541,7 +1868,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             alignItems: 'center',
             justifyContent: 'center',
           }}
-          className="opacity-80 hover:opacity-100 transition-opacity"
+          className="opacity-80 hover:opacity-100 transition-opacity opacity-100"
           title="Close Modal"
         >
           <img
@@ -1551,19 +1878,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           />
         </button>
 
-        {/* Glow Containment Wrapper to prevent any blur/shadow bleeding outside the desktop modal container */}
-        <div className="absolute inset-0 rounded-[16px] overflow-hidden pointer-events-none z-0">
-          {/* Blue radial glow behind the Wallet title row */}
-          <div
-            className="absolute w-[300px] h-[70px] left-[50%] top-[-10px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(20,99,255,0.7)_0%,rgba(0,122,255,0.8)_35%,transparent_100%)] blur-[20px] pointer-events-none"
-          />
-        </div>
-
-        {/* Inner layout frame (460px x 474px, order 1, z-index 1) */}
+        {/* Inner layout frame (460px x 525px Success / auto, z-index 1) */}
         <div
           style={{
             width: '460px',
-            flex: 1,
+            height: activeTab === 'deposit' && depositConfirmed ? '525px' : 'auto',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
@@ -1574,18 +1893,17 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           }}
           className="select-none"
         >
-          {/* Title bar (460px x 50px, order 0) */}
+          {/* Title bar (460px x 29px) */}
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
               justifyContent: 'center',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               padding: '0px',
               gap: '12px',
               width: '460px',
-              height: '50px',
-              borderRadius: '12px',
+              height: '29px',
             }}
             className="relative shrink-0"
           >
@@ -1627,7 +1945,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             </div>
           </div>
 
-          {/* Body Frame (460px x 421px, order 1) */}
+          {/* Body Frame (460px x 472px Success / auto) */}
           <div
             style={{
               display: 'flex',
@@ -1636,7 +1954,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               padding: '0px',
               gap: '16px',
               width: '460px',
-              flex: 1,
+              height: activeTab === 'deposit' && depositConfirmed ? '472px' : 'auto',
               minHeight: 0,
             }}
           >
@@ -1693,16 +2011,16 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               })}
             </div>
 
-            {/* Content Container (460px x 375px, order 1, background: #0C1F56, border-radius: 16px) */}
+            {/* Content Container (460px x 426px Success / auto) */}
             <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                padding: activeTab === 'deposit' && depositConfirmed ? '20px 16px' : '16px',
+                padding: '16px',
                 gap: '16px',
                 width: '460px',
-                flex: activeTab === 'deposit' ? 1 : '0 0 auto',
+                height: activeTab === 'deposit' && depositConfirmed ? '426px' : 'auto',
                 background: '#0C1F56',
                 borderRadius: '16px',
                 boxSizing: 'border-box',
@@ -1711,99 +2029,102 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               className="overflow-y-auto scrollbar-none"
             >
               {activeTab === 'deposit' && depositConfirmed ? (
-                /* Confirmed/Pending Screen */
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    padding: '0px',
-                    gap: '16px',
-                    width: '428px',
-                    height: '247px',
-                  }}
-                  className="select-none"
-                >
-                  <p
-                    style={{
-                      width: '428px',
-                      height: '38px',
-                      fontFamily: "'Manrope', sans-serif",
-                      fontStyle: 'normal',
-                      fontWeight: 600,
-                      fontSize: '14px',
-                      lineHeight: '19px',
-                      textAlign: 'center',
-                      letterSpacing: '0.02em',
-                      color: '#A5B8EF',
-                    }}
-                    className="m-0"
-                  >
-                    Your transaction in progress and pending confirmation from the blockchain.
-                  </p>
-
-                  {/* Confirmation Indicators Row */}
+                selectedPayment === 'Credit Card' ? (
+                  renderDepositSuccess(false)
+                ) : (
                   <div
                     style={{
                       display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'center',
+                      flexDirection: 'column',
                       alignItems: 'center',
                       padding: '0px',
-                      gap: '10px',
+                      gap: '16px',
                       width: '428px',
-                      height: '120px',
+                      height: '247px',
                     }}
+                    className="select-none"
                   >
-                    {/* Crown 1 */}
-                    <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <CrownIcon fill="#A5B8EF" width={29} height={21} />
-                    </div>
-
-                    {/* Crown 2 */}
-                    <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <CrownIcon fill="#A5B8EF" width={29} height={21} />
-                    </div>
-
-                    {/* Crown 3 */}
-                    <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <CrownIcon fill="#112F82" width={29} height={21} />
-                    </div>
-                  </div>
-
-                  {/* Text 2 */}
-                  <p
-                    style={{
-                      width: '428px',
-                      height: '57px',
-                      fontFamily: "'Manrope', sans-serif",
-                      fontStyle: 'normal',
-                      fontWeight: 600,
-                      fontSize: '14px',
-                      lineHeight: '19px',
-                      textAlign: 'center',
-                      letterSpacing: '0.02em',
-                      color: '#A5B8EF',
-                    }}
-                    className="m-0"
-                  >
-                    1 confirmation is required for deposits to be credited.
-                    <br />
-                    Want to know how many confirmations this transaction has?
-                    <br />
-                    Please{' '}
-                    <a
-                      href="https://www.blockchain.com/explorer"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ color: '#FFC83D', textDecoration: 'none' }}
-                      className="hover:underline font-bold"
+                    <p
+                      style={{
+                        width: '428px',
+                        height: '38px',
+                        fontFamily: "'Manrope', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 600,
+                        fontSize: '14px',
+                        lineHeight: '19px',
+                        textAlign: 'center',
+                        letterSpacing: '0.02em',
+                        color: '#A5B8EF',
+                      }}
+                      className="m-0"
                     >
-                      click here
-                    </a>
-                    .
-                  </p>
-                </div>
+                      Your transaction in progress and pending confirmation from the blockchain.
+                    </p>
+
+                    {/* Confirmation Indicators Row */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '0px',
+                        gap: '10px',
+                        width: '428px',
+                        height: '120px',
+                      }}
+                    >
+                      {/* Crown 1 */}
+                      <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <CrownIcon fill="#A5B8EF" width={29} height={21} />
+                      </div>
+
+                      {/* Crown 2 */}
+                      <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <CrownIcon fill="#A5B8EF" width={29} height={21} />
+                      </div>
+
+                      {/* Crown 3 */}
+                      <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <CrownIcon fill="#112F82" width={29} height={21} />
+                      </div>
+                    </div>
+
+                    {/* Text 2 */}
+                    <p
+                      style={{
+                        width: '428px',
+                        height: '57px',
+                        fontFamily: "'Manrope', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 600,
+                        fontSize: '14px',
+                        lineHeight: '19px',
+                        textAlign: 'center',
+                        letterSpacing: '0.02em',
+                        color: '#A5B8EF',
+                      }}
+                      className="m-0"
+                    >
+                      1 confirmation is required for deposits to be credited.
+                      <br />
+                      Want to know how many confirmations this transaction has?
+                      <br />
+                      Please{' '}
+                      <a
+                        href="https://www.blockchain.com/explorer"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: '#FFC83D', textDecoration: 'none' }}
+                        className="hover:underline font-bold"
+                      >
+                        click here
+                      </a>
+                      .
+                    </p>
+                  </div>
+                )
               ) : activeTab === 'deposit' ? (
                 <>
                   {/* 1. Select a Bonus */}
@@ -2659,593 +2980,601 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               ) : null}
 
               {activeTab === 'bonuses' && (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    padding: '0px',
-                    gap: '16px',
-                    width: '428px',
-                    height: 'auto',
-                  }}
-                  className="select-none shrink-0"
-                >
-                  {/* Promo Code section */}
+                isPromoApplied ? (
+                  renderCouponApplied()
+                ) : (
                   <div
                     style={{
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'flex-start',
                       padding: '0px',
-                      gap: '8px',
-                      width: '428px',
-                      height: '64px',
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: '236px',
-                        height: '16px',
-                        fontFamily: "'Manrope', sans-serif",
-                        fontStyle: 'normal',
-                        fontWeight: 600,
-                        fontSize: '12px',
-                        lineHeight: '16px',
-                        letterSpacing: '0.02em',
-                        color: '#BBCAF3',
-                      }}
-                    >
-                      If you have a Bonus Code &mdash; enter it here
-                    </span>
-
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'flex-start',
-                        padding: '0px',
-                        gap: '8px',
-                        width: '428px',
-                        height: '40px',
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          padding: '10px 16px',
-                          gap: '12px',
-                          flex: 1,
-                          height: '40px',
-                          background: '#112F82',
-                          borderRadius: '8px',
-                          boxSizing: 'border-box',
-                          minWidth: 0,
-                        }}
-                      >
-                        <input
-                          type="text"
-                          value={promoCode}
-                          onChange={(e) => setPromoCode(e.target.value)}
-                          placeholder="Promo Code"
-                          style={{
-                            width: '100%',
-                            height: '19px',
-                            fontFamily: "'Manrope', sans-serif",
-                            fontStyle: 'normal',
-                            fontWeight: 600,
-                            fontSize: '14px',
-                            lineHeight: '19px',
-                            letterSpacing: '0.02em',
-                            color: '#FFFFFF',
-                            background: 'transparent',
-                            border: 'none',
-                            outline: 'none',
-                          }}
-                          className="placeholder-[#7795E8]"
-                        />
-                        {/* Info Button */}
-                        {isPromoApplied && (
-                          <button
-                            type="button"
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              width: '40px',
-                              height: '40px',
-                              background: '#112F82',
-                              borderRadius: '8px',
-                              border: 'none',
-                              flexShrink: 0,
-                              cursor: 'pointer',
-                            }}
-                          >
-                            <img src="/games/game-icons/i.png" alt="Info" className="w-[17.29px] h-[18px] object-contain" />
-                          </button>
-                        )}
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (isPromoApplied) {
-                            setIsPromoApplied(false);
-                            setPromoCode('');
-                          } else {
-                            if (!promoCode.trim()) return;
-                            setIsPromoApplied(true);
-                          }
-                        }}
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          padding: '10px 30px',
-                          gap: '10px',
-                          width: '100px',
-                          height: '40px',
-                          background: '#FFC83D',
-                          borderRadius: '8px',
-                          border: 'none',
-                          cursor: 'pointer',
-                          flexShrink: 0,
-                        }}
-                        className="hover:bg-[#ffd362] active:scale-95 duration-100"
-                      >
-                        <span
-                          style={{
-                            width: 'auto',
-                            height: '19px',
-                            fontFamily: "'Manrope', sans-serif",
-                            fontStyle: 'normal',
-                            fontWeight: 700,
-                            fontSize: '14px',
-                            lineHeight: '19px',
-                            letterSpacing: '0.02em',
-                            color: '#1A1404',
-                          }}
-                        >
-                          {isPromoApplied ? 'Cancel' : 'Apply'}
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Available bonuses section */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start',
-                      padding: '0px',
-                      gap: '12px',
+                      gap: '16px',
                       width: '428px',
                       height: 'auto',
                     }}
+                    className="select-none shrink-0"
                   >
-                    <span
-                      style={{
-                        width: '151px',
-                        height: '16px',
-                        fontFamily: "'Manrope', sans-serif",
-                        fontStyle: 'normal',
-                        fontWeight: 600,
-                        fontSize: '12px',
-                        lineHeight: '16px',
-                        letterSpacing: '0.02em',
-                        color: '#BBCAF3',
-                      }}
-                    >
-                      Available bonuses for you
-                    </span>
-
-                    {/* Bonus Card slider/carousel */}
-                    <div
-                      ref={bonusScrollRef}
-                      onScroll={() => {
-                        if (bonusScrollRef.current) {
-                          const scrollLeft = bonusScrollRef.current.scrollLeft;
-                          // card width 300px + gap 8px = 308px
-                          const index = Math.round(scrollLeft / 308);
-                          if (index !== activeBonusCard) {
-                            setActiveBonusCard(index);
-                          }
-                        }
-                      }}
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'flex-start',
-                        padding: '0px',
-                        gap: '8px',
-                        width: '428px',
-                        height: '205px',
-                      }}
-                      className="overflow-x-auto scrollbar-none snap-x snap-mandatory"
-                    >
-                      {[
-                        {
-                          title: '150% Reload Bonus + 30 Free Spins',
-                          minDeposit: '$30',
-                          maxCashout: '40x',
-                          maxAmount: '$30',
-                          wager: '10x',
-                        },
-                        {
-                          title: '350% Welcome Bonus',
-                          minDeposit: '$20',
-                          maxCashout: '45x',
-                          maxAmount: '$50',
-                          wager: '45x',
-                        },
-                        {
-                          title: '500% Crypto Bonus',
-                          minDeposit: '$20',
-                          maxCashout: '50x',
-                          maxAmount: '$100',
-                          wager: '45x',
-                        },
-                      ].map((bonus, idx) => (
-                        <div
-                          key={idx}
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'flex-start',
-                            padding: '20px',
-                            gap: '12px',
-                            width: '300px',
-                            height: '205px',
-                            background: '#112F82',
-                            borderRadius: '12px',
-                            flexShrink: 0,
-                            scrollSnapAlign: 'start',
-                            boxSizing: 'border-box',
-                          }}
-                        >
-                          {/* Bonus title */}
-                          <span
-                            style={{
-                              width: '260px',
-                              height: '20px',
-                              fontFamily: "'Jost', sans-serif",
-                              fontStyle: 'normal',
-                              fontWeight: 700,
-                              fontSize: '14px',
-                              lineHeight: '20px',
-                              letterSpacing: '0.02em',
-                              color: '#FFFFFF',
-                            }}
-                            className="truncate block"
-                          >
-                            {bonus.title}
-                          </span>
-
-                          {/* Info Grid (260px x 81px, gap 9px) */}
-                          <div
-                            style={{
-                              display: 'flex',
-                              flexDirection: 'column',
-                              alignItems: 'flex-start',
-                              padding: '0px',
-                              gap: '9px',
-                              width: '260px',
-                              height: '81px',
-                            }}
-                          >
-                            {/* Row 1 */}
-                            <div
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'flex-start',
-                                padding: '0px',
-                                gap: '12px',
-                                width: '260px',
-                                height: '36px',
-                              }}
-                            >
-                              {/* Min. Deposit */}
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  alignItems: 'flex-start',
-                                  padding: '0px',
-                                  gap: '2px',
-                                  width: '124px',
-                                  height: '36px',
-                                  flexGrow: 1,
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    width: '124px',
-                                    height: '14px',
-                                    fontFamily: "'Manrope', sans-serif",
-                                    fontStyle: 'normal',
-                                    fontWeight: 500,
-                                    fontSize: '10px',
-                                    lineHeight: '14px',
-                                    letterSpacing: '0.02em',
-                                    color: '#BBCAF3',
-                                  }}
-                                  className="truncate"
-                                >
-                                  Min. Deposit
-                                </span>
-                                <span
-                                  style={{
-                                    width: '124px',
-                                    height: '20px',
-                                    fontFamily: "'Jost', sans-serif",
-                                    fontStyle: 'normal',
-                                    fontWeight: 700,
-                                    fontSize: '14px',
-                                    lineHeight: '20px',
-                                    letterSpacing: '0.02em',
-                                    color: '#FFFFFF',
-                                  }}
-                                  className="truncate"
-                                >
-                                  {bonus.minDeposit}
-                                </span>
-                              </div>
-
-                              {/* Max. Cashout */}
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  alignItems: 'flex-start',
-                                  padding: '0px',
-                                  gap: '2px',
-                                  width: '124px',
-                                  height: '36px',
-                                  flexGrow: 1,
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    width: '124px',
-                                    height: '14px',
-                                    fontFamily: "'Manrope', sans-serif",
-                                    fontStyle: 'normal',
-                                    fontWeight: 500,
-                                    fontSize: '10px',
-                                    lineHeight: '14px',
-                                    letterSpacing: '0.02em',
-                                    color: '#BBCAF3',
-                                  }}
-                                  className="truncate"
-                                >
-                                  Max. Cashout
-                                </span>
-                                <span
-                                  style={{
-                                    width: '124px',
-                                    height: '20px',
-                                    fontFamily: "'Jost', sans-serif",
-                                    fontStyle: 'normal',
-                                    fontWeight: 700,
-                                    fontSize: '14px',
-                                    lineHeight: '20px',
-                                    letterSpacing: '0.02em',
-                                    color: '#FFFFFF',
-                                  }}
-                                  className="truncate"
-                                >
-                                  {bonus.maxCashout}
-                                </span>
-                              </div>
-                            </div>
-
-                            {/* Row 2 */}
-                            <div
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'flex-start',
-                                padding: '0px',
-                                gap: '12px',
-                                width: '260px',
-                                height: '36px',
-                              }}
-                            >
-                              {/* Max. Amount */}
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  alignItems: 'flex-start',
-                                  padding: '0px',
-                                  gap: '2px',
-                                  width: '124px',
-                                  height: '36px',
-                                  flexGrow: 1,
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    width: '124px',
-                                    height: '14px',
-                                    fontFamily: "'Manrope', sans-serif",
-                                    fontStyle: 'normal',
-                                    fontWeight: 500,
-                                    fontSize: '10px',
-                                    lineHeight: '14px',
-                                    letterSpacing: '0.02em',
-                                    color: '#BBCAF3',
-                                  }}
-                                  className="truncate"
-                                >
-                                  Max. Amount
-                                </span>
-                                <span
-                                  style={{
-                                    width: '124px',
-                                    height: '20px',
-                                    fontFamily: "'Jost', sans-serif",
-                                    fontStyle: 'normal',
-                                    fontWeight: 700,
-                                    fontSize: '14px',
-                                    lineHeight: '20px',
-                                    letterSpacing: '0.02em',
-                                    color: '#FFFFFF',
-                                  }}
-                                  className="truncate"
-                                >
-                                  {bonus.maxAmount}
-                                </span>
-                              </div>
-
-                              {/* Wager */}
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  flexDirection: 'column',
-                                  alignItems: 'flex-start',
-                                  padding: '0px',
-                                  gap: '2px',
-                                  width: '124px',
-                                  height: '36px',
-                                  flexGrow: 1,
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    width: '124px',
-                                    height: '14px',
-                                    fontFamily: "'Manrope', sans-serif",
-                                    fontStyle: 'normal',
-                                    fontWeight: 500,
-                                    fontSize: '10px',
-                                    lineHeight: '14px',
-                                    letterSpacing: '0.02em',
-                                    color: '#BBCAF3',
-                                  }}
-                                  className="truncate"
-                                >
-                                  Wager (dep. + bonus)
-                                </span>
-                                <span
-                                  style={{
-                                    width: '124px',
-                                    height: '20px',
-                                    fontFamily: "'Jost', sans-serif",
-                                    fontStyle: 'normal',
-                                    fontWeight: 700,
-                                    fontSize: '14px',
-                                    lineHeight: '20px',
-                                    letterSpacing: '0.02em',
-                                    color: '#FFFFFF',
-                                  }}
-                                  className="truncate"
-                                >
-                                  {bonus.wager}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Join / Activate Button */}
-                          <button
-                            type="button"
-                            onClick={() => alert(`"${bonus.title}" activated!`)}
-                            style={{
-                              display: 'flex',
-                              flexDirection: 'row',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                              padding: '10px 20px',
-                              gap: '10px',
-                              width: '260px',
-                              height: '40px',
-                              background: '#FFC83D',
-                              borderRadius: '6px',
-                              border: 'none',
-                              cursor: 'pointer',
-                            }}
-                            className="hover:bg-[#ffd362] active:scale-95 duration-100"
-                          >
-                            <span
-                              style={{
-                                width: '51px',
-                                height: '16px',
-                                fontFamily: "'Manrope', sans-serif",
-                                fontStyle: 'normal',
-                                fontWeight: 700,
-                                fontSize: '12px',
-                                lineHeight: '16px',
-                                letterSpacing: '0.02em',
-                                color: '#1A1404',
-                              }}
-                            >
-                              Activate
-                            </span>
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Pagination indicators frame */}
+                    {/* Promo Code section */}
                     <div
                       style={{
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center',
+                        alignItems: 'flex-start',
                         padding: '0px',
+                        gap: '8px',
                         width: '428px',
-                        height: '6px',
+                        height: '64px',
                       }}
                     >
+                      <span
+                        style={{
+                          width: '236px',
+                          height: '16px',
+                          fontFamily: "'Manrope', sans-serif",
+                          fontStyle: 'normal',
+                          fontWeight: 600,
+                          fontSize: '12px',
+                          lineHeight: '16px',
+                          letterSpacing: '0.02em',
+                          color: '#BBCAF3',
+                        }}
+                      >
+                        If you have a Bonus Code &mdash; enter it here
+                      </span>
+
                       <div
                         style={{
                           display: 'flex',
                           flexDirection: 'row',
-                          justifyContent: 'center',
+                          alignItems: 'flex-start',
+                          padding: '0px',
+                          gap: '8px',
+                          width: '428px',
+                          height: '40px',
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            padding: '10px 16px',
+                            gap: '12px',
+                            flex: 1,
+                            height: '40px',
+                            background: '#112F82',
+                            borderRadius: '8px',
+                            boxSizing: 'border-box',
+                            minWidth: 0,
+                          }}
+                        >
+                          <input
+                            type="text"
+                            value={promoCode}
+                            onChange={(e) => setPromoCode(e.target.value)}
+                            placeholder="Promo Code"
+                            style={{
+                              width: '100%',
+                              height: '19px',
+                              fontFamily: "'Manrope', sans-serif",
+                              fontStyle: 'normal',
+                              fontWeight: 600,
+                              fontSize: '14px',
+                              lineHeight: '19px',
+                              letterSpacing: '0.02em',
+                              color: '#FFFFFF',
+                              background: 'transparent',
+                              border: 'none',
+                              outline: 'none',
+                            }}
+                            className="placeholder-[#7795E8]"
+                          />
+                          {/* Info Button */}
+                          {isPromoApplied && (
+                            <button
+                              type="button"
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                width: '40px',
+                                height: '40px',
+                                background: '#112F82',
+                                borderRadius: '8px',
+                                border: 'none',
+                                flexShrink: 0,
+                                cursor: 'pointer',
+                              }}
+                            >
+                              <img src="/games/game-icons/i.png" alt="Info" className="w-[17.29px] h-[18px] object-contain" />
+                            </button>
+                          )}
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (isPromoApplied) {
+                              setIsPromoApplied(false);
+                              setPromoCode('');
+                            } else {
+                              if (!promoCode.trim()) return;
+                              setIsPromoApplied(true);
+                            }
+                          }}
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            padding: '10px 30px',
+                            gap: '10px',
+                            width: '100px',
+                            height: '40px',
+                            background: '#FFC83D',
+                            borderRadius: '8px',
+                            border: 'none',
+                            cursor: 'pointer',
+                            flexShrink: 0,
+                          }}
+                          className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                        >
+                          <span
+                            style={{
+                              width: 'auto',
+                              height: '19px',
+                              fontFamily: "'Manrope', sans-serif",
+                              fontStyle: 'normal',
+                              fontWeight: 700,
+                              fontSize: '14px',
+                              lineHeight: '19px',
+                              letterSpacing: '0.02em',
+                              color: '#1A1404',
+                            }}
+                          >
+                            {isPromoApplied ? 'Cancel' : 'Apply'}
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Available bonuses section */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        padding: '0px',
+                        gap: '12px',
+                        width: '428px',
+                        height: 'auto',
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: '151px',
+                          height: '16px',
+                          fontFamily: "'Manrope', sans-serif",
+                          fontStyle: 'normal',
+                          fontWeight: 600,
+                          fontSize: '12px',
+                          lineHeight: '16px',
+                          letterSpacing: '0.02em',
+                          color: '#BBCAF3',
+                        }}
+                      >
+                        Available bonuses for you
+                      </span>
+
+                      {/* Bonus Card slider/carousel */}
+                      <div
+                        ref={bonusScrollRef}
+                        onScroll={() => {
+                          if (bonusScrollRef.current) {
+                            const scrollLeft = bonusScrollRef.current.scrollLeft;
+                            // card width 300px + gap 8px = 308px
+                            const index = Math.round(scrollLeft / 308);
+                            if (index !== activeBonusCard) {
+                              setActiveBonusCard(index);
+                            }
+                          }
+                        }}
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          alignItems: 'flex-start',
+                          padding: '0px',
+                          gap: '8px',
+                          width: '428px',
+                          height: '205px',
+                        }}
+                        className="overflow-x-auto scrollbar-none snap-x snap-mandatory"
+                      >
+                        {[
+                          {
+                            title: '150% Reload Bonus + 30 Free Spins',
+                            minDeposit: '$30',
+                            maxCashout: '40x',
+                            maxAmount: '$30',
+                            wager: '10x',
+                          },
+                          {
+                            title: '350% Welcome Bonus',
+                            minDeposit: '$20',
+                            maxCashout: '45x',
+                            maxAmount: '$50',
+                            wager: '45x',
+                          },
+                          {
+                            title: '500% Crypto Bonus',
+                            minDeposit: '$20',
+                            maxCashout: '50x',
+                            maxAmount: '$100',
+                            wager: '45x',
+                          },
+                        ].map((bonus, idx) => (
+                          <div
+                            key={idx}
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'column',
+                              justifyContent: 'center',
+                              alignItems: 'flex-start',
+                              padding: '20px',
+                              gap: '12px',
+                              width: '300px',
+                              height: '205px',
+                              background: '#112F82',
+                              borderRadius: '12px',
+                              flexShrink: 0,
+                              scrollSnapAlign: 'start',
+                              boxSizing: 'border-box',
+                            }}
+                          >
+                            {/* Bonus title */}
+                            <span
+                              style={{
+                                width: '260px',
+                                height: '20px',
+                                fontFamily: "'Jost', sans-serif",
+                                fontStyle: 'normal',
+                                fontWeight: 700,
+                                fontSize: '14px',
+                                lineHeight: '20px',
+                                letterSpacing: '0.02em',
+                                color: '#FFFFFF',
+                              }}
+                              className="truncate block"
+                            >
+                              {bonus.title}
+                            </span>
+
+                            {/* Info Grid (260px x 81px, gap 9px) */}
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'flex-start',
+                                padding: '0px',
+                                gap: '9px',
+                                width: '260px',
+                                height: '81px',
+                              }}
+                            >
+                              {/* Row 1 */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '12px',
+                                  width: '260px',
+                                  height: '36px',
+                                }}
+                              >
+                                {/* Min. Deposit */}
+                                <div
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    padding: '0px',
+                                    gap: '2px',
+                                    width: '124px',
+                                    height: '36px',
+                                    flexGrow: 1,
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      width: '124px',
+                                      height: '14px',
+                                      fontFamily: "'Manrope', sans-serif",
+                                      fontStyle: 'normal',
+                                      fontWeight: 500,
+                                      fontSize: '10px',
+                                      lineHeight: '14px',
+                                      letterSpacing: '0.02em',
+                                      color: '#BBCAF3',
+                                    }}
+                                    className="truncate"
+                                  >
+                                    Min. Deposit
+                                  </span>
+                                  <span
+                                    style={{
+                                      width: '124px',
+                                      height: '20px',
+                                      fontFamily: "'Jost', sans-serif",
+                                      fontStyle: 'normal',
+                                      fontWeight: 700,
+                                      fontSize: '14px',
+                                      lineHeight: '20px',
+                                      letterSpacing: '0.02em',
+                                      color: '#FFFFFF',
+                                    }}
+                                    className="truncate"
+                                  >
+                                    {bonus.minDeposit}
+                                  </span>
+                                </div>
+
+                                {/* Max. Cashout */}
+                                <div
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    padding: '0px',
+                                    gap: '2px',
+                                    width: '124px',
+                                    height: '36px',
+                                    flexGrow: 1,
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      width: '124px',
+                                      height: '14px',
+                                      fontFamily: "'Manrope', sans-serif",
+                                      fontStyle: 'normal',
+                                      fontWeight: 500,
+                                      fontSize: '10px',
+                                      lineHeight: '14px',
+                                      letterSpacing: '0.02em',
+                                      color: '#BBCAF3',
+                                    }}
+                                    className="truncate"
+                                  >
+                                    Max. Cashout
+                                  </span>
+                                  <span
+                                    style={{
+                                      width: '124px',
+                                      height: '20px',
+                                      fontFamily: "'Jost', sans-serif",
+                                      fontStyle: 'normal',
+                                      fontWeight: 700,
+                                      fontSize: '14px',
+                                      lineHeight: '20px',
+                                      letterSpacing: '0.02em',
+                                      color: '#FFFFFF',
+                                    }}
+                                    className="truncate"
+                                  >
+                                    {bonus.maxCashout}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* Row 2 */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '12px',
+                                  width: '260px',
+                                  height: '36px',
+                                }}
+                              >
+                                {/* Max. Amount */}
+                                <div
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    padding: '0px',
+                                    gap: '2px',
+                                    width: '124px',
+                                    height: '36px',
+                                    flexGrow: 1,
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      width: '124px',
+                                      height: '14px',
+                                      fontFamily: "'Manrope', sans-serif",
+                                      fontStyle: 'normal',
+                                      fontWeight: 500,
+                                      fontSize: '10px',
+                                      lineHeight: '14px',
+                                      letterSpacing: '0.02em',
+                                      color: '#BBCAF3',
+                                    }}
+                                    className="truncate"
+                                  >
+                                    Max. Amount
+                                  </span>
+                                  <span
+                                    style={{
+                                      width: '124px',
+                                      height: '20px',
+                                      fontFamily: "'Jost', sans-serif",
+                                      fontStyle: 'normal',
+                                      fontWeight: 700,
+                                      fontSize: '14px',
+                                      lineHeight: '20px',
+                                      letterSpacing: '0.02em',
+                                      color: '#FFFFFF',
+                                    }}
+                                    className="truncate"
+                                  >
+                                    {bonus.maxAmount}
+                                  </span>
+                                </div>
+
+                                {/* Wager */}
+                                <div
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    padding: '0px',
+                                    gap: '2px',
+                                    width: '124px',
+                                    height: '36px',
+                                    flexGrow: 1,
+                                  }}
+                                >
+                                  <span
+                                    style={{
+                                      width: '124px',
+                                      height: '14px',
+                                      fontFamily: "'Manrope', sans-serif",
+                                      fontStyle: 'normal',
+                                      fontWeight: 500,
+                                      fontSize: '10px',
+                                      lineHeight: '14px',
+                                      letterSpacing: '0.02em',
+                                      color: '#BBCAF3',
+                                    }}
+                                    className="truncate"
+                                  >
+                                    Wager (dep. + bonus)
+                                  </span>
+                                  <span
+                                    style={{
+                                      width: '124px',
+                                      height: '20px',
+                                      fontFamily: "'Jost', sans-serif",
+                                      fontStyle: 'normal',
+                                      fontWeight: 700,
+                                      fontSize: '14px',
+                                      lineHeight: '20px',
+                                      letterSpacing: '0.02em',
+                                      color: '#FFFFFF',
+                                    }}
+                                    className="truncate"
+                                  >
+                                    {bonus.wager}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Join / Activate Button */}
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const codes = ['PROMO2026', 'WELCOME350', 'CRYPTO500'];
+                                setPromoCode(codes[idx]);
+                                setIsPromoApplied(true);
+                              }}
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                padding: '10px 20px',
+                                gap: '10px',
+                                width: '260px',
+                                height: '40px',
+                                background: '#FFC83D',
+                                borderRadius: '6px',
+                                border: 'none',
+                                cursor: 'pointer',
+                              }}
+                              className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                            >
+                              <span
+                                style={{
+                                  width: '51px',
+                                  height: '16px',
+                                  fontFamily: "'Manrope', sans-serif",
+                                  fontStyle: 'normal',
+                                  fontWeight: 700,
+                                  fontSize: '12px',
+                                  lineHeight: '16px',
+                                  letterSpacing: '0.02em',
+                                  color: '#1A1404',
+                                }}
+                              >
+                                Activate
+                              </span>
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Pagination indicators frame */}
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'column',
                           alignItems: 'center',
                           padding: '0px',
-                          gap: '4px',
-                          width: '32px',
+                          width: '428px',
                           height: '6px',
                         }}
                       >
-                        {[0, 1, 2].map((idx) => {
-                          const isDotActive = idx === activeBonusCard;
-                          return (
-                            <div
-                              key={idx}
-                              style={{
-                                width: isDotActive ? '12px' : '6px',
-                                height: '6px',
-                                background: '#BBCAF3',
-                                borderRadius: '150px',
-                                opacity: isDotActive ? 1 : 0.35,
-                                transition: 'all 0.2s ease',
-                                cursor: 'pointer',
-                              }}
-                              onClick={() => {
-                                if (bonusScrollRef.current) {
-                                  bonusScrollRef.current.scrollTo({
-                                    left: idx * 308,
-                                    behavior: 'smooth',
-                                  });
-                                  setActiveBonusCard(idx);
-                                }
-                              }}
-                            />
-                          );
-                        })}
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            padding: '0px',
+                            gap: '4px',
+                            width: '32px',
+                            height: '6px',
+                          }}
+                        >
+                          {[0, 1, 2].map((idx) => {
+                            const isDotActive = idx === activeBonusCard;
+                            return (
+                              <div
+                                key={idx}
+                                style={{
+                                  width: isDotActive ? '12px' : '6px',
+                                  height: '6px',
+                                  background: '#BBCAF3',
+                                  borderRadius: '150px',
+                                  opacity: isDotActive ? 1 : 0.35,
+                                  transition: 'all 0.2s ease',
+                                  cursor: 'pointer',
+                                }}
+                                onClick={() => {
+                                  if (bonusScrollRef.current) {
+                                    bonusScrollRef.current.scrollTo({
+                                      left: idx * 308,
+                                      behavior: 'smooth',
+                                    });
+                                    setActiveBonusCard(idx);
+                                  }
+                                }}
+                              />
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )
               )}
 
               {activeTab === 'withdraw' && (
@@ -3268,14 +3597,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 padding: '0px',
-                gap: '12px',
+                gap: '0px',
                 width: '460px',
-                height: '66px',
+                height: '50px',
                 zIndex: 2,
               }}
               className="shrink-0 mt-auto"
             >
-              {/* Go to games button */}
               <button
                 onClick={onClose}
                 style={{
@@ -3285,74 +3613,23 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   alignItems: 'center',
                   padding: '10px 30px',
                   gap: '10px',
-                  width: '350px',
-                  height: '40px',
+                  width: '460px',
+                  height: '50px',
                   background: '#FFC83D',
                   borderRadius: '8px',
                   border: 'none',
                   cursor: 'pointer',
                   fontFamily: "'Manrope', sans-serif",
                   fontWeight: 700,
-                  fontSize: '14px',
-                  lineHeight: '19px',
+                  fontSize: '16px',
+                  lineHeight: '22px',
                   letterSpacing: '0.02em',
                   color: '#1A1404',
                 }}
                 className="hover:bg-[#ffd362] active:scale-95 duration-100 font-sans"
               >
-                Go to games
+                {selectedPayment === 'Credit Card' ? 'Play Now' : 'Go to games'}
               </button>
-
-              {/* Support frame */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  padding: '0px',
-                  gap: '8px',
-                  width: '460px',
-                  height: '14px',
-                }}
-              >
-                {/* Question Icon */}
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
-                  <circle cx="6" cy="6" r="5" stroke="#7795E8" strokeWidth="1.25" />
-                  <path d="M6 8V7.5" stroke="#7795E8" strokeWidth="1.25" strokeLinecap="round" />
-                  <path d="M6 6C6.5 5.5 7 5.25 7 4.5C7 3.67 6.33 3 5.5 3C4.67 3 4.25 3.67 4.25 3.67" stroke="#7795E8" strokeWidth="1.25" strokeLinecap="round" />
-                </svg>
-
-                <span
-                  style={{
-                    height: '14px',
-                    fontFamily: "'Manrope', sans-serif",
-                    fontStyle: 'normal',
-                    fontWeight: 500,
-                    fontSize: '10px',
-                    lineHeight: '14px',
-                    letterSpacing: '0.02em',
-                    color: '#7795E8',
-                  }}
-                >
-                  Having problems?{' '}
-                  <a
-                    href="/support"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      alert('Contact support triggered!');
-                    }}
-                    style={{
-                      color: '#FFC83D',
-                      textDecoration: 'none',
-                      fontWeight: 700,
-                    }}
-                    className="hover:underline"
-                  >
-                    Contact support
-                  </a>
-                </span>
-              </div>
             </div>
           ) : (
             <div
@@ -3418,6 +3695,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       alert('Please fill out all credit card details.');
                       return;
                     }
+                    const currentBalance = user?.balance || 0;
+                    dispatch(updateBalance(currentBalance + getDepositAmount()));
                     setDepositConfirmed(true);
                   }}
                   style={{
