@@ -719,21 +719,65 @@ export default function UserHome() {
                       style={{ scrollSnapType: 'x mandatory' }}
                     >
                       {[
-                        { img: '/promotion 1.png', label: '150% Reload Bonus', id: 1 },
-                        { img: '/promotion 2.png', label: '250% Welcome Bonus', id: 2 },
-                        { img: '/promotion 1.png', label: '150% Reload Bonus', id: 3 },
+                        {
+                          id: 1,
+                          title: '150% RELOAD BONUS + 50 FREE SPINS',
+                          bgColor: '#091741',
+                          bgGradient: 'linear-gradient(90deg, #091741 21.96%, rgba(9, 23, 65, 0) 60.27%)',
+                          bgImg: '/games/promotion/p1.png',
+                          bgSize: 'cover',
+                          bgPosition: 'center',
+                        },
+                        {
+                          id: 2,
+                          title: '150% RELOAD BONUS + 50 FREE SPINS',
+                          bgColor: '#060B4D',
+                          bgGradient: 'linear-gradient(90deg, #060B4D 40%, rgba(6, 11, 77, 0) 55%)',
+                          bgImg: '/games/promotion/p2.png',
+                          bgSize: 'contain',
+                          bgPosition: 'right center',
+                        },
+                        {
+                          id: 3,
+                          title: '150% RELOAD BONUS + 50 FREE SPINS',
+                          bgColor: '#060B4D',
+                          bgGradient: 'linear-gradient(90deg, #060B4D 40%, rgba(6, 11, 77, 0) 55%)',
+                          bgImg: '/games/promotion/p2.png',
+                          bgSize: 'contain',
+                          bgPosition: 'right center',
+                        },
                       ].map((promo) => (
                         <div
                           key={promo.id}
                           onClick={() => alert(`Promotion ${promo.id} claimed`)}
-                          className="relative flex-none w-full sm:w-[560px] aspect-[560/220] sm:aspect-auto h-auto sm:h-[220px] rounded-[16px] overflow-hidden border border-white/5 shadow-lg group cursor-pointer"
-                          style={{ scrollSnapAlign: 'start' }}
+                          className="relative flex-none w-[278px] sm:w-[560px] h-[163px] sm:h-[220px] rounded-[8px] sm:rounded-[16px] overflow-hidden border border-white/5 shadow-lg group cursor-pointer select-none"
+                          style={{
+                            scrollSnapAlign: 'start',
+                            backgroundColor: promo.bgColor,
+                            backgroundImage: `${promo.bgGradient}, url(${promo.bgImg})`,
+                            backgroundSize: promo.bgSize,
+                            backgroundPosition: promo.bgPosition,
+                            backgroundRepeat: 'no-repeat',
+                          }}
                         >
-                          <img
-                            src={promo.img}
-                            alt={promo.label}
-                            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 pointer-events-none"
-                          />
+                          {/* Glow Ellipse 7 */}
+                          <div className="absolute w-[118.52px] sm:w-[160px] h-[118.52px] sm:h-[160px] left-[-55.56px] sm:left-[-75px] top-[-57.48px] sm:top-[-77.6px] bg-[#1463FF] rounded-full filter blur-[37px] sm:blur-[50px] z-10 pointer-events-none" />
+
+                          {/* Card Content Wrapper */}
+                          <div className="absolute inset-0 flex flex-col justify-center items-start p-[17.78px] sm:p-6 gap-[11.85px] sm:gap-4 z-20">
+                            <div className="flex flex-col items-start gap-3 sm:gap-4 max-w-[141px] sm:max-w-[290px]">
+                              <h3 className="font-jost font-extrabold text-[14px] sm:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase text-left break-words">
+                                {promo.title}
+                              </h3>
+                              <button
+                                className="flex flex-row justify-center items-center w-[95px] sm:w-[110px] h-[34.55px] sm:h-[40px] px-[20.73px] sm:px-6 py-[8.64px] sm:py-2.5 bg-[#FFBF1F] sm:bg-[#FFC83D] hover:bg-[#ffd362] active:scale-95 transition-all duration-150 rounded-[6px] sm:rounded-[8px] border-none outline-none cursor-pointer"
+                              >
+                                <span className="font-manrope font-bold text-[12px] sm:text-[14px] leading-[17px] sm:leading-[19px] tracking-[0.02em] text-[#1A1404] select-none">
+                                  Claim Now
+                                </span>
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       ))}
                     </div>
