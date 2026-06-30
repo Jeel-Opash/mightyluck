@@ -106,12 +106,10 @@ export default function ReferralsPage() {
           <Sidebar />
         </div>
 
-        {/* Right Main Content Column */}
-        <div className="min-w-0 flex-1 flex flex-col gap-6 lg:gap-[40px]">
+      
+        <div className="min-w-0 flex-1 flex flex-col gap-6 lg:gap-[40px] max-w-[1440px] mx-auto w-full">
 
-          {/* =========================================================================
-              1. HERO BANNER - DESKTOP VIEW (lg and up)
-             ========================================================================= */}
+    
           <div
             className="hidden lg:flex flex-col w-full lg:h-auto xl:h-auto 2xl:h-auto rounded-[16px] border border-white/5 relative overflow-hidden shrink-0 select-none p-[24px_40px] xl:p-[32px_40px] gap-[20px] bg-[#2A0B3E]"
           >

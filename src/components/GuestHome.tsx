@@ -347,7 +347,7 @@ export default function GuestHome() {
         </div>
 
         {/* Right Main Content Column */}
-        <div className="min-w-0 flex-1 flex flex-col gap-8 lg:gap-[40px]">
+        <div className="min-w-0 flex-1 flex flex-col gap-8 lg:gap-[40px] max-w-[1440px] mx-auto w-full">
 
           {/* Child 1: Main Games Area */}
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">

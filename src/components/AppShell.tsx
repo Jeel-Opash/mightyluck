@@ -48,7 +48,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             paddingTop: '24px',
             paddingBottom: '40px',
           }}
-          className="w-full max-w-[1440px] mx-auto px-4 md:px-[24px] box-border relative flex flex-col min-h-[calc(100vh-60px)] overflow-x-hidden"
+          className="w-full px-4 md:px-[24px] box-border relative flex flex-col min-h-[calc(100vh-60px)] overflow-x-hidden"
         >
           {children}
         </div>

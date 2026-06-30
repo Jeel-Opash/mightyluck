@@ -365,7 +365,7 @@ export default function UserHome() {
           <Sidebar />
         </div>
 
-        <div className="min-w-0 flex-1 flex flex-col gap-8 lg:gap-[40px]">
+        <div className="min-w-0 flex-1 flex flex-col gap-8 lg:gap-[40px] max-w-[1440px] mx-auto w-full">
 
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 

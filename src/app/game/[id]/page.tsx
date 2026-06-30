@@ -96,7 +96,7 @@ export default function GamePage() {
         </div>
 
         {/* Main content */}
-        <div className="min-w-0 flex-1 flex flex-col gap-[60px]">
+        <div className="min-w-0 flex-1 flex flex-col gap-[60px] max-w-[1440px] mx-auto w-full">
 
           {/* Top content wrapper containing back button and game container */}
           <div >

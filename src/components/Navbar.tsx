@@ -33,7 +33,7 @@ export default function Navbar() {
       {/* =========================================================================
           1. DESKTOP HEADER LAYOUT (md and up) - UNCHANGED
          ========================================================================= */}
-      <div className="hidden md:flex w-full max-w-[1440px] mx-auto h-full flex-row justify-between items-center px-[24px] gap-2 lg:gap-4 relative">
+      <div className="hidden md:flex w-full h-full flex-row justify-between items-center px-[24px] gap-2 lg:gap-4 relative">
         {/* Glow wrapper to prevent leaking below/above the navbar */}
         <div className="absolute inset-y-0 left-0 right-0 overflow-hidden pointer-events-none z-0">
           {/* Ellipse 6 */}
