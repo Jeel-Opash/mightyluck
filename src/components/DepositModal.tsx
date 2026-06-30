@@ -160,17 +160,30 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   const bonusDropdownRefDesktop = useRef<HTMLDivElement>(null);
   const paymentDropdownRefDesktop = useRef<HTMLDivElement>(null);
 
+  const [isShortScreen, setIsShortScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsShortScreen(window.innerHeight < 700);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Dynamic heights and spacing based on Figma specifications:
   const isDeposit = activeTab === 'deposit';
   const showDepositCTA = isDeposit && !depositConfirmed;
 
   const isCcSuccess = depositConfirmed && selectedPayment === 'Credit Card';
-  const tabCardFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '427px' : (isDeposit ? '500px' : '419px'));
-  const contentCardHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '381.16px' : (isDeposit ? '454px' : '373px'));
-  const innerFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? 480.16 : (isDeposit ? 553 : 472));
-  const mainLayoutFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '592.16px' : (showDepositCTA ? '637px' : `${innerFrameHeight}px`));
-  const bodyHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '670.16px' : (showDepositCTA ? '715px' : (isDeposit ? '631px' : '550px')));
-  const modalHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '750.16px' : (showDepositCTA ? '795px' : (isDeposit ? '711px' : '630px')));
+  const isShortDeposit = isShortScreen && isDeposit && !depositConfirmed;
+
+  const tabCardFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '427px' : (isDeposit ? (isShortScreen ? '340px' : '500px') : '419px'));
+  const contentCardHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '381.16px' : (isDeposit ? (isShortScreen ? '294px' : '454px') : '373px'));
+  const innerFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? 480.16 : (isDeposit ? (isShortScreen ? 393 : 553) : 472));
+  const mainLayoutFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '592.16px' : (showDepositCTA ? (isShortScreen ? '450px' : '637px') : `${innerFrameHeight}px`));
+  const bodyHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '670.16px' : (showDepositCTA ? (isShortScreen ? '530px' : '715px') : (isDeposit ? '631px' : '550px')));
+  const modalHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '750.16px' : (showDepositCTA ? (isShortScreen ? '610px' : '795px') : (isDeposit ? '711px' : '630px')));
   const countryDropdownRefDesktop = useRef<HTMLDivElement>(null);
 
   // Mock BTC to USD rate: 1 BTC = $65,000 USD
@@ -1235,12 +1248,12 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             title="Dismiss Wallet"
           />
 
-          {/* Main Layout Frame (height: dynamic with gap: 24px) */}
+          {/* Main Layout Frame (height: dynamic with gap: 24px/12px) */}
           <div
             style={{
               height: mainLayoutFrameHeight,
             }}
-            className="w-full max-w-[374px] mx-auto flex flex-col items-start gap-[24px] z-10 shrink-0"
+            className={`w-full max-w-[374px] mx-auto flex flex-col items-start z-10 shrink-0 ${isShortDeposit ? 'gap-[12px]' : 'gap-[24px]'}`}
           >
 
             {/* Title Bar: Wallet title + Close button */}
@@ -1250,9 +1263,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 height: '29px',
               }}
             >
-              <div className="flex flex-row items-center gap-[12px] h-[29px] relative z-10">
+              <div className={`flex flex-row items-center h-[29px] relative z-10 ${isShortDeposit ? 'gap-[8px]' : 'gap-[12px]'}`}>
                 <YellowWalletIcon />
-                <span className="font-jost font-extrabold text-[20px] leading-[29px] tracking-[0.01em] text-white">Wallet</span>
+                <span className={`font-jost font-extrabold leading-[29px] tracking-[0.01em] text-white ${isShortDeposit ? 'text-[18px]' : 'text-[20px]'}`}>Wallet</span>
               </div>
               {/* Dismiss X button */}
               <button
@@ -1315,11 +1328,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 style={{
                   height: contentCardHeight,
                 }}
-                className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] flex flex-col border border-white/5 shadow-md shrink-0 overflow-y-auto scrollbar-none ${activeTab === 'deposit' && depositConfirmed
+                className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] flex flex-col border border-white/5 shadow-md shrink-0 ${activeTab === 'deposit' && depositConfirmed
                   ? 'py-[20px] gap-[24px] items-center'
                   : activeTab === 'bonuses'
                     ? 'py-[12px] gap-[16px] items-start'
-                    : 'py-[16px] gap-[16px] items-start'
+                    : isShortDeposit
+                      ? 'py-[10px] gap-[8px] items-start'
+                      : 'py-[16px] gap-[16px] items-start'
                   }`}
               >
                 {activeTab === 'deposit' && depositConfirmed ? (
@@ -1337,21 +1352,21 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           <circle
                             cx="50"
                             cy="50"
-                            r="44"
-                            stroke="#112F82"
-                            strokeWidth="3.5"
+                            r="42"
                             fill="transparent"
+                            stroke="#091741"
+                            strokeWidth="6"
                           />
-                          {/* Outer yellow progress arc */}
+                          {/* Outer glowing light blue progress circle */}
                           <circle
                             cx="50"
                             cy="50"
-                            r="44"
-                            stroke="#FFC83D"
-                            strokeWidth="3.5"
+                            r="42"
                             fill="transparent"
-                            strokeDasharray="276"
-                            strokeDashoffset="65"
+                            stroke="#1463FF"
+                            strokeWidth="6"
+                            strokeDasharray="263.89"
+                            strokeDashoffset="80"
                             strokeLinecap="round"
                             transform="rotate(-90 50 50)"
                           />
@@ -1382,21 +1397,21 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 ) : activeTab === 'deposit' ? (
                   <>
                     {/* Select a Bonus */}
-                    <div className="flex flex-col items-start gap-[8px] w-full relative shrink-0" ref={bonusDropdownRefMobile}>
-                      <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                    <div className={`flex flex-col items-start w-full relative shrink-0 ${isShortDeposit ? 'gap-[4px]' : 'gap-[8px]'}`} ref={bonusDropdownRefMobile}>
+                      <span className={`font-manrope font-semibold tracking-[0.02em] text-[#BBCAF3] ${isShortDeposit ? 'text-[10px] leading-[14px]' : 'text-[12px] leading-[16px]'}`}>
                         {selectedPayment === 'Bitcoin' ? '1.Select a Bonus' : 'Select a Bonus'}
                       </span>
 
                       <div className={`relative w-full transition-all duration-200 ${isBonusDropdownOpen ? 'border border-[#1463FF] rounded-[8px]' : 'border border-white/5 rounded-[8px]'}`}>
                         <div
                           onClick={() => setIsBonusDropdownOpen(!isBonusDropdownOpen)}
-                          className={`flex flex-row items-center justify-between px-[16px] w-full h-[50px] bg-[#112F82] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 ${isBonusDropdownOpen ? 'rounded-t-[8px]' : 'rounded-[8px]'}`}
+                          className={`flex flex-row items-center justify-between px-[16px] w-full bg-[#112F82] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 ${isBonusDropdownOpen ? 'rounded-t-[8px]' : 'rounded-[8px]'} ${isShortDeposit ? 'h-[40px]' : 'h-[50px]'}`}
                         >
-                          <div className="flex flex-row items-center gap-[12px] truncate flex-1">
+                          <div className={`flex flex-row items-center truncate flex-1 ${isShortDeposit ? 'gap-[8px]' : 'gap-[12px]'}`}>
                             <div className="text-[#FFC83D] flex items-center justify-center shrink-0">
-                              {renderMobileBonusIcon(getSelectedBonusIcon(), false, 'w-[16px] h-[16px]')}
+                              {renderMobileBonusIcon(getSelectedBonusIcon(), false, isShortDeposit ? 'w-[14px] h-[14px]' : 'w-[16px] h-[16px]')}
                             </div>
-                            <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white truncate max-w-[245px]">
+                            <span className={`font-manrope font-bold tracking-[0.02em] text-white truncate max-w-[245px] ${isShortDeposit ? 'text-[12px] leading-[16px]' : 'text-[14px] leading-[19px]'}`}>
                               {selectedBonus}
                             </span>
                           </div>
@@ -1412,7 +1427,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </div>
 
                         {isBonusDropdownOpen && (
-                          <div className="absolute top-[49px] left-[-1px] right-[-1px] bg-[#112f82] rounded-b-[8px] border-x border-b border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col">
+                          <div
+                            style={{ top: isShortDeposit ? '39px' : '49px' }}
+                            className="absolute left-[-1px] right-[-1px] bg-[#112f82] rounded-b-[8px] border-x border-b border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col"
+                          >
                             <div className="px-[16px] py-[10px] border-b border-white/5 font-manrope font-bold text-[12px] text-[#A5B8EF] bg-[#112f82]">
                               Choose one bonus on next deposits
                             </div>
@@ -1453,40 +1471,40 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     </div>
 
                     {/* Select a Payment Method */}
-                    <div className="flex flex-col items-start gap-[8px] w-full relative shrink-0" ref={paymentDropdownRefMobile}>
-                      <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                    <div className={`flex flex-col items-start w-full relative shrink-0 ${isShortDeposit ? 'gap-[4px]' : 'gap-[8px]'}`} ref={paymentDropdownRefMobile}>
+                      <span className={`font-manrope font-semibold tracking-[0.02em] text-[#BBCAF3] ${isShortDeposit ? 'text-[10px] leading-[14px]' : 'text-[12px] leading-[16px]'}`}>
                         {selectedPayment === 'Bitcoin' ? '2.Select a payment method' : 'Select a payment method'}
                       </span>
 
                       <div className={`relative w-full transition-all duration-200 ${isPaymentDropdownOpen ? 'border border-[#1463FF] rounded-[8px]' : 'border border-white/5 rounded-[8px]'}`}>
                         <div
                           onClick={() => setIsPaymentDropdownOpen(!isPaymentDropdownOpen)}
-                          className={`flex flex-row items-center justify-between px-[16px] w-full min-h-[50px] py-[8px] bg-[#112F82] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 ${isPaymentDropdownOpen ? 'rounded-t-[8px]' : 'rounded-[8px]'}`}
+                          className={`flex flex-row items-center justify-between px-[16px] w-full bg-[#112F82] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 ${isPaymentDropdownOpen ? 'rounded-t-[8px]' : 'rounded-[8px]'} ${isShortDeposit ? 'min-h-[40px] py-[4px]' : 'min-h-[50px] py-[8px]'}`}
                         >
-                          <div className="flex flex-row items-center gap-[12px] flex-1">
+                          <div className="flex flex-row items-center gap-[8px] min-[360px]:gap-[12px] flex-1">
                             {selectedPayment === 'Bitcoin' ? (
-                              <div className="flex flex-row items-center gap-[8px] flex-1">
+                              <div className="flex flex-row items-center gap-[6px] min-[360px]:gap-[8px] flex-1">
                                 <div className="w-[16px] h-[16px] rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0">
                                   <span className="text-[#1A1404] font-extrabold text-[11px] font-manrope">₿</span>
                                 </div>
-                                <div className="flex flex-row items-center gap-[8px]">
-                                  <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                                <div className="flex flex-row items-center gap-[4px] min-[360px]:gap-[8px]">
+                                  <span className={`font-manrope font-bold tracking-[0.02em] text-white ${isShortDeposit ? 'text-[12px] leading-[16px]' : 'text-[14px] leading-[19px]'}`}>
                                     Bitcoin
                                   </span>
-                                  <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
+                                  <span className={`font-manrope font-medium tracking-[0.02em] text-[#7795E8] ${isShortDeposit ? 'text-[9px] leading-[12px]' : 'text-[10px] leading-[14px]'}`}>
                                     (Min. Deposit $10)
                                   </span>
                                 </div>
                               </div>
                             ) : (
-                              <div className="flex flex-row items-center gap-[8px] flex-1">
-                                <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain shrink-0" alt="Visa" />
-                                <div className="flex flex-row items-center gap-[8px]">
-                                  <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                              <div className="flex flex-row items-center gap-[6px] min-[360px]:gap-[8px] flex-1">
+                                <img src="/images/visa.svg" className="w-[36px] h-[16px] min-[360px]:w-[42px] min-[360px]:h-[20px] object-contain shrink-0" alt="Visa" />
+                                <div className="flex flex-row items-center gap-[4px] min-[360px]:gap-[8px]">
+                                  <span className={`font-manrope font-bold tracking-[0.02em] text-white ${isShortDeposit ? 'text-[12px] leading-[16px]' : 'text-[14px] leading-[19px]'}`}>
                                     Credit Card
                                   </span>
-                                  <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
-                                    (Min. $30 - Max. $2,500)
+                                  <span className={`font-manrope font-medium tracking-[0.02em] text-[#7795E8] whitespace-nowrap ${isShortDeposit ? 'text-[9px] leading-[12px]' : 'text-[10px] leading-[14px]'}`}>
+                                    (Min. $30 - Max. $2.5k)
                                   </span>
                                 </div>
                               </div>
@@ -1504,7 +1522,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </div>
 
                         {isPaymentDropdownOpen && (
-                          <div className="absolute top-[49px] left-[-1px] right-[-1px] bg-[#112F82] rounded-b-[8px] border-x border-b border-[#1463FF] shadow-xl z-50 overflow-hidden">
+                          <div
+                            style={{ top: isShortDeposit ? '39px' : '49px' }}
+                            className="absolute left-[-1px] right-[-1px] bg-[#112F82] rounded-b-[8px] border-x border-b border-[#1463FF] shadow-xl z-50 overflow-hidden"
+                          >
                             {/* Option 1: Credit Card */}
                             <div
                               onClick={() => {
@@ -1553,13 +1574,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </div>
 
                         {/* Calculate amount */}
-                        <div className="flex flex-col items-start gap-[8px] w-full shrink-0">
-                          <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                        <div className={`flex flex-col items-start w-full shrink-0 ${isShortDeposit ? 'gap-[4px]' : 'gap-[8px]'}`}>
+                          <span className={`font-manrope font-semibold tracking-[0.02em] text-[#BBCAF3] ${isShortDeposit ? 'text-[10px] leading-[14px]' : 'text-[12px] leading-[16px]'}`}>
                             3.Calculate the amount you want to deposit
                           </span>
 
-                          <div className="flex flex-row justify-center items-center gap-[8px] w-full h-[50px]">
-                            <div className="flex flex-row items-center px-[16px] gap-[12px] flex-grow h-full bg-[#112F82] rounded-[8px] border border-white/5">
+                          <div className={`flex flex-row justify-center items-center w-full ${isShortDeposit ? 'gap-[6px] h-[40px]' : 'gap-[8px] h-[50px]'}`}>
+                            <div className="flex-1 min-w-0 flex flex-row items-center px-[16px] gap-[12px] h-full bg-[#112F82] rounded-[8px] border border-white/5">
                               <div className="w-[16px] h-[16px] rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0">
                                 <span className="text-[#1A1404] font-extrabold text-[11px] font-manrope">$</span>
                               </div>
@@ -1567,22 +1588,22 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 type="number"
                                 value={usdAmount}
                                 onChange={(e) => handleUsdChange(e.target.value)}
-                                className="w-full bg-transparent border-none outline-none font-manrope font-bold text-[14px] leading-[19px] text-white placeholder-white/30"
+                                className={`w-full min-w-0 bg-transparent border-none outline-none font-manrope font-bold text-white placeholder-white/30 ${isShortDeposit ? 'text-[12px] leading-[16px]' : 'text-[14px] leading-[19px]'}`}
                                 placeholder="0.00"
                               />
                             </div>
 
                             <button
                               onClick={togglePrimaryCurrency}
-                              className="w-[50px] h-[50px] bg-[#1463FF] hover:bg-[#2c75ff] rounded-[8px] flex items-center justify-center text-white shrink-0 active:scale-90 transition-transform cursor-pointer border-none"
+                              className={`bg-[#1463FF] hover:bg-[#2c75ff] rounded-[8px] flex items-center justify-center text-white shrink-0 active:scale-90 transition-transform cursor-pointer border-none ${isShortDeposit ? 'w-[40px] h-[40px]' : 'w-[50px] h-[50px]'}`}
                             >
-                              <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 text-white">
+                              <svg width="18" height="14" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 text-white">
                                 <path d="M16 5H4M4 5L8 1.5M4 5L8 8.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M4 11H16M16 11L12 7.5M16 11L12 14.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
                             </button>
 
-                            <div className="flex flex-row items-center px-[16px] gap-[12px] flex-grow h-full bg-[#112F82] rounded-[8px] border border-white/5">
+                            <div className="flex-1 min-w-0 flex flex-row items-center px-[16px] gap-[12px] h-full bg-[#112F82] rounded-[8px] border border-white/5">
                               <div className="w-[16px] h-[16px] rounded-full bg-[#FFC83D] flex items-center justify-center shrink-0">
                                 <span className="text-[#1A1404] font-extrabold text-[11px] font-manrope">₿</span>
                               </div>
@@ -1590,7 +1611,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 type="number"
                                 value={btcAmount}
                                 onChange={(e) => handleBtcChange(e.target.value)}
-                                className="w-full bg-transparent border-none outline-none font-manrope font-bold text-[14px] leading-[19px] text-white placeholder-white/30"
+                                className={`w-full min-w-0 bg-transparent border-none outline-none font-manrope font-bold text-white placeholder-white/30 ${isShortDeposit ? 'text-[12px] leading-[16px]' : 'text-[14px] leading-[19px]'}`}
                                 placeholder="0.000000"
                               />
                             </div>
@@ -1598,13 +1619,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </div>
 
                         {/* BTC Deposit Address */}
-                        <div className="flex flex-col items-start gap-[8px] w-full shrink-0 relative">
-                          <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                        <div className={`flex flex-col items-start w-full shrink-0 relative ${isShortDeposit ? 'gap-[4px]' : 'gap-[8px]'}`}>
+                          <span className={`font-manrope font-semibold tracking-[0.02em] text-[#BBCAF3] ${isShortDeposit ? 'text-[10px] leading-[14px]' : 'text-[12px] leading-[16px]'}`}>
                             4.BTC Deposit Address
                           </span>
 
-                          <div className="flex flex-row items-center justify-between px-[16px] w-full h-[50px] bg-[#112F82] rounded-[8px] border border-white/5">
-                            <span className="font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-[#7795E8] truncate max-w-[200px] md:max-w-[250px] select-all">
+                          <div className={`flex flex-row items-center justify-between px-[16px] w-full bg-[#112F82] rounded-[8px] border border-white/5 ${isShortDeposit ? 'h-[40px]' : 'h-[50px]'}`}>
+                            <span className={`font-manrope font-semibold tracking-[0.02em] text-[#7795E8] truncate max-w-[200px] md:max-w-[250px] select-all ${isShortDeposit ? 'text-[12px] leading-[16px]' : 'text-[14px] leading-[19px]'}`}>
                               {btcAddress}
                             </span>
 
@@ -1663,9 +1684,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       </>
                     ) : creditCardStep === 'address' ? (
                       /* Credit Card Address Fields (Step 1) */
-                      <div className="flex flex-col items-start gap-[12px] w-full shrink-0">
+                      <div className={`flex flex-col items-start w-full shrink-0 ${isShortDeposit ? 'gap-[8px]' : 'gap-[12px]'}`}>
                         <div className="flex flex-col gap-[2px] w-full">
-                          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                          <span className={`font-manrope font-bold tracking-[0.02em] text-white ${isShortDeposit ? 'text-[12px] leading-[16px]' : 'text-[14px] leading-[19px]'}`}>
                             Enter your address
                           </span>
                           <div className="flex flex-row items-start gap-[8px] w-full mt-[2px]">
@@ -1674,7 +1695,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
                               </svg>
                             </div>
-                            <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
+                            <span className={`font-manrope font-medium tracking-[0.02em] text-[#7795E8] select-none ${isShortDeposit ? 'text-[9px] leading-[12px]' : 'text-[10px] leading-[14px]'}`}>
                               Please fill up your address details before completing your deposit. This information is required for credit card deposits.
                             </span>
                           </div>
@@ -1685,7 +1706,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           type="text"
                           value={street}
                           onChange={(e) => setStreet(e.target.value)}
-                          className="w-full h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                          className={`w-full px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 ${isShortDeposit ? 'h-[40px] text-[12px]' : 'h-[50px] text-[14px]'}`}
                           placeholder="Street"
                         />
 
@@ -1695,14 +1716,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             type="text"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
-                            className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                            className={`flex-1 min-w-0 bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 ${isShortDeposit ? 'h-[40px] text-[12px] px-[12px]' : 'h-[50px] text-[14px] px-[16px]'}`}
                             placeholder="City"
                           />
                           <input
                             type="text"
                             value={postalCode}
                             onChange={(e) => setPostalCode(e.target.value)}
-                            className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                            className={`flex-1 min-w-0 bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 ${isShortDeposit ? 'h-[40px] text-[12px] px-[12px]' : 'h-[50px] text-[14px] px-[16px]'}`}
                             placeholder="Postal Code"
                           />
                         </div>
@@ -1713,7 +1734,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             type="text"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
-                            className="w-[calc(50%-4px)] shrink-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10"
+                            className={`w-[calc(50%-4px)] shrink-0 bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 ${isShortDeposit ? 'h-[40px] text-[12px] px-[12px]' : 'h-[50px] text-[14px] px-[16px]'}`}
                             placeholder="State"
                           />
 
@@ -1721,13 +1742,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           <div className="w-[calc(50%-4px)] shrink-0 relative" ref={countryDropdownRefMobile}>
                             <div
                               onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-                              className="flex flex-row items-center justify-between px-[16px] h-[50px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
+                              className={`flex flex-row items-center justify-between px-[16px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5 ${isShortDeposit ? 'h-[40px]' : 'h-[50px]'}`}
                             >
                               <div className="flex flex-row items-center gap-[10px] truncate">
                                 {country === 'United States' && <USFlag />}
                                 {country === 'Canada' && <CanadaFlag />}
                                 {country === 'United Kingdom' && <UKFlag />}
-                                <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-[#A5B8EF] truncate">
+                                <span className={`font-manrope font-bold tracking-[0.02em] text-[#A5B8EF] truncate ${isShortDeposit ? 'text-[11px] leading-[15px]' : 'text-[12px] leading-[16px]'}`}>
                                   {country}
                                 </span>
                               </div>
@@ -1747,7 +1768,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             </div>
 
                             {isCountryDropdownOpen && (
-                              <div className="absolute bottom-[58px] left-0 right-0 bg-[#112F82] rounded-[8px] border border-white/10 shadow-xl z-50 overflow-hidden">
+                              <div
+                                style={{ bottom: isShortDeposit ? '48px' : '58px' }}
+                                className="absolute left-0 right-0 bg-[#112F82] rounded-[8px] border border-white/10 shadow-xl z-50 overflow-hidden"
+                              >
                                 {[
                                   { name: 'United States', flag: <USFlag /> },
                                   { name: 'Canada', flag: <CanadaFlag /> },
@@ -1772,18 +1796,18 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                       </div>
                     ) : (
                       /* Credit Card Payment Details (Step 2) */
-                      <div className="flex flex-col items-start gap-[12px] w-full shrink-0">
+                      <div className={`flex flex-col items-start w-full shrink-0 ${isShortDeposit ? 'gap-[8px]' : 'gap-[12px]'}`}>
 
                         {/* Select an amount */}
-                        <div className="flex flex-col items-start gap-[8px] w-full">
+                        <div className="flex flex-col items-start gap-[6px] w-full">
                           <div className="flex flex-row items-center justify-between w-full">
-                            <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                            <span className={`font-manrope font-semibold tracking-[0.02em] text-[#BBCAF3] ${isShortDeposit ? 'text-[10px] leading-[14px]' : 'text-[12px] leading-[16px]'}`}>
                               Select an amount
                             </span>
                             {creditCardStep === 'payment' && (
                               <button
                                 onClick={() => setCreditCardStep('address')}
-                                className="font-manrope font-semibold text-[10px] text-[#7795E8] hover:text-white transition-colors cursor-pointer flex items-center gap-1 border-none bg-transparent p-0"
+                                className={`font-manrope font-semibold text-[#7795E8] hover:text-white transition-colors cursor-pointer flex items-center gap-1 border-none bg-transparent p-0 ${isShortDeposit ? 'text-[9px]' : 'text-[10px]'}`}
                               >
                                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M6 8L3 5L6 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -1793,7 +1817,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             )}
                           </div>
 
-                          <div className="flex flex-row items-center gap-[8px] w-full h-[50px]">
+                          <div className={`flex flex-row items-center gap-[8px] w-full ${isShortDeposit ? 'h-[40px]' : 'h-[50px]'}`}>
                             {[20, 30, 100].map((amount) => {
                               const isActive = ccAmountOption === amount;
                               return (
@@ -1801,10 +1825,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   key={amount}
                                   type="button"
                                   onClick={() => setCcAmountOption(amount as any)}
-                                  className={`flex-1 h-full rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] leading-[19px] transition-all cursor-pointer border-none ${isActive
+                                  className={`flex-1 h-full rounded-[8px] flex items-center justify-center font-manrope font-bold transition-all cursor-pointer border-none ${isActive
                                     ? 'bg-[#1463FF] text-white'
                                     : 'bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e]'
-                                    }`}
+                                    } ${isShortDeposit ? 'text-[12px]' : 'text-[14px]'}`}
                                 >
                                   ${amount}
                                 </button>
@@ -1814,13 +1838,13 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             {/* Custom Amount Option */}
                             <div className="flex-1 h-full relative">
                               {ccAmountOption === 'custom' ? (
-                                <div className="flex flex-row items-center px-[12px] w-full h-full bg-[#112F82] border border-[#1463FF] rounded-[8px]">
-                                  <span className="font-manrope font-bold text-[14px] text-white mr-1">$</span>
+                                <div className={`flex flex-row items-center w-full h-full bg-[#112F82] border border-[#1463FF] rounded-[8px] ${isShortDeposit ? 'px-[12px]' : 'px-[16px]'}`}>
+                                  <span className={`font-manrope font-bold text-white mr-0.5 ${isShortDeposit ? 'text-[12px]' : 'text-[14px]'}`}>$</span>
                                   <input
                                     type="number"
                                     value={ccCustomAmount}
                                     onChange={(e) => setCcCustomAmount(e.target.value)}
-                                    className="w-full bg-transparent border-none outline-none font-manrope font-bold text-[14px] text-[#A5B8EF] placeholder-white/30"
+                                    className={`w-full min-w-0 bg-transparent border-none outline-none font-manrope font-bold text-[#A5B8EF] placeholder-white/30 ${isShortDeposit ? 'text-[12px]' : 'text-[14px]'}`}
                                     placeholder="0"
                                     autoFocus
                                   />
@@ -1829,7 +1853,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 <button
                                   type="button"
                                   onClick={() => setCcAmountOption('custom')}
-                                  className="w-full h-full rounded-[8px] bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e] flex items-center justify-center font-manrope font-bold text-[14px] leading-[19px] cursor-pointer border-none"
+                                  className={`w-full h-full rounded-[8px] bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e] flex items-center justify-center font-manrope font-bold cursor-pointer border-none ${isShortDeposit ? 'text-[12px]' : 'text-[14px]'}`}
                                 >
                                   Custom...
                                 </button>
@@ -1839,8 +1863,8 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         </div>
 
                         {/* Enter your payment details */}
-                        <div className="flex flex-col items-start gap-[8px] w-full">
-                          <span className="font-manrope font-semibold text-[12px] leading-[16px] tracking-[0.02em] text-[#BBCAF3]">
+                        <div className="flex flex-col items-start gap-[6px] w-full">
+                          <span className={`font-manrope font-semibold tracking-[0.02em] text-[#BBCAF3] ${isShortDeposit ? 'text-[10px] leading-[14px]' : 'text-[12px] leading-[16px]'}`}>
                             Enter your payment details
                           </span>
 
@@ -1854,7 +1878,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               const match = val.match(/.{1,4}/g);
                               setCreditCardNumber(match ? match.join(' ') : val);
                             }}
-                            className="w-full h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
+                            className={`w-full bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text ${isShortDeposit ? 'h-[40px] text-[12px] px-[12px]' : 'h-[50px] text-[14px] px-[16px]'}`}
                             placeholder="Credit Card Number"
                           />
 
@@ -1872,7 +1896,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   setCreditCardExp(val);
                                 }
                               }}
-                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
+                              className={`flex-1 min-w-0 bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text ${isShortDeposit ? 'h-[40px] text-[12px] px-[12px]' : 'h-[50px] text-[14px] px-[16px]'}`}
                               placeholder="Exp."
                             />
                             <input
@@ -1880,20 +1904,20 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               inputMode="numeric"
                               value={creditCardCcv}
                               onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
-                              className="flex-1 min-w-0 h-[50px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text"
+                              className={`flex-1 min-w-0 bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[#A5B8EF] placeholder-[#A5B8EF]/60 outline-none focus:border-white/10 select-text ${isShortDeposit ? 'h-[40px] text-[12px] px-[12px]' : 'h-[50px] text-[14px] px-[16px]'}`}
                               placeholder="CCV"
                             />
                           </div>
                         </div>
 
                         {/* Info note */}
-                        <div className="flex flex-row items-start gap-[8px] w-full mt-[2px]">
+                        <div className="flex flex-row items-start gap-[6px] min-[360px]:gap-[8px] w-full mt-[2px]">
                           <div className="w-[12px] h-[12px] mt-[2px] flex items-center justify-center shrink-0">
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
                             </svg>
                           </div>
-                          <span className="font-manrope font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
+                          <span className="font-manrope font-medium text-[9px] min-[360px]:text-[10px] leading-[13px] min-[360px]:leading-[14px] tracking-[0.02em] text-[#7795E8] select-none">
                             Warning message about fees or anything else relevant at this stage.
                           </span>
                         </div>
@@ -1961,12 +1985,6 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                 border: 'none',
                                 outline: 'none',
                                 flexGrow: 1,
-                              }}
-                              onFocus={(e) => {
-                                (e.currentTarget.parentElement?.parentElement as HTMLElement).style.boxShadow = '0 0 0 1.5px rgba(20,99,255,0.6)';
-                              }}
-                              onBlur={(e) => {
-                                (e.currentTarget.parentElement?.parentElement as HTMLElement).style.boxShadow = 'none';
                               }}
                             />
                             {/* Info Button */}
@@ -2277,7 +2295,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
             {/* Yellow CTA Button */}
             {activeTab === 'deposit' && depositConfirmed ? (
-              <div className="w-full flex flex-col items-center justify-center h-[50px] shrink-0 mt-auto">
+              <div className={`w-full flex flex-col items-center justify-center shrink-0 mt-auto ${isShortDeposit ? 'h-[40px]' : 'h-[50px]'}`}>
                 <button
                   onClick={onClose}
                   style={{
@@ -2288,7 +2306,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     letterSpacing: '0.02em',
                     color: '#1A1404',
                   }}
-                  className="w-full h-[50px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0"
+                  className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[50px]'}`}
                 >
                   {selectedPayment === 'Credit Card' ? 'Play Now' : 'Go to games'}
                 </button>
@@ -2297,7 +2315,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               selectedPayment === 'Bitcoin' ? (
                 <button
                   onClick={() => setDepositConfirmed(true)}
-                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0"
+                  className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
                 >
                   I&apos;ve completed my deposit
                 </button>
@@ -2310,7 +2328,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     }
                     setCreditCardStep('payment');
                   }}
-                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0"
+                  className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
                 >
                   Continue
                 </button>
@@ -2325,7 +2343,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     dispatch(updateBalance(currentBalance + getDepositAmount()));
                     setDepositConfirmed(true);
                   }}
-                  className="w-full h-[60px] max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0"
+                  className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
                 >
                   Deposit ${getDepositAmount()}
                 </button>
