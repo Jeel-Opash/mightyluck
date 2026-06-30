@@ -770,9 +770,9 @@ export default function UserHome() {
                                 {promo.title}
                               </h3>
                               <button
-                                className="flex flex-row justify-center items-center w-[95px] sm:w-[110px] h-[34.55px] sm:h-[40px] px-[20.73px] sm:px-6 py-[8.64px] sm:py-2.5 bg-[#FFBF1F] sm:bg-[#FFC83D] hover:bg-[#ffd362] active:scale-95 transition-all duration-150 rounded-[6px] sm:rounded-[8px] border-none outline-none cursor-pointer"
+                                className="flex flex-row justify-center items-center w-auto min-w-[95px] sm:min-w-[110px] h-[34.55px] sm:h-[40px] px-4 sm:px-5 py-[8.64px] sm:py-2.5 bg-[#FFBF1F] sm:bg-[#FFC83D] hover:bg-[#ffd362] active:scale-95 transition-all duration-150 rounded-[6px] sm:rounded-[8px] border-none outline-none cursor-pointer"
                               >
-                                <span className="font-manrope font-bold text-[12px] sm:text-[14px] leading-[17px] sm:leading-[19px] tracking-[0.02em] text-[#1A1404] select-none">
+                                <span className="font-manrope font-bold text-[12px] sm:text-[14px] leading-[17px] sm:leading-[19px] tracking-[0.02em] text-[#1A1404] select-none whitespace-nowrap">
                                   Claim Now
                                 </span>
                               </button>
