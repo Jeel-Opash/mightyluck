@@ -1882,7 +1882,6 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             placeholder="Credit Card Number"
                           />
 
-                          {/* Exp. and CCV */}
                           <div className="flex flex-row gap-[8px] w-full overflow-hidden">
                             <input
                               type="text"

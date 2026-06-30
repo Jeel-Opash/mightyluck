@@ -145,7 +145,7 @@ export default function Sidebar() {
               className="transition-all duration-300 overflow-hidden flex flex-col shrink-0 rounded-[8px]"
               style={{
                 width: sidebarOpen ? 200 : 48,
-                height: (sidebarOpen && casinoExpanded) ? 264 : 44,
+                height: casinoExpanded ? 264 : 44,
                 background: '#112F82'
               }}
             >
@@ -165,8 +165,8 @@ export default function Sidebar() {
                   </svg>
                 )}
               </button>
-              {sidebarOpen && casinoExpanded && (
-                <div className="flex flex-col gap-[20px] p-[20px_16px] w-[200px] h-[220px]">
+              {casinoExpanded && (
+                <div className={`flex flex-col gap-[20px] ${sidebarOpen ? 'p-[20px_16px] w-[200px]' : 'p-[20px_0px] w-[48px] items-center'} h-[220px]`}>
                   {[
                     { icon: '/games/side-icon/all.svg', label: 'All Games', onClick: () => dispatch(openAllGamesModal()) },
                     { icon: '/games/side-icon/new.svg', label: 'New Games', onClick: () => { } },
@@ -174,9 +174,16 @@ export default function Sidebar() {
                     { icon: '/games/side-icon/original.svg', label: 'Original Games', onClick: () => { } },
                     { icon: '/games/side-icon/crash.svg', label: 'Crash Games', onClick: () => { } },
                   ].map((item) => (
-                    <div key={item.label} onClick={item.onClick} className="flex items-center gap-[12px] w-[160px] h-[20px] text-[#D2DCF7] hover:text-white transition-colors cursor-pointer">
+                    <div
+                      key={item.label}
+                      onClick={item.onClick}
+                      className={`flex items-center ${sidebarOpen ? 'gap-[12px] w-[160px]' : 'justify-center w-[48px]'} h-[20px] text-[#D2DCF7] hover:text-white transition-colors cursor-pointer`}
+                      title={!sidebarOpen ? item.label : undefined}
+                    >
                       <img src={item.icon} className="w-[20px] h-[20px] object-contain shrink-0" alt={item.label} />
-                      <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em]">{item.label}</span>
+                      {sidebarOpen && (
+                        <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em]">{item.label}</span>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -188,7 +195,7 @@ export default function Sidebar() {
               className="transition-all duration-300 overflow-hidden flex flex-col shrink-0 rounded-[8px]"
               style={{
                 width: sidebarOpen ? 200 : 48,
-                height: (sidebarOpen && liveCasinoExpanded) ? 184 : 44,
+                height: liveCasinoExpanded ? 184 : 44,
                 background: '#112F82'
               }}
             >
@@ -208,16 +215,23 @@ export default function Sidebar() {
                   </svg>
                 )}
               </button>
-              {sidebarOpen && liveCasinoExpanded && (
-                <div className="flex flex-col gap-[20px] p-[20px_16px] w-[200px] h-[140px]">
+              {liveCasinoExpanded && (
+                <div className={`flex flex-col gap-[20px] ${sidebarOpen ? 'p-[20px_16px] w-[200px]' : 'p-[20px_0px] w-[48px] items-center'} h-[140px]`}>
                   {[
                     { icon: '/games/side-icon/roulette.svg', label: 'Roulette', onClick: () => { } },
                     { icon: '/games/side-icon/blackjack.svg', label: 'Blackjack', onClick: () => { } },
                     { icon: '/games/side-icon/baccrarat.svg', label: 'Baccarat', onClick: () => { } },
                   ].map((item) => (
-                    <div key={item.label} onClick={item.onClick} className="flex items-center gap-[12px] w-[160px] h-[20px] text-[#D2DCF7] hover:text-white transition-colors cursor-pointer">
+                    <div
+                      key={item.label}
+                      onClick={item.onClick}
+                      className={`flex items-center ${sidebarOpen ? 'gap-[12px] w-[160px]' : 'justify-center w-[48px]'} h-[20px] text-[#D2DCF7] hover:text-white transition-colors cursor-pointer`}
+                      title={!sidebarOpen ? item.label : undefined}
+                    >
                       <img src={item.icon} className="w-[20px] h-[20px] object-contain shrink-0" alt={item.label} />
-                      <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em]">{item.label}</span>
+                      {sidebarOpen && (
+                        <span className="font-sans font-semibold text-[14px] leading-[19px] tracking-[0.02em]">{item.label}</span>
+                      )}
                     </div>
                   ))}
                 </div>
