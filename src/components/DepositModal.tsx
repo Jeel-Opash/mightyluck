@@ -2357,29 +2357,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                         : activeTab === 'transactions'
                           ? '669px'
                           : 'auto',
-          padding: '24px 20px 32px',
-          gap: '24px',
-          background: '#091741',
-          borderRadius: '16px',
-          isolation: 'isolate',
+          position: 'relative',
         }}
-        className="hidden min-[580px]:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
+        className="hidden min-[580px]:flex relative flex-col items-center z-10 overflow-visible animate-in fade-in zoom-in-95 duration-200"
       >
-        {/* Ellipse 6 */}
-        <div
-          style={{
-            position: 'absolute',
-            width: '173px',
-            height: '173px',
-            left: 'calc(50% - 173px/2 + 0.5px)',
-            top: '-126px',
-            background: '#1463FF',
-            filter: 'blur(40px)',
-            borderRadius: '50%',
-            pointerEvents: 'none',
-            zIndex: 0,
-          }}
-        />
 
 
         {/* Close Button on the top-right outside the modal wrapper */}
@@ -2409,6 +2390,42 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             alt="Close"
           />
         </button>
+
+        {/* Inner container to clip children like Ellipse 6 */}
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            padding: '24px 20px 32px',
+            gap: '24px',
+            background: '#091741',
+            borderRadius: '16px',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            position: 'relative',
+            overflow: 'hidden',
+            boxSizing: 'border-box',
+            isolation: 'isolate',
+          }}
+        >
+          {/* Ellipse 6 */}
+          <div
+            style={{
+              position: 'absolute',
+              width: '173px',
+              height: '173px',
+              left: 'calc(50% - 173px/2 + 0.5px)',
+              top: '-126px',
+              background: '#1463FF',
+              filter: 'blur(40px)',
+              borderRadius: '50%',
+              pointerEvents: 'none',
+              zIndex: 0,
+            }}
+          />
 
         {/* Inner layout frame (460px x 525px Success / auto, z-index 1) */}
         <div
@@ -4303,6 +4320,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             </div>
           )
         )}
+        </div>
       </div>
     </div>
   );
