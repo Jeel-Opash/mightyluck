@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAppSelector } from '@/redux/store';
 
 interface AllGamesModalProps {
   isOpen: boolean;
@@ -177,11 +178,18 @@ function GameCard({ game, onClick }: { game: typeof ALL_GAMES[0]; onClick: () =>
 
 /* ── main modal component ───────────────────────────────────── */
 export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
+  const selectedCategory = useAppSelector((state) => state.ui.selectedCategory);
   const [activeCategory, setActiveCategory] = useState<SideCategory>('All Games');
   const [search, setSearch] = useState('');
   const router = useRouter();
   const providersScrollRef = useRef<HTMLDivElement>(null);
   const popularScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen && selectedCategory) {
+      setActiveCategory(selectedCategory as SideCategory);
+    }
+  }, [isOpen, selectedCategory]);
 
   /* Escape key to close */
   useEffect(() => {
@@ -1028,6 +1036,15 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                       Popular Games
                     </h2>
                   </div>
+                  <span
+                    onClick={() => {
+                      setActiveCategory('All Games');
+                      setSearch('');
+                    }}
+                    className="game-section-view-all"
+                  >
+                    View all
+                  </span>
                 </div>
 
                 <div className="w-full overflow-x-auto agm-scrollbar-none">
@@ -1066,6 +1083,15 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                       GAME PROVIDERS
                     </h2>
                   </div>
+                  <span
+                    onClick={() => {
+                      setActiveCategory('All Games');
+                      setSearch('');
+                    }}
+                    className="game-section-view-all"
+                  >
+                    View all
+                  </span>
                 </div>
 
                 <div className="w-full overflow-x-auto agm-scrollbar-none">

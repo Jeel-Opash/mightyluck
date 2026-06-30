@@ -7,6 +7,7 @@ interface UIState {
   authModalType: 'login' | 'join';
   depositModalOpen: boolean;
   allGamesOpen: boolean;
+  selectedCategory: string;
 }
 
 const initialState: UIState = {
@@ -16,6 +17,7 @@ const initialState: UIState = {
   authModalType: 'login',
   depositModalOpen: false,
   allGamesOpen: false,
+  selectedCategory: 'All Games',
 };
 
 export const uiSlice = createSlice({
@@ -44,8 +46,9 @@ export const uiSlice = createSlice({
     closeDepositModal: (state) => {
       state.depositModalOpen = false;
     },
-    openAllGamesModal: (state) => {
+    openAllGamesModal: (state, action: PayloadAction<string | undefined>) => {
       state.allGamesOpen = true;
+      state.selectedCategory = action.payload || 'All Games';
     },
     closeAllGamesModal: (state) => {
       state.allGamesOpen = false;

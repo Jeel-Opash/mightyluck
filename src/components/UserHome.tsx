@@ -42,6 +42,10 @@ export default function UserHome() {
   const bonusRef = useRef<HTMLDivElement>(null);
   const collectionsRef = useRef<HTMLDivElement>(null);
 
+  // Winners scroll progress tracking refs
+  const winnersTableRef = useRef<HTMLDivElement>(null);
+  const winnersThumbRef = useRef<HTMLDivElement>(null);
+
   // States for scroll buttons
   const [canScrollSlotsLeft, setCanScrollSlotsLeft] = useState(false);
   const [canScrollSlotsRight, setCanScrollSlotsRight] = useState(true);
@@ -104,6 +108,14 @@ export default function UserHome() {
       setRight(scrollLeft + clientWidth < scrollWidth - 5);
     }
   };
+
+  const filteredSlots = slotGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredOriginals = originalGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredCrash = crashGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredTable = tableGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredBonus = bonusGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredCollections = collectionList.filter((c) => c.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredWinners = recentWinners.filter((w) => w.gameTitle.toLowerCase().includes(searchQuery.toLowerCase()));
 
   useEffect(() => {
     const slotsEl = slotsRef.current;
@@ -205,15 +217,49 @@ export default function UserHome() {
     return () => clearTimeout(timer);
   }, [searchQuery]);
 
+  useEffect(() => {
+    const el = winnersTableRef.current;
+    if (el) {
+      const updateDimensions = () => {
+        updatePosition();
+      };
+
+      const updatePosition = () => {
+        const currentThumb = winnersThumbRef.current;
+        if (!currentThumb) return;
+        const scrollLeft = el.scrollLeft;
+        const scrollWidth = el.scrollWidth;
+        const clientWidth = el.clientWidth;
+        
+        const winnersThumbWidth = scrollWidth > 0 ? (clientWidth / scrollWidth) * 100 : 100;
+        const displayWinnersThumbWidth = Math.max(15, Math.min(100, winnersThumbWidth));
+        const winnersMaxScrollLeft = scrollWidth - clientWidth;
+        const winnersScrollRatio = winnersMaxScrollLeft > 0 ? scrollLeft / winnersMaxScrollLeft : 0;
+        const winnersLeftOffset = winnersScrollRatio * (100 - displayWinnersThumbWidth);
+        
+        const translatePercent = displayWinnersThumbWidth > 0 
+          ? (winnersLeftOffset / displayWinnersThumbWidth) * 100 
+          : 0;
+        
+        currentThumb.style.width = `${displayWinnersThumbWidth}%`;
+        currentThumb.style.transform = `translateX(${translatePercent}%)`;
+      };
+      
+      updateDimensions();
+      el.addEventListener('scroll', updatePosition);
+      window.addEventListener('resize', updateDimensions);
+      
+      const timer = setTimeout(updateDimensions, 500);
+      
+      return () => {
+        el.removeEventListener('scroll', updatePosition);
+        window.removeEventListener('resize', updateDimensions);
+        clearTimeout(timer);
+      };
+    }
+  }, [filteredWinners]);
 
 
-  const filteredSlots = slotGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
-  const filteredOriginals = originalGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
-  const filteredCrash = crashGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
-  const filteredTable = tableGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
-  const filteredBonus = bonusGames.filter((g) => g.title.toLowerCase().includes(searchQuery.toLowerCase()));
-  const filteredCollections = collectionList.filter((c) => c.name.toLowerCase().includes(searchQuery.toLowerCase()));
-  const filteredWinners = recentWinners.filter((w) => w.gameTitle.toLowerCase().includes(searchQuery.toLowerCase()));
 
   const renderGameGrid = (games: GameCard[], title: string, icon: string) => {
     return (
@@ -348,6 +394,8 @@ export default function UserHome() {
         return null;
     }
   };
+
+
 
   return (
     <div className="w-full relative flex flex-col select-none">
@@ -529,7 +577,10 @@ export default function UserHome() {
                     </div>
 
                     <div className="game-section-actions-wrapper">
-                      <span className="game-section-view-all">
+                      <span
+                        onClick={() => dispatch(openAllGamesModal('Slots'))}
+                        className="game-section-view-all"
+                      >
                         View all
                       </span>
 
@@ -600,7 +651,10 @@ export default function UserHome() {
                     </div>
 
                     <div className="game-section-actions-wrapper">
-                      <span className="game-section-view-all">
+                      <span
+                        onClick={() => dispatch(openAllGamesModal('Original'))}
+                        className="game-section-view-all"
+                      >
                         View all
                       </span>
 
@@ -797,7 +851,10 @@ export default function UserHome() {
                     </div>
 
                     <div className="game-section-actions-wrapper">
-                      <span className="game-section-view-all">
+                      <span
+                        onClick={() => dispatch(openAllGamesModal('Crash Games'))}
+                        className="game-section-view-all"
+                      >
                         View all
                       </span>
 
@@ -884,7 +941,10 @@ export default function UserHome() {
                     </div>
 
                     <div className="game-section-actions-wrapper">
-                      <span className="game-section-view-all">
+                      <span
+                        onClick={() => dispatch(openAllGamesModal('All Games'))}
+                        className="game-section-view-all"
+                      >
                         View all
                       </span>
 
@@ -950,7 +1010,10 @@ export default function UserHome() {
                     </div>
 
                     <div className="game-section-actions-wrapper">
-                      <span className="game-section-view-all">
+                      <span
+                        onClick={() => dispatch(openAllGamesModal('Table Games'))}
+                        className="game-section-view-all"
+                      >
                         View all
                       </span>
 
@@ -1037,7 +1100,10 @@ export default function UserHome() {
                     </div>
 
                     <div className="game-section-actions-wrapper">
-                      <span className="game-section-view-all">
+                      <span
+                        onClick={() => dispatch(openAllGamesModal('Slots'))}
+                        className="game-section-view-all"
+                      >
                         View all
                       </span>
 
@@ -1124,7 +1190,10 @@ export default function UserHome() {
                     </div>
 
                     <div className="game-section-actions-wrapper">
-                      <span className="game-section-view-all">
+                      <span
+                        onClick={() => dispatch(openAllGamesModal('All Games'))}
+                        className="game-section-view-all"
+                      >
                         View all
                       </span>
 
@@ -1195,12 +1264,7 @@ export default function UserHome() {
                 </div>
               </div>
 
-              {/* Mobile-only progress line divider */}
-              <div className="md:hidden w-full h-[8px] rounded-full bg-white/10 overflow-hidden mt-[12px] mb-[16px]">
-                <div className="h-full w-[70%] bg-[#1463FF] rounded-full" />
-              </div>
-
-              <div className="winners-table-container scrollbar-none">
+              <div ref={winnersTableRef} className="winners-table-container scrollbar-none">
                 <div className="winners-table-inner">
                   <div className="winners-table-header-row">
                     <span className="winners-table-header-game">GAME</span>
@@ -1242,6 +1306,18 @@ export default function UserHome() {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              {/* Mobile-only progress line divider */}
+              <div className="md:hidden w-full h-[8px] rounded-full bg-white/10 relative overflow-hidden mt-[16px]">
+                <div
+                  ref={winnersThumbRef}
+                  className="absolute left-0 top-0 bottom-0 bg-[#1463FF] rounded-full"
+                  style={{
+                    width: '30%',
+                    transform: 'translateX(0%)',
+                  }}
+                />
               </div>
             </section>
           </div>
