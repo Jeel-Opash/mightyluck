@@ -157,7 +157,7 @@ export default function Footer({ className }: FooterProps = {}) {
       </section>
 
       {/* Child 3: MAIN WEBSITE FOOTER */}
-      <footer className="w-full flex flex-col gap-[40px] md:gap-[48px] select-none text-white pb-[100px] md:pb-[40px] px-0">
+      <footer className="w-full flex flex-col gap-[40px] md:gap-[48px] select-none text-white pb-2 md:pb-[40px] px-0">
 
         {/* Top Row: logo + menus */}
         <div className="w-full flex flex-col xl:flex-row justify-between items-center xl:items-start gap-[40px] xl:gap-[49px]">
