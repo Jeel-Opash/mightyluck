@@ -551,9 +551,9 @@ export default function ReferralsPage() {
           </div>
 
           {/* =========================================================================
-              2. STATS SUMMARY CARD DECK (3 Cards row on desktop, stacked on mobile)
+              2. STATS SUMMARY CARD DECK (3 Cards row on desktop, hidden on mobile)
              ========================================================================= */}
-          <div className="flex flex-col md:flex-row gap-[16px] w-full select-none">
+          <div className="hidden lg:flex flex-row gap-[16px] w-full select-none">
             {/* Card 1: $2.5 K */}
             <div className="flex-1 min-w-0 bg-[#0C1F56] border border-white/5 rounded-[16px] p-6 text-center flex flex-col justify-center items-center gap-[8px] h-[136px] shadow-lg">
               <span className="font-jost font-extrabold text-[40px] leading-[58px] text-white">

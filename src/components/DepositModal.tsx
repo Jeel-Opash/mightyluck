@@ -1205,6 +1205,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         style={{
           height: modalHeight,
         }}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            onClose();
+          }
+        }}
         className="min-[580px]:hidden relative w-full bg-transparent flex flex-col items-center gap-0 z-10 animate-in fade-in slide-in-from-bottom duration-300"
       >
 
@@ -1212,16 +1217,17 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         <Navbar />
 
         {/* Spacer to preserve layout flow since Navbar is fixed-positioned */}
-        <div className="w-full h-[50px] shrink-0" />
+        <div className="w-full h-[50px] shrink-0 cursor-pointer" onClick={onClose} />
 
         {/* Gap of 30px between Header and Body Panel */}
-        <div className="w-full h-[30px] bg-transparent shrink-0" />
+        <div className="w-full h-[30px] bg-transparent shrink-0 cursor-pointer" onClick={onClose} />
 
         {/* Main Wallet Panel (Figma specified: background: #091741, border-radius: 30px 30px 0px 0px) */}
         <div
           style={{
             height: bodyHeight,
           }}
+          onClick={(e) => e.stopPropagation()}
           className="w-full bg-[#091741] rounded-t-[30px] border-t border-x border-white/10 shadow-2xl flex flex-col items-center px-[20px] pt-[16px] pb-[40px] gap-[16px] relative overflow-hidden shrink-0"
         >
 
@@ -1256,7 +1262,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             className={`w-full max-w-[374px] mx-auto flex flex-col items-start z-10 shrink-0 ${isShortDeposit ? 'gap-[12px]' : 'gap-[24px]'}`}
           >
 
-            {/* Title Bar: Wallet title + Close button */}
+            {/* Title Bar: Wallet title */}
             <div
               className="relative flex flex-row justify-between items-center w-full shrink-0"
               style={{
@@ -1267,28 +1273,6 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 <YellowWalletIcon />
                 <span className={`font-jost font-extrabold leading-[29px] tracking-[0.01em] text-white ${isShortDeposit ? 'text-[18px]' : 'text-[20px]'}`}>Wallet</span>
               </div>
-              {/* Dismiss X button */}
-              <button
-                onClick={onClose}
-                style={{
-                  width: '24px',
-                  height: '24px',
-                  background: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '0px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                className="opacity-80 hover:opacity-100 transition-opacity relative z-10"
-              >
-                <img
-                  src="/games/registeer/close.png"
-                  style={{ width: '14.4px', height: '14.4px', objectFit: 'contain' }}
-                  alt="Close"
-                />
-              </button>
             </div>
 
             {/* Tab+Card Frame (containing Tab Buttons + Content Card) */}
@@ -1328,7 +1312,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 style={{
                   height: contentCardHeight,
                 }}
-                className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] flex flex-col border border-white/5 shadow-md shrink-0 ${activeTab === 'deposit' && depositConfirmed
+                className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] flex flex-col border border-white/5 shadow-md shrink-0 ${
+                  activeTab === 'withdraw' || activeTab === 'bonuses' ? 'overflow-y-auto scrollbar-none' : ''
+                } ${activeTab === 'deposit' && depositConfirmed
                   ? 'py-[20px] gap-[24px] items-center'
                   : activeTab === 'bonuses'
                     ? 'py-[12px] gap-[16px] items-start'

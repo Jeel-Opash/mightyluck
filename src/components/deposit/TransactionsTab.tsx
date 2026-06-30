@@ -132,8 +132,8 @@ export default function TransactionsTab({ isMobile }: TransactionsTabProps) {
         );
       case 'pending':
         return (
-          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '4px 8px', gap: '4px', width: '91px', height: '22px', background: '#3E2A09', borderRadius: '6px', boxSizing: 'border-box' }}>
-            <span style={{ fontFamily: "var(--font-sans), sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#FFBF1F' }}>Pending review</span>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '4px 8px', gap: '4px', width: '106px', height: '22px', background: '#3E2A09', borderRadius: '6px', boxSizing: 'border-box' }}>
+            <span style={{ fontFamily: "var(--font-sans), sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#FFBF1F', whiteSpace: 'nowrap' }}>Pending review</span>
           </div>
         );
       case 'completed':

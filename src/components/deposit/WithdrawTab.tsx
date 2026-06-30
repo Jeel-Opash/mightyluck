@@ -261,9 +261,9 @@ export default function WithdrawTab({
 
           {/* Status row */}
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '396px', height: '22px' }}>
-            <span style={{ display: 'inline-block', width: '305px', height: '14px', fontFamily: "var(--font-sans), sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#A5B8EF' }}>Status</span>
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '4px 8px', gap: '4px', width: '91px', height: '22px', background: '#0C1F56', borderRadius: '4px', boxSizing: 'border-box' }}>
-              <span style={{ display: 'inline-block', width: '75px', height: '14px', fontFamily: "var(--font-sans), sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#4886FF', whiteSpace: 'nowrap', textAlign: 'center' }}>Pending review</span>
+            <span style={{ display: 'inline-block', width: '290px', height: '14px', fontFamily: "var(--font-sans), sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#A5B8EF' }}>Status</span>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', padding: '4px 8px', gap: '4px', width: '106px', height: '22px', background: '#0C1F56', borderRadius: '4px', boxSizing: 'border-box' }}>
+              <span style={{ display: 'inline-block', width: '90px', height: '14px', fontFamily: "var(--font-sans), sans-serif", fontWeight: 600, fontSize: '10px', lineHeight: '14px', letterSpacing: '0.02em', color: '#4886FF', whiteSpace: 'nowrap', textAlign: 'center' }}>Pending review</span>
             </div>
           </div>
         </div>
