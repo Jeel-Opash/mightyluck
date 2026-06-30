@@ -566,11 +566,11 @@ input::placeholder {
 
 /* ── Category Nav Tabs ───────────────────────────────────────────────────── */
 .hover-nav-tab:hover .nav-tab-label {
-  color: #FFC83D !important;
+  color: #FFFFFF !important;
 }
 
 .hover-nav-tab:hover img {
-  filter: brightness(0) saturate(100%) invert(80%) sepia(60%) saturate(600%) hue-rotate(5deg) brightness(105%) !important;
+  filter: brightness(0) invert(1) !important;
 }
 
 /* ── Mobile ──────────────────────────────────────────────────────────────── */

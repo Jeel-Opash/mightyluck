@@ -174,7 +174,7 @@ export default function TransactionsTab({ isMobile }: TransactionsTabProps) {
         padding: '0px',
         gap: '16px',
         width: isMobile ? '100%' : '428px',
-        height: isMobile ? 'auto' : '474px',
+        height: isMobile ? '100%' : '474px',
         boxSizing: 'border-box',
       }}
     >
@@ -285,7 +285,9 @@ export default function TransactionsTab({ isMobile }: TransactionsTabProps) {
           gap: '8px',
           width: '100%',
           height: isMobile ? 'auto' : '373px',
-          maxHeight: isMobile ? '380px' : 'none',
+          maxHeight: isMobile ? 'none' : 'none',
+          flex: isMobile ? '1 1 0%' : 'none',
+          minHeight: 0,
           overflowY: 'auto',
           boxSizing: 'border-box',
         }}

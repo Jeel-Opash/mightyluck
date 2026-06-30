@@ -2444,524 +2444,731 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
             }}
           />
 
-        {/* Inner layout frame (460px x 525px Success / auto, z-index 1) */}
-        <div
-          style={{
-            width: '460px',
-            height: activeTab === 'bonuses' && isPromoApplied
-              ? '533px'
-              : activeTab === 'withdraw' && verificationStep === 0
-                ? '520px'
-                : activeTab === 'withdraw' && verificationStep === 1
-                  ? '649px'
-                  : activeTab === 'withdraw' && verificationStep === 2
-                    ? '510px'
-                    : activeTab === 'withdraw' && verificationStep === 3
-                      ? '647px'
-                      : activeTab === 'withdraw' && verificationStep === 4
-                        ? '604px'
-                        : activeTab === 'deposit' && depositConfirmed
-                          ? '525px'
-                          : 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            padding: '0px',
-            gap: '24px',
-            zIndex: 1,
-            minHeight: 0,
-          }}
-          className="select-none"
-        >
-          {/* Title bar (460px x 29px) */}
+          {/* Inner layout frame (460px x 525px Success / auto, z-index 1) */}
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'flex-start',
-              padding: '0px',
-              gap: '12px',
               width: '460px',
-              height: '29px',
-            }}
-            className="relative shrink-0"
-          >
-            {/* Wallet Group (94px x 29px) */}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                padding: '0px',
-                gap: '12px',
-                width: '94px',
-                height: '29px',
-                position: 'relative',
-                zIndex: 1,
-              }}
-            >
-              {/* Wallet Icon Frame (20px x 20px) */}
-              <div style={{ width: '20px', height: '20px', position: 'relative' }} className="flex items-center justify-center shrink-0">
-                <img src="/games/wallet.svg" alt="Wallet" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
-              </div>
-
-              {/* Wallet Text */}
-              <span
-                style={{
-                  width: '62px',
-                  height: '29px',
-                  fontFamily: "'Jost', sans-serif",
-                  fontStyle: 'normal',
-                  fontWeight: 800,
-                  fontSize: '20px',
-                  lineHeight: '29px',
-                  letterSpacing: '0.01em',
-                  color: '#FFFFFF',
-                }}
-              >
-                Wallet
-              </span>
-            </div>
-          </div>
-
-          {/* Body Frame (460px x 472px Success / auto) */}
-          <div
-            style={{
+              height: activeTab === 'bonuses' && isPromoApplied
+                ? '533px'
+                : activeTab === 'withdraw' && verificationStep === 0
+                  ? '520px'
+                  : activeTab === 'withdraw' && verificationStep === 1
+                    ? '649px'
+                    : activeTab === 'withdraw' && verificationStep === 2
+                      ? '510px'
+                      : activeTab === 'withdraw' && verificationStep === 3
+                        ? '647px'
+                        : activeTab === 'withdraw' && verificationStep === 4
+                          ? '604px'
+                          : activeTab === 'deposit' && depositConfirmed
+                            ? '525px'
+                            : 'auto',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
               padding: '0px',
-              gap: '16px',
-              width: '460px',
-              height: activeTab === 'bonuses' && isPromoApplied
-                ? '480px'
-                : activeTab === 'withdraw' && verificationStep === 0
-                  ? '467px'
-                  : activeTab === 'withdraw' && verificationStep === 1
-                    ? '596px'
-                    : activeTab === 'deposit' && depositConfirmed
-                      ? '472px'
-                      : 'auto',
+              gap: '24px',
+              zIndex: 1,
               minHeight: 0,
             }}
+            className="select-none"
           >
-            {/* Tab Buttons (460px x 30px, order 0) */}
+            {/* Title bar (460px x 29px) */}
             <div
               style={{
                 display: 'flex',
                 flexDirection: 'row',
-                alignItems: 'center',
+                justifyContent: 'center',
+                alignItems: 'flex-start',
                 padding: '0px',
-                gap: '8px',
+                gap: '12px',
                 width: '460px',
-                height: '30px',
+                height: '29px',
               }}
-              className="shrink-0"
+              className="relative shrink-0"
             >
-              {[
-                { id: 'deposit', label: 'Deposit' },
-                { id: 'bonuses', label: 'Bonuses' },
-                { id: 'withdraw', label: 'Withdraw' },
-                { id: 'transactions', label: 'Transactions' }
-              ].map((tab) => {
-                const isActive = activeTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id as any)}
-                    style={{
-                      width: '109px',
-                      height: '30px',
-                      background: isActive ? '#1463FF' : '#112F82',
-                      borderRadius: '6px',
-                      border: 'none',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      padding: '10px 16px',
-                      gap: '8px',
-                      flexGrow: 1,
-                      fontFamily: "'Manrope', sans-serif",
-                      fontWeight: isActive ? 700 : 600,
-                      fontSize: '12px',
-                      lineHeight: '16px',
-                      letterSpacing: '0.02em',
-                      color: isActive ? '#FFFFFF' : '#A5B8EF',
-                    }}
-                    className="hover:brightness-110 active:scale-98 transition-all duration-150"
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
+              {/* Wallet Group (94px x 29px) */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  padding: '0px',
+                  gap: '12px',
+                  width: '94px',
+                  height: '29px',
+                  position: 'relative',
+                  zIndex: 1,
+                }}
+              >
+                {/* Wallet Icon Frame (20px x 20px) */}
+                <div style={{ width: '20px', height: '20px', position: 'relative' }} className="flex items-center justify-center shrink-0">
+                  <img src="/games/wallet.svg" alt="Wallet" style={{ width: '20px', height: '20px', objectFit: 'contain' }} />
+                </div>
+
+                {/* Wallet Text */}
+                <span
+                  style={{
+                    width: '62px',
+                    height: '29px',
+                    fontFamily: "'Jost', sans-serif",
+                    fontStyle: 'normal',
+                    fontWeight: 800,
+                    fontSize: '20px',
+                    lineHeight: '29px',
+                    letterSpacing: '0.01em',
+                    color: '#FFFFFF',
+                  }}
+                >
+                  Wallet
+                </span>
+              </div>
             </div>
 
-            {/* Content Container (460px x 426px Success / auto) */}
+            {/* Body Frame (460px x 472px Success / auto) */}
             <div
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: (activeTab === 'bonuses' && isPromoApplied) || activeTab === 'transactions' || (activeTab === 'withdraw' && (verificationStep === 0 || verificationStep === 1 || verificationStep === 2 || verificationStep === 3 || verificationStep === 4)) ? 'center' : 'flex-start',
-                padding: (activeTab === 'bonuses' && isPromoApplied) || activeTab === 'transactions' || (activeTab === 'withdraw' && (verificationStep === 1 || verificationStep === 2 || verificationStep === 3 || verificationStep === 4)) 
-                  ? '20px 16px' 
-                  : '16px',
-                gap: activeTab === 'bonuses' && isPromoApplied 
-                  ? '16px' 
-                  : activeTab === 'withdraw' && (verificationStep === 1 || verificationStep === 2)
-                    ? '20px'
-                    : activeTab === 'withdraw' && verificationStep === 4
-                      ? '24px'
-                      : '16px',
+                alignItems: 'flex-start',
+                padding: '0px',
+                gap: '16px',
                 width: '460px',
                 height: activeTab === 'bonuses' && isPromoApplied
-                  ? '434px'
+                  ? '480px'
                   : activeTab === 'withdraw' && verificationStep === 0
-                    ? '421px'
+                    ? '467px'
                     : activeTab === 'withdraw' && verificationStep === 1
-                      ? '550px'
-                      : activeTab === 'withdraw' && verificationStep === 2
-                        ? '411px'
-                        : activeTab === 'withdraw' && verificationStep === 3
-                          ? '548px'
-                          : activeTab === 'withdraw' && verificationStep === 4
-                            ? '505px'
-                            : activeTab === 'deposit' && depositConfirmed
-                              ? '426px'
-                              : activeTab === 'transactions'
-                                ? '514px'
-                                : 'auto',
-                background: '#0C1F56',
-                borderRadius: '16px',
-                boxSizing: 'border-box',
+                      ? '596px'
+                      : activeTab === 'deposit' && depositConfirmed
+                        ? '472px'
+                        : 'auto',
                 minHeight: 0,
               }}
-              className="overflow-hidden"
             >
-              {activeTab === 'deposit' && depositConfirmed ? (
-                selectedPayment === 'Credit Card' ? (
-                  renderDepositSuccess(false)
-                ) : (
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      padding: '0px',
-                      gap: '16px',
-                      width: '428px',
-                      height: '247px',
-                    }}
-                    className="select-none"
-                  >
-                    <p
+              {/* Tab Buttons (460px x 30px, order 0) */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  padding: '0px',
+                  gap: '8px',
+                  width: '460px',
+                  height: '30px',
+                }}
+                className="shrink-0"
+              >
+                {[
+                  { id: 'deposit', label: 'Deposit' },
+                  { id: 'bonuses', label: 'Bonuses' },
+                  { id: 'withdraw', label: 'Withdraw' },
+                  { id: 'transactions', label: 'Transactions' }
+                ].map((tab) => {
+                  const isActive = activeTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id as any)}
                       style={{
-                        width: '428px',
-                        height: '38px',
-                        fontFamily: "'Manrope', sans-serif",
-                        fontStyle: 'normal',
-                        fontWeight: 600,
-                        fontSize: '14px',
-                        lineHeight: '19px',
-                        textAlign: 'center',
-                        letterSpacing: '0.02em',
-                        color: '#A5B8EF',
-                      }}
-                      className="m-0"
-                    >
-                      Your transaction in progress and pending confirmation from the blockchain.
-                    </p>
-
-                    {/* Confirmation Indicators Row */}
-                    <div
-                      style={{
+                        width: '109px',
+                        height: '30px',
+                        background: isActive ? '#1463FF' : '#112F82',
+                        borderRadius: '6px',
+                        border: 'none',
+                        cursor: 'pointer',
                         display: 'flex',
                         flexDirection: 'row',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        padding: '0px',
-                        gap: '10px',
-                        width: '428px',
-                        height: '120px',
-                      }}
-                    >
-                      {/* Crown 1 */}
-                      <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <CrownIcon fill="#A5B8EF" width={29} height={21} />
-                      </div>
-
-                      {/* Crown 2 */}
-                      <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <CrownIcon fill="#A5B8EF" width={29} height={21} />
-                      </div>
-
-                      {/* Crown 3 */}
-                      <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <CrownIcon fill="#112F82" width={29} height={21} />
-                      </div>
-                    </div>
-
-                    {/* Text 2 */}
-                    <p
-                      style={{
-                        width: '428px',
-                        height: '57px',
+                        padding: '10px 16px',
+                        gap: '8px',
+                        flexGrow: 1,
                         fontFamily: "'Manrope', sans-serif",
-                        fontStyle: 'normal',
-                        fontWeight: 600,
-                        fontSize: '14px',
-                        lineHeight: '19px',
-                        textAlign: 'center',
-                        letterSpacing: '0.02em',
-                        color: '#A5B8EF',
-                      }}
-                      className="m-0"
-                    >
-                      1 confirmation is required for deposits to be credited.
-                      <br />
-                      Want to know how many confirmations this transaction has?
-                      <br />
-                      Please{' '}
-                      <a
-                        href="https://www.blockchain.com/explorer"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: '#FFC83D', textDecoration: 'none' }}
-                        className="hover:underline font-bold"
-                      >
-                        click here
-                      </a>
-                      .
-                    </p>
-                  </div>
-                )
-              ) : activeTab === 'deposit' ? (
-                <>
-                  {/* 1. Select a Bonus */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start',
-                      padding: '0px',
-                      gap: '8px',
-                      width: '428px',
-                      height: '62px',
-                    }}
-                    className="relative shrink-0"
-                    ref={bonusDropdownRefDesktop}
-                  >
-                    <span
-                      style={{
-                        width: '97px',
-                        height: '16px',
-                        fontFamily: "'Manrope', sans-serif",
-                        fontStyle: 'normal',
-                        fontWeight: 600,
+                        fontWeight: isActive ? 700 : 600,
                         fontSize: '12px',
                         lineHeight: '16px',
                         letterSpacing: '0.02em',
-                        color: '#BBCAF3',
+                        color: isActive ? '#FFFFFF' : '#A5B8EF',
                       }}
+                      className="hover:brightness-110 active:scale-98 transition-all duration-150"
                     >
-                      1.Select a Bonus
-                    </span>
+                      {tab.label}
+                    </button>
+                  );
+                })}
+              </div>
 
+              {/* Content Container (460px x 426px Success / auto) */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: (activeTab === 'bonuses' && isPromoApplied) || activeTab === 'transactions' || (activeTab === 'withdraw' && (verificationStep === 0 || verificationStep === 1 || verificationStep === 2 || verificationStep === 3 || verificationStep === 4)) ? 'center' : 'flex-start',
+                  padding: (activeTab === 'bonuses' && isPromoApplied) || activeTab === 'transactions' || (activeTab === 'withdraw' && (verificationStep === 1 || verificationStep === 2 || verificationStep === 3 || verificationStep === 4))
+                    ? '20px 16px'
+                    : '16px',
+                  gap: activeTab === 'bonuses' && isPromoApplied
+                    ? '16px'
+                    : activeTab === 'withdraw' && (verificationStep === 1 || verificationStep === 2)
+                      ? '20px'
+                      : activeTab === 'withdraw' && verificationStep === 4
+                        ? '24px'
+                        : '16px',
+                  width: '460px',
+                  height: activeTab === 'bonuses' && isPromoApplied
+                    ? '434px'
+                    : activeTab === 'withdraw' && verificationStep === 0
+                      ? '421px'
+                      : activeTab === 'withdraw' && verificationStep === 1
+                        ? '550px'
+                        : activeTab === 'withdraw' && verificationStep === 2
+                          ? '411px'
+                          : activeTab === 'withdraw' && verificationStep === 3
+                            ? '548px'
+                            : activeTab === 'withdraw' && verificationStep === 4
+                              ? '505px'
+                              : activeTab === 'deposit' && depositConfirmed
+                                ? '426px'
+                                : activeTab === 'transactions'
+                                  ? '514px'
+                                  : 'auto',
+                  background: '#0C1F56',
+                  borderRadius: '16px',
+                  boxSizing: 'border-box',
+                  minHeight: 0,
+                }}
+                className="overflow-hidden"
+              >
+                {activeTab === 'deposit' && depositConfirmed ? (
+                  selectedPayment === 'Credit Card' ? (
+                    renderDepositSuccess(false)
+                  ) : (
                     <div
-                      onClick={() => setIsBonusDropdownOpen(!isBonusDropdownOpen)}
                       style={{
                         display: 'flex',
-                        flexDirection: 'row',
+                        flexDirection: 'column',
                         alignItems: 'center',
-                        padding: '10px 16px',
-                        gap: '12px',
+                        padding: '0px',
+                        gap: '16px',
                         width: '428px',
-                        height: '40px',
-                        background: '#112F82',
-                        borderRadius: '8px',
-                        border: isBonusDropdownOpen ? '1px solid #1463FF' : '1px solid rgba(255,255,255,0.05)',
-                        boxSizing: 'border-box',
+                        height: '247px',
                       }}
-                      className="cursor-pointer hover:bg-[#153a9e] transition-all duration-150"
+                      className="select-none"
                     >
+                      <p
+                        style={{
+                          width: '428px',
+                          height: '38px',
+                          fontFamily: "'Manrope', sans-serif",
+                          fontStyle: 'normal',
+                          fontWeight: 600,
+                          fontSize: '14px',
+                          lineHeight: '19px',
+                          textAlign: 'center',
+                          letterSpacing: '0.02em',
+                          color: '#A5B8EF',
+                        }}
+                        className="m-0"
+                      >
+                        Your transaction in progress and pending confirmation from the blockchain.
+                      </p>
+
+                      {/* Confirmation Indicators Row */}
                       <div
                         style={{
                           display: 'flex',
                           flexDirection: 'row',
+                          justifyContent: 'center',
                           alignItems: 'center',
                           padding: '0px',
-                          gap: '8px',
-                          width: '370px',
-                          height: '19px',
+                          gap: '10px',
+                          width: '428px',
+                          height: '120px',
                         }}
                       >
-                        <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0" style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(42%) saturate(800%) hue-rotate(350deg) brightness(101%) contrast(101%)' }}>
-                          {renderBonusIcon(getSelectedBonusIcon(), 'w-[16px] h-[16px]')}
+                        {/* Crown 1 */}
+                        <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <CrownIcon fill="#A5B8EF" width={29} height={21} />
                         </div>
-                        <span
-                          style={{
-                            width: '245px',
-                            height: '16px',
-                            fontFamily: "'Manrope', sans-serif",
-                            fontStyle: 'normal',
-                            fontWeight: 700,
-                            fontSize: '12px',
-                            lineHeight: '16px',
-                            letterSpacing: '0.02em',
-                            color: '#FFFFFF',
-                          }}
-                          className="truncate"
-                        >
-                          {selectedBonus}
-                        </span>
+
+                        {/* Crown 2 */}
+                        <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <CrownIcon fill="#A5B8EF" width={29} height={21} />
+                        </div>
+
+                        {/* Crown 3 */}
+                        <div style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <CrownIcon fill="#112F82" width={29} height={21} />
+                        </div>
                       </div>
 
+                      {/* Text 2 */}
+                      <p
+                        style={{
+                          width: '428px',
+                          height: '57px',
+                          fontFamily: "'Manrope', sans-serif",
+                          fontStyle: 'normal',
+                          fontWeight: 600,
+                          fontSize: '14px',
+                          lineHeight: '19px',
+                          textAlign: 'center',
+                          letterSpacing: '0.02em',
+                          color: '#A5B8EF',
+                        }}
+                        className="m-0"
+                      >
+                        1 confirmation is required for deposits to be credited.
+                        <br />
+                        Want to know how many confirmations this transaction has?
+                        <br />
+                        Please{' '}
+                        <a
+                          href="https://www.blockchain.com/explorer"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ color: '#FFC83D', textDecoration: 'none' }}
+                          className="hover:underline font-bold"
+                        >
+                          click here
+                        </a>
+                        .
+                      </p>
+                    </div>
+                  )
+                ) : activeTab === 'deposit' ? (
+                  <>
+                    {/* 1. Select a Bonus */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        padding: '0px',
+                        gap: '8px',
+                        width: '428px',
+                        height: '62px',
+                      }}
+                      className="relative shrink-0"
+                      ref={bonusDropdownRefDesktop}
+                    >
+                      <span
+                        style={{
+                          width: '97px',
+                          height: '16px',
+                          fontFamily: "'Manrope', sans-serif",
+                          fontStyle: 'normal',
+                          fontWeight: 600,
+                          fontSize: '12px',
+                          lineHeight: '16px',
+                          letterSpacing: '0.02em',
+                          color: '#BBCAF3',
+                        }}
+                      >
+                        1.Select a Bonus
+                      </span>
+
                       <div
+                        onClick={() => setIsBonusDropdownOpen(!isBonusDropdownOpen)}
                         style={{
                           display: 'flex',
+                          flexDirection: 'row',
                           alignItems: 'center',
-                          justifyContent: 'center',
-                          width: '14px',
-                          height: '14px',
+                          padding: '10px 16px',
+                          gap: '12px',
+                          width: '428px',
+                          height: '40px',
+                          background: '#112F82',
+                          borderRadius: '8px',
+                          border: isBonusDropdownOpen ? '1px solid #1463FF' : '1px solid rgba(255,255,255,0.05)',
+                          boxSizing: 'border-box',
                         }}
-                        className="shrink-0"
+                        className="cursor-pointer hover:bg-[#153a9e] transition-all duration-150"
                       >
                         <div
                           style={{
-                            width: '6px',
-                            height: '6px',
-                            borderLeft: '1.5px solid #A5B8EF',
-                            borderBottom: '1.5px solid #A5B8EF',
-                            transform: isBonusDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
-                            transition: 'transform 0.2s ease-in-out',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            padding: '0px',
+                            gap: '8px',
+                            width: '370px',
+                            height: '19px',
+                          }}
+                        >
+                          <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0" style={{ filter: 'brightness(0) saturate(100%) invert(84%) sepia(42%) saturate(800%) hue-rotate(350deg) brightness(101%) contrast(101%)' }}>
+                            {renderBonusIcon(getSelectedBonusIcon(), 'w-[16px] h-[16px]')}
+                          </div>
+                          <span
+                            style={{
+                              width: '245px',
+                              height: '16px',
+                              fontFamily: "'Manrope', sans-serif",
+                              fontStyle: 'normal',
+                              fontWeight: 700,
+                              fontSize: '12px',
+                              lineHeight: '16px',
+                              letterSpacing: '0.02em',
+                              color: '#FFFFFF',
+                            }}
+                            className="truncate"
+                          >
+                            {selectedBonus}
+                          </span>
+                        </div>
+
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '14px',
+                            height: '14px',
                           }}
                           className="shrink-0"
-                        />
+                        >
+                          <div
+                            style={{
+                              width: '6px',
+                              height: '6px',
+                              borderLeft: '1.5px solid #A5B8EF',
+                              borderBottom: '1.5px solid #A5B8EF',
+                              transform: isBonusDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
+                              transition: 'transform 0.2s ease-in-out',
+                            }}
+                            className="shrink-0"
+                          />
+                        </div>
                       </div>
+
+                      {isBonusDropdownOpen && (
+                        <div
+                          style={{ width: '428px', top: '68px' }}
+                          className="absolute left-0 bg-[#112f82] rounded-[8px] border-2 border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col"
+                        >
+                          <div className="px-[16px] py-[12px] border-b border-white/5 font-sans font-bold text-[12px] text-white bg-[#112f82]">
+                            Choose one bonus on next deposits
+                          </div>
+                          <div className="flex flex-col max-h-[192px] overflow-y-auto scrollbar-none">
+                            {bonusOptions.map((opt) => {
+                              const isSelected = selectedBonus === opt.title;
+                              return (
+                                <div
+                                  key={opt.id}
+                                  onClick={() => {
+                                    setSelectedBonus(opt.title);
+                                    setIsBonusDropdownOpen(false);
+                                  }}
+                                  className={`flex flex-row items-center gap-[12px] px-[16px] py-[10px] cursor-pointer transition-colors ${isSelected ? 'bg-[#1463FF]' : 'hover:bg-[#112F82]'
+                                    }`}
+                                >
+                                  <div className={`shrink-0 ${isSelected ? 'text-white' : 'text-[#A5B8EF]'}`}>
+                                    {renderBonusIcon(opt.icon, 'w-[16px] h-[16px]')}
+                                  </div>
+                                  <div className="flex flex-col">
+                                    <span className="font-sans font-bold text-[13px] text-white">
+                                      {opt.title}
+                                    </span>
+                                    {opt.subtext && (
+                                      <span className={`font-sans font-semibold text-[10px] ${isSelected ? 'text-white/80' : 'text-[#7795E8]'
+                                        }`}>
+                                        {opt.subtext}
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
                     </div>
 
-                    {isBonusDropdownOpen && (
-                      <div
-                        style={{ width: '428px', top: '68px' }}
-                        className="absolute left-0 bg-[#112f82] rounded-[8px] border-2 border-[#1463FF] shadow-2xl z-[9999] overflow-hidden flex flex-col"
-                      >
-                        <div className="px-[16px] py-[12px] border-b border-white/5 font-sans font-bold text-[12px] text-white bg-[#112f82]">
-                          Choose one bonus on next deposits
-                        </div>
-                        <div className="flex flex-col max-h-[192px] overflow-y-auto scrollbar-none">
-                          {bonusOptions.map((opt) => {
-                            const isSelected = selectedBonus === opt.title;
-                            return (
-                              <div
-                                key={opt.id}
-                                onClick={() => {
-                                  setSelectedBonus(opt.title);
-                                  setIsBonusDropdownOpen(false);
-                                }}
-                                className={`flex flex-row items-center gap-[12px] px-[16px] py-[10px] cursor-pointer transition-colors ${isSelected ? 'bg-[#1463FF]' : 'hover:bg-[#112F82]'
-                                  }`}
-                              >
-                                <div className={`shrink-0 ${isSelected ? 'text-white' : 'text-[#A5B8EF]'}`}>
-                                  {renderBonusIcon(opt.icon, 'w-[16px] h-[16px]')}
-                                </div>
-                                <div className="flex flex-col">
-                                  <span className="font-sans font-bold text-[13px] text-white">
-                                    {opt.title}
-                                  </span>
-                                  {opt.subtext && (
-                                    <span className={`font-sans font-semibold text-[10px] ${isSelected ? 'text-white/80' : 'text-[#7795E8]'
-                                      }`}>
-                                      {opt.subtext}
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* 2. Select a payment method */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start',
-                      padding: '0px',
-                      gap: '8px',
-                      width: '428px',
-                      height: '63px',
-                    }}
-                    className="relative shrink-0"
-                    ref={paymentDropdownRefDesktop}
-                  >
-                    <span
-                      style={{
-                        width: '163px',
-                        height: '16px',
-                        fontFamily: "'Manrope', sans-serif",
-                        fontStyle: 'normal',
-                        fontWeight: 600,
-                        fontSize: '12px',
-                        lineHeight: '16px',
-                        letterSpacing: '0.02em',
-                        color: '#BBCAF3',
-                      }}
-                    >
-                      2.Select a payment method
-                    </span>
-
+                    {/* 2. Select a payment method */}
                     <div
-                      onClick={() => setIsPaymentDropdownOpen(!isPaymentDropdownOpen)}
                       style={{
                         display: 'flex',
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        padding: '10px 16px',
-                        gap: '12px',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        padding: '0px',
+                        gap: '8px',
                         width: '428px',
-                        height: '39px',
-                        background: '#112F82',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        boxSizing: 'border-box',
+                        height: '63px',
                       }}
-                      className="cursor-pointer hover:bg-[#153a9e] transition-all duration-150"
+                      className="relative shrink-0"
+                      ref={paymentDropdownRefDesktop}
                     >
+                      <span
+                        style={{
+                          width: '163px',
+                          height: '16px',
+                          fontFamily: "'Manrope', sans-serif",
+                          fontStyle: 'normal',
+                          fontWeight: 600,
+                          fontSize: '12px',
+                          lineHeight: '16px',
+                          letterSpacing: '0.02em',
+                          color: '#BBCAF3',
+                        }}
+                      >
+                        2.Select a payment method
+                      </span>
+
                       <div
+                        onClick={() => setIsPaymentDropdownOpen(!isPaymentDropdownOpen)}
                         style={{
                           display: 'flex',
                           flexDirection: 'row',
                           alignItems: 'center',
-                          padding: '0px',
-                          gap: '8px',
-                          width: '370px',
-                          height: '19px',
+                          padding: '10px 16px',
+                          gap: '12px',
+                          width: '428px',
+                          height: '39px',
+                          background: '#112F82',
+                          borderRadius: '8px',
+                          border: '1px solid rgba(255,255,255,0.05)',
+                          boxSizing: 'border-box',
                         }}
+                        className="cursor-pointer hover:bg-[#153a9e] transition-all duration-150"
                       >
-                        {selectedPayment === 'Bitcoin' ? (
-                          <>
-                            <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0">
-                              <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain" alt="Bitcoin" />
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            padding: '0px',
+                            gap: '8px',
+                            width: '370px',
+                            height: '19px',
+                          }}
+                        >
+                          {selectedPayment === 'Bitcoin' ? (
+                            <>
+                              <div className="w-[16px] h-[16px] relative flex items-center justify-center shrink-0">
+                                <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain" alt="Bitcoin" />
+                              </div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  alignItems: 'center',
+                                  padding: '0px',
+                                  gap: '4px',
+                                  width: '346px',
+                                  height: '16px',
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    width: '43px',
+                                    height: '16px',
+                                    fontFamily: "'Manrope', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 700,
+                                    fontSize: '12px',
+                                    lineHeight: '16px',
+                                    letterSpacing: '0.02em',
+                                    color: '#FFFFFF',
+                                  }}
+                                >
+                                  Bitcoin
+                                </span>
+                                <span
+                                  style={{
+                                    width: '89px',
+                                    height: '14px',
+                                    fontFamily: "'Manrope', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 500,
+                                    fontSize: '10px',
+                                    lineHeight: '14px',
+                                    letterSpacing: '0.02em',
+                                    color: '#BBCAF3',
+                                  }}
+                                >
+                                  (Min. Deposit $10)
+                                </span>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className="flex flex-row items-center gap-[4px] shrink-0">
+                                <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain" alt="Visa" />
+                              </div>
+                              <div className="flex flex-row items-center gap-[8px]">
+                                <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                                  Credit Card
+                                </span>
+                                <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
+                                  (Min.Deposite $30 - Max.Deposite $2500)
+                                </span>
+                              </div>
+                            </>
+                          )}
+                        </div>
+
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '14px',
+                            height: '14px',
+                          }}
+                          className="shrink-0"
+                        >
+                          <div
+                            style={{
+                              width: '6px',
+                              height: '6px',
+                              borderLeft: '1.5px solid #A5B8EF',
+                              borderBottom: '1.5px solid #A5B8EF',
+                              transform: isPaymentDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
+                              transition: 'transform 0.2s ease-in-out',
+                            }}
+                            className="shrink-0"
+                          />
+                        </div>
+                      </div>
+
+                      {isPaymentDropdownOpen && (
+                        <div
+                          style={{ width: '428px', top: '68px' }}
+                          className="absolute left-0 bg-[#112F82] rounded-[8px] border border-white/10 shadow-xl z-50 overflow-hidden"
+                        >
+                          <div
+                            onClick={() => {
+                              setSelectedPayment('Credit Card');
+                              setIsPaymentDropdownOpen(false);
+                            }}
+                            className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
+                          >
+                            <div className="flex flex-row items-center gap-[8px]">
+                              <div className="flex flex-row items-center gap-[4px]">
+                                <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain" alt="Visa" />
+                              </div>
+                              <span>Credit Card (Min. $30 - Max. $2500)</span>
                             </div>
+                          </div>
+
+                          <div
+                            onClick={() => {
+                              setSelectedPayment('Bitcoin');
+                              setIsPaymentDropdownOpen(false);
+                            }}
+                            className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
+                          >
+                            <div className="flex flex-row items-center gap-[8px]">
+                              <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain " alt="Bitcoin" />
+                              <span>Bitcoin (Min. $10)</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {selectedPayment === 'Bitcoin' ? (
+                      <>
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'flex-start',
+                            padding: '0px',
+                            gap: '8px',
+                            width: '428px',
+                            height: '28px',
+                          }}
+                          className="shrink-0"
+                        >
+                          <div className="shrink-0 flex items-center justify-center pt-[2px]">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="7" cy="7" r="6" stroke="#7795E8" strokeWidth="1.5" />
+                              <path d="M7 4V4.5" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" />
+                              <path d="M7 6V10" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" />
+                            </svg>
+                          </div>
+
+                          <span
+                            style={{
+                              width: '408px',
+                              height: '28px',
+                              fontFamily: "'Manrope', sans-serif",
+                              fontStyle: 'normal',
+                              fontWeight: 500,
+                              fontSize: '10px',
+                              lineHeight: '14px',
+                              letterSpacing: '0.02em',
+                              color: '#7795E8',
+                            }}
+                          >
+                            Only deposit BTC via the Bitcoin network. Deposit of other assets or from other networks will be lost.
+                          </span>
+                        </div>
+
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                            padding: '0px',
+                            gap: '8px',
+                            width: '428px',
+                            height: '64px',
+                          }}
+                          className="shrink-0"
+                        >
+                          <span
+                            style={{
+                              width: '259px',
+                              height: '16px',
+                              fontFamily: "'Manrope', sans-serif",
+                              fontStyle: 'normal',
+                              fontWeight: 600,
+                              fontSize: '12px',
+                              lineHeight: '16px',
+                              letterSpacing: '0.02em',
+                              color: '#BBCAF3',
+                            }}
+                          >
+                            3.Calculate the amount you want to deposit
+                          </span>
+
+                          <div
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                              padding: '0px',
+                              gap: '8px',
+                              width: '428px',
+                              height: '40px',
+                            }}
+                          >
                             <div
                               style={{
                                 display: 'flex',
                                 flexDirection: 'row',
                                 alignItems: 'center',
-                                padding: '0px',
-                                gap: '4px',
-                                width: '346px',
-                                height: '16px',
+                                padding: '10px 16px',
+                                gap: '12px',
+                                width: '186px',
+                                height: '40px',
+                                background: '#112F82',
+                                borderRadius: '8px',
+                                boxSizing: 'border-box',
                               }}
+                              className="flex-grow border border-white/5"
                             >
-                              <span
+                              <img src="/images/doller.svg" className="w-4 h-4 object-contain shrink-0" alt="USD" />
+                              <input
+                                type="number"
+                                value={usdAmount}
+                                onChange={(e) => handleUsdChange(e.target.value)}
                                 style={{
-                                  width: '43px',
+                                  width: '130px',
                                   height: '16px',
                                   fontFamily: "'Manrope', sans-serif",
                                   fontStyle: 'normal',
@@ -2970,143 +3177,437 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                                   lineHeight: '16px',
                                   letterSpacing: '0.02em',
                                   color: '#FFFFFF',
+                                  background: 'transparent',
+                                  border: 'none',
+                                  outline: 'none',
                                 }}
-                              >
-                                Bitcoin
-                              </span>
-                              <span
+                                placeholder="100"
+                              />
+                            </div>
+
+                            <button
+                              onClick={togglePrimaryCurrency}
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                padding: '0px',
+                                gap: '2px',
+                                width: '40px',
+                                height: '40px',
+                                background: '#1463FF',
+                                borderRadius: '8px',
+                                border: 'none',
+                                cursor: 'pointer',
+                              }}
+                              className="hover:bg-[#2c75ff] transition-colors shrink-0 active:scale-95 duration-100 border border-white/5"
+                            >
+                              <div style={{ width: '14px', height: '8px', position: 'relative' }}>
+                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
+                                  <path d="M12.5 4H1.5M12.5 4L9.5 1M12.5 4L9.5 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                              </div>
+                              <div style={{ width: '14px', height: '8px', position: 'relative', transform: 'matrix(-1, 0, 0, 1, 0, 0)' }}>
+                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
+                                  <path d="M12.5 4H1.5M12.5 4L9.5 1M12.5 4L9.5 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                              </div>
+                            </button>
+
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                padding: '10px 16px',
+                                gap: '12px',
+                                width: '186px',
+                                height: '40px',
+                                background: '#112F82',
+                                borderRadius: '8px',
+                                boxSizing: 'border-box',
+                              }}
+                              className="flex-grow border border-white/5"
+                            >
+                              <img src="/images/bitcoin.svg" className="w-4 h-4 object-contain shrink-0" alt="BTC" />
+                              <input
+                                type="number"
+                                value={btcAmount}
+                                onChange={(e) => handleBtcChange(e.target.value)}
                                 style={{
-                                  width: '89px',
-                                  height: '14px',
+                                  width: '130px',
+                                  height: '16px',
                                   fontFamily: "'Manrope', sans-serif",
                                   fontStyle: 'normal',
-                                  fontWeight: 500,
-                                  fontSize: '10px',
-                                  lineHeight: '14px',
+                                  fontWeight: 700,
+                                  fontSize: '12px',
+                                  lineHeight: '16px',
                                   letterSpacing: '0.02em',
-                                  color: '#BBCAF3',
+                                  color: '#FFFFFF',
+                                  background: 'transparent',
+                                  border: 'none',
+                                  outline: 'none',
                                 }}
-                              >
-                                (Min. Deposit $10)
-                              </span>
+                                placeholder="0.00954"
+                              />
                             </div>
-                          </>
-                        ) : (
-                          <>
-                            <div className="flex flex-row items-center gap-[4px] shrink-0">
-                              <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain" alt="Visa" />
-                            </div>
-                            <div className="flex flex-row items-center gap-[8px]">
-                              <span className="font-sans font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
-                                Credit Card
-                              </span>
-                              <span className="font-sans font-medium text-[10px] leading-[14px] tracking-[0.02em] text-[#7795E8]">
-                                (Min.Deposite $30 - Max.Deposite $2500)
-                              </span>
-                            </div>
-                          </>
-                        )}
-                      </div>
-
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: '14px',
-                          height: '14px',
-                        }}
-                        className="shrink-0"
-                      >
-                        <div
-                          style={{
-                            width: '6px',
-                            height: '6px',
-                            borderLeft: '1.5px solid #A5B8EF',
-                            borderBottom: '1.5px solid #A5B8EF',
-                            transform: isPaymentDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
-                            transition: 'transform 0.2s ease-in-out',
-                          }}
-                          className="shrink-0"
-                        />
-                      </div>
-                    </div>
-
-                    {isPaymentDropdownOpen && (
-                      <div
-                        style={{ width: '428px', top: '68px' }}
-                        className="absolute left-0 bg-[#112F82] rounded-[8px] border border-white/10 shadow-xl z-50 overflow-hidden"
-                      >
-                        <div
-                          onClick={() => {
-                            setSelectedPayment('Credit Card');
-                            setIsPaymentDropdownOpen(false);
-                          }}
-                          className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
-                        >
-                          <div className="flex flex-row items-center gap-[8px]">
-                            <div className="flex flex-row items-center gap-[4px]">
-                              <img src="/images/visa.svg" className="w-[42px] h-[20px] object-contain" alt="Visa" />
-                            </div>
-                            <span>Credit Card (Min. $30 - Max. $2500)</span>
                           </div>
                         </div>
 
                         <div
-                          onClick={() => {
-                            setSelectedPayment('Bitcoin');
-                            setIsPaymentDropdownOpen(false);
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                            padding: '0px',
+                            gap: '8px',
+                            width: '428px',
+                            height: '62px',
                           }}
-                          className="flex flex-row items-center justify-between px-[16px] py-[12px] text-white font-sans text-[13px] hover:bg-[#1463FF] cursor-pointer transition-colors"
+                          className="relative shrink-0"
                         >
-                          <div className="flex flex-row items-center gap-[8px]">
-                            <img src="/images/bitcoin.svg" className="w-[16px] h-[16px] object-contain " alt="Bitcoin" />
-                            <span>Bitcoin (Min. $10)</span>
+                          <span
+                            style={{
+                              width: '100%',
+                              height: '16px',
+                              fontFamily: "'Manrope', sans-serif",
+                              fontStyle: 'normal',
+                              fontWeight: 600,
+                              fontSize: '12px',
+                              lineHeight: '16px',
+                              letterSpacing: '0.02em',
+                              color: '#BBCAF3',
+                            }}
+                          >
+                            4.BTC Deposit Address
+                          </span>
+
+                          <div
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                              padding: '10px 16px',
+                              gap: '12px',
+                              width: '428px',
+                              height: '40px',
+                              background: '#112F82',
+                              borderRadius: '8px',
+                              boxSizing: 'border-box',
+                              border: '1px solid rgba(255,255,255,0.05)',
+                            }}
+                          >
+                            <span
+                              style={{
+                                flex: 1,
+                                height: '16px',
+                                fontFamily: "'Manrope', sans-serif",
+                                fontStyle: 'normal',
+                                fontWeight: 700,
+                                fontSize: '12px',
+                                lineHeight: '16px',
+                                letterSpacing: '0.02em',
+                                color: '#7795E8',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }}
+                              className="select-all"
+                            >
+                              {btcAddress}
+                            </span>
+
+                            <div
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                padding: '0px',
+                                gap: '12px',
+                                width: '44px',
+                                height: '16px',
+                              }}
+                              className="shrink-0"
+                            >
+                              <button
+                                onClick={copyAddress}
+                                style={{ width: '16px', height: '16px', position: 'relative', border: 'none', background: 'transparent', padding: '0px', cursor: 'pointer' }}
+                                className="text-[#BBCAF3] hover:text-white flex items-center justify-center"
+                              >
+                                {copied && (
+                                  <span className="absolute bottom-[24px] right-[-10px] bg-[#1463FF] text-white text-[10px] px-1.5 py-0.5 rounded shadow-lg font-sans font-bold">
+                                    Copied!
+                                  </span>
+                                )}
+                                <img src="/images/paste.png" className="w-[16px] h-[16px] object-contain" alt="Copy" />
+                              </button>
+
+                              <button
+                                onClick={() => setShowQrCode(!showQrCode)}
+                                style={{ width: '16px', height: '16px', position: 'relative', border: 'none', background: 'transparent', padding: '0px', cursor: 'pointer' }}
+                                className="text-[#BBCAF3] hover:text-white flex items-center justify-center"
+                              >
+                                <img src="/images/scan.png" className="w-[16px] h-[16px] object-contain" alt="Scan" />
+                              </button>
+                            </div>
                           </div>
+
+                          {showQrCode && (
+                            <div className="absolute bottom-[48px] right-0 bg-[#0C1F56] border border-white/10 rounded-[12px] p-4 flex flex-col items-center gap-2 shadow-2xl z-[100]">
+                              <div className="w-[100px] h-[100px] bg-white p-2 rounded flex flex-wrap gap-[2.5px]">
+                                {Array.from({ length: 64 }).map((_, i) => {
+                                  const isFilled = (i % 3 === 0 && i % 4 !== 0) || (i < 20 && i % 2 === 0) || (i > 50 && i % 5 === 0) || (i % 7 === 1);
+                                  return (
+                                    <div
+                                      key={i}
+                                      style={{ background: isFilled ? '#091741' : '#FFFFFF' }}
+                                      className="w-[8px] h-[8px]"
+                                    />
+                                  );
+                                })}
+                              </div>
+                              <span className="font-sans text-[10px] text-[#BBCAF3]">Scan with crypto wallet</span>
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    ) : creditCardStep === 'address' ? (
+                      <div className="flex flex-col items-start gap-[12px] w-full shrink-0 select-none">
+                        <div className="flex flex-col gap-[2px] w-full">
+                          <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
+                            Enter your address
+                          </span>
+                          <div className="flex flex-row items-start gap-[8px] w-full mt-[2px]">
+                            <div className="w-[12px] h-[12px] mt-[2px] flex items-center justify-center shrink-0">
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
+                              </svg>
+                            </div>
+                            <span className="font-manrope font-medium text-[11px] leading-[15px] tracking-[0.02em] text-[#7795E8] select-none">
+                              Please fill up your address details before completing your deposit. This information is required for credit card deposits.
+                            </span>
+                          </div>
+                        </div>
+
+                        <input
+                          type="text"
+                          value={street}
+                          onChange={(e) => setStreet(e.target.value)}
+                          className="w-full h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                          placeholder="Street"
+                        />
+
+                        <div className="flex flex-row gap-[8px] w-full">
+                          <input
+                            type="text"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                            placeholder="City"
+                          />
+                          <input
+                            type="text"
+                            value={postalCode}
+                            onChange={(e) => setPostalCode(e.target.value)}
+                            className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                            placeholder="Postal Code"
+                          />
+                        </div>
+
+                        <div className="flex flex-row gap-[8px] w-full relative">
+                          <input
+                            type="text"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
+                            placeholder="State"
+                          />
+
+                          <div className="w-[calc(50%-4px)] min-w-0 relative" ref={countryDropdownRefDesktop}>
+                            <div
+                              onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
+                              className="flex flex-row items-center justify-between px-[16px] h-[40px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
+                            >
+                              <div className="flex flex-row items-center gap-[10px] truncate">
+                                {country === 'United States' && <USFlag />}
+                                {country === 'Canada' && <CanadaFlag />}
+                                {country === 'United Kingdom' && <UKFlag />}
+                                <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-white truncate">
+                                  {country}
+                                </span>
+
+                              </div>
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: '14px',
+                                  height: '14px',
+                                }}
+                                className="shrink-0"
+                              >
+                                <div
+                                  style={{
+                                    width: '6px',
+                                    height: '6px',
+                                    borderLeft: '1.5px solid #A5B8EF',
+                                    borderBottom: '1.5px solid #A5B8EF',
+                                    transform: isCountryDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
+                                    transition: 'transform 0.2s ease-in-out',
+                                  }}
+                                  className="shrink-0"
+                                />
+                              </div>
+                            </div>
+
+                            {isCountryDropdownOpen && (
+                              <div className="absolute bottom-[44px] left-0 right-0 bg-[#112F82] rounded-[8px] border border-white/10 shadow-xl z-50 overflow-hidden">
+                                {[
+                                  { name: 'United States', flag: <USFlag /> },
+                                  { name: 'Canada', flag: <CanadaFlag /> },
+                                  { name: 'United Kingdom', flag: <UKFlag /> }
+                                ].map((c, idx) => (
+                                  <div
+                                    key={idx}
+                                    onClick={() => {
+                                      setCountry(c.name);
+                                      setIsCountryDropdownOpen(false);
+                                    }}
+                                    className="flex flex-row items-center gap-[8px] px-[16px] py-[8px] text-white font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] hover:bg-[#1463FF] cursor-pointer transition-colors"
+                                  >
+                                    {c.flag}
+                                    <span>{c.name}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-start gap-[12px] w-full shrink-0 select-none">
+                        <div className="flex flex-row items-center justify-between w-full">
+                          <span className="font-sans font-semibold text-[12px] text-[#BBCAF3]">
+                            Select an amount
+                          </span>
+                          <button
+                            onClick={() => setCreditCardStep('address')}
+                            className="font-sans font-semibold text-[10px] text-[#7795E8] hover:text-white transition-colors cursor-pointer flex items-center gap-1 border-none bg-transparent p-0"
+                          >
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 8L3 5L6 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            Edit Address
+                          </button>
+                        </div>
+
+                        <div className="flex flex-row items-center gap-[8px] w-full h-[40px]">
+                          {[20, 30, 100].map((amount) => {
+                            const isActive = ccAmountOption === amount;
+                            return (
+                              <button
+                                key={amount}
+                                type="button"
+                                onClick={() => setCcAmountOption(amount as any)}
+                                style={{
+                                  background: isActive ? '#1463FF' : '#112F82',
+                                  color: isActive ? '#FFFFFF' : '#A5B8EF',
+                                }}
+                                className="flex-1 h-full rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] cursor-pointer border-none hover:bg-[#153a9e] transition-colors"
+                              >
+                                ${amount}
+                              </button>
+                            );
+                          })}
+
+                          <div className="flex-1 h-full relative">
+                            {ccAmountOption === 'custom' ? (
+                              <div className="flex flex-row items-center px-[12px] w-full h-full bg-[#112F82] border border-[#1463FF] rounded-[8px] box-sizing-border">
+                                <span className="font-sans font-bold text-[14px] text-white mr-1">$</span>
+                                <input
+                                  type="number"
+                                  value={ccCustomAmount}
+                                  onChange={(e) => setCcCustomAmount(e.target.value)}
+                                  className="w-full bg-transparent border-none outline-none font-sans font-bold text-[14px] text-white placeholder-white/30"
+                                  placeholder="0"
+                                  autoFocus
+                                />
+                              </div>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => setCcAmountOption('custom')}
+                                className="w-full h-full rounded-[8px] bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e] flex items-center justify-center font-sans font-bold text-[14px] cursor-pointer border-none"
+                              >
+                                Custom...
+                              </button>
+                            )}
+                          </div>
+                        </div>
+
+                        <span className="font-sans font-semibold text-[12px] text-[#BBCAF3] mt-[4px]">
+                          Enter payment details
+                        </span>
+
+                        <input
+                          type="text"
+                          value={creditCardNumber}
+                          onChange={(e) => {
+                            const val = e.target.value.replace(/\D/g, '').substring(0, 16);
+                            const match = val.match(/.{1,4}/g);
+                            setCreditCardNumber(match ? match.join(' ') : val);
+                          }}
+                          className="w-full h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                          placeholder="Credit Card Number"
+                        />
+
+                        <div className="flex flex-row gap-[8px] w-full">
+                          <input
+                            type="text"
+                            value={creditCardExp}
+                            onChange={(e) => {
+                              const val = e.target.value.replace(/\D/g, '').substring(0, 4);
+                              if (val.length >= 3) {
+                                setCreditCardExp(`${val.slice(0, 2)}/${val.slice(2)}`);
+                              } else {
+                                setCreditCardExp(val);
+                              }
+                            }}
+                            className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                            placeholder="Exp."
+                          />
+                          <input
+                            type="password"
+                            value={creditCardCcv}
+                            onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
+                            className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
+                            placeholder="CCV"
+                          />
                         </div>
                       </div>
                     )}
-                  </div>
+                  </>
+                ) : null}
 
-                  {selectedPayment === 'Bitcoin' ? (
-                    <>
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'flex-start',
-                          padding: '0px',
-                          gap: '8px',
-                          width: '428px',
-                          height: '28px',
-                        }}
-                        className="shrink-0"
-                      >
-                        <div className="shrink-0 flex items-center justify-center pt-[2px]">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="7" cy="7" r="6" stroke="#7795E8" strokeWidth="1.5" />
-                            <path d="M7 4V4.5" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" />
-                            <path d="M7 6V10" stroke="#7795E8" strokeWidth="1.5" strokeLinecap="round" />
-                          </svg>
-                        </div>
-
-                        <span
-                          style={{
-                            width: '408px',
-                            height: '28px',
-                            fontFamily: "'Manrope', sans-serif",
-                            fontStyle: 'normal',
-                            fontWeight: 500,
-                            fontSize: '10px',
-                            lineHeight: '14px',
-                            letterSpacing: '0.02em',
-                            color: '#7795E8',
-                          }}
-                        >
-                          Only deposit BTC via the Bitcoin network. Deposit of other assets or from other networks will be lost.
-                        </span>
-                      </div>
-
+                {activeTab === 'bonuses' && (
+                  isPromoApplied ? (
+                    renderCouponApplied(false)
+                  ) : (
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        padding: '0px',
+                        gap: '16px',
+                        width: '428px',
+                        height: 'auto',
+                      }}
+                      className="select-none shrink-0"
+                    >
+                      {/* Promo Code section */}
                       <div
                         style={{
                           display: 'flex',
@@ -3117,11 +3618,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                           width: '428px',
                           height: '64px',
                         }}
-                        className="shrink-0"
                       >
                         <span
                           style={{
-                            width: '259px',
+                            width: '236px',
                             height: '16px',
                             fontFamily: "'Manrope', sans-serif",
                             fontStyle: 'normal',
@@ -3132,15 +3632,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             color: '#BBCAF3',
                           }}
                         >
-                          3.Calculate the amount you want to deposit
+                          If you have a Bonus Code &mdash; enter it here
                         </span>
 
                         <div
                           style={{
                             display: 'flex',
                             flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
+                            alignItems: 'flex-start',
                             padding: '0px',
                             gap: '8px',
                             width: '428px',
@@ -3154,122 +3653,119 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                               alignItems: 'center',
                               padding: '10px 16px',
                               gap: '12px',
-                              width: '186px',
+                              flex: 1,
                               height: '40px',
                               background: '#112F82',
                               borderRadius: '8px',
                               boxSizing: 'border-box',
+                              minWidth: 0,
                             }}
-                            className="flex-grow border border-white/5"
                           >
-                            <img src="/images/doller.svg" className="w-4 h-4 object-contain shrink-0" alt="USD" />
                             <input
-                              type="number"
-                              value={usdAmount}
-                              onChange={(e) => handleUsdChange(e.target.value)}
+                              type="text"
+                              value={promoCode}
+                              onChange={(e) => setPromoCode(e.target.value)}
+                              placeholder="Promo Code"
                               style={{
-                                width: '130px',
-                                height: '16px',
+                                width: '100%',
+                                height: '19px',
                                 fontFamily: "'Manrope', sans-serif",
                                 fontStyle: 'normal',
-                                fontWeight: 700,
-                                fontSize: '12px',
-                                lineHeight: '16px',
+                                fontWeight: 600,
+                                fontSize: '14px',
+                                lineHeight: '19px',
                                 letterSpacing: '0.02em',
                                 color: '#FFFFFF',
                                 background: 'transparent',
                                 border: 'none',
                                 outline: 'none',
                               }}
-                              placeholder="100"
+                              className="placeholder-[#7795E8]"
                             />
+                            {/* Info Button */}
+                            {isPromoApplied && (
+                              <button
+                                type="button"
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  width: '40px',
+                                  height: '40px',
+                                  background: '#112F82',
+                                  borderRadius: '8px',
+                                  border: 'none',
+                                  flexShrink: 0,
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                <img src="/games/game-icons/i.png" alt="Info" className="w-[17.29px] h-[18px] object-contain" />
+                              </button>
+                            )}
                           </div>
 
                           <button
-                            onClick={togglePrimaryCurrency}
-                            style={{
-                              display: 'flex',
-                              flexDirection: 'column',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                              padding: '0px',
-                              gap: '2px',
-                              width: '40px',
-                              height: '40px',
-                              background: '#1463FF',
-                              borderRadius: '8px',
-                              border: 'none',
-                              cursor: 'pointer',
+                            type="button"
+                            onClick={() => {
+                              if (isPromoApplied) {
+                                setIsPromoApplied(false);
+                                setPromoCode('');
+                              } else {
+                                if (!promoCode.trim()) return;
+                                setIsPromoApplied(true);
+                              }
                             }}
-                            className="hover:bg-[#2c75ff] transition-colors shrink-0 active:scale-95 duration-100 border border-white/5"
-                          >
-                            <div style={{ width: '14px', height: '8px', position: 'relative' }}>
-                              <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
-                                <path d="M12.5 4H1.5M12.5 4L9.5 1M12.5 4L9.5 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                              </svg>
-                            </div>
-                            <div style={{ width: '14px', height: '8px', position: 'relative', transform: 'matrix(-1, 0, 0, 1, 0, 0)' }}>
-                              <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute left-0 top-0">
-                                <path d="M12.5 4H1.5M12.5 4L9.5 1M12.5 4L9.5 7" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                              </svg>
-                            </div>
-                          </button>
-
-                          <div
                             style={{
                               display: 'flex',
                               flexDirection: 'row',
+                              justifyContent: 'center',
                               alignItems: 'center',
-                              padding: '10px 16px',
-                              gap: '12px',
-                              width: '186px',
+                              padding: '10px 30px',
+                              gap: '10px',
+                              width: '100px',
                               height: '40px',
-                              background: '#112F82',
+                              background: '#FFC83D',
                               borderRadius: '8px',
-                              boxSizing: 'border-box',
+                              border: 'none',
+                              cursor: 'pointer',
+                              flexShrink: 0,
                             }}
-                            className="flex-grow border border-white/5"
+                            className="hover:bg-[#ffd362] active:scale-95 duration-100"
                           >
-                            <img src="/images/bitcoin.svg" className="w-4 h-4 object-contain shrink-0" alt="BTC" />
-                            <input
-                              type="number"
-                              value={btcAmount}
-                              onChange={(e) => handleBtcChange(e.target.value)}
+                            <span
                               style={{
-                                width: '130px',
-                                height: '16px',
+                                width: 'auto',
+                                height: '19px',
                                 fontFamily: "'Manrope', sans-serif",
                                 fontStyle: 'normal',
                                 fontWeight: 700,
-                                fontSize: '12px',
-                                lineHeight: '16px',
+                                fontSize: '14px',
+                                lineHeight: '19px',
                                 letterSpacing: '0.02em',
-                                color: '#FFFFFF',
-                                background: 'transparent',
-                                border: 'none',
-                                outline: 'none',
+                                color: '#1A1404',
                               }}
-                              placeholder="0.00954"
-                            />
-                          </div>
+                            >
+                              {isPromoApplied ? 'Cancel' : 'Apply'}
+                            </span>
+                          </button>
                         </div>
                       </div>
 
+                      {/* Available bonuses section */}
                       <div
                         style={{
                           display: 'flex',
                           flexDirection: 'column',
                           alignItems: 'flex-start',
                           padding: '0px',
-                          gap: '8px',
+                          gap: '12px',
                           width: '428px',
-                          height: '62px',
+                          height: 'auto',
                         }}
-                        className="relative shrink-0"
                       >
                         <span
                           style={{
-                            width: '100%',
+                            width: '151px',
                             height: '16px',
                             fontFamily: "'Manrope', sans-serif",
                             fontStyle: 'normal',
@@ -3280,987 +3776,460 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                             color: '#BBCAF3',
                           }}
                         >
-                          4.BTC Deposit Address
+                          Available bonuses for you
                         </span>
 
+                        {/* Bonus Card slider/carousel */}
                         <div
+                          ref={bonusScrollRef}
+                          onScroll={() => {
+                            if (bonusScrollRef.current) {
+                              const scrollLeft = bonusScrollRef.current.scrollLeft;
+                              // card width 300px + gap 8px = 308px
+                              const index = Math.round(scrollLeft / 308);
+                              if (index !== activeBonusCard) {
+                                setActiveBonusCard(index);
+                              }
+                            }
+                          }}
                           style={{
                             display: 'flex',
                             flexDirection: 'row',
-                            alignItems: 'center',
-                            padding: '10px 16px',
-                            gap: '12px',
+                            alignItems: 'flex-start',
+                            padding: '0px',
+                            gap: '8px',
                             width: '428px',
-                            height: '40px',
-                            background: '#112F82',
-                            borderRadius: '8px',
-                            boxSizing: 'border-box',
-                            border: '1px solid rgba(255,255,255,0.05)',
+                            height: '205px',
+                          }}
+                          className="overflow-x-auto scrollbar-none snap-x snap-mandatory"
+                        >
+                          {[
+                            {
+                              title: '150% Reload Bonus + 30 Free Spins',
+                              minDeposit: '$30',
+                              maxCashout: '40x',
+                              maxAmount: '$30',
+                              wager: '10x',
+                            },
+                            {
+                              title: '350% Welcome Bonus',
+                              minDeposit: '$20',
+                              maxCashout: '45x',
+                              maxAmount: '$50',
+                              wager: '45x',
+                            },
+                            {
+                              title: '500% Crypto Bonus',
+                              minDeposit: '$20',
+                              maxCashout: '50x',
+                              maxAmount: '$100',
+                              wager: '45x',
+                            },
+                          ].map((bonus, idx) => (
+                            <div
+                              key={idx}
+                              style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                alignItems: 'flex-start',
+                                padding: '20px',
+                                gap: '12px',
+                                width: '300px',
+                                height: '205px',
+                                background: '#112F82',
+                                borderRadius: '12px',
+                                flexShrink: 0,
+                                scrollSnapAlign: 'start',
+                                boxSizing: 'border-box',
+                              }}
+                            >
+                              {/* Bonus title */}
+                              <span
+                                style={{
+                                  width: '260px',
+                                  height: '20px',
+                                  fontFamily: "'Jost', sans-serif",
+                                  fontStyle: 'normal',
+                                  fontWeight: 700,
+                                  fontSize: '14px',
+                                  lineHeight: '20px',
+                                  letterSpacing: '0.02em',
+                                  color: '#FFFFFF',
+                                }}
+                                className="truncate block"
+                              >
+                                {bonus.title}
+                              </span>
+
+                              {/* Info Grid (260px x 81px, gap 9px) */}
+                              <div
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  alignItems: 'flex-start',
+                                  padding: '0px',
+                                  gap: '9px',
+                                  width: '260px',
+                                  height: '81px',
+                                }}
+                              >
+                                {/* Row 1 */}
+                                <div
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'flex-start',
+                                    padding: '0px',
+                                    gap: '12px',
+                                    width: '260px',
+                                    height: '36px',
+                                  }}
+                                >
+                                  {/* Min. Deposit */}
+                                  <div
+                                    style={{
+                                      display: 'flex',
+                                      flexDirection: 'column',
+                                      alignItems: 'flex-start',
+                                      padding: '0px',
+                                      gap: '2px',
+                                      width: '124px',
+                                      height: '36px',
+                                      flexGrow: 1,
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        width: '124px',
+                                        height: '14px',
+                                        fontFamily: "'Manrope', sans-serif",
+                                        fontStyle: 'normal',
+                                        fontWeight: 500,
+                                        fontSize: '10px',
+                                        lineHeight: '14px',
+                                        letterSpacing: '0.02em',
+                                        color: '#BBCAF3',
+                                      }}
+                                      className="truncate"
+                                    >
+                                      Min. Deposit
+                                    </span>
+                                    <span
+                                      style={{
+                                        width: '124px',
+                                        height: '20px',
+                                        fontFamily: "'Jost', sans-serif",
+                                        fontStyle: 'normal',
+                                        fontWeight: 700,
+                                        fontSize: '14px',
+                                        lineHeight: '20px',
+                                        letterSpacing: '0.02em',
+                                        color: '#FFFFFF',
+                                      }}
+                                      className="truncate"
+                                    >
+                                      {bonus.minDeposit}
+                                    </span>
+                                  </div>
+
+                                  {/* Max. Cashout */}
+                                  <div
+                                    style={{
+                                      display: 'flex',
+                                      flexDirection: 'column',
+                                      alignItems: 'flex-start',
+                                      padding: '0px',
+                                      gap: '2px',
+                                      width: '124px',
+                                      height: '36px',
+                                      flexGrow: 1,
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        width: '124px',
+                                        height: '14px',
+                                        fontFamily: "'Manrope', sans-serif",
+                                        fontStyle: 'normal',
+                                        fontWeight: 500,
+                                        fontSize: '10px',
+                                        lineHeight: '14px',
+                                        letterSpacing: '0.02em',
+                                        color: '#BBCAF3',
+                                      }}
+                                      className="truncate"
+                                    >
+                                      Max. Cashout
+                                    </span>
+                                    <span
+                                      style={{
+                                        width: '124px',
+                                        height: '20px',
+                                        fontFamily: "'Jost', sans-serif",
+                                        fontStyle: 'normal',
+                                        fontWeight: 700,
+                                        fontSize: '14px',
+                                        lineHeight: '20px',
+                                        letterSpacing: '0.02em',
+                                        color: '#FFFFFF',
+                                      }}
+                                      className="truncate"
+                                    >
+                                      {bonus.maxCashout}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                {/* Row 2 */}
+                                <div
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'flex-start',
+                                    padding: '0px',
+                                    gap: '12px',
+                                    width: '260px',
+                                    height: '36px',
+                                  }}
+                                >
+                                  {/* Max. Amount */}
+                                  <div
+                                    style={{
+                                      display: 'flex',
+                                      flexDirection: 'column',
+                                      alignItems: 'flex-start',
+                                      padding: '0px',
+                                      gap: '2px',
+                                      width: '124px',
+                                      height: '36px',
+                                      flexGrow: 1,
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        width: '124px',
+                                        height: '14px',
+                                        fontFamily: "'Manrope', sans-serif",
+                                        fontStyle: 'normal',
+                                        fontWeight: 500,
+                                        fontSize: '10px',
+                                        lineHeight: '14px',
+                                        letterSpacing: '0.02em',
+                                        color: '#BBCAF3',
+                                      }}
+                                      className="truncate"
+                                    >
+                                      Max. Amount
+                                    </span>
+                                    <span
+                                      style={{
+                                        width: '124px',
+                                        height: '20px',
+                                        fontFamily: "'Jost', sans-serif",
+                                        fontStyle: 'normal',
+                                        fontWeight: 700,
+                                        fontSize: '14px',
+                                        lineHeight: '20px',
+                                        letterSpacing: '0.02em',
+                                        color: '#FFFFFF',
+                                      }}
+                                      className="truncate"
+                                    >
+                                      {bonus.maxAmount}
+                                    </span>
+                                  </div>
+
+                                  {/* Wager */}
+                                  <div
+                                    style={{
+                                      display: 'flex',
+                                      flexDirection: 'column',
+                                      alignItems: 'flex-start',
+                                      padding: '0px',
+                                      gap: '2px',
+                                      width: '124px',
+                                      height: '36px',
+                                      flexGrow: 1,
+                                    }}
+                                  >
+                                    <span
+                                      style={{
+                                        width: '124px',
+                                        height: '14px',
+                                        fontFamily: "'Manrope', sans-serif",
+                                        fontStyle: 'normal',
+                                        fontWeight: 500,
+                                        fontSize: '10px',
+                                        lineHeight: '14px',
+                                        letterSpacing: '0.02em',
+                                        color: '#BBCAF3',
+                                      }}
+                                      className="truncate"
+                                    >
+                                      Wager (dep. + bonus)
+                                    </span>
+                                    <span
+                                      style={{
+                                        width: '124px',
+                                        height: '20px',
+                                        fontFamily: "'Jost', sans-serif",
+                                        fontStyle: 'normal',
+                                        fontWeight: 700,
+                                        fontSize: '14px',
+                                        lineHeight: '20px',
+                                        letterSpacing: '0.02em',
+                                        color: '#FFFFFF',
+                                      }}
+                                      className="truncate"
+                                    >
+                                      {bonus.wager}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Join / Activate Button */}
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const codes = ['PROMO2026', 'WELCOME350', 'CRYPTO500'];
+                                  setPromoCode(codes[idx]);
+                                  setIsPromoApplied(true);
+                                }}
+                                style={{
+                                  display: 'flex',
+                                  flexDirection: 'row',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                  padding: '10px 20px',
+                                  gap: '10px',
+                                  width: '260px',
+                                  height: '40px',
+                                  background: '#FFC83D',
+                                  borderRadius: '6px',
+                                  border: 'none',
+                                  cursor: 'pointer',
+                                }}
+                                className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                              >
+                                <span
+                                  style={{
+                                    width: '51px',
+                                    height: '16px',
+                                    fontFamily: "'Manrope', sans-serif",
+                                    fontStyle: 'normal',
+                                    fontWeight: 700,
+                                    fontSize: '12px',
+                                    lineHeight: '16px',
+                                    letterSpacing: '0.02em',
+                                    color: '#1A1404',
+                                  }}
+                                >
+                                  Activate
+                                </span>
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Pagination indicators frame */}
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            padding: '0px',
+                            width: '428px',
+                            height: '6px',
                           }}
                         >
-                          <span
-                            style={{
-                              flex: 1,
-                              height: '16px',
-                              fontFamily: "'Manrope', sans-serif",
-                              fontStyle: 'normal',
-                              fontWeight: 700,
-                              fontSize: '12px',
-                              lineHeight: '16px',
-                              letterSpacing: '0.02em',
-                              color: '#7795E8',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              whiteSpace: 'nowrap',
-                            }}
-                            className="select-all"
-                          >
-                            {btcAddress}
-                          </span>
-
                           <div
                             style={{
                               display: 'flex',
                               flexDirection: 'row',
+                              justifyContent: 'center',
                               alignItems: 'center',
                               padding: '0px',
-                              gap: '12px',
-                              width: '44px',
-                              height: '16px',
+                              gap: '4px',
+                              width: '32px',
+                              height: '6px',
                             }}
-                            className="shrink-0"
                           >
-                            <button
-                              onClick={copyAddress}
-                              style={{ width: '16px', height: '16px', position: 'relative', border: 'none', background: 'transparent', padding: '0px', cursor: 'pointer' }}
-                              className="text-[#BBCAF3] hover:text-white flex items-center justify-center"
-                            >
-                              {copied && (
-                                <span className="absolute bottom-[24px] right-[-10px] bg-[#1463FF] text-white text-[10px] px-1.5 py-0.5 rounded shadow-lg font-sans font-bold">
-                                  Copied!
-                                </span>
-                              )}
-                              <img src="/images/paste.png" className="w-[16px] h-[16px] object-contain" alt="Copy" />
-                            </button>
-
-                            <button
-                              onClick={() => setShowQrCode(!showQrCode)}
-                              style={{ width: '16px', height: '16px', position: 'relative', border: 'none', background: 'transparent', padding: '0px', cursor: 'pointer' }}
-                              className="text-[#BBCAF3] hover:text-white flex items-center justify-center"
-                            >
-                              <img src="/images/scan.png" className="w-[16px] h-[16px] object-contain" alt="Scan" />
-                            </button>
-                          </div>
-                        </div>
-
-                        {showQrCode && (
-                          <div className="absolute bottom-[48px] right-0 bg-[#0C1F56] border border-white/10 rounded-[12px] p-4 flex flex-col items-center gap-2 shadow-2xl z-[100]">
-                            <div className="w-[100px] h-[100px] bg-white p-2 rounded flex flex-wrap gap-[2.5px]">
-                              {Array.from({ length: 64 }).map((_, i) => {
-                                const isFilled = (i % 3 === 0 && i % 4 !== 0) || (i < 20 && i % 2 === 0) || (i > 50 && i % 5 === 0) || (i % 7 === 1);
-                                return (
-                                  <div
-                                    key={i}
-                                    style={{ background: isFilled ? '#091741' : '#FFFFFF' }}
-                                    className="w-[8px] h-[8px]"
-                                  />
-                                );
-                              })}
-                            </div>
-                            <span className="font-sans text-[10px] text-[#BBCAF3]">Scan with crypto wallet</span>
-                          </div>
-                        )}
-                      </div>
-                    </>
-                  ) : creditCardStep === 'address' ? (
-                    <div className="flex flex-col items-start gap-[12px] w-full shrink-0 select-none">
-                      <div className="flex flex-col gap-[2px] w-full">
-                        <span className="font-manrope font-bold text-[14px] leading-[19px] tracking-[0.02em] text-white">
-                          Enter your address
-                        </span>
-                        <div className="flex flex-row items-start gap-[8px] w-full mt-[2px]">
-                          <div className="w-[12px] h-[12px] mt-[2px] flex items-center justify-center shrink-0">
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M6 1C3.24 1 1 3.24 1 6C1 8.76 3.24 11 6 11C8.76 11 11 8.76 11 6C11 3.24 8.76 1 6 1ZM6 8.5C5.72 8.5 5.5 8.28 5.5 8V6C5.5 5.72 5.72 5.5 6 5.5C6.28 5.5 6.5 5.72 6.5 6V8C6.5 8.28 6.28 8.5 6 8.5ZM6 4.5C5.72 4.5 5.5 4.28 5.5 4C5.5 3.72 5.72 3.5 6 3.5C6.28 3.5 6.5 3.72 6.5 4C6.5 4.28 6.28 4.5 6 4.5Z" fill="#7795E8" />
-                            </svg>
-                          </div>
-                          <span className="font-manrope font-medium text-[11px] leading-[15px] tracking-[0.02em] text-[#7795E8] select-none">
-                            Please fill up your address details before completing your deposit. This information is required for credit card deposits.
-                          </span>
-                        </div>
-                      </div>
-
-                      <input
-                        type="text"
-                        value={street}
-                        onChange={(e) => setStreet(e.target.value)}
-                        className="w-full h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
-                        placeholder="Street"
-                      />
-
-                      <div className="flex flex-row gap-[8px] w-full">
-                        <input
-                          type="text"
-                          value={city}
-                          onChange={(e) => setCity(e.target.value)}
-                          className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
-                          placeholder="City"
-                        />
-                        <input
-                          type="text"
-                          value={postalCode}
-                          onChange={(e) => setPostalCode(e.target.value)}
-                          className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
-                          placeholder="Postal Code"
-                        />
-                      </div>
-
-                      <div className="flex flex-row gap-[8px] w-full relative">
-                        <input
-                          type="text"
-                          value={state}
-                          onChange={(e) => setState(e.target.value)}
-                          className="w-[calc(50%-4px)] min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-manrope font-semibold text-[14px] leading-[19px] tracking-[0.02em] text-white placeholder-[#A5B8EF] outline-none"
-                          placeholder="State"
-                        />
-
-                        <div className="w-[calc(50%-4px)] min-w-0 relative" ref={countryDropdownRefDesktop}>
-                          <div
-                            onClick={() => setIsCountryDropdownOpen(!isCountryDropdownOpen)}
-                            className="flex flex-row items-center justify-between px-[16px] h-[40px] bg-[#112F82] rounded-[8px] cursor-pointer hover:bg-[#153a9e] transition-all duration-150 border border-white/5"
-                          >
-                            <div className="flex flex-row items-center gap-[10px] truncate">
-                              {country === 'United States' && <USFlag />}
-                              {country === 'Canada' && <CanadaFlag />}
-                              {country === 'United Kingdom' && <UKFlag />}
-                              <span className="font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] text-white truncate">
-                                {country}
-                              </span>
-
-                            </div>
-                            <div
-                              style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '14px',
-                                height: '14px',
-                              }}
-                              className="shrink-0"
-                            >
-                              <div
-                                style={{
-                                  width: '6px',
-                                  height: '6px',
-                                  borderLeft: '1.5px solid #A5B8EF',
-                                  borderBottom: '1.5px solid #A5B8EF',
-                                  transform: isCountryDropdownOpen ? 'rotate(135deg)' : 'rotate(-45deg)',
-                                  transition: 'transform 0.2s ease-in-out',
-                                }}
-                                className="shrink-0"
-                              />
-                            </div>
-                          </div>
-
-                          {isCountryDropdownOpen && (
-                            <div className="absolute bottom-[44px] left-0 right-0 bg-[#112F82] rounded-[8px] border border-white/10 shadow-xl z-50 overflow-hidden">
-                              {[
-                                { name: 'United States', flag: <USFlag /> },
-                                { name: 'Canada', flag: <CanadaFlag /> },
-                                { name: 'United Kingdom', flag: <UKFlag /> }
-                              ].map((c, idx) => (
+                            {[0, 1, 2].map((idx) => {
+                              const isDotActive = idx === activeBonusCard;
+                              return (
                                 <div
                                   key={idx}
+                                  style={{
+                                    width: isDotActive ? '12px' : '6px',
+                                    height: '6px',
+                                    background: '#BBCAF3',
+                                    borderRadius: '150px',
+                                    opacity: isDotActive ? 1 : 0.35,
+                                    transition: 'all 0.2s ease',
+                                    cursor: 'pointer',
+                                  }}
                                   onClick={() => {
-                                    setCountry(c.name);
-                                    setIsCountryDropdownOpen(false);
+                                    if (bonusScrollRef.current) {
+                                      bonusScrollRef.current.scrollTo({
+                                        left: idx * 308,
+                                        behavior: 'smooth',
+                                      });
+                                      setActiveBonusCard(idx);
+                                    }
                                   }}
-                                  className="flex flex-row items-center gap-[8px] px-[16px] py-[8px] text-white font-manrope font-bold text-[12px] leading-[16px] tracking-[0.02em] hover:bg-[#1463FF] cursor-pointer transition-colors"
-                                >
-                                  {c.flag}
-                                  <span>{c.name}</span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col items-start gap-[12px] w-full shrink-0 select-none">
-                      <div className="flex flex-row items-center justify-between w-full">
-                        <span className="font-sans font-semibold text-[12px] text-[#BBCAF3]">
-                          Select an amount
-                        </span>
-                        <button
-                          onClick={() => setCreditCardStep('address')}
-                          className="font-sans font-semibold text-[10px] text-[#7795E8] hover:text-white transition-colors cursor-pointer flex items-center gap-1 border-none bg-transparent p-0"
-                        >
-                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 8L3 5L6 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                          Edit Address
-                        </button>
-                      </div>
-
-                      <div className="flex flex-row items-center gap-[8px] w-full h-[40px]">
-                        {[20, 30, 100].map((amount) => {
-                          const isActive = ccAmountOption === amount;
-                          return (
-                            <button
-                              key={amount}
-                              type="button"
-                              onClick={() => setCcAmountOption(amount as any)}
-                              style={{
-                                background: isActive ? '#1463FF' : '#112F82',
-                                color: isActive ? '#FFFFFF' : '#A5B8EF',
-                              }}
-                              className="flex-1 h-full rounded-[8px] flex items-center justify-center font-sans font-bold text-[14px] cursor-pointer border-none hover:bg-[#153a9e] transition-colors"
-                            >
-                              ${amount}
-                            </button>
-                          );
-                        })}
-
-                        <div className="flex-1 h-full relative">
-                          {ccAmountOption === 'custom' ? (
-                            <div className="flex flex-row items-center px-[12px] w-full h-full bg-[#112F82] border border-[#1463FF] rounded-[8px] box-sizing-border">
-                              <span className="font-sans font-bold text-[14px] text-white mr-1">$</span>
-                              <input
-                                type="number"
-                                value={ccCustomAmount}
-                                onChange={(e) => setCcCustomAmount(e.target.value)}
-                                className="w-full bg-transparent border-none outline-none font-sans font-bold text-[14px] text-white placeholder-white/30"
-                                placeholder="0"
-                                autoFocus
-                              />
-                            </div>
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={() => setCcAmountOption('custom')}
-                              className="w-full h-full rounded-[8px] bg-[#112F82] text-[#A5B8EF] hover:bg-[#153a9e] flex items-center justify-center font-sans font-bold text-[14px] cursor-pointer border-none"
-                            >
-                              Custom...
-                            </button>
-                          )}
-                        </div>
-                      </div>
-
-                      <span className="font-sans font-semibold text-[12px] text-[#BBCAF3] mt-[4px]">
-                        Enter payment details
-                      </span>
-
-                      <input
-                        type="text"
-                        value={creditCardNumber}
-                        onChange={(e) => {
-                          const val = e.target.value.replace(/\D/g, '').substring(0, 16);
-                          const match = val.match(/.{1,4}/g);
-                          setCreditCardNumber(match ? match.join(' ') : val);
-                        }}
-                        className="w-full h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
-                        placeholder="Credit Card Number"
-                      />
-
-                      <div className="flex flex-row gap-[8px] w-full">
-                        <input
-                          type="text"
-                          value={creditCardExp}
-                          onChange={(e) => {
-                            const val = e.target.value.replace(/\D/g, '').substring(0, 4);
-                            if (val.length >= 3) {
-                              setCreditCardExp(`${val.slice(0, 2)}/${val.slice(2)}`);
-                            } else {
-                              setCreditCardExp(val);
-                            }
-                          }}
-                          className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
-                          placeholder="Exp."
-                        />
-                        <input
-                          type="password"
-                          value={creditCardCcv}
-                          onChange={(e) => setCreditCardCcv(e.target.value.replace(/\D/g, '').substring(0, 4))}
-                          className="flex-1 min-w-0 h-[40px] px-[16px] bg-[#112F82] rounded-[8px] border border-white/5 font-sans font-semibold text-[14px] text-white placeholder-[#A5B8EF]/60 outline-none"
-                          placeholder="CCV"
-                        />
-                      </div>
-                    </div>
-                  )}
-                </>
-              ) : null}
-
-              {activeTab === 'bonuses' && (
-                isPromoApplied ? (
-                  renderCouponApplied(false)
-                ) : (
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start',
-                      padding: '0px',
-                      gap: '16px',
-                      width: '428px',
-                      height: 'auto',
-                    }}
-                    className="select-none shrink-0"
-                  >
-                    {/* Promo Code section */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        padding: '0px',
-                        gap: '8px',
-                        width: '428px',
-                        height: '64px',
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: '236px',
-                          height: '16px',
-                          fontFamily: "'Manrope', sans-serif",
-                          fontStyle: 'normal',
-                          fontWeight: 600,
-                          fontSize: '12px',
-                          lineHeight: '16px',
-                          letterSpacing: '0.02em',
-                          color: '#BBCAF3',
-                        }}
-                      >
-                        If you have a Bonus Code &mdash; enter it here
-                      </span>
-
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'flex-start',
-                          padding: '0px',
-                          gap: '8px',
-                          width: '428px',
-                          height: '40px',
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            padding: '10px 16px',
-                            gap: '12px',
-                            flex: 1,
-                            height: '40px',
-                            background: '#112F82',
-                            borderRadius: '8px',
-                            boxSizing: 'border-box',
-                            minWidth: 0,
-                          }}
-                        >
-                          <input
-                            type="text"
-                            value={promoCode}
-                            onChange={(e) => setPromoCode(e.target.value)}
-                            placeholder="Promo Code"
-                            style={{
-                              width: '100%',
-                              height: '19px',
-                              fontFamily: "'Manrope', sans-serif",
-                              fontStyle: 'normal',
-                              fontWeight: 600,
-                              fontSize: '14px',
-                              lineHeight: '19px',
-                              letterSpacing: '0.02em',
-                              color: '#FFFFFF',
-                              background: 'transparent',
-                              border: 'none',
-                              outline: 'none',
-                            }}
-                            className="placeholder-[#7795E8]"
-                          />
-                          {/* Info Button */}
-                          {isPromoApplied && (
-                            <button
-                              type="button"
-                              style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '40px',
-                                height: '40px',
-                                background: '#112F82',
-                                borderRadius: '8px',
-                                border: 'none',
-                                flexShrink: 0,
-                                cursor: 'pointer',
-                              }}
-                            >
-                              <img src="/games/game-icons/i.png" alt="Info" className="w-[17.29px] h-[18px] object-contain" />
-                            </button>
-                          )}
-                        </div>
-
-                        <button
-                          type="button"
-                          onClick={() => {
-                            if (isPromoApplied) {
-                              setIsPromoApplied(false);
-                              setPromoCode('');
-                            } else {
-                              if (!promoCode.trim()) return;
-                              setIsPromoApplied(true);
-                            }
-                          }}
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            padding: '10px 30px',
-                            gap: '10px',
-                            width: '100px',
-                            height: '40px',
-                            background: '#FFC83D',
-                            borderRadius: '8px',
-                            border: 'none',
-                            cursor: 'pointer',
-                            flexShrink: 0,
-                          }}
-                          className="hover:bg-[#ffd362] active:scale-95 duration-100"
-                        >
-                          <span
-                            style={{
-                              width: 'auto',
-                              height: '19px',
-                              fontFamily: "'Manrope', sans-serif",
-                              fontStyle: 'normal',
-                              fontWeight: 700,
-                              fontSize: '14px',
-                              lineHeight: '19px',
-                              letterSpacing: '0.02em',
-                              color: '#1A1404',
-                            }}
-                          >
-                            {isPromoApplied ? 'Cancel' : 'Apply'}
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Available bonuses section */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        padding: '0px',
-                        gap: '12px',
-                        width: '428px',
-                        height: 'auto',
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: '151px',
-                          height: '16px',
-                          fontFamily: "'Manrope', sans-serif",
-                          fontStyle: 'normal',
-                          fontWeight: 600,
-                          fontSize: '12px',
-                          lineHeight: '16px',
-                          letterSpacing: '0.02em',
-                          color: '#BBCAF3',
-                        }}
-                      >
-                        Available bonuses for you
-                      </span>
-
-                      {/* Bonus Card slider/carousel */}
-                      <div
-                        ref={bonusScrollRef}
-                        onScroll={() => {
-                          if (bonusScrollRef.current) {
-                            const scrollLeft = bonusScrollRef.current.scrollLeft;
-                            // card width 300px + gap 8px = 308px
-                            const index = Math.round(scrollLeft / 308);
-                            if (index !== activeBonusCard) {
-                              setActiveBonusCard(index);
-                            }
-                          }
-                        }}
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'flex-start',
-                          padding: '0px',
-                          gap: '8px',
-                          width: '428px',
-                          height: '205px',
-                        }}
-                        className="overflow-x-auto scrollbar-none snap-x snap-mandatory"
-                      >
-                        {[
-                          {
-                            title: '150% Reload Bonus + 30 Free Spins',
-                            minDeposit: '$30',
-                            maxCashout: '40x',
-                            maxAmount: '$30',
-                            wager: '10x',
-                          },
-                          {
-                            title: '350% Welcome Bonus',
-                            minDeposit: '$20',
-                            maxCashout: '45x',
-                            maxAmount: '$50',
-                            wager: '45x',
-                          },
-                          {
-                            title: '500% Crypto Bonus',
-                            minDeposit: '$20',
-                            maxCashout: '50x',
-                            maxAmount: '$100',
-                            wager: '45x',
-                          },
-                        ].map((bonus, idx) => (
-                          <div
-                            key={idx}
-                            style={{
-                              display: 'flex',
-                              flexDirection: 'column',
-                              justifyContent: 'center',
-                              alignItems: 'flex-start',
-                              padding: '20px',
-                              gap: '12px',
-                              width: '300px',
-                              height: '205px',
-                              background: '#112F82',
-                              borderRadius: '12px',
-                              flexShrink: 0,
-                              scrollSnapAlign: 'start',
-                              boxSizing: 'border-box',
-                            }}
-                          >
-                            {/* Bonus title */}
-                            <span
-                              style={{
-                                width: '260px',
-                                height: '20px',
-                                fontFamily: "'Jost', sans-serif",
-                                fontStyle: 'normal',
-                                fontWeight: 700,
-                                fontSize: '14px',
-                                lineHeight: '20px',
-                                letterSpacing: '0.02em',
-                                color: '#FFFFFF',
-                              }}
-                              className="truncate block"
-                            >
-                              {bonus.title}
-                            </span>
-
-                            {/* Info Grid (260px x 81px, gap 9px) */}
-                            <div
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'flex-start',
-                                padding: '0px',
-                                gap: '9px',
-                                width: '260px',
-                                height: '81px',
-                              }}
-                            >
-                              {/* Row 1 */}
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  alignItems: 'flex-start',
-                                  padding: '0px',
-                                  gap: '12px',
-                                  width: '260px',
-                                  height: '36px',
-                                }}
-                              >
-                                {/* Min. Deposit */}
-                                <div
-                                  style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'flex-start',
-                                    padding: '0px',
-                                    gap: '2px',
-                                    width: '124px',
-                                    height: '36px',
-                                    flexGrow: 1,
-                                  }}
-                                >
-                                  <span
-                                    style={{
-                                      width: '124px',
-                                      height: '14px',
-                                      fontFamily: "'Manrope', sans-serif",
-                                      fontStyle: 'normal',
-                                      fontWeight: 500,
-                                      fontSize: '10px',
-                                      lineHeight: '14px',
-                                      letterSpacing: '0.02em',
-                                      color: '#BBCAF3',
-                                    }}
-                                    className="truncate"
-                                  >
-                                    Min. Deposit
-                                  </span>
-                                  <span
-                                    style={{
-                                      width: '124px',
-                                      height: '20px',
-                                      fontFamily: "'Jost', sans-serif",
-                                      fontStyle: 'normal',
-                                      fontWeight: 700,
-                                      fontSize: '14px',
-                                      lineHeight: '20px',
-                                      letterSpacing: '0.02em',
-                                      color: '#FFFFFF',
-                                    }}
-                                    className="truncate"
-                                  >
-                                    {bonus.minDeposit}
-                                  </span>
-                                </div>
-
-                                {/* Max. Cashout */}
-                                <div
-                                  style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'flex-start',
-                                    padding: '0px',
-                                    gap: '2px',
-                                    width: '124px',
-                                    height: '36px',
-                                    flexGrow: 1,
-                                  }}
-                                >
-                                  <span
-                                    style={{
-                                      width: '124px',
-                                      height: '14px',
-                                      fontFamily: "'Manrope', sans-serif",
-                                      fontStyle: 'normal',
-                                      fontWeight: 500,
-                                      fontSize: '10px',
-                                      lineHeight: '14px',
-                                      letterSpacing: '0.02em',
-                                      color: '#BBCAF3',
-                                    }}
-                                    className="truncate"
-                                  >
-                                    Max. Cashout
-                                  </span>
-                                  <span
-                                    style={{
-                                      width: '124px',
-                                      height: '20px',
-                                      fontFamily: "'Jost', sans-serif",
-                                      fontStyle: 'normal',
-                                      fontWeight: 700,
-                                      fontSize: '14px',
-                                      lineHeight: '20px',
-                                      letterSpacing: '0.02em',
-                                      color: '#FFFFFF',
-                                    }}
-                                    className="truncate"
-                                  >
-                                    {bonus.maxCashout}
-                                  </span>
-                                </div>
-                              </div>
-
-                              {/* Row 2 */}
-                              <div
-                                style={{
-                                  display: 'flex',
-                                  flexDirection: 'row',
-                                  alignItems: 'flex-start',
-                                  padding: '0px',
-                                  gap: '12px',
-                                  width: '260px',
-                                  height: '36px',
-                                }}
-                              >
-                                {/* Max. Amount */}
-                                <div
-                                  style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'flex-start',
-                                    padding: '0px',
-                                    gap: '2px',
-                                    width: '124px',
-                                    height: '36px',
-                                    flexGrow: 1,
-                                  }}
-                                >
-                                  <span
-                                    style={{
-                                      width: '124px',
-                                      height: '14px',
-                                      fontFamily: "'Manrope', sans-serif",
-                                      fontStyle: 'normal',
-                                      fontWeight: 500,
-                                      fontSize: '10px',
-                                      lineHeight: '14px',
-                                      letterSpacing: '0.02em',
-                                      color: '#BBCAF3',
-                                    }}
-                                    className="truncate"
-                                  >
-                                    Max. Amount
-                                  </span>
-                                  <span
-                                    style={{
-                                      width: '124px',
-                                      height: '20px',
-                                      fontFamily: "'Jost', sans-serif",
-                                      fontStyle: 'normal',
-                                      fontWeight: 700,
-                                      fontSize: '14px',
-                                      lineHeight: '20px',
-                                      letterSpacing: '0.02em',
-                                      color: '#FFFFFF',
-                                    }}
-                                    className="truncate"
-                                  >
-                                    {bonus.maxAmount}
-                                  </span>
-                                </div>
-
-                                {/* Wager */}
-                                <div
-                                  style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'flex-start',
-                                    padding: '0px',
-                                    gap: '2px',
-                                    width: '124px',
-                                    height: '36px',
-                                    flexGrow: 1,
-                                  }}
-                                >
-                                  <span
-                                    style={{
-                                      width: '124px',
-                                      height: '14px',
-                                      fontFamily: "'Manrope', sans-serif",
-                                      fontStyle: 'normal',
-                                      fontWeight: 500,
-                                      fontSize: '10px',
-                                      lineHeight: '14px',
-                                      letterSpacing: '0.02em',
-                                      color: '#BBCAF3',
-                                    }}
-                                    className="truncate"
-                                  >
-                                    Wager (dep. + bonus)
-                                  </span>
-                                  <span
-                                    style={{
-                                      width: '124px',
-                                      height: '20px',
-                                      fontFamily: "'Jost', sans-serif",
-                                      fontStyle: 'normal',
-                                      fontWeight: 700,
-                                      fontSize: '14px',
-                                      lineHeight: '20px',
-                                      letterSpacing: '0.02em',
-                                      color: '#FFFFFF',
-                                    }}
-                                    className="truncate"
-                                  >
-                                    {bonus.wager}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Join / Activate Button */}
-                            <button
-                              type="button"
-                              onClick={() => {
-                                const codes = ['PROMO2026', 'WELCOME350', 'CRYPTO500'];
-                                setPromoCode(codes[idx]);
-                                setIsPromoApplied(true);
-                              }}
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                padding: '10px 20px',
-                                gap: '10px',
-                                width: '260px',
-                                height: '40px',
-                                background: '#FFC83D',
-                                borderRadius: '6px',
-                                border: 'none',
-                                cursor: 'pointer',
-                              }}
-                              className="hover:bg-[#ffd362] active:scale-95 duration-100"
-                            >
-                              <span
-                                style={{
-                                  width: '51px',
-                                  height: '16px',
-                                  fontFamily: "'Manrope', sans-serif",
-                                  fontStyle: 'normal',
-                                  fontWeight: 700,
-                                  fontSize: '12px',
-                                  lineHeight: '16px',
-                                  letterSpacing: '0.02em',
-                                  color: '#1A1404',
-                                }}
-                              >
-                                Activate
-                              </span>
-                            </button>
+                                />
+                              );
+                            })}
                           </div>
-                        ))}
-                      </div>
-
-                      {/* Pagination indicators frame */}
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          padding: '0px',
-                          width: '428px',
-                          height: '6px',
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            padding: '0px',
-                            gap: '4px',
-                            width: '32px',
-                            height: '6px',
-                          }}
-                        >
-                          {[0, 1, 2].map((idx) => {
-                            const isDotActive = idx === activeBonusCard;
-                            return (
-                              <div
-                                key={idx}
-                                style={{
-                                  width: isDotActive ? '12px' : '6px',
-                                  height: '6px',
-                                  background: '#BBCAF3',
-                                  borderRadius: '150px',
-                                  opacity: isDotActive ? 1 : 0.35,
-                                  transition: 'all 0.2s ease',
-                                  cursor: 'pointer',
-                                }}
-                                onClick={() => {
-                                  if (bonusScrollRef.current) {
-                                    bonusScrollRef.current.scrollTo({
-                                      left: idx * 308,
-                                      behavior: 'smooth',
-                                    });
-                                    setActiveBonusCard(idx);
-                                  }
-                                }}
-                              />
-                            );
-                          })}
                         </div>
                       </div>
                     </div>
-                  </div>
-                )
-              )}
+                  )
+                )}
 
-              {activeTab === 'withdraw' && (
-                <WithdrawTab
-                  isMobile={false}
-                  verificationStep={verificationStep}
-                  setVerificationStep={setVerificationStep}
-                />
-              )}
+                {activeTab === 'withdraw' && (
+                  <WithdrawTab
+                    isMobile={false}
+                    verificationStep={verificationStep}
+                    setVerificationStep={setVerificationStep}
+                  />
+                )}
 
-              {activeTab === 'transactions' && (
-                <TransactionsTab isMobile={false} />
-              )}
+                {activeTab === 'transactions' && (
+                  <TransactionsTab isMobile={false} />
+                )}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Join CTA Frame (300px x 50px, background: #FFC83D, border-radius: 8px, order 2, z-index 2) */}
-        {activeTab === 'deposit' && (
-          depositConfirmed ? (
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                padding: '0px',
-                gap: '0px',
-                width: '460px',
-                height: '50px',
-                zIndex: 2,
-              }}
-              className="shrink-0 mt-auto"
-            >
-              <button
-                onClick={onClose}
+          {/* Join CTA Frame (300px x 50px, background: #FFC83D, border-radius: 8px, order 2, z-index 2) */}
+          {activeTab === 'deposit' && (
+            depositConfirmed ? (
+              <div
                 style={{
                   display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
+                  flexDirection: 'column',
                   alignItems: 'center',
-                  padding: '10px 30px',
-                  gap: '10px',
+                  padding: '0px',
+                  gap: '0px',
                   width: '460px',
                   height: '50px',
-                  background: '#FFC83D',
-                  borderRadius: '8px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontFamily: "'Manrope', sans-serif",
-                  fontWeight: 700,
-                  fontSize: '16px',
-                  lineHeight: '22px',
-                  letterSpacing: '0.02em',
-                  color: '#1A1404',
+                  zIndex: 2,
                 }}
-                className="hover:bg-[#ffd362] active:scale-95 duration-100 font-sans"
+                className="shrink-0 mt-auto"
               >
-                {selectedPayment === 'Credit Card' ? 'Play Now' : 'Go to games'}
-              </button>
-            </div>
-          ) : (
-            <div
-              style={{
-                width: '300px',
-                height: '50px',
-                zIndex: 2,
-              }}
-              className="flex items-center justify-center shrink-0 mt-auto"
-            >
-              {selectedPayment === 'Bitcoin' ? (
                 <button
-                  onClick={() => setDepositConfirmed(true)}
+                  onClick={onClose}
                   style={{
-                    width: '300px',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '10px 30px',
+                    gap: '10px',
+                    width: '460px',
                     height: '50px',
                     background: '#FFC83D',
                     borderRadius: '8px',
@@ -4268,75 +4237,106 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                     cursor: 'pointer',
                     fontFamily: "'Manrope', sans-serif",
                     fontWeight: 700,
-                    fontSize: '14px',
-                    lineHeight: '19px',
+                    fontSize: '16px',
+                    lineHeight: '22px',
                     letterSpacing: '0.02em',
                     color: '#1A1404',
                   }}
-                  className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                  className="hover:bg-[#ffd362] active:scale-95 duration-100 font-sans"
                 >
-                  I&apos;ve completed my deposit
+                  {selectedPayment === 'Credit Card' ? 'Play Now' : 'Go to games'}
                 </button>
-              ) : creditCardStep === 'address' ? (
-                <button
-                  onClick={() => {
-                    if (!street || !city || !postalCode || !state) {
-                      alert('Please fill out all address details.');
-                      return;
-                    }
-                    setCreditCardStep('payment');
-                  }}
-                  style={{
-                    width: '300px',
-                    height: '50px',
-                    background: '#FFC83D',
-                    borderRadius: '8px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontFamily: "'Manrope', sans-serif",
-                    fontWeight: 700,
-                    fontSize: '14px',
-                    lineHeight: '19px',
-                    letterSpacing: '0.02em',
-                    color: '#1A1404',
-                  }}
-                  className="hover:bg-[#ffd362] active:scale-95 duration-100"
-                >
-                  Continue
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    if (!creditCardNumber || !creditCardExp || !creditCardCcv) {
-                      alert('Please fill out all credit card details.');
-                      return;
-                    }
-                    const currentBalance = user?.balance || 0;
-                    dispatch(updateBalance(currentBalance + getDepositAmount()));
-                    setDepositConfirmed(true);
-                  }}
-                  style={{
-                    width: '300px',
-                    height: '50px',
-                    background: '#FFC83D',
-                    borderRadius: '8px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontFamily: "'Manrope', sans-serif",
-                    fontWeight: 700,
-                    fontSize: '14px',
-                    lineHeight: '19px',
-                    letterSpacing: '0.02em',
-                    color: '#1A1404',
-                  }}
-                  className="hover:bg-[#ffd362] active:scale-95 duration-100"
-                >
-                  Deposit ${getDepositAmount()}
-                </button>
-              )}
-            </div>
-          )
-        )}
+              </div>
+            ) : (
+              <div
+                style={{
+                  width: '300px',
+                  height: '50px',
+                  zIndex: 2,
+                }}
+                className="flex items-center justify-center shrink-0 mt-auto"
+              >
+                {selectedPayment === 'Bitcoin' ? (
+                  <button
+                    onClick={() => setDepositConfirmed(true)}
+                    style={{
+                      width: '300px',
+                      height: '50px',
+                      background: '#FFC83D',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontFamily: "'Manrope', sans-serif",
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      lineHeight: '19px',
+                      letterSpacing: '0.02em',
+                      color: '#1A1404',
+                    }}
+                    className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                  >
+                    I&apos;ve completed my deposit
+                  </button>
+                ) : creditCardStep === 'address' ? (
+                  <button
+                    onClick={() => {
+                      if (!street || !city || !postalCode || !state) {
+                        alert('Please fill out all address details.');
+                        return;
+                      }
+                      setCreditCardStep('payment');
+                    }}
+                    style={{
+                      width: '300px',
+                      height: '50px',
+                      background: '#FFC83D',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontFamily: "'Manrope', sans-serif",
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      lineHeight: '19px',
+                      letterSpacing: '0.02em',
+                      color: '#1A1404',
+                    }}
+                    className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                  >
+                    Continue
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      if (!creditCardNumber || !creditCardExp || !creditCardCcv) {
+                        alert('Please fill out all credit card details.');
+                        return;
+                      }
+                      const currentBalance = user?.balance || 0;
+                      dispatch(updateBalance(currentBalance + getDepositAmount()));
+                      setDepositConfirmed(true);
+                    }}
+                    style={{
+                      width: '300px',
+                      height: '50px',
+                      background: '#FFC83D',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontFamily: "'Manrope', sans-serif",
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      lineHeight: '19px',
+                      letterSpacing: '0.02em',
+                      color: '#1A1404',
+                    }}
+                    className="hover:bg-[#ffd362] active:scale-95 duration-100"
+                  >
+                    Deposit ${getDepositAmount()}
+                  </button>
+                )}
+              </div>
+            )
+          )}
         </div>
       </div>
     </div>
