@@ -130,6 +130,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   const [promoCode, setPromoCode] = useState('');
   const [isPromoApplied, setIsPromoApplied] = useState(false);
   const [activeBonusCard, setActiveBonusCard] = useState(0);
+  const [verificationStep, setVerificationStep] = useState(0);
   const bonusScrollRef = useRef<HTMLDivElement>(null);
 
   // Credit Card step: 'address' | 'payment'
@@ -570,7 +571,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
     );
   };
 
-  const renderCouponApplied = () => {
+  const renderCouponApplied = (isMobile: boolean = false) => {
     const currentCode = promoCode.trim() ? promoCode.toUpperCase() : 'PROMO2026';
 
     const bonusDetails = [
@@ -585,85 +586,587 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
       wager: '10x'
     };
 
-    return (
-      <div className="flex flex-col items-center w-full select-none gap-4 animate-in fade-in zoom-in-95">
-        {/* Blue Banner */}
-        <div className="flex flex-row items-center gap-3 w-full bg-[#112F82]/40 border border-[#1463FF]/30 rounded-xl p-3 box-border">
-          {/* Check Circle Badge */}
-          <div className="flex items-center justify-center w-[36px] h-[36px] rounded-full bg-[#1463FF] shrink-0">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 6L9 17L4 12" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="font-manrope font-bold text-[14px] text-white">Coupon applied</span>
-            <span className="font-manrope font-medium text-[11px] text-[#A5B8EF]">
-              Your bonus is now attached to your next deposit
-            </span>
-          </div>
-        </div>
-
-        {/* Bonus Details Card */}
-        <div className="flex flex-col items-start gap-4 w-full bg-[#112F82] border border-white/5 rounded-xl p-4 box-border relative overflow-hidden">
-          {/* Top Active Title + Info Row */}
-          <div className="flex flex-row justify-between items-start w-full gap-2">
-            <div className="flex flex-col items-start gap-1">
-              <span className="font-manrope font-medium text-[11px] text-[#A5B8EF]">Active Bonus</span>
-              <span className="font-jost font-extrabold text-[15px] text-white leading-tight text-left">
-                {bonusDetails.title}
-              </span>
+    if (isMobile) {
+      return (
+        <div className="flex flex-col items-center w-full select-none gap-[12px] animate-in fade-in zoom-in-95 h-full">
+          {/* Inner Frame */}
+          <div className="flex flex-col justify-center items-center p-[12px] gap-[14px] w-full bg-[#112F82] rounded-xl border border-white/5 shrink-0">
+            {/* Coupon applied header */}
+            <div className="flex flex-row items-center gap-[10px] w-full h-auto">
+              {/* Checkmark badge */}
+              <div className="flex items-center justify-center w-[32px] h-[32px] bg-[#1463FF] rounded-lg shrink-0">
+                <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 4.5L4 7L10.5 1.5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="font-manrope font-bold text-[13px] text-white leading-normal">Coupon applied</span>
+                <span className="font-manrope font-medium text-[10px] text-[#A5B8EF] leading-tight">
+                  Your bonus is now attached to your next deposit
+                </span>
+              </div>
             </div>
-            <button type="button" className="w-[18px] h-[18px] bg-transparent border-none outline-none cursor-pointer flex items-center justify-center shrink-0">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="#A5B8EF" strokeWidth="2" />
-                <path d="M12 16V12M12 8H12.01" stroke="#A5B8EF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+
+            {/* Active Bonus section */}
+            <div className="flex flex-col items-start gap-[4px] w-full">
+              <span className="font-manrope font-medium text-[10px] text-[#BBCAF3]">Active Bonus</span>
+              <div className="flex flex-row justify-between items-center w-full">
+                <span className="font-manrope font-bold text-[12px] text-white truncate max-w-[85%] text-left">
+                  {bonusDetails.title}
+                </span>
+                <button type="button" className="w-[14px] h-[14px] bg-transparent border-none outline-none cursor-pointer flex items-center justify-center shrink-0">
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="7.25" stroke="#A5B8EF" strokeWidth="1.5" />
+                    <path d="M8 11V8M8 5H8.01" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
+              <span className="font-manrope font-bold text-[12px] text-[#FFC83D] mt-[2px]">{bonusDetails.code}</span>
+            </div>
+
+            {/* Dashed Line */}
+            <div className="border-t border-dashed border-[#193EA5] w-full h-0" />
+
+            {/* Stats Table */}
+            <div className="flex flex-col gap-[6px] w-full text-[11px] font-manrope font-semibold text-[#A5B8EF]">
+              <div className="flex flex-row justify-between items-center w-full">
+                <span>Min. Deposit</span>
+                <span className="font-bold text-white">{bonusDetails.minDeposit}</span>
+              </div>
+              <div className="border-t border-dashed border-[#193EA5] w-full h-0" />
+              <div className="flex flex-row justify-between items-center w-full">
+                <span>Max. Cashout</span>
+                <span className="font-bold text-white">{bonusDetails.maxCashout}</span>
+              </div>
+              <div className="border-t border-dashed border-[#193EA5] w-full h-0" />
+              <div className="flex flex-row justify-between items-center w-full">
+                <span>Wager</span>
+                <span className="font-bold text-white">{bonusDetails.wager}</span>
+              </div>
+            </div>
+
+            {/* Continue to deposit (yellow button) */}
+            <button
+              onClick={() => setActiveTab('deposit')}
+              className="w-full h-[40px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-lg flex items-center justify-center font-manrope font-bold text-[13px] text-[#1A1404] cursor-pointer border-none shrink-0"
+            >
+              Continue to deposit
             </button>
           </div>
 
-          {/* Promo Code Text */}
-          <span className="font-jost font-black text-[18px] tracking-wider text-[#FFC83D]">
-            {bonusDetails.code}
-          </span>
-
-          {/* Separator line */}
-          <div className="border-t border-dashed border-white/10 w-full" />
-
-          {/* Stats Grid Table */}
-          <div className="flex flex-col gap-2 w-full text-[12px] font-manrope font-medium text-[#A5B8EF]">
-            <div className="flex flex-row justify-between items-center w-full">
-              <span>Min. Deposit</span>
-              <span className="font-jost font-bold text-white text-[13px]">{bonusDetails.minDeposit}</span>
-            </div>
-            <div className="flex flex-row justify-between items-center w-full">
-              <span>Max. Cashout</span>
-              <span className="font-jost font-bold text-white text-[13px]">{bonusDetails.maxCashout}</span>
-            </div>
-            <div className="flex flex-row justify-between items-center w-full">
-              <span>Wager</span>
-              <span className="font-jost font-bold text-white text-[13px]">{bonusDetails.wager}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex flex-col gap-3 w-full mt-2">
-          <button
-            onClick={() => setActiveTab('deposit')}
-            className="w-full h-[50px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-lg flex items-center justify-center font-sans font-bold text-[14px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
-          >
-            Continue to deposit
-          </button>
+          {/* Change coupon (blue button) */}
           <button
             onClick={() => {
               setIsPromoApplied(false);
               setPromoCode('');
             }}
-            className="w-full h-[50px] bg-[#112F82] hover:bg-[#1a44bb] rounded-lg flex items-center justify-center font-sans font-bold text-[14px] text-white tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none"
+            className="w-full h-[40px] bg-[#112F82] hover:bg-[#1a44bb] rounded-lg flex items-center justify-center font-manrope font-bold text-[13px] text-[#D2DCF7] cursor-pointer border-none shrink-0"
           >
             Change coupon
           </button>
         </div>
+      );
+    }
+
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: '0px',
+          gap: '16px',
+          width: '428px',
+          height: '394px',
+        }}
+        className="select-none box-border animate-in fade-in zoom-in-95 shrink-0"
+      >
+        {/* Inner Frame */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '16px',
+            gap: '20px',
+            width: '428px',
+            height: '328px',
+            background: '#112F82',
+            borderRadius: '12px',
+            boxSizing: 'border-box',
+          }}
+          className="shrink-0"
+        >
+          {/* Row 1: Coupon applied banner */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              padding: '0px',
+              gap: '12px',
+              width: '396px',
+              height: '40px',
+            }}
+            className="shrink-0"
+          >
+            {/* Check Circle Badge */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '12px',
+                gap: '10px',
+                width: '40px',
+                height: '40px',
+                background: '#1463FF',
+                borderRadius: '8px',
+                boxSizing: 'border-box',
+              }}
+              className="shrink-0"
+            >
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 3.5L4.5 6.5L10.5 0.5" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+
+            {/* Texts */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                padding: '0px',
+                gap: '4px',
+                width: '344px',
+                height: '39px',
+              }}
+              className="shrink-0"
+            >
+              <span
+                style={{
+                  width: '111px',
+                  height: '19px',
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  lineHeight: '19px',
+                  letterSpacing: '0.02em',
+                  color: '#FFFFFF',
+                }}
+                className="shrink-0"
+              >
+                Coupon applied
+              </span>
+              <span
+                style={{
+                  width: '336px',
+                  height: '16px',
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 500,
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                  letterSpacing: '0.02em',
+                  color: '#A5B8EF',
+                }}
+                className="shrink-0"
+              >
+                Your bonus is now attached to your next deposit
+              </span>
+            </div>
+          </div>
+
+          {/* Row 2: Active Bonus */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              padding: '0px',
+              gap: '8px',
+              width: '396px',
+              height: '66px',
+            }}
+            className="shrink-0"
+          >
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                padding: '0px',
+                gap: '10px',
+                width: '396px',
+                height: '16px',
+              }}
+              className="shrink-0"
+            >
+              <span
+                style={{
+                  width: '77px',
+                  height: '16px',
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 500,
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                  letterSpacing: '0.02em',
+                  color: '#BBCAF3',
+                }}
+                className="shrink-0"
+              >
+                Active Bonus
+              </span>
+            </div>
+
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                padding: '0px',
+                gap: '4px',
+                width: '396px',
+                height: '42px',
+              }}
+              className="shrink-0"
+            >
+              {/* Title row */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '0px',
+                  gap: '8px',
+                  width: '396px',
+                  height: '19px',
+                }}
+                className="shrink-0"
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    padding: '0px',
+                    gap: '10px',
+                    width: 'auto',
+                    height: '19px',
+                    maxWidth: '360px',
+                  }}
+                  className="shrink-0"
+                >
+                  <span
+                    style={{
+                      fontFamily: "'Manrope', sans-serif",
+                      fontStyle: 'normal',
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      lineHeight: '19px',
+                      letterSpacing: '0.02em',
+                      color: '#FFFFFF',
+                    }}
+                    className="truncate block"
+                  >
+                    {bonusDetails.title}
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  style={{
+                    width: '16px',
+                    height: '16px',
+                    background: 'transparent',
+                    border: 'none',
+                    outline: 'none',
+                    cursor: 'pointer',
+                    padding: '0px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  className="shrink-0"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="7.25" stroke="#A5B8EF" strokeWidth="1.5" />
+                    <path d="M8 11V8M8 5H8.01" stroke="#A5B8EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Promo code */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  padding: '0px',
+                  gap: '8px',
+                  width: '396px',
+                  height: '19px',
+                }}
+                className="shrink-0"
+              >
+                <span
+                  style={{
+                    width: 'auto',
+                    height: '19px',
+                    fontFamily: "'Manrope', sans-serif",
+                    fontStyle: 'normal',
+                    fontWeight: 700,
+                    fontSize: '14px',
+                    lineHeight: '19px',
+                    letterSpacing: '0.02em',
+                    color: '#FFC83D',
+                  }}
+                  className="shrink-0"
+                >
+                  {bonusDetails.code}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Row 3: Stats */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              padding: '0px',
+              gap: '8px',
+              width: '396px',
+              height: '80px',
+            }}
+            className="shrink-0"
+          >
+            {/* Min. Deposit */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '0px',
+                gap: '12px',
+                width: '396px',
+                height: '16px',
+              }}
+              className="shrink-0"
+            >
+              <span
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  fontSize: '10px',
+                  lineHeight: '14px',
+                  letterSpacing: '0.02em',
+                  color: '#A5B8EF',
+                }}
+              >
+                Min. Deposit
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                  textAlign: 'right',
+                  letterSpacing: '0.02em',
+                  color: '#FFFFFF',
+                }}
+              >
+                {bonusDetails.minDeposit}
+              </span>
+            </div>
+
+            <div
+              style={{
+                width: '396px',
+                height: '0px',
+                border: '1px dashed #193EA5',
+              }}
+              className="shrink-0"
+            />
+
+            {/* Max. Cashout */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '0px',
+                gap: '12px',
+                width: '396px',
+                height: '16px',
+              }}
+              className="shrink-0"
+            >
+              <span
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  fontSize: '10px',
+                  lineHeight: '14px',
+                  letterSpacing: '0.02em',
+                  color: '#A5B8EF',
+                }}
+              >
+                Max. Cashout
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                  textAlign: 'right',
+                  letterSpacing: '0.02em',
+                  color: '#FFFFFF',
+                }}
+              >
+                {bonusDetails.maxCashout}
+              </span>
+            </div>
+
+            <div
+              style={{
+                width: '396px',
+                height: '0px',
+                border: '1px dashed #193EA5',
+              }}
+              className="shrink-0"
+            />
+
+            {/* Wager */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '0px',
+                gap: '12px',
+                width: '396px',
+                height: '16px',
+              }}
+              className="shrink-0"
+            >
+              <span
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  fontSize: '10px',
+                  lineHeight: '14px',
+                  letterSpacing: '0.02em',
+                  color: '#A5B8EF',
+                }}
+              >
+                Wager
+              </span>
+              <span
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontStyle: 'normal',
+                  fontWeight: 700,
+                  fontSize: '12px',
+                  lineHeight: '16px',
+                  textAlign: 'right',
+                  letterSpacing: '0.02em',
+                  color: '#FFFFFF',
+                }}
+              >
+                {bonusDetails.wager}
+              </span>
+            </div>
+          </div>
+
+          {/* Row 4: Continue Button */}
+          <button
+            onClick={() => setActiveTab('deposit')}
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '10px 30px',
+              gap: '10px',
+              width: '396px',
+              height: '50px',
+              background: '#FFC83D',
+              borderRadius: '8px',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+            className="hover:bg-[#ffd362] active:scale-95 duration-100 shrink-0"
+          >
+            <span
+              style={{
+                fontFamily: "'Manrope', sans-serif",
+                fontStyle: 'normal',
+                fontWeight: 700,
+                fontSize: '16px',
+                lineHeight: '22px',
+                letterSpacing: '0.02em',
+                color: '#1A1404',
+              }}
+            >
+              Continue to deposit
+            </span>
+          </button>
+        </div>
+
+        {/* Change coupon button */}
+        <button
+          onClick={() => {
+            setIsPromoApplied(false);
+            setPromoCode('');
+          }}
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '10px 30px',
+            gap: '10px',
+            width: '428px',
+            height: '50px',
+            background: '#112F82',
+            borderRadius: '8px',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+          className="hover:bg-[#1a44bb] active:scale-95 duration-100 shrink-0"
+        >
+          <span
+            style={{
+              fontFamily: "'Manrope', sans-serif",
+              fontStyle: 'normal',
+              fontWeight: 700,
+              fontSize: '16px',
+              lineHeight: '22px',
+              letterSpacing: '0.02em',
+              color: '#D2DCF7',
+            }}
+          >
+            Change coupon
+          </span>
+        </button>
       </div>
     );
   };
@@ -1402,7 +1905,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
                 {activeTab === 'bonuses' && (
                   isPromoApplied ? (
-                    renderCouponApplied()
+                    renderCouponApplied(true)
                   ) : (
                     <div className="flex flex-col gap-[10px] w-full h-auto select-none shrink-0">
                       {/* Promo Code Row */}
@@ -1759,7 +2262,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 )}
 
                 {activeTab === 'withdraw' && (
-                  <WithdrawTab isMobile={true} />
+                  <WithdrawTab
+                    isMobile={true}
+                    verificationStep={verificationStep}
+                    setVerificationStep={setVerificationStep}
+                  />
                 )}
 
                 {activeTab === 'transactions' && (
@@ -1828,14 +2335,28 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         </div>
       </div>
 
-      {/* ──────────────────────────────────────────────────────── */}
-      {/* DESKTOP CONTAINER (hidden on mobile, visible on sm+) */}
-      {/* ──────────────────────────────────────────────────────── */}
+
       <div
         style={{
           width: '500px',
           minHeight: '518px',
-          height: activeTab === 'deposit' && depositConfirmed ? '655px' : 'auto',
+          height: activeTab === 'bonuses' && isPromoApplied
+            ? '589px'
+            : activeTab === 'withdraw' && verificationStep === 0
+              ? '576px'
+              : activeTab === 'withdraw' && verificationStep === 1
+                ? '705px'
+                : activeTab === 'withdraw' && verificationStep === 2
+                  ? '566px'
+                  : activeTab === 'withdraw' && verificationStep === 3
+                    ? '703px'
+                    : activeTab === 'withdraw' && verificationStep === 4
+                      ? '660px'
+                      : activeTab === 'deposit' && depositConfirmed
+                        ? '655px'
+                        : activeTab === 'transactions'
+                          ? '669px'
+                          : 'auto',
           padding: '24px 20px 32px',
           gap: '24px',
           background: '#091741',
@@ -1844,7 +2365,22 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         }}
         className="hidden min-[580px]:flex relative flex-col items-center z-10 border border-white/10 shadow-2xl overflow-visible animate-in fade-in zoom-in-95 duration-200"
       >
-       
+        {/* Ellipse 6 */}
+        <div
+          style={{
+            position: 'absolute',
+            width: '173px',
+            height: '173px',
+            left: 'calc(50% - 173px/2 + 0.5px)',
+            top: '-126px',
+            background: '#1463FF',
+            filter: 'blur(40px)',
+            borderRadius: '50%',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+        />
+
 
         {/* Close Button on the top-right outside the modal wrapper */}
         <button
@@ -1878,7 +2414,21 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         <div
           style={{
             width: '460px',
-            height: activeTab === 'deposit' && depositConfirmed ? '525px' : 'auto',
+            height: activeTab === 'bonuses' && isPromoApplied
+              ? '533px'
+              : activeTab === 'withdraw' && verificationStep === 0
+                ? '520px'
+                : activeTab === 'withdraw' && verificationStep === 1
+                  ? '649px'
+                  : activeTab === 'withdraw' && verificationStep === 2
+                    ? '510px'
+                    : activeTab === 'withdraw' && verificationStep === 3
+                      ? '647px'
+                      : activeTab === 'withdraw' && verificationStep === 4
+                        ? '604px'
+                        : activeTab === 'deposit' && depositConfirmed
+                          ? '525px'
+                          : 'auto',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
@@ -1950,7 +2500,15 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               padding: '0px',
               gap: '16px',
               width: '460px',
-              height: activeTab === 'deposit' && depositConfirmed ? '472px' : 'auto',
+              height: activeTab === 'bonuses' && isPromoApplied
+                ? '480px'
+                : activeTab === 'withdraw' && verificationStep === 0
+                  ? '467px'
+                  : activeTab === 'withdraw' && verificationStep === 1
+                    ? '596px'
+                    : activeTab === 'deposit' && depositConfirmed
+                      ? '472px'
+                      : 'auto',
               minHeight: 0,
             }}
           >
@@ -2012,17 +2570,41 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               style={{
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'flex-start',
-                padding: '16px',
-                gap: '16px',
+                alignItems: (activeTab === 'bonuses' && isPromoApplied) || activeTab === 'transactions' || (activeTab === 'withdraw' && (verificationStep === 0 || verificationStep === 1 || verificationStep === 2 || verificationStep === 3 || verificationStep === 4)) ? 'center' : 'flex-start',
+                padding: (activeTab === 'bonuses' && isPromoApplied) || activeTab === 'transactions' || (activeTab === 'withdraw' && (verificationStep === 1 || verificationStep === 2 || verificationStep === 3 || verificationStep === 4)) 
+                  ? '20px 16px' 
+                  : '16px',
+                gap: activeTab === 'bonuses' && isPromoApplied 
+                  ? '16px' 
+                  : activeTab === 'withdraw' && (verificationStep === 1 || verificationStep === 2)
+                    ? '20px'
+                    : activeTab === 'withdraw' && verificationStep === 4
+                      ? '24px'
+                      : '16px',
                 width: '460px',
-                height: activeTab === 'deposit' && depositConfirmed ? '426px' : 'auto',
+                height: activeTab === 'bonuses' && isPromoApplied
+                  ? '434px'
+                  : activeTab === 'withdraw' && verificationStep === 0
+                    ? '421px'
+                    : activeTab === 'withdraw' && verificationStep === 1
+                      ? '550px'
+                      : activeTab === 'withdraw' && verificationStep === 2
+                        ? '411px'
+                        : activeTab === 'withdraw' && verificationStep === 3
+                          ? '548px'
+                          : activeTab === 'withdraw' && verificationStep === 4
+                            ? '505px'
+                            : activeTab === 'deposit' && depositConfirmed
+                              ? '426px'
+                              : activeTab === 'transactions'
+                                ? '514px'
+                                : 'auto',
                 background: '#0C1F56',
                 borderRadius: '16px',
                 boxSizing: 'border-box',
                 minHeight: 0,
               }}
-              className="overflow-y-auto scrollbar-none"
+              className="overflow-hidden"
             >
               {activeTab === 'deposit' && depositConfirmed ? (
                 selectedPayment === 'Credit Card' ? (
@@ -2977,7 +3559,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
               {activeTab === 'bonuses' && (
                 isPromoApplied ? (
-                  renderCouponApplied()
+                  renderCouponApplied(false)
                 ) : (
                   <div
                     style={{
@@ -3574,7 +4156,11 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               )}
 
               {activeTab === 'withdraw' && (
-                <WithdrawTab isMobile={false} />
+                <WithdrawTab
+                  isMobile={false}
+                  verificationStep={verificationStep}
+                  setVerificationStep={setVerificationStep}
+                />
               )}
 
               {activeTab === 'transactions' && (

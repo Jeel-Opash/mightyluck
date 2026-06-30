@@ -654,3 +654,35 @@ nextjs-portal,
 #__next-feedback-launcher {
   display: none !important;
 }
+
+/* 
+  Global font-family correction rules:
+  React inline styles like `style={{ fontFamily: "'Manrope', sans-serif" }}` compile to
+  raw inline styles in the DOM. Since Next.js dynamic font loader compiles Google Fonts
+  to scoped names (e.g. '__Manrope_e66fe8'), the browser fails to resolve the literal 
+  names 'Manrope' or 'Jost' and falls back to Times New Roman or default serif.
+  These selectors catch inline font declarations and map them to the proper compiled CSS variables.
+*/
+[style*="font-family" i][style*="manrope" i] {
+  font-family: var(--font-sans), sans-serif !important;
+}
+
+[style*="font-family" i][style*="jost" i] {
+  font-family: var(--font-jost), sans-serif !important;
+}
+
+/* Custom scrollbar for Transactions Tab */
+.transactions-scroll-container::-webkit-scrollbar {
+  width: 8px !important;
+  display: block !important;
+}
+
+.transactions-scroll-container::-webkit-scrollbar-track {
+  background: #D2DCF7 !important;
+  border-radius: 100px !important;
+}
+
+.transactions-scroll-container::-webkit-scrollbar-thumb {
+  background: #1463FF !important;
+  border-radius: 100px !important;
+}
