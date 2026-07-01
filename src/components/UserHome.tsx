@@ -934,10 +934,8 @@ export default function UserHome() {
                             backgroundRepeat: 'no-repeat',
                           }}
                         >
-                          {/* Glow Ellipse 7 */}
                           <div className="absolute w-[118.52px] sm:w-[160px] h-[118.52px] sm:h-[160px] left-[-55.56px] sm:left-[-75px] top-[-57.48px] sm:top-[-77.6px] bg-[#1463FF] rounded-full filter blur-[37px] sm:blur-[50px] z-10 pointer-events-none" />
 
-                          {/* Card Content Wrapper */}
                           <div className="absolute inset-0 flex flex-col justify-center items-start p-[17.78px] sm:p-6 gap-[11.85px] sm:gap-4 z-20">
                             <div className="flex flex-col items-start gap-3 sm:gap-4 max-w-[141px] sm:max-w-[290px]">
                               <h3 className="font-jost font-extrabold text-[14px] sm:text-[24px] leading-[120%] tracking-[0.01em] text-white uppercase text-left break-words">
