@@ -54,11 +54,15 @@ body {
 }
 
 @media (max-width: 1023px) {
-  html, body {
+
+  html,
+  body {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
   }
-  html::-webkit-scrollbar, body::-webkit-scrollbar {
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
     display: none !important;
   }
 }
@@ -685,4 +689,4 @@ nextjs-portal,
 .transactions-scroll-container::-webkit-scrollbar-thumb {
   background: #1463FF !important;
   border-radius: 100px !important;
-}
+}

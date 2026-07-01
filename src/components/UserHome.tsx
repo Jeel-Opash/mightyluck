@@ -230,27 +230,27 @@ export default function UserHome() {
         const scrollLeft = el.scrollLeft;
         const scrollWidth = el.scrollWidth;
         const clientWidth = el.clientWidth;
-        
+
         const winnersThumbWidth = scrollWidth > 0 ? (clientWidth / scrollWidth) * 100 : 100;
         const displayWinnersThumbWidth = Math.max(15, Math.min(100, winnersThumbWidth));
         const winnersMaxScrollLeft = scrollWidth - clientWidth;
         const winnersScrollRatio = winnersMaxScrollLeft > 0 ? scrollLeft / winnersMaxScrollLeft : 0;
         const winnersLeftOffset = winnersScrollRatio * (100 - displayWinnersThumbWidth);
-        
-        const translatePercent = displayWinnersThumbWidth > 0 
-          ? (winnersLeftOffset / displayWinnersThumbWidth) * 100 
+
+        const translatePercent = displayWinnersThumbWidth > 0
+          ? (winnersLeftOffset / displayWinnersThumbWidth) * 100
           : 0;
-        
+
         currentThumb.style.width = `${displayWinnersThumbWidth}%`;
         currentThumb.style.transform = `translateX(${translatePercent}%)`;
       };
-      
+
       updateDimensions();
       el.addEventListener('scroll', updatePosition);
       window.addEventListener('resize', updateDimensions);
-      
+
       const timer = setTimeout(updateDimensions, 500);
-      
+
       return () => {
         el.removeEventListener('scroll', updatePosition);
         window.removeEventListener('resize', updateDimensions);
@@ -862,7 +862,7 @@ export default function UserHome() {
                       <h2 className="game-section-title">PROMOTIONS</h2>
                     </div>
 
-                    <div className="flex flex-row items-center gap-[12px] w-[68px] h-[30px]">
+                    <div className="hidden md:flex flex-row items-center gap-[12px] w-[68px] h-[30px]">
                       <div className="flex flex-row items-center gap-[8px] w-[68px] h-[30px]">
                         <button
                           onClick={() => scrollCarousel(promotionsRef, 'left', true)}
