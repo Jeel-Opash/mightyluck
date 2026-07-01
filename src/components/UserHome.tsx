@@ -906,7 +906,7 @@ export default function UserHome() {
                           id: 2,
                           title: '150% RELOAD BONUS + 50 FREE SPINS',
                           bgColor: '#060B4D',
-                          bgGradient: 'linear-gradient(90deg, #060B4D 40%, rgba(6, 11, 77, 0) 55%)',
+                          bgGradient: 'linear-gradient(90deg, #060B4D 21.96%, rgba(9, 23, 65, 0) 60.27%)',
                           bgImg: '/games/promotion/p2.png',
                           bgSize: 'contain',
                           bgPosition: 'right center',
@@ -914,11 +914,11 @@ export default function UserHome() {
                         {
                           id: 3,
                           title: '150% RELOAD BONUS + 50 FREE SPINS',
-                          bgColor: '#060B4D',
-                          bgGradient: 'linear-gradient(90deg, #060B4D 40%, rgba(6, 11, 77, 0) 55%)',
-                          bgImg: '/games/promotion/p2.png',
-                          bgSize: 'contain',
-                          bgPosition: 'right center',
+                          bgColor: '#091741',
+                          bgGradient: 'linear-gradient(90deg, #091741 21.96%, rgba(9, 23, 65, 0) 60.27%)',
+                          bgImg: '/games/promotion/p1.png',
+                          bgSize: 'cover',
+                          bgPosition: 'center',
                         },
                       ].map((promo) => (
                         <div

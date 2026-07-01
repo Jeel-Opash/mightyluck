@@ -184,6 +184,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
   const mainLayoutFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '592.16px' : (showDepositCTA ? (isShortScreen ? '450px' : '637px') : `${innerFrameHeight}px`));
   const bodyHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '670.16px' : (showDepositCTA ? (isShortScreen ? '530px' : '715px') : (isDeposit ? '631px' : '550px')));
   const modalHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '750.16px' : (showDepositCTA ? (isShortScreen ? '610px' : '795px') : (isDeposit ? '711px' : '630px')));
+
+  // Mobile layout heights (Fixed container height at 715px across all tabs to prevent jumping)
+  const isDepositTab = activeTab === 'deposit';
+  const mobileBodyHeight = isCcSuccess ? 'auto' : '715px';
+  const mobileModalHeight = isCcSuccess ? 'auto' : '795px';
+  const mobileTabCardFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '427px' : (isDepositTab ? '536px' : '592px'));
+  const mobileContentCardHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '381.16px' : (isDepositTab ? '490px' : '546px'));
+  const mobileMainLayoutFrameHeight = isCcSuccess ? 'auto' : (depositConfirmed ? '592.16px' : '637px');
   const countryDropdownRefDesktop = useRef<HTMLDivElement>(null);
 
   // Mock BTC to USD rate: 1 BTC = $65,000 USD
@@ -1203,14 +1211,14 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
 
       <div
         style={{
-          height: modalHeight,
+          height: mobileModalHeight,
         }}
         onClick={(e) => {
           if (e.target === e.currentTarget) {
             onClose();
           }
         }}
-        className="min-[580px]:hidden relative w-full bg-transparent flex flex-col items-center gap-0 z-10 animate-in fade-in slide-in-from-bottom duration-300"
+        className="min-[580px]:hidden relative w-full max-w-[414px] bg-transparent flex flex-col items-center gap-0 z-10 animate-in fade-in slide-in-from-bottom duration-300"
       >
 
         {/* Global Navbar component - renders at the top of the viewport */}
@@ -1225,10 +1233,10 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
         {/* Main Wallet Panel (Figma specified: background: #091741, border-radius: 30px 30px 0px 0px) */}
         <div
           style={{
-            height: bodyHeight,
+            height: mobileBodyHeight,
           }}
           onClick={(e) => e.stopPropagation()}
-          className="w-full bg-[#091741] rounded-t-[30px] border-t border-x border-white/10 shadow-2xl flex flex-col items-center px-[20px] pt-[16px] pb-[40px] gap-[16px] relative overflow-hidden shrink-0"
+          className="w-full max-w-[414px] bg-[#091741] rounded-t-[30px] border-t border-x border-white/10 shadow-2xl flex flex-col items-center px-[20px] pt-[16px] pb-[40px] gap-[16px] relative overflow-hidden shrink-0"
         >
 
           {/* Blue radial glow behind the Wallet title row */}
@@ -1257,9 +1265,9 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
           {/* Main Layout Frame (height: dynamic with gap: 24px/12px) */}
           <div
             style={{
-              height: mainLayoutFrameHeight,
+              height: mobileMainLayoutFrameHeight,
             }}
-            className={`w-full max-w-[374px] mx-auto flex flex-col items-start z-10 shrink-0 ${isShortDeposit ? 'gap-[12px]' : 'gap-[24px]'}`}
+            className="w-full max-w-[374px] mx-auto flex flex-col items-start z-10 shrink-0 gap-[16px]"
           >
 
             {/* Title Bar: Wallet title */}
@@ -1269,16 +1277,16 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 height: '29px',
               }}
             >
-              <div className={`flex flex-row items-center h-[29px] relative z-10 ${isShortDeposit ? 'gap-[8px]' : 'gap-[12px]'}`}>
+              <div className="flex flex-row items-center h-[29px] relative z-10 gap-[12px]">
                 <YellowWalletIcon />
-                <span className={`font-jost font-extrabold leading-[29px] tracking-[0.01em] text-white ${isShortDeposit ? 'text-[18px]' : 'text-[20px]'}`}>Wallet</span>
+                <span className="font-jost font-extrabold leading-[29px] tracking-[0.01em] text-white text-[20px]">Wallet</span>
               </div>
             </div>
 
             {/* Tab+Card Frame (containing Tab Buttons + Content Card) */}
             <div
               style={{
-                height: tabCardFrameHeight,
+                height: mobileTabCardFrameHeight,
               }}
               className="w-full flex flex-col gap-[16px] shrink-0"
             >
@@ -1310,7 +1318,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
               {/* Content Card (bg-[#0C1F56], rounded-[16px]) */}
               <div
                 style={{
-                  height: contentCardHeight,
+                  height: mobileContentCardHeight,
                 }}
                 className={`w-full max-w-[374px] mx-auto bg-[#0C1F56] rounded-[16px] px-[16px] flex flex-col border border-white/5 shadow-md shrink-0 ${
                   activeTab === 'withdraw' || activeTab === 'bonuses' ? 'overflow-y-auto scrollbar-none' : ''
@@ -1318,9 +1326,7 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                   ? 'py-[20px] gap-[24px] items-center'
                   : activeTab === 'bonuses'
                     ? 'py-[12px] gap-[16px] items-start'
-                    : isShortDeposit
-                      ? 'py-[10px] gap-[8px] items-start'
-                      : 'py-[16px] gap-[16px] items-start'
+                    : 'py-[16px] gap-[16px] items-start'
                   }`}
               >
                 {activeTab === 'deposit' && depositConfirmed ? (
@@ -2297,42 +2303,44 @@ export default function DepositModal({ isOpen, onClose }: DepositModalProps) {
                 </button>
               </div>
             ) : showDepositCTA && (
-              selectedPayment === 'Bitcoin' ? (
-                <button
-                  onClick={() => setDepositConfirmed(true)}
-                  className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
-                >
-                  I&apos;ve completed my deposit
-                </button>
-              ) : creditCardStep === 'address' ? (
-                <button
-                  onClick={() => {
-                    if (!street || !city || !postalCode || !state) {
-                      alert('Please fill out all address details.');
-                      return;
-                    }
-                    setCreditCardStep('payment');
-                  }}
-                  className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
-                >
-                  Continue
-                </button>
-              ) : (
-                <button
-                  onClick={() => {
-                    if (!creditCardNumber || !creditCardExp || !creditCardCcv) {
-                      alert('Please fill out all credit card details.');
-                      return;
-                    }
-                    const currentBalance = user?.balance || 0;
-                    dispatch(updateBalance(currentBalance + getDepositAmount()));
-                    setDepositConfirmed(true);
-                  }}
-                  className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
-                >
-                  Deposit ${getDepositAmount()}
-                </button>
-              )
+              <div className="w-full mt-auto shrink-0 flex justify-center">
+                {selectedPayment === 'Bitcoin' ? (
+                  <button
+                    onClick={() => setDepositConfirmed(true)}
+                    className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
+                  >
+                    I&apos;ve completed my deposit
+                  </button>
+                ) : creditCardStep === 'address' ? (
+                  <button
+                    onClick={() => {
+                      if (!street || !city || !postalCode || !state) {
+                        alert('Please fill out all address details.');
+                        return;
+                      }
+                      setCreditCardStep('payment');
+                    }}
+                    className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
+                  >
+                    Continue
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      if (!creditCardNumber || !creditCardExp || !creditCardCcv) {
+                        alert('Please fill out all credit card details.');
+                        return;
+                      }
+                      const currentBalance = user?.balance || 0;
+                      dispatch(updateBalance(currentBalance + getDepositAmount()));
+                      setDepositConfirmed(true);
+                    }}
+                    className={`w-full max-w-[374px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[8px] flex items-center justify-center font-manrope font-bold text-[14px] min-[360px]:text-[16px] leading-[22px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shrink-0 ${isShortDeposit ? 'h-[40px]' : 'h-[46px] min-[360px]:h-[56px] min-[380px]:h-[60px]'}`}
+                  >
+                    Deposit ${getDepositAmount()}
+                  </button>
+                )}
+              </div>
             )}
           </div>
         </div>
