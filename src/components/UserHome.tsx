@@ -418,17 +418,60 @@ export default function UserHome() {
           <div className="flex flex-col gap-5 lg:gap-[40px] w-full">
 
             <div className="w-full flex flex-col items-center gap-[12px] lg:gap-[16px]">
-              <section className="relative w-full h-[170px] min-[375px]:h-[200px] min-[480px]:h-[240px] min-[768px]:h-[300px] lg:h-[353px] rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate">
+              <section className="relative w-[374px] max-w-full md:w-full h-[170px] md:h-[300px] lg:h-[353px] rounded-[10px] md:rounded-[16px] overflow-hidden border border-white/5 mt-[4px] isolate mx-auto">
+                {/* Mobile Background Image */}
+                <div
+                  className="absolute md:hidden pointer-events-none z-0"
+                  style={{
+                    width: '547.18px',
+                    height: '170.03px',
+                    left: 'calc(50% - 547.18px/2 + 71.59px)',
+                    top: 'calc(50% - 170.03px/2 + 0.02px)',
+                    backgroundImage: 'url(/images/hero.jpg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                  }}
+                />
+
+                {/* Mobile Ellipses */}
+                <div
+                  className="absolute md:hidden pointer-events-none z-0"
+                  style={{
+                    width: '62.14px',
+                    height: '62.14px',
+                    left: '501.42px',
+                    top: '130.53px',
+                    background: '#010A25',
+                    filter: 'blur(12.0419px)',
+                  }}
+                />
+                <div
+                  className="absolute md:hidden pointer-events-none z-0"
+                  style={{
+                    width: '226px',
+                    height: '226px',
+                    left: '-50px',
+                    top: '-38px',
+                    background: '#03123C',
+                    filter: 'blur(29.2631px)',
+                  }}
+                />
+
+                {/* Desktop Background Image */}
                 <img
                   src="/images/hero.jpg"
                   alt="Welcome Banner"
-                  className="absolute inset-y-0 left-0 w-[140%] min-[480px]:w-[130%] lg:w-[125%] max-w-none h-full object-cover object-left pointer-events-none z-0"
+                  className="hidden md:block absolute inset-y-0 left-0 w-[140%] min-[480px]:w-[130%] lg:w-[125%] max-w-none h-full object-cover object-left pointer-events-none z-0"
                 />
-                <div className="absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
-                <div className="absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
-                <div className="absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
 
-                <div className="absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex flex-col gap-2 min-[375px]:gap-3 lg:gap-[20px] justify-between items-start z-10">
+                {/* Desktop Blurs */}
+                <div className="hidden md:block absolute w-[575px] h-[575px] left-[-161px] top-[-102px] rounded-full bg-[#06102B]/60 filter blur-[75px] pointer-events-none" />
+                <div className="hidden md:block absolute w-[194px] h-[194px] left-[198px] top-[224px] rounded-full bg-[#103686]/40 filter blur-[25px] pointer-events-none" />
+                <div className="hidden md:block absolute w-[129px] h-[129px] left-[1041px] top-[271px] rounded-full bg-[#010A25]/80 filter blur-[25px] pointer-events-none" />
+
+                {/* Desktop Content */}
+                <div className="hidden md:flex absolute w-[85%] max-w-[457px] left-4 sm:left-6 lg:left-[40px] top-1/2 -translate-y-1/2 flex-col gap-2 min-[375px]:gap-3 lg:gap-[20px] justify-between items-start z-10">
                   <div className="flex flex-col gap-[2px] sm:gap-[4px] w-full">
                     <span className="font-jost font-medium text-[11px] min-[375px]:text-[13px] min-[480px]:text-[16px] min-[768px]:text-[22px] lg:text-[28px] leading-tight text-white select-none">
                       Get <span className="text-[#FFC83D] font-extrabold">LUCKY</span> with our exclusive
@@ -443,6 +486,83 @@ export default function UserHome() {
                     className="w-[96px] h-[32px] min-[375px]:w-[108px] min-[375px]:h-[36px] min-[768px]:w-[130px] min-[768px]:h-[42px] lg:w-[146px] lg:h-[48px] bg-[#FFC83D] hover:bg-[#ffd362] rounded-[6px] min-[768px]:rounded-lg flex items-center justify-center font-sans font-bold text-[11px] min-[375px]:text-[12px] min-[768px]:text-[14px] lg:text-[16px] text-[#1A1404] tracking-[0.02em] cursor-pointer active:scale-95 transition-all duration-150 border-none shadow-[0_4px_12px_rgba(255,200,61,0.2)]"
                   >
                     Join Now
+                  </button>
+                </div>
+
+                {/* Mobile Content */}
+                <div
+                  className="absolute md:hidden flex flex-col items-start p-0 z-10"
+                  style={{
+                    gap: '16px',
+                    width: '220.13px',
+                    height: '112.47px',
+                    left: '19.27px',
+                    top: 'calc(50% - 112.47px/2 + 0.74px)',
+                  }}
+                >
+                  <div
+                    className="flex flex-col items-start p-0"
+                    style={{
+                      gap: '1.93px',
+                      width: '220.13px',
+                      height: '61.93px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: '220.13px',
+                        height: '20px',
+                        fontFamily: "'Jost', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 500,
+                        fontSize: '14px',
+                        lineHeight: '20px',
+                        color: '#FFFFFF',
+                      }}
+                    >
+                      Get <span style={{ fontWeight: 800, color: '#FFBF1F' }}>LUCKY</span> with our exclusive
+                    </span>
+                    <span
+                      style={{
+                        width: '220.13px',
+                        height: '40px',
+                        fontFamily: "'Jost', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 800,
+                        fontSize: '20px',
+                        lineHeight: '100%',
+                        color: '#FFFFFF',
+                      }}
+                    >
+                      250% WELCOME<br />BONUS!
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={() => dispatch(openDepositModal())}
+                    className="flex flex-row justify-center items-center active:scale-95 transition-all duration-150 border-none cursor-pointer"
+                    style={{
+                      padding: '8.63636px 20.7273px',
+                      gap: '8.64px',
+                      width: '95px',
+                      height: '34.55px',
+                      background: '#FFBF1F',
+                      borderRadius: '6px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "'Manrope', sans-serif",
+                        fontStyle: 'normal',
+                        fontWeight: 700,
+                        fontSize: '12.0909px',
+                        lineHeight: '17px',
+                        letterSpacing: '0.02em',
+                        color: '#1A1404',
+                      }}
+                    >
+                      Join
+                    </span>
                   </button>
                 </div>
               </section>

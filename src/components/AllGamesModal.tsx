@@ -546,7 +546,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 )}
               </div>
 
-              {/* Content area: Default Popular/Providers View or Category Grid View */}
+
               {isDefaultView ? (
                 <div
                   style={{
@@ -562,11 +562,12 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                   }}
                   className="agm-scrollbar-none"
                 >
-                  {/* Popular Games Section */}
+
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '0px', gap: '20px', width: '100%', height: 'auto', flexShrink: 0 }}>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: '30px' }}>
                       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px' }}>
-                        {/* Flame Icon: large for desktop, small for mobile */}
+
+
                         <svg
                           viewBox="0 0 20 20"
                           fill="none"
@@ -596,7 +597,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                         </span>
                       </div>
 
-                      {/* Slider controls for Popular Games */}
+
                       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '12px', width: '68px', height: '30px' }}>
                         <button
                           onClick={() => scrollPopular('left')}
@@ -801,7 +802,6 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                   </div>
                 </div>
               ) : (
-                /* Category Specific or Search Results Grid View */
                 <div
                   style={{
                     display: 'flex',
@@ -814,7 +814,6 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                     minHeight: 0,
                   }}
                 >
-                  {/* Category Header */}
                   {!(search && visibleGames.length === 0) && (
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: '0px', gap: '8px', height: '29px', flexShrink: 0 }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20px', height: '20px' }}>
@@ -872,15 +871,12 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
         </div>
       </div>
 
-      {/* ── MOBILE OVERLAY VIEW ── */}
       <div
         className={`fixed top-[50px] left-0 right-0 bottom-[60px] z-[52] bg-[#0C1F56] flex md:hidden flex-col p-5 gap-5 overflow-y-auto transition-all duration-300 ease-in-out ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0 pointer-events-none'
           }`}
       >
-        {/* Mobile Search input bar with close button outside */}
         <div className="flex flex-row items-center gap-[12px] w-full shrink-0">
           <div className="flex flex-row items-center gap-[16px] flex-1 h-[50px] bg-[#112F82] px-[20px] rounded-lg border border-white/5 focus-within:border-[#1463FF]/40">
-            {/* Search icon on left */}
             <div className="flex flex-col items-start p-0 w-[16px] h-[16px] shrink-0">
               <img src="/mobile/sidebar/search.png" className="w-[16px] h-[16px] object-contain" alt="Search" style={{ filter: 'brightness(0) saturate(100%) invert(80%) sepia(20%) saturate(500%) hue-rotate(190deg)' }} />
             </div>
@@ -894,7 +890,6 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
             />
           </div>
 
-          {/* X close button outside the input box */}
           <button
             onClick={onClose}
             style={{
@@ -994,7 +989,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 </div>
               )}
               {visibleGames.length > 0 ? (
-                <div className="grid grid-cols-3 gap-x-2 gap-y-3 pb-6">
+                <div className="flex flex-row flex-wrap gap-x-2 gap-y-3 justify-center md:justify-start pb-6">
                   {visibleGames.map((game) => (
                     <div
                       key={game.id}
@@ -1002,16 +997,12 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                         router.push(`/game/${game.id}`);
                         onClose();
                       }}
-                      className="w-full aspect-[121.6/160] max-w-[121.6px] mx-auto relative cursor-pointer active:scale-95 transition-transform"
+                      className="w-[121.6px] h-[160px] md:w-[152px] md:h-[200px] relative rounded-[9.6px] md:rounded-[12px] overflow-hidden bg-[#CDCDCD] cursor-pointer shrink-0 active:scale-95 transition-transform game-card"
                     >
                       <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
                         style={{
-                          position: 'absolute',
-                          inset: 0,
                           backgroundImage: `url(${game.image})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                          borderRadius: '9.6px',
                         }}
                       />
                     </div>
@@ -1135,7 +1126,7 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                 {activeCategory} ({visibleGames.length})
               </span>
               {visibleGames.length > 0 ? (
-                <div className="grid grid-cols-3 gap-x-2 gap-y-3 pb-6">
+                <div className="flex flex-row flex-wrap gap-x-2 gap-y-3 justify-center md:justify-start pb-6">
                   {visibleGames.map((game) => (
                     <div
                       key={game.id}
@@ -1143,16 +1134,12 @@ export default function AllGamesModal({ isOpen, onClose }: AllGamesModalProps) {
                         router.push(`/game/${game.id}`);
                         onClose();
                       }}
-                      className="w-full aspect-[121.6/160] max-w-[121.6px] mx-auto relative cursor-pointer active:scale-95 transition-transform"
+                      className="w-[121.6px] h-[160px] md:w-[152px] md:h-[200px] relative rounded-[9.6px] md:rounded-[12px] overflow-hidden bg-[#CDCDCD] cursor-pointer shrink-0 active:scale-95 transition-transform game-card"
                     >
                       <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 ease-out group-hover:scale-110"
                         style={{
-                          position: 'absolute',
-                          inset: 0,
                           backgroundImage: `url(${game.image})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                          borderRadius: '9.6px',
                         }}
                       />
                     </div>
